@@ -5,7 +5,8 @@
 # identifying and examining high-prevalence ASVs that are present
 # in a large proportion of samples.
 #
-# Author: Bolívar Aponte Rolón
+# Author: Jaejin Lee
+# Modified by: Bolívar Aponte Rolón
 # Date: 2025-05-05
 #####################################################################
 

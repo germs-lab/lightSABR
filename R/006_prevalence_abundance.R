@@ -5,7 +5,8 @@
 # (proportion of samples an ASV is found in) and abundance
 # (relative abundance when present).
 #
-# Author: Bolívar Aponte Rolón
+# Author: Jaejin Lee
+# Modified by: Bolívar Aponte Rolón
 # Date: 2025-05-05
 #####################################################################
 

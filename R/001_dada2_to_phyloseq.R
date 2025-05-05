@@ -1,59 +1,90 @@
-# Setup
+#####################################################################
+# DADA2 to Phyloseq Workflow for Amplicon Sequencing Data
+#
+# This script processes raw amplicon sequencing data (16S rRNA) through
+# the DADA2 pipeline and creates a phyloseq object for downstream analysis.
+# The workflow includes quality filtering, error learning, ASV inference,
+# chimera removal, and taxonomy assignment.
+#
+# Author: Jaejin Lee
+# Modified by: Bolívar Aponte Rolón
+# Date: 2025-05-05
+#####################################################################
+
+#--------------------------------------------------------
+# Setup and Library Loading
+#--------------------------------------------------------
+
+# Load setup scripts
 # source("R/utils/000_dada2_setup.R") # Only run the first time to install packages
 source("R/utils/000_setup.R")
 
+# Load required libraries
 library("usethis")
 library("devtools")
 library("Rcpp")
 library("dada2")
 library("ShortRead")
-library("Biostrings") 
+library("Biostrings")
 
+#--------------------------------------------------------
+# Step 1: Set up file paths and identify sequence files
+#--------------------------------------------------------
 
-
-# set working directory
+# Set working directory for input files
 path <- "data/input/raw_sequences"
 
-# list all files
+# List all fastq files
 all_files <- list.files(path, pattern = "\\.fastq\\.gz$", full.names = TRUE)
 
-# separate R1 and R2 files
+# Separate forward (R1) and reverse (R2) read files
 fnFs <- sort(grep("_R1", all_files, value = TRUE))
 fnRs <- sort(grep("_R2", all_files, value = TRUE))
 print(fnFs)
 print(fnRs)
 
-# set path for filtered files
+# Define output paths for filtered files
 filtFs <- file.path(path, "filtered", basename(fnFs))
 filtRs <- file.path(path, "filtered", basename(fnRs))
 
-plotQualityProfile(fnFs[1]) # quality check for first R1 file
-plotQualityProfile(fnRs[1]) # quality check for first R2 file
+#--------------------------------------------------------
+# Step 2: Quality assessment and filtering
+#--------------------------------------------------------
 
-# filtering and trimming
+# Check quality profiles of the first sample
+plotQualityProfile(fnFs[1]) # Quality check for first R1 file
+plotQualityProfile(fnRs[1]) # Quality check for first R2 file
+
+# Filter and trim reads based on quality parameters
 filter_stats <- filterAndTrim(
-  fnFs,
-  filtFs,
-  fnRs,
-  filtRs,
-  truncLen = c(140, 140),
-  maxN = 0,
-  maxEE = c(4, 4),
-  truncQ = 2,
-  rm.phix = TRUE,
-  compress = TRUE,
-  multithread = TRUE
+  fnFs, # Input forward reads
+  filtFs, # Output filtered forward reads
+  fnRs, # Input reverse reads
+  filtRs, # Output filtered reverse reads
+  truncLen = c(140, 140), # Truncate reads at position 140
+  maxN = 0, # Maximum number of N bases allowed
+  maxEE = c(4, 4), # Maximum expected errors allowed
+  truncQ = 2, # Truncate reads at first quality score <= 2
+  rm.phix = TRUE, # Remove PhiX spike-in sequences
+  compress = TRUE, # Compress output files
+  multithread = TRUE # Use multiple processors
 )
 print(filter_stats)
 
+# Verify output files were created
 length(filtFs)
 length(filtRs)
 
-# learning errors
-errF <- learnErrors(filtFs, multithread = TRUE)
-errR <- learnErrors(filtRs, multithread = TRUE)
+#--------------------------------------------------------
+# Step 3: Learn error rates from the data
+#--------------------------------------------------------
 
-# plot the original error model
+# Learn error rates from filtered reads
+errF <- learnErrors(filtFs, multithread = TRUE) # Forward reads
+errR <- learnErrors(filtRs, multithread = TRUE) # Reverse reads
+
+# Visualize error models to ensure they fit well
+# Forward read error model
 plotErrors(errF, nominalQ = TRUE) +
   scale_y_continuous(
     trans = "log10",
@@ -62,6 +93,8 @@ plotErrors(errF, nominalQ = TRUE) +
     labels = c("-1", "-3", "-5")
   ) +
   labs(y = "Occurrence frequency (log10)")
+
+# Reverse read error model
 plotErrors(errR, nominalQ = TRUE) +
   scale_y_continuous(
     trans = "log10",
@@ -71,52 +104,72 @@ plotErrors(errR, nominalQ = TRUE) +
   ) +
   labs(y = "Occurrence frequency (log10)")
 
-# forward reads dereplication
+#--------------------------------------------------------
+# Step 4: Dereplicate reads
+#--------------------------------------------------------
+
+# Dereplicate forward reads (combine identical sequences)
 derepFs <- derepFastq(filtFs, verbose = TRUE)
 
-# reverse reads dereplication
+# Dereplicate reverse reads
 derepRs <- derepFastq(filtRs, verbose = TRUE)
 
-# remove R1/R2 and file extension
+# Extract sample names from filenames
 sample.names <- gsub("_R[12]\\.fastq\\.gz", "", basename(filtFs))
 print(sample.names)
+
+# Assign sample names to dereplicated sequences
 names(derepFs) <- sample.names
 names(derepRs) <- sample.names
 
-# Denoising
+#--------------------------------------------------------
+# Step 5: Infer ASVs (Amplicon Sequence Variants)
+#--------------------------------------------------------
+
+# Denoise forward reads to infer ASVs
 dadaFs <- dada(derepFs, err = errF, multithread = TRUE)
+
+# Denoise reverse reads to infer ASVs
 dadaRs <- dada(derepRs, err = errR, multithread = TRUE)
 
-# merging forward and reverse reads
+#--------------------------------------------------------
+# Step 6: Merge paired-end reads
+#--------------------------------------------------------
+
+# Merge forward and reverse reads
 mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs, verbose = TRUE)
 
-# summarizing merging result
+# Summarize merging results
 merger_summary <- sapply(mergers, function(x) sum(x$abundance))
 print(merger_summary)
 
----
-  # number of reads after filtering
-  reads_in
-<- sapply(dadaFs, function(x) sum(x$denoised))
+#--------------------------------------------------------
+# Step 7: Evaluate merging efficiency
+#--------------------------------------------------------
 
-# number of merged reads
+# Number of reads after filtering
+reads_in <- sapply(dadaFs, function(x) sum(x$denoised))
+
+# Number of merged reads
 reads_merged <- sapply(mergers, function(x) sum(x$abundance))
 
-# calculating merging rate
+# Calculate merging rate (percentage of reads that were successfully merged)
 merge_rate <- reads_merged / reads_in * 100
 merge_rate
 
----
-  # applying an absolute threshold
-  low_samples_5000
-<- names(merger_summary[merger_summary < 5000])
+#--------------------------------------------------------
+# Step 8: Filter low-coverage samples
+#--------------------------------------------------------
+
+# Identify samples below different read count thresholds
+low_samples_5000 <- names(merger_summary[merger_summary < 5000])
 low_samples_10000 <- names(merger_summary[merger_summary < 10000])
 
-# identifying samples below 50% of the mean sequencing depth
+# Identify samples below 50% of mean sequencing depth
 mean_seq <- mean(merger_summary)
 low_samples_mean <- names(merger_summary[merger_summary < (mean_seq * 0.5)])
 
-# print threshold results
+# Print threshold results
 cat("Sample names <5000 seqs:\n", low_samples_5000, "\n\n")
 cat("#Samples <5000 seqs:", length(low_samples_5000), "\n")
 
@@ -134,7 +187,7 @@ cat(
   "\n"
 )
 
-# visualizing merger_summary with potent thresholds
+# Visualize sequencing depth distribution with threshold lines
 depth_data <- data.frame(sequencing_depth = merger_summary)
 
 ggplot(depth_data, aes(x = sequencing_depth)) +
@@ -164,19 +217,21 @@ ggplot(depth_data, aes(x = sequencing_depth)) +
   ) +
   theme_minimal()
 
-# excluding samples with <5000 seqs
+# Remove samples with fewer than 5000 sequences
 mergers_filtered <- mergers[!names(mergers) %in% low_samples_5000]
 cat("#Samples after exclusion:", length(mergers_filtered), "\n")
 
----
-  # creating initial ASV table
-  seqtab
-<- makeSequenceTable(mergers_filtered)
+#--------------------------------------------------------
+# Step 9: Create ASV table and filter by length
+#--------------------------------------------------------
 
-# check the distribution of sequence lengths
+# Create initial ASV table
+seqtab <- makeSequenceTable(mergers_filtered)
+
+# Check sequence length distribution
 table(nchar(getSequences(seqtab)))
 
-# get sequence lengths
+# Visualize sequence length distribution
 seq_lengths <- nchar(getSequences(seqtab))
 seq_length_table <- table(seq_lengths)
 
@@ -188,9 +243,9 @@ ggplot(seq_length_df, aes(x = factor(Length), y = Count)) +
   geom_hline(yintercept = 20, color = "red", linetype = "dotted", size = 1) +
   scale_y_continuous(
     trans = "log10",
-    breaks = c(1, 10, 100, 1000, 10000), # 실제 로그 값 설정
+    breaks = c(1, 10, 100, 1000, 10000),
     labels = c("0", "1", "2", "3", "4")
-  ) + # 로그 값 라벨링
+  ) +
   labs(
     title = "Sequence Length Distribution",
     x = "Sequence Length (bp)",
@@ -198,98 +253,114 @@ ggplot(seq_length_df, aes(x = factor(Length), y = Count)) +
   ) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-
-# define the expected length range
+# Filter sequences to keep only those within the expected length range
 expected_range <- seq_lengths >= 251 & seq_lengths <= 257
-
-# Filter sequences within the expected length range
 seqtab_filtered <- seqtab[, expected_range]
 
-# Compare the number of sequences before and after filtering
+# Compare sequence counts before and after length filtering
 cat("Number of sequences before filtering:", ncol(seqtab), "\n")
 cat("Number of sequences after filtering:", ncol(seqtab_filtered), "\n")
 
+#--------------------------------------------------------
+# Step 10: Remove chimeric sequences
+#--------------------------------------------------------
 
-# removing chimeras
+# Identify and remove chimeric sequences
 seqtab.nochim <- removeBimeraDenovo(
   seqtab_filtered,
-  method = "consensus",
-  multithread = TRUE,
-  verbose = TRUE
+  method = "consensus", # Use consensus method to identify chimeras
+  multithread = TRUE, # Use multiple processors
+  verbose = TRUE # Print progress information
 )
 
-# check the distribution of sequence lengths after chimera removal
+# Check sequence length distribution after chimera removal
 table(nchar(getSequences(seqtab.nochim)))
 
-# number of sequences before and after removing chimeras
+# Compare sequence counts before and after chimera removal
 cat("Before removing chimeras:", sum(seqtab_filtered), "\n")
 cat("After removing chimeras:", sum(seqtab.nochim), "\n")
 
+#--------------------------------------------------------
+# Step 11: Assign taxonomy using SILVA database
+#--------------------------------------------------------
 
-# Taxonomy assignment using the SILVA database
+# Assign taxonomy using the SILVA reference database
 taxa <- assignTaxonomy(
   seqtab.nochim,
   "/Users/jaejinlee/Files/Data/databases/silva_nr99_v138.2_toSpecies_trainset.fa.gz",
   multithread = TRUE
 )
+
+# Replace NA values with "Unclassified"
 taxa[is.na(taxa)] <- "Unclassified"
 
+# Examine taxonomy assignments
 head(taxa)
-
 str(taxa)
 dim(taxa)
 colnames(taxa)
 summary(taxa)
 
-# creating final ASV table
+#--------------------------------------------------------
+# Step 12: Create phyloseq object
+#--------------------------------------------------------
+
+# Create ASV table
 asv <- otu_table(seqtab.nochim, taxa_are_rows = FALSE)
 
-# creating taxonomy table
+# Create taxonomy table
 tax <- tax_table(as.matrix(taxa))
 
-# creating Phyloseq object
+# Create initial phyloseq object
 ps <- phyloseq(asv, tax)
 ps
 
-# loading metadata
+#--------------------------------------------------------
+# Step 13: Add sample metadata
+#--------------------------------------------------------
+
+# Load metadata from CSV file
 metadata <- read.csv(
   "/Users/jaejinlee/Files/Data/2023SABR_amplicon/SABR2023_metadata.csv",
   row.names = 1
 )
 head(metadata)
 
-head(sample_names(ps)) # check sample names in ps
-head(rownames(metadata)) # check sample names in metadata
-setdiff(sample_names(ps), rownames(metadata)) # present in in, absent in metadata
-setdiff(rownames(metadata), sample_names(ps)) # present in metadata, absent in ps
+# Check for sample name consistency between phyloseq and metadata
+head(sample_names(ps)) # Sample names in phyloseq object
+head(rownames(metadata)) # Sample names in metadata
+setdiff(sample_names(ps), rownames(metadata)) # In phyloseq but not in metadata
+setdiff(rownames(metadata), sample_names(ps)) # In metadata but not in phyloseq
 
-# converting metadata to sample_data
+# Convert metadata to phyloseq sample_data format
 sampledata <- sample_data(metadata)
 sampledata
 
-# adding metadata to ps
+# Add metadata to phyloseq object
 ps <- merge_phyloseq(ps, sampledata)
 ps
 
-sample_data(ps)
+# Verify phyloseq components
+otu_table(ps) # ASV table
+sample_data(ps) # Sample metadata
+tax_table(ps) # Taxonomy table
 
-otu_table(ps) # asv table
-sample_data(ps) # metadata
-tax_table(ps) # taxonomy
+#--------------------------------------------------------
+# Step 14: Save results
+#--------------------------------------------------------
 
+# Save phyloseq object as RDS file
 saveRDS(
   ps,
   file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/ps_object.rds"
 )
-# when calling the ps, use: ps <- readRDS(file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/ps_object.rds")
+# To load the phyloseq object in the future:
+# ps <- readRDS(file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/ps_object.rds")
 
-# converting asv table to data frame
+# Export ASV table as CSV for external analysis
 asv_data <- as.data.frame(otu_table(ps))
-
-# save as a csv file
 write.csv(
   asv_data,
   file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/asv_table.csv",
   row.names = TRUE
 )
-

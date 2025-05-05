@@ -5,7 +5,8 @@
 # examines basic properties of the dataset, and exports the transformed
 # data for further analysis.
 #
-# Author: Bolívar Aponte Rolón
+# Author: Jaejin Lee
+# Modified by: Bolívar Aponte Rolón
 # Date: 2025-05-05
 #####################################################################
 

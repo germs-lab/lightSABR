@@ -5,7 +5,8 @@
 # analysis on the phyloseq object to visualize the microbial community
 # structure across different samples.
 #
-# Author: Bolívar Aponte Rolón
+# Author: Jaejin Lee
+# Modified by: Bolívar Aponte Rolón
 # Date: 2025-05-05
 #####################################################################
 
