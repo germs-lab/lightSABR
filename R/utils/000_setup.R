@@ -23,8 +23,8 @@ pacman::p_load(
 )
 
 ## List files and source each
-# list.files(here::here("R/functions"), pattern = "brc_", full.names = TRUE) %>%
-#   purrr::map(source)
+list.files(here::here("R/functions"), full.names = TRUE) %>%
+  purrr::map(source)
 
 # # Objects
 # list.files(

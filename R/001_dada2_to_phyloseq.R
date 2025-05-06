@@ -282,9 +282,9 @@ cat("Before removing chimeras:", sum(seqtab_filtered), "\n")
 cat("After removing chimeras:", sum(seqtab.nochim), "\n")
 
 # Save file
-saveRDS(seqtab.nochim, file.path(out_dir, "processed/asv_seqtab_nochim.rds"))
-write.csv(seqtab.nochim, file.path(out_dir, "processed/asv_seqtab_nochim.csv")) # Long file name but it indicates this file has gone through all the steps in the pipeline.
-seqtab.nochim <- readRDS(file.path(out_dir, "processed/asv_seqtab_nochim.rds"))
+saveRDS(seqtab.nochim, file.path(out_dir, "processed/asv_table.rds"))
+write.csv(seqtab.nochim, file.path(out_dir, "processed/asv_table.csv")) # Long file name but it indicates this file has gone through all the steps in the pipeline.
+seqtab.nochim <- readRDS(file.path(out_dir, "processed/asv_table.rds"))
 
 #--------------------------------------------------------
 # Step 11: Assign taxonomy using SILVA database
@@ -330,7 +330,8 @@ rownames(taxa) <- paste0("ASV_", 1:nrow(taxa))
 
 asv_fasta <- seqtab2fasta(seqtab.nochim)
 
-seqtab.nochim <- t(seqtab.nochim) #Transposing
+seqtab.nochim <- t(seqtab.nochim) # Retaining sequences and asigning shorthand ASV names
+
 row.names(seqtab.nochim) <- sub(">", "", asv_fasta$asv_headers)
 
 # Save FASTA file
@@ -346,69 +347,56 @@ asv <- otu_table(seqtab.nochim, taxa_are_rows = TRUE)
 tax <- tax_table(as.matrix(taxa))
 taxa_names(taxa)
 
-asv_tab_raw <- asv_tab_raw |>
-  as.matrix()
-ASV <- otu_table(asv_tab_raw, taxa_are_rows = TRUE)
-
-class(asv_tab_raw) #Should be matrix
-taxa_names(ASV) #Should be ASV_#
-
-#Taxonomixc table
-taxa <- taxa |>
-  column_to_rownames(var = "ASV_ID") |>
-  as.matrix()
-TAX <- tax_table(taxa) #726 ASVs (raw)
-
 # Create initial phyloseq object
-ps <- phyloseq(asv, tax)
-ps
+physeq <- phyloseq(asv, tax)
+physeq
 
 #--------------------------------------------------------
 # Step 13: Add sample metadata
 #--------------------------------------------------------
 
-# # Load metadata from CSV file
-# metadata <- read.csv(
-#   "/Users/jaejinlee/Files/Data/2023SABR_amplicon/SABR2023_metadata.csv",
-#   row.names = 1
-# )
-# head(metadata)
+# Load metadata from CSV file
+metadata <- readxl::read_xlsx(
+  "data/input/metadata_CABBI_SABR2023_DNA.xlsx"
+) |>
+  janitor::clean_names() %>%
+  mutate_at(
+    .vars = "id",
+    .funs = gsub,
+    pattern = "^(.*?)_R\\d+.*$",
+    replacement = "\\1"
+  ) %>%
+  distinct(., id, .keep_all = TRUE) %>%
+  column_to_rownames(., var = "id")
 
-# # Check for sample name consistency between phyloseq and metadata
-# head(sample_names(ps)) # Sample names in phyloseq object
-# head(rownames(metadata)) # Sample names in metadata
-# setdiff(sample_names(ps), rownames(metadata)) # In phyloseq but not in metadata
-# setdiff(rownames(metadata), sample_names(ps)) # In metadata but not in phyloseq
 
-# # Convert metadata to phyloseq sample_data format
-# sampledata <- sample_data(metadata)
-# sampledata
+# Check for sample name consistency between phyloseq and metadata
+head(sample_names(physeq))
+head(rownames(metadata))
+base::setdiff(sample_names(physeq), rownames(metadata)) # In phyloseq but not in metadata
+base::setdiff(rownames(metadata), sample_names(physeq)) # In metadata but not in phyloseq
 
-# # Add metadata to phyloseq object
-# ps <- merge_phyloseq(ps, sampledata)
-# ps
+# Convert metadata to phyloseq sample_data format
+sampledata <- sample_data(metadata)
+sampledata
 
-# # Verify phyloseq components
-# otu_table(ps) # ASV table
-# sample_data(ps) # Sample metadata
-# tax_table(ps) # Taxonomy table
+# Add metadata to phyloseq object
+physeq <- merge_phyloseq(physeq, sampledata)
+physeq
+
+# Verify phyloseq components
+otu_table(physeq) # ASV table
+sample_data(physeq) # Sample metadata
+tax_table(physeq) # Taxonomy table
 
 # #--------------------------------------------------------
 # # Step 14: Save results
 # #--------------------------------------------------------
 
 # # Save phyloseq object as RDS file
-# saveRDS(
-#   ps,
-#   file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/ps_object.rds"
-# )
-# # To load the phyloseq object in the future:
-# # ps <- readRDS(file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/ps_object.rds")
-
-# # Export ASV table as CSV for external analysis
-# asv_data <- as.data.frame(otu_table(ps))
-# write.csv(
-#   asv_data,
-#   file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/asv_table.csv",
-#   row.names = TRUE
-# )
+saveRDS(
+  physeq,
+  file = "data/output/processed/sabr_physeq_object.rds"
+)
+# To load the phyloseq object in the future:
+# physeq <- readRDS(file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/physeq_object.rds")
