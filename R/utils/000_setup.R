@@ -18,8 +18,8 @@ pacman::p_load(
   phyloseq,
   vegan,
   tidyverse,
-  janitor,
-  metagMisc
+  janitor
+  #  metagMisc
 )
 
 ## List files and source each

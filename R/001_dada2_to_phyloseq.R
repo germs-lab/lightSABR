@@ -33,7 +33,7 @@ library("Biostrings")
 
 # Set working directory for input files
 in_path <- "data/input/raw_sequences"
-out_path <- "data/output"
+out_dir <- "data/output"
 
 # List all fastq files
 all_files <- list.files(in_path, pattern = "\\.fastq\\.gz$", full.names = TRUE)
@@ -45,8 +45,8 @@ print(fnFs)
 print(fnRs)
 
 # Define output paths for filtered files
-filtFs <- file.path(out_path, "filtered", basename(fnFs))
-filtRs <- file.path(out_path, "filtered", basename(fnRs))
+filtFs <- file.path(out_dir, "filtered", basename(fnFs))
+filtRs <- file.path(out_dir, "filtered", basename(fnRs))
 
 #--------------------------------------------------------
 # Step 2: Quality assessment and filtering
@@ -116,7 +116,7 @@ derepFs <- derepFastq(filtFs, verbose = TRUE)
 derepRs <- derepFastq(filtRs, verbose = TRUE)
 
 # Extract sample names from filenames
-sample.names <- gsub("_R[12]\\.fastq\\.gz", "", basename(filtFs))
+sample.names <- gsub("^(.*?)_S\\d+.*$", "\\1", basename(filtFs))
 print(sample.names)
 
 # Assign sample names to dereplicated sequences
@@ -282,9 +282,9 @@ cat("Before removing chimeras:", sum(seqtab_filtered), "\n")
 cat("After removing chimeras:", sum(seqtab.nochim), "\n")
 
 # Save file
-saveRDS(seqtab.nochim, file.path(out_path, "processed/asv_seqtab_nochim.rds"))
-write.csv(seqtab.nochim, file.path(out_path, "processed/asv_seqtab_nochim.csv")) # Long file name but it indicates this file has gone through all the steps in the pipeline.
-# seqtab.nochim <- readRDS(file.path(out_dir, "processed/asv_seqtab_nochim.rds"))
+saveRDS(seqtab.nochim, file.path(out_dir, "processed/asv_seqtab_nochim.rds"))
+write.csv(seqtab.nochim, file.path(out_dir, "processed/asv_seqtab_nochim.csv")) # Long file name but it indicates this file has gone through all the steps in the pipeline.
+seqtab.nochim <- readRDS(file.path(out_dir, "processed/asv_seqtab_nochim.rds"))
 
 #--------------------------------------------------------
 # Step 11: Assign taxonomy using SILVA database
@@ -300,6 +300,8 @@ taxa <- assignTaxonomy(
 # Replace NA values with "Unclassified"
 taxa[is.na(taxa)] <- "Unclassified"
 
+taxa <- taxa %>%
+  rename()
 # Examine taxonomy assignments
 head(taxa)
 str(taxa)
@@ -307,24 +309,59 @@ dim(taxa)
 colnames(taxa)
 summary(taxa)
 
-
+# Save object
 write.csv(
   taxa,
-  file.path(out_path, "processed/sabr_2023_taxonomy.csv")
+  file.path(out_dir, "processed/sabr_2023_taxonomy.csv")
 )
+
+taxa <- read.csv(file.path(out_dir, "processed/sabr_2023_taxonomy.csv")) %>%
+  rename(., sequence = X) %>%
+  rename_with(str_to_lower, .cols = everything()) # Clean up needed after importing from .csv
+
+rownames(taxa) <- paste0("ASV_", 1:nrow(taxa))
+
 #--------------------------------------------------------
 # Step 12: Create phyloseq object
 #--------------------------------------------------------
 
-# # Create ASV table
-# asv <- otu_table(seqtab.nochim, taxa_are_rows = FALSE)
+# Create ASV table
+# Cleaning ASV names for FASTA file
 
-# # Create taxonomy table
-# tax <- tax_table(as.matrix(taxa))
+asv_fasta <- seqtab2fasta(seqtab.nochim)
 
-# # Create initial phyloseq object
-# ps <- phyloseq(asv, tax)
-# ps
+seqtab.nochim <- t(seqtab.nochim) #Transposing
+row.names(seqtab.nochim) <- sub(">", "", asv_fasta$asv_headers)
+
+# Save FASTA file
+write(
+  asv_fasta$asv_fasta,
+  file.path(out_dir, "processed/sabr_2023_asv.fa")
+)
+
+asv <- otu_table(seqtab.nochim, taxa_are_rows = TRUE)
+
+
+# Create taxonomy table
+tax <- tax_table(as.matrix(taxa))
+taxa_names(taxa)
+
+asv_tab_raw <- asv_tab_raw |>
+  as.matrix()
+ASV <- otu_table(asv_tab_raw, taxa_are_rows = TRUE)
+
+class(asv_tab_raw) #Should be matrix
+taxa_names(ASV) #Should be ASV_#
+
+#Taxonomixc table
+taxa <- taxa |>
+  column_to_rownames(var = "ASV_ID") |>
+  as.matrix()
+TAX <- tax_table(taxa) #726 ASVs (raw)
+
+# Create initial phyloseq object
+ps <- phyloseq(asv, tax)
+ps
 
 #--------------------------------------------------------
 # Step 13: Add sample metadata
