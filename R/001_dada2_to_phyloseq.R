@@ -32,10 +32,11 @@ library("Biostrings")
 #--------------------------------------------------------
 
 # Set working directory for input files
-path <- "data/input/raw_sequences"
+in_path <- "data/input/raw_sequences"
+out_path <- "data/output"
 
 # List all fastq files
-all_files <- list.files(path, pattern = "\\.fastq\\.gz$", full.names = TRUE)
+all_files <- list.files(in_path, pattern = "\\.fastq\\.gz$", full.names = TRUE)
 
 # Separate forward (R1) and reverse (R2) read files
 fnFs <- sort(grep("_R1", all_files, value = TRUE))
@@ -44,8 +45,8 @@ print(fnFs)
 print(fnRs)
 
 # Define output paths for filtered files
-filtFs <- file.path(path, "filtered", basename(fnFs))
-filtRs <- file.path(path, "filtered", basename(fnRs))
+filtFs <- file.path(out_path, "filtered", basename(fnFs))
+filtRs <- file.path(out_path, "filtered", basename(fnRs))
 
 #--------------------------------------------------------
 # Step 2: Quality assessment and filtering
@@ -57,10 +58,10 @@ plotQualityProfile(fnRs[1]) # Quality check for first R2 file
 
 # Filter and trim reads based on quality parameters
 filter_stats <- filterAndTrim(
-  fnFs, # Input forward reads
-  filtFs, # Output filtered forward reads
-  fnRs, # Input reverse reads
-  filtRs, # Output filtered reverse reads
+  fnFs,
+  filtFs,
+  fnRs,
+  filtRs,
   truncLen = c(140, 140), # Truncate reads at position 140
   maxN = 0, # Maximum number of N bases allowed
   maxEE = c(4, 4), # Maximum expected errors allowed
@@ -280,6 +281,11 @@ table(nchar(getSequences(seqtab.nochim)))
 cat("Before removing chimeras:", sum(seqtab_filtered), "\n")
 cat("After removing chimeras:", sum(seqtab.nochim), "\n")
 
+# Save file
+saveRDS(seqtab.nochim, file.path(out_path, "processed/asv_seqtab_nochim.rds"))
+write.csv(seqtab.nochim, file.path(out_path, "processed/asv_seqtab_nochim.csv")) # Long file name but it indicates this file has gone through all the steps in the pipeline.
+# seqtab.nochim <- readRDS(file.path(out_dir, "processed/asv_seqtab_nochim.rds"))
+
 #--------------------------------------------------------
 # Step 11: Assign taxonomy using SILVA database
 #--------------------------------------------------------
@@ -287,7 +293,7 @@ cat("After removing chimeras:", sum(seqtab.nochim), "\n")
 # Assign taxonomy using the SILVA reference database
 taxa <- assignTaxonomy(
   seqtab.nochim,
-  "/Users/jaejinlee/Files/Data/databases/silva_nr99_v138.2_toSpecies_trainset.fa.gz",
+  "data/input/SILVA/silva_nr99_v138.2_toSpecies_trainset.fa.gz",
   multithread = TRUE
 )
 
@@ -301,66 +307,71 @@ dim(taxa)
 colnames(taxa)
 summary(taxa)
 
+
+write.csv(
+  taxa,
+  file.path(out_path, "processed/sabr_2023_taxonomy.csv")
+)
 #--------------------------------------------------------
 # Step 12: Create phyloseq object
 #--------------------------------------------------------
 
-# Create ASV table
-asv <- otu_table(seqtab.nochim, taxa_are_rows = FALSE)
+# # Create ASV table
+# asv <- otu_table(seqtab.nochim, taxa_are_rows = FALSE)
 
-# Create taxonomy table
-tax <- tax_table(as.matrix(taxa))
+# # Create taxonomy table
+# tax <- tax_table(as.matrix(taxa))
 
-# Create initial phyloseq object
-ps <- phyloseq(asv, tax)
-ps
+# # Create initial phyloseq object
+# ps <- phyloseq(asv, tax)
+# ps
 
 #--------------------------------------------------------
 # Step 13: Add sample metadata
 #--------------------------------------------------------
 
-# Load metadata from CSV file
-metadata <- read.csv(
-  "/Users/jaejinlee/Files/Data/2023SABR_amplicon/SABR2023_metadata.csv",
-  row.names = 1
-)
-head(metadata)
+# # Load metadata from CSV file
+# metadata <- read.csv(
+#   "/Users/jaejinlee/Files/Data/2023SABR_amplicon/SABR2023_metadata.csv",
+#   row.names = 1
+# )
+# head(metadata)
 
-# Check for sample name consistency between phyloseq and metadata
-head(sample_names(ps)) # Sample names in phyloseq object
-head(rownames(metadata)) # Sample names in metadata
-setdiff(sample_names(ps), rownames(metadata)) # In phyloseq but not in metadata
-setdiff(rownames(metadata), sample_names(ps)) # In metadata but not in phyloseq
+# # Check for sample name consistency between phyloseq and metadata
+# head(sample_names(ps)) # Sample names in phyloseq object
+# head(rownames(metadata)) # Sample names in metadata
+# setdiff(sample_names(ps), rownames(metadata)) # In phyloseq but not in metadata
+# setdiff(rownames(metadata), sample_names(ps)) # In metadata but not in phyloseq
 
-# Convert metadata to phyloseq sample_data format
-sampledata <- sample_data(metadata)
-sampledata
+# # Convert metadata to phyloseq sample_data format
+# sampledata <- sample_data(metadata)
+# sampledata
 
-# Add metadata to phyloseq object
-ps <- merge_phyloseq(ps, sampledata)
-ps
+# # Add metadata to phyloseq object
+# ps <- merge_phyloseq(ps, sampledata)
+# ps
 
-# Verify phyloseq components
-otu_table(ps) # ASV table
-sample_data(ps) # Sample metadata
-tax_table(ps) # Taxonomy table
+# # Verify phyloseq components
+# otu_table(ps) # ASV table
+# sample_data(ps) # Sample metadata
+# tax_table(ps) # Taxonomy table
 
-#--------------------------------------------------------
-# Step 14: Save results
-#--------------------------------------------------------
+# #--------------------------------------------------------
+# # Step 14: Save results
+# #--------------------------------------------------------
 
-# Save phyloseq object as RDS file
-saveRDS(
-  ps,
-  file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/ps_object.rds"
-)
-# To load the phyloseq object in the future:
-# ps <- readRDS(file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/ps_object.rds")
+# # Save phyloseq object as RDS file
+# saveRDS(
+#   ps,
+#   file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/ps_object.rds"
+# )
+# # To load the phyloseq object in the future:
+# # ps <- readRDS(file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/ps_object.rds")
 
-# Export ASV table as CSV for external analysis
-asv_data <- as.data.frame(otu_table(ps))
-write.csv(
-  asv_data,
-  file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/asv_table.csv",
-  row.names = TRUE
-)
+# # Export ASV table as CSV for external analysis
+# asv_data <- as.data.frame(otu_table(ps))
+# write.csv(
+#   asv_data,
+#   file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/asv_table.csv",
+#   row.names = TRUE
+# )
