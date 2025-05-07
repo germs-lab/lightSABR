@@ -326,7 +326,7 @@ rownames(taxa) <- paste0("ASV_", 1:nrow(taxa))
 #--------------------------------------------------------
 
 # Create ASV table
-# Cleaning ASV names for FASTA file
+## Cleaning ASV names for FASTA file
 
 asv_fasta <- seqtab2fasta(seqtab.nochim)
 
@@ -334,7 +334,7 @@ seqtab.nochim <- t(seqtab.nochim) # Retaining sequences and asigning shorthand A
 
 row.names(seqtab.nochim) <- sub(">", "", asv_fasta$asv_headers)
 
-# Save FASTA file
+## Save FASTA file
 write(
   asv_fasta$asv_fasta,
   file.path(out_dir, "processed/sabr_2023_asv.fa")
@@ -342,10 +342,8 @@ write(
 
 asv <- otu_table(seqtab.nochim, taxa_are_rows = TRUE)
 
-
 # Create taxonomy table
 tax <- tax_table(as.matrix(taxa))
-taxa_names(taxa)
 
 # Create initial phyloseq object
 physeq <- phyloseq(asv, tax)
@@ -359,16 +357,17 @@ physeq
 metadata <- readxl::read_xlsx(
   "data/input/metadata_CABBI_SABR2023_DNA.xlsx"
 ) |>
-  janitor::clean_names() %>%
-  mutate_at(
-    .vars = "id",
-    .funs = gsub,
-    pattern = "^(.*?)_R\\d+.*$",
-    replacement = "\\1"
-  ) %>%
-  distinct(., id, .keep_all = TRUE) %>%
-  column_to_rownames(., var = "id")
-
+  janitor::clean_names() |>
+  mutate(
+    id = gsub(
+      pattern = "^(.*?)_R\\d+.*$",
+      replacement = "\\1",
+      x = id
+    ),
+    across(where(is.numeric), as.factor)
+  ) |>
+  distinct(id, .keep_all = TRUE) |>
+  column_to_rownames(var = "id")
 
 # Check for sample name consistency between phyloseq and metadata
 head(sample_names(physeq))
@@ -398,5 +397,3 @@ saveRDS(
   physeq,
   file = "data/output/processed/sabr_physeq_object.rds"
 )
-# To load the phyloseq object in the future:
-# physeq <- readRDS(file = "/Users/jaejinlee/Files/Data/2023SABR_amplicon/analysis/physeq_object.rds")
