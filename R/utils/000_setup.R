@@ -19,12 +19,14 @@ pacman::p_load(
   vegan,
   tidyverse,
   janitor,
+  mia,
+  microbiome,
   metagMisc
 )
 
 ## List files and source each
-# list.files(here::here("R/functions"), pattern = "brc_", full.names = TRUE) %>%
-#   purrr::map(source)
+list.files(here::here("R/functions/*.R"), full.names = TRUE) %>%
+  purrr::map(source)
 
 # # Objects
 # list.files(

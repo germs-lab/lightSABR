@@ -5,7 +5,8 @@
 # and locations, identifying ASVs that are consistently present across
 # different combinations of samples.
 #
-# Author: Bolívar Aponte Rolón
+# Author: Jaejin Lee
+# Modified by: Bolívar Aponte Rolón
 # Date: 2025-05-05
 #####################################################################
 
