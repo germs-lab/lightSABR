@@ -25,7 +25,7 @@ pacman::p_load(
 )
 
 ## List files and source each
-list.files(here::here("R/functions"), full.names = TRUE) %>%
+list.files(here::here("R/functions/*.R"), full.names = TRUE) %>%
   purrr::map(source)
 
 # # Objects
