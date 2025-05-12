@@ -12,7 +12,8 @@
 
 # Load required libraries
 source("R/utils/000_setup.R")
-physeq <- readRDS(file = "data/output/processed/sabr_physeq_object.rds")
+
+load(file = "data/output/processed/sabr_2023_physeq_object.rda")
 # Ensure the phyloseq object (physeq) is loaded before running this script
 
 #--------------------------------------------------------
@@ -52,3 +53,89 @@ write.csv(
 
 # Display dimensions of the OTU table
 dim(otu_table(physeq_rel))
+
+
+#--------------------------------------------------------
+# Rarefaction
+#--------------------------------------------------------
+
+physeq_rrfy <- multi_rarefy(
+  physeq,
+  depth_level = 5000,
+  num_iter = 50,
+  .summarize = FALSE
+)
+
+save(physeq_rrfy, file = "data/output/processed/sabr_2023_asv_table_rrafy.rda")
+
+#Let's make a rarefied data frame with it's corresponding metadata
+
+#--------------------------------------------------------
+# Master Data Frame
+# (ASVs and metadata, no taxonomical info)
+#--------------------------------------------------------
+
+taxa <- read.csv(file.path("data/output/processed/sabr_2023_taxonomy.csv")) %>%
+  rename(., sequence = X) %>%
+  rename_with(str_to_lower, .cols = everything()) # Clean up needed after importing from .csv
+
+rownames(taxa) <- paste0("ASV_", 1:nrow(taxa))
+
+load(file = "data/output/processed/sabr_2023_metadata_clean.rda")
+load(file = file = "data/output/processed/sabr_2023_asv_table_rrafy.rda")
+
+mtr_physeq <- physeq_rrfy %>%
+  mutate(row_id = paste0(SampleID, sep = "_", row_number())) %>%
+  relocate(., row_id, .before = SampleID) %>%
+  column_to_rownames(., var = "row_id") %>%
+  dplyr::left_join(
+    .,
+    metadata %>% rownames_to_column(., var = "SampleID"),
+    by = "SampleID"
+  ) %>%
+  relocate(., c(16881:16890), .after = "SampleID")
+
+#--------------------------------------------------------
+# Calculate Diversity indices
+#--------------------------------------------------------
+mtr_rfy_physeq <- mtr_physeq %>%
+  mutate(
+    observed = rowSums(select(., -c(1:11)) > 0),
+    shannon = vegan::diversity(select(., -c(1:11)), index = "shannon"),
+    simpson = vegan::diversity(select(., -c(1:11)), index = "simpson"),
+    invsimpson = vegan::diversity(select(., -c(1:11)), index = "invsimpson")
+  ) %>%
+  relocate(
+    any_of(c("observed", "shannon", "simpson", "invsimpson")),
+    .before = ASV_1
+  )
+
+save(mtr_rfy_physeq, file = "data/output/processed/sabr_2023_master_rfy_df.rda")
+load(file = "data/output/processed/sabr_2023_master_rfy_df.rda")
+#--------------------------------------------------------
+# SCRAPS for later
+#--------------------------------------------------------
+
+#dplyr::left_join(., metadata %>% rownames_to_column(., var = "SampleID"))
+
+# t() %>%
+#   as.data.frame() %>%
+#   janitor::row_to_names(row_number = 1) %>%
+#   mutate(across(where(is.character), as.numeric))
+
+# new_asv <- physeq_rrfy %>%
+#   mutate(row_id = paste0(SampleID, sep = "_", row_number())) %>%
+#   relocate(., row_id, .before = SampleID) %>%
+#   column_to_rownames(., var = "row_id") %>%
+#   select(!SampleID) %>%
+#   as.matrix() %>%
+#   t() %>%
+#   as.data.frame() %>%
+#   rownames_to_column(., var = "SampleID")
+
+# # Phyloseq object
+# physeq_rrfy_obj <- phyloseq(
+#   otu_table(t(new_asv), taxa_are_rows = TRUE),
+#   tax_table(as.matrix(taxa)),
+#   sample_data(metadata)
+# )

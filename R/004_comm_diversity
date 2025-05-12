@@ -1,0 +1,94 @@
+#####################################################################
+# Community Diversity Analyses
+#
+# This script explores general community diversity patterns in SABR data set.
+# We explore, richness, alpha and beta diversity using NMDS, PCoA, PERMANOVAS , etc.
+# Author: Jaejin Lee
+# Modified by: Bolívar Aponte Rolón
+# Date: 2025-05-05
+#####################################################################
+
+# Load required libraries
+source("R/utils/000_setup.R")
+
+#------------------------------------------------------
+# Community Diversity
+#--------------------------------------------------------
+
+#plot_bar(physeq, x = "samples", fill = "phylum")
+
+## Richness
+plot_richness(
+  physeq,
+  x = "plot",
+  measures = c("Observed", "Shannon", "Simpson"),
+  color = "plant",
+  shape = "sampling_location",
+  scales = "free"
+)
+
+# Reshape the data for ggplot (long format for diversity indices)
+mtr_physeq_long <- mtr_rfy_physeq %>%
+  tidyr::pivot_longer(
+    cols = c(observed, shannon, simpson, invsimpson),
+    names_to = "Diversity_Index",
+    values_to = "Value"
+  )
+
+ggplot(mtr_physeq_long, aes(x = sampling_location, y = Value)) +
+  geom_boxplot(alpha = 0, width = 0.6) +
+  geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.03) +
+  facet_wrap(~Diversity_Index, scales = "free_y") +
+  theme_minimal() +
+  labs(
+    title = "Diversity Indices Across Sampling Locations",
+    x = "Sampling Location",
+    y = "Diversity Index Value",
+    color = "Sampling Location"
+  )
+#--------------------------------------------------------
+# Calculate Bray-Curtis distance and perform NMDS analysis
+#--------------------------------------------------------
+
+# Calculate Bray-Curtis distance matrix
+bc_dist <- phyloseq::distance(physeq, method = "bray")
+
+# Perform NMDS analysis (k=2 reduces to 2 dimensions)
+# trymax=100 ensures convergence by trying up to 100 different random starts
+nmds <- ordinate(physeq, method = "NMDS", distance = "bray", trymax = 100)
+
+#--------------------------------------------------------
+# Generate and display NMDS plot
+#--------------------------------------------------------
+
+# Create NMDS plot with samples colored by Plant, shaped by Location, and faceted by Date
+nmds_plot <- plot_ordination(
+  physeq,
+  nmds,
+  color = "plant",
+  shape = "sampling_location"
+) +
+  geom_point(size = 3, alpha = 0.8) +
+  facet_wrap(~sampling_date, ncol = 2) + # Separate panels by Date
+  labs(
+    title = "NMDS of Microbial Communities by Date",
+    x = "NMDS1",
+    y = "NMDS2"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(hjust = 0.5, face = "bold")
+  )
+
+# Display the plot
+nmds_plot
+
+# Optionally, save the plot
+ggsave(
+  "data/output/plots/nmds_plot.png",
+  nmds_plot,
+  width = 10,
+  height = 8,
+  dpi = 300
+)

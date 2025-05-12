@@ -404,5 +404,5 @@ tax_table(physeq) # Taxonomy table
 # # Save phyloseq object as RDS file
 save(
   physeq,
-  file = "data/output/processed/sabr_physeq_object.rda"
+  file = "data/output/processed/sabr_2023_physeq_object.rda"
 )
