@@ -15,7 +15,7 @@
 # Setup
 source("R/utils/000_setup.R")
 
-physeq <- readRDS(file = "data/output/processed/sabr_physeq_object.rds")
+physeq <- load(file = "data/output/processed/sabr_physeq_object.rda")
 
 #--------------------------------------------------------
 # Exploration of data set
@@ -174,69 +174,4 @@ rare_tax <- rare_members(
   detection = 0.1,
   prevalence = 50 / 100,
   include.lowest = FALSE
-)
-
-#------------------------------------------------------
-# Community Diversity
-#--------------------------------------------------------
-
-#plot_bar(physeq, x = "samples", fill = "phylum")
-
-## Richness
-
-plot_richness(
-  physeq,
-  x = "plot",
-  measures = c("Observed", "Shannon", "Simpson"),
-  color = "plant",
-  shape = "sampling_location",
-  scales = "free"
-)
-
-#--------------------------------------------------------
-# Calculate Bray-Curtis distance and perform NMDS analysis
-#--------------------------------------------------------
-
-# Calculate Bray-Curtis distance matrix
-bc_dist <- phyloseq::distance(physeq, method = "bray")
-
-# Perform NMDS analysis (k=2 reduces to 2 dimensions)
-# trymax=100 ensures convergence by trying up to 100 different random starts
-nmds <- ordinate(physeq, method = "NMDS", distance = "bray", trymax = 100)
-
-
-#--------------------------------------------------------
-# Generate and display NMDS plot
-#--------------------------------------------------------
-
-# Create NMDS plot with samples colored by Plant, shaped by Location, and faceted by Date
-nmds_plot <- plot_ordination(
-  physeq,
-  nmds,
-  color = "plant",
-  shape = "sampling_location"
-) +
-  geom_point(size = 3, alpha = 0.8) +
-  facet_wrap(~sampling_date, ncol = 2) + # Separate panels by Date
-  labs(
-    title = "NMDS of Microbial Communities by Date",
-    x = "NMDS1",
-    y = "NMDS2"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5, face = "bold")
-  )
-
-# Display the plot
-nmds_plot
-
-# Optionally, save the plot
-ggsave(
-  "data/output/plots/nmds_plot.png",
-  nmds_plot,
-  width = 10,
-  height = 8,
-  dpi = 300
 )
