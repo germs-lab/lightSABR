@@ -11,8 +11,11 @@
 #####################################################################
 
 # Load required libraries
-library(phyloseq)
-library(ggplot2)
+source("R/utils/000_setup.R")
+
+load(file = "data/output/processed/sabr_2023_physeq_object.rda")
+load(file = "data/output/processed/sabr_2023_master_rfy_df.rda")
+
 
 # Ensure ps_rel (phyloseq object with relative abundances) is loaded
 
@@ -20,8 +23,9 @@ library(ggplot2)
 # Calculate ASV prevalence across samples
 #--------------------------------------------------------
 
+ps <- physeq_rel
 # Extract OTU table as data frame
-asv_table_data <- as.data.frame(otu_table(ps_rel))
+asv_table_data <- as.data.frame(t(otu_table(ps)))
 
 # Count how many samples contain each ASV (presence > 0)
 asv_sample_counts <- colSums(asv_table_data > 0)
@@ -40,7 +44,7 @@ asv_count_df <- data.frame(
 ggplot(asv_count_df, aes(x = reorder(OTU, -Sample_Counts), y = Sample_Counts)) +
   geom_bar(stat = "identity", fill = "steelblue") +
   labs(
-    title = "Number of Samples Each OTU is Found In",
+    title = "Number of ASVs per sample",
     x = "ASV",
     y = "Number of Samples"
   ) +
@@ -53,18 +57,35 @@ ggplot(asv_count_df, aes(x = reorder(OTU, -Sample_Counts), y = Sample_Counts)) +
 #--------------------------------------------------------
 # Identify high-prevalence ASVs (>90% samples)
 #--------------------------------------------------------
+# BAck to using the raw count objects
 
-# Get total number of samples
-total_samples <- nrow(otu_table_data)
-total_samples
+ps <- convertFromPhyloseq(physeq)
+mia::getPrevalence(ps, prevalence = 90 / 100)
+mia::getPrevalent(ps, prevalence = 90 / 100)
+ps <- mia::transformAssay(
+  physeq,
+  assay.type = "counts",
+  method = "relabundance"
+)
 
-# Define threshold for high prevalence (90% of samples)
-threshold <- total_samples * 0.9
-high_prevalence_asvs <- names(asv_sample_counts[asv_sample_counts >= threshold])
+mia::getRare(
+  ps,
+  rank = "phylum",
+  assay.type = "counts",
+  detection = 0 / 100,
+  prevalence = 90 / 100
+)
 
-# Display information about high-prevalence ASVs
-cat("ASVs found in >90% samples:", length(high_prevalence_asvs), "\n")
-cat("List of ASVs found in >90% samples:\n", high_prevalence_asvs, "\n")
+altExp(ps, "prevalent") <- subsetByPrevalent(
+  ps,
+  rank = "phylum",
+  assay.type = "counts",
+  detection = 0 / 100,
+  prevalence = 90 / 100
+)
+
+altExp(ps, "prevalent")
+
 
 #--------------------------------------------------------
 # Extract taxonomy for high-prevalence ASVs

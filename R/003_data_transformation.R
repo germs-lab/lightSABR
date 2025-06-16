@@ -47,7 +47,7 @@ asv_table_rel_df <- as.data.frame(otu_table(physeq_rel))
 # Update the file path to match your directory structure
 write.csv(
   asv_table_rel_df,
-  file = "analysis/asv_table_physeq_rel.csv",
+  file = "data/output/processed/sabr_2023_asv_table_rel_abun.csv",
   row.names = TRUE
 )
 
@@ -63,7 +63,8 @@ physeq_rrfy <- multi_rarefy(
   physeq,
   depth_level = 5000,
   num_iter = 50,
-  .summarize = FALSE
+  .summarize = FALSE,
+  set_seed = 345
 )
 
 save(physeq_rrfy, file = "data/output/processed/sabr_2023_asv_table_rrafy.rda")
@@ -78,27 +79,44 @@ save(physeq_rrfy, file = "data/output/processed/sabr_2023_asv_table_rrafy.rda")
 taxa <- read.csv(file.path("data/output/processed/sabr_2023_taxonomy.csv")) %>%
   rename(., sequence = X) %>%
   rename_with(str_to_lower, .cols = everything()) # Clean up needed after importing from .csv
-
 rownames(taxa) <- paste0("ASV_", 1:nrow(taxa))
 
-load(file = "data/output/processed/sabr_2023_metadata_clean.rda")
-load(file = file = "data/output/processed/sabr_2023_asv_table_rrafy.rda")
+# These should be loaded already by 000_setup.R
+# load(file = "data/output/processed/sabr_2023_metadata_clean.rda")
+# load(file = file = "data/output/processed/sabr_2023_asv_table_rrafy.rda")
 
-mtr_physeq <- physeq_rrfy %>%
-  mutate(row_id = paste0(SampleID, sep = "_", row_number())) %>%
-  relocate(., row_id, .before = SampleID) %>%
-  column_to_rownames(., var = "row_id") %>%
+# Master DF to match metadata to ASV iterations
+mtr_rrfy_df <- physeq_rrfy %>%
+  rownames_to_column(., var = "iter_id") %>%
   dplyr::left_join(
     .,
-    metadata %>% rownames_to_column(., var = "SampleID"),
-    by = "SampleID"
+    metadata %>% rownames_to_column(., var = "Sample_ID"),
+    by = "Sample_ID"
   ) %>%
-  relocate(., c(16881:16890), .after = "SampleID")
+  column_to_rownames(., var = "iter_id") %>%
+  relocate(., c(16881:16890), .after = "Sample_ID")
+
+## Master metadata
+mtr_metadata <- mtr_rrfy_df %>% # Metadata matched to all the samples in each iteration
+  rownames_to_column(., var = "iter_id") %>%
+  select(c(iter_id:nitrogen_conc)) %>%
+  column_to_rownames(., var = "iter_id")
+
+## Master ASV table, rarefied
+mtr_asv <- mtr_rrfy_df %>%
+  select(starts_with("ASV_"))
+
+# New, rarefied phyloseq object
+mtr_physeq <- phyloseq(
+  otu_table(as.matrix(t(mtr_asv)), taxa_are_rows = TRUE),
+  tax_table(as.matrix(taxa)),
+  sample_data(mtr_metadata)
+)
 
 #--------------------------------------------------------
 # Calculate Diversity indices
 #--------------------------------------------------------
-mtr_rfy_physeq <- mtr_physeq %>%
+mtr_rrfy_df <- mtr_rrfy_df %>%
   mutate(
     observed = rowSums(select(., -c(1:11)) > 0),
     shannon = vegan::diversity(select(., -c(1:11)), index = "shannon"),
@@ -110,32 +128,4 @@ mtr_rfy_physeq <- mtr_physeq %>%
     .before = ASV_1
   )
 
-save(mtr_rfy_physeq, file = "data/output/processed/sabr_2023_master_rfy_df.rda")
-load(file = "data/output/processed/sabr_2023_master_rfy_df.rda")
-#--------------------------------------------------------
-# SCRAPS for later
-#--------------------------------------------------------
-
-#dplyr::left_join(., metadata %>% rownames_to_column(., var = "SampleID"))
-
-# t() %>%
-#   as.data.frame() %>%
-#   janitor::row_to_names(row_number = 1) %>%
-#   mutate(across(where(is.character), as.numeric))
-
-# new_asv <- physeq_rrfy %>%
-#   mutate(row_id = paste0(SampleID, sep = "_", row_number())) %>%
-#   relocate(., row_id, .before = SampleID) %>%
-#   column_to_rownames(., var = "row_id") %>%
-#   select(!SampleID) %>%
-#   as.matrix() %>%
-#   t() %>%
-#   as.data.frame() %>%
-#   rownames_to_column(., var = "SampleID")
-
-# # Phyloseq object
-# physeq_rrfy_obj <- phyloseq(
-#   otu_table(t(new_asv), taxa_are_rows = TRUE),
-#   tax_table(as.matrix(taxa)),
-#   sample_data(metadata)
-# )
+save(mtr_rrfy_df, file = "data/output/processed/sabr_2023_master_rfy_df.rda")
