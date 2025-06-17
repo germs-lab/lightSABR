@@ -15,7 +15,7 @@
 # Setup
 source("R/utils/000_setup.R")
 
-physeq <- load(file = "data/output/processed/sabr_physeq_object.rda")
+load(file = "data/output/processed/sabr_2023_physeq_object.rda")
 
 #--------------------------------------------------------
 # Exploration of data set

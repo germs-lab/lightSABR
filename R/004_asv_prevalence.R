@@ -57,7 +57,7 @@ ggplot(asv_count_df, aes(x = reorder(OTU, -Sample_Counts), y = Sample_Counts)) +
 #--------------------------------------------------------
 # Identify high-prevalence ASVs (>90% samples)
 #--------------------------------------------------------
-# BAck to using the raw count objects
+# Back to using the raw count objects
 
 ps <- convertFromPhyloseq(physeq)
 mia::getPrevalence(ps, prevalence = 90 / 100)
