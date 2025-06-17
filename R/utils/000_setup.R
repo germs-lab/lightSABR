@@ -21,7 +21,8 @@ pacman::p_load(
   janitor,
   mia,
   microbiome,
-  metagMisc
+  metagMisc,
+  BRCore
 )
 
 # List files and source each

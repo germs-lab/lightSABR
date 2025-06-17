@@ -376,7 +376,12 @@ metadata <- readxl::read_xlsx(
   distinct(id, .keep_all = TRUE) |>
   column_to_rownames(var = "id")
 
-save(metadata, file = "data/output/processed/sabr_2023_metadata_clean.rda")
+
+sabr_2023_metadata_clean <- metadata # Name change for saving purposes
+save(
+  sabr_2023_metadata_clean,
+  file = "data/output/processed/sabr_2023_metadata_clean.rda"
+)
 
 # Check for sample name consistency between phyloseq and metadata
 head(sample_names(physeq))

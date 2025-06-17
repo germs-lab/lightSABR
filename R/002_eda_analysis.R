@@ -80,7 +80,7 @@ ggplot(
   reads |>
     arrange(n_seqs) |>
     filter(sample_id %in% names_list),
-  aes(x = 1:nrow(test), y = n_seqs)
+  aes(x = 1:nrow(reads), y = n_seqs)
 ) +
   geom_line() +
   coord_cartesian(ylim = c(0, 100000))
@@ -125,7 +125,7 @@ cover_goods |>
 #--------------------------------------------------------
 
 ## Prevalence visualization
-phyloseq_prevalence_plot(
+metagMisc::phyloseq_prevalence_plot(
   physeq,
   prev.trh = 0.5,
   taxcolor = "phylum",
@@ -135,7 +135,7 @@ phyloseq_prevalence_plot(
 )
 
 ## Host plant-specific averages
-ps_average <- phyloseq_average(
+ps_average <- metagMisc::phyloseq_average(
   physeq,
   avg_type = "arithmetic",
   acomp_zero_impute = NULL,
@@ -148,30 +148,30 @@ ps_average <- phyloseq_average(
 )
 
 ## Core microbiome analysis
-core_abundance(
+microbiome::core_abundance(
   physeq@otu_table,
-  detection = 0.1,
+  detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
 )
 
-rare_abundance(
+microbiome::rare_abundance(
   physeq@otu_table,
-  detection = 0.1,
+  detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
 )
 
-core_tax <- core_members(
+core_tax <- microbiome::core_members(
   physeq,
-  detection = 0.1,
-  prevalence = 50 / 100,
+  detection = 0,
+  prevalence = 90 / 100,
   include.lowest = FALSE
 )
 
-rare_tax <- rare_members(
+rare_tax <- microbiome::rare_members(
   physeq,
-  detection = 0.1,
+  detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
 )

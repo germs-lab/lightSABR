@@ -2,8 +2,8 @@
 # Data Transformation and Export
 #
 # This script transforms the raw count data to relative abundance,
-# examines basic properties of the dataset, and exports the transformed
-# data for further analysis.
+# performs rarefaction of sequences,examines basic properties of
+# the dataset, and exports the transformed data for further analysis.
 #
 # Author: Jaejin Lee
 # Modified by: Bolívar Aponte Rolón
@@ -18,6 +18,7 @@ load(file = "data/output/processed/sabr_2023_physeq_object.rda")
 
 #--------------------------------------------------------
 # Examine raw data properties
+# and Transform to Relative Abundance
 #--------------------------------------------------------
 
 # Display summary statistics of the raw count data
@@ -26,14 +27,10 @@ summary(as.vector(otu_table(physeq)))
 # Calculate and display the sum of counts for each sample
 sample_sums(physeq)
 
-#--------------------------------------------------------
-# Transform to relative abundance
-#--------------------------------------------------------
-
-# Convert counts to relative abundance (proportion of each sample)
+# Convert counts to relative abundance
 physeq_rel <- transform_sample_counts(physeq, function(x) x / sum(x))
 
-# Verify transformation by checking sample sums (should all be 1)
+# Verify (should all be 1)
 sample_sums(physeq_rel)
 
 #--------------------------------------------------------
@@ -59,7 +56,7 @@ dim(otu_table(physeq_rel))
 # Rarefaction
 #--------------------------------------------------------
 
-physeq_rrfy <- multi_rarefy(
+asv_table_rrfy <- multi_rarefy(
   physeq,
   depth_level = 5000,
   num_iter = 50,
@@ -67,12 +64,15 @@ physeq_rrfy <- multi_rarefy(
   set_seed = 345
 )
 
-save(physeq_rrfy, file = "data/output/processed/sabr_2023_asv_table_rrafy.rda")
+save(
+  asv_table_rrfy,
+  file = "data/output/processed/sabr_2023_asv_table_rrfy.rda"
+)
 
 #Let's make a rarefied data frame with it's corresponding metadata
 
 #--------------------------------------------------------
-# Master Data Frame
+# Rarefied Master Data Frame
 # (ASVs and metadata, no taxonomical info)
 #--------------------------------------------------------
 
@@ -86,15 +86,15 @@ rownames(taxa) <- paste0("ASV_", 1:nrow(taxa))
 # load(file = file = "data/output/processed/sabr_2023_asv_table_rrafy.rda")
 
 # Master DF to match metadata to ASV iterations
-mtr_rrfy_df <- physeq_rrfy %>%
+mtr_rrfy_df <- asv_table_rrfy %>%
   rownames_to_column(., var = "iter_id") %>%
   dplyr::left_join(
     .,
-    metadata %>% rownames_to_column(., var = "Sample_ID"),
-    by = "Sample_ID"
+    metadata %>% rownames_to_column(., var = "SampleID"),
+    by = "SampleID"
   ) %>%
   column_to_rownames(., var = "iter_id") %>%
-  relocate(., c(16881:16890), .after = "Sample_ID")
+  relocate(., c(16881:16890), .after = "SampleID")
 
 ## Master metadata
 mtr_metadata <- mtr_rrfy_df %>% # Metadata matched to all the samples in each iteration
@@ -113,6 +113,9 @@ mtr_physeq <- phyloseq(
   sample_data(mtr_metadata)
 )
 
+
+save(mtr_physeq, file = "data/output/processed/sabr_2023_mtr_physeq.rda")
+
 #--------------------------------------------------------
 # Calculate Diversity indices
 #--------------------------------------------------------
@@ -128,4 +131,4 @@ mtr_rrfy_df <- mtr_rrfy_df %>%
     .before = ASV_1
   )
 
-save(mtr_rrfy_df, file = "data/output/processed/sabr_2023_master_rfy_df.rda")
+save(mtr_rrfy_df, file = "data/output/processed/sabr_2023_master_rrfy_df.rda")
