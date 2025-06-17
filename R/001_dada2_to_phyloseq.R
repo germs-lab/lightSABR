@@ -282,9 +282,18 @@ cat("Before removing chimeras:", sum(seqtab_filtered), "\n")
 cat("After removing chimeras:", sum(seqtab.nochim), "\n")
 
 # Save file
-saveRDS(seqtab.nochim, file.path(out_dir, "processed/asv_table.rds"))
-write.csv(seqtab.nochim, file.path(out_dir, "processed/asv_table.csv")) # Long file name but it indicates this file has gone through all the steps in the pipeline.
-seqtab.nochim <- readRDS(file.path(out_dir, "processed/asv_table.rds"))
+save(
+  seqtab.nochim,
+  file = file.path(out_dir, "processed/sabr_2023_asv_table.rda")
+)
+write.csv(
+  seqtab.nochim,
+  file.path(out_dir, "processed/sabr_2023_asv_table.csv")
+) # Long file name but it indicates this file has gone through all the steps in the pipeline.
+
+load(
+  file.path(out_dir, "processed/sabr_2023_asv_table.rda")
+)
 
 #--------------------------------------------------------
 # Step 11: Assign taxonomy using SILVA database
@@ -300,8 +309,6 @@ taxa <- assignTaxonomy(
 # Replace NA values with "Unclassified"
 taxa[is.na(taxa)] <- "Unclassified"
 
-taxa <- taxa %>%
-  rename()
 # Examine taxonomy assignments
 head(taxa)
 str(taxa)
@@ -369,6 +376,13 @@ metadata <- readxl::read_xlsx(
   distinct(id, .keep_all = TRUE) |>
   column_to_rownames(var = "id")
 
+
+sabr_2023_metadata_clean <- metadata # Name change for saving purposes
+save(
+  sabr_2023_metadata_clean,
+  file = "data/output/processed/sabr_2023_metadata_clean.rda"
+)
+
 # Check for sample name consistency between phyloseq and metadata
 head(sample_names(physeq))
 head(rownames(metadata))
@@ -393,7 +407,7 @@ tax_table(physeq) # Taxonomy table
 # #--------------------------------------------------------
 
 # # Save phyloseq object as RDS file
-saveRDS(
+save(
   physeq,
-  file = "data/output/processed/sabr_physeq_object.rds"
+  file = "data/output/processed/sabr_2023_physeq_object.rda"
 )

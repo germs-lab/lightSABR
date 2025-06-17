@@ -15,7 +15,7 @@
 # Setup
 source("R/utils/000_setup.R")
 
-physeq <- readRDS(file = "data/output/processed/sabr_physeq_object.rds")
+load(file = "data/output/processed/sabr_2023_physeq_object.rda")
 
 #--------------------------------------------------------
 # Exploration of data set
@@ -80,7 +80,7 @@ ggplot(
   reads |>
     arrange(n_seqs) |>
     filter(sample_id %in% names_list),
-  aes(x = 1:nrow(test), y = n_seqs)
+  aes(x = 1:nrow(reads), y = n_seqs)
 ) +
   geom_line() +
   coord_cartesian(ylim = c(0, 100000))
@@ -125,7 +125,7 @@ cover_goods |>
 #--------------------------------------------------------
 
 ## Prevalence visualization
-phyloseq_prevalence_plot(
+metagMisc::phyloseq_prevalence_plot(
   physeq,
   prev.trh = 0.5,
   taxcolor = "phylum",
@@ -135,7 +135,7 @@ phyloseq_prevalence_plot(
 )
 
 ## Host plant-specific averages
-ps_average <- phyloseq_average(
+ps_average <- metagMisc::phyloseq_average(
   physeq,
   avg_type = "arithmetic",
   acomp_zero_impute = NULL,
@@ -148,95 +148,30 @@ ps_average <- phyloseq_average(
 )
 
 ## Core microbiome analysis
-core_abundance(
+microbiome::core_abundance(
   physeq@otu_table,
-  detection = 0.1,
+  detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
 )
 
-rare_abundance(
+microbiome::rare_abundance(
   physeq@otu_table,
-  detection = 0.1,
+  detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
 )
 
-core_tax <- core_members(
+core_tax <- microbiome::core_members(
   physeq,
-  detection = 0.1,
-  prevalence = 50 / 100,
+  detection = 0,
+  prevalence = 90 / 100,
   include.lowest = FALSE
 )
 
-rare_tax <- rare_members(
+rare_tax <- microbiome::rare_members(
   physeq,
-  detection = 0.1,
+  detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
-)
-
-#------------------------------------------------------
-# Community Diversity
-#--------------------------------------------------------
-
-#plot_bar(physeq, x = "samples", fill = "phylum")
-
-## Richness
-
-plot_richness(
-  physeq,
-  x = "plot",
-  measures = c("Observed", "Shannon", "Simpson"),
-  color = "plant",
-  shape = "sampling_location",
-  scales = "free"
-)
-
-#--------------------------------------------------------
-# Calculate Bray-Curtis distance and perform NMDS analysis
-#--------------------------------------------------------
-
-# Calculate Bray-Curtis distance matrix
-bc_dist <- phyloseq::distance(physeq, method = "bray")
-
-# Perform NMDS analysis (k=2 reduces to 2 dimensions)
-# trymax=100 ensures convergence by trying up to 100 different random starts
-nmds <- ordinate(physeq, method = "NMDS", distance = "bray", trymax = 100)
-
-
-#--------------------------------------------------------
-# Generate and display NMDS plot
-#--------------------------------------------------------
-
-# Create NMDS plot with samples colored by Plant, shaped by Location, and faceted by Date
-nmds_plot <- plot_ordination(
-  physeq,
-  nmds,
-  color = "plant",
-  shape = "sampling_location"
-) +
-  geom_point(size = 3, alpha = 0.8) +
-  facet_wrap(~sampling_date, ncol = 2) + # Separate panels by Date
-  labs(
-    title = "NMDS of Microbial Communities by Date",
-    x = "NMDS1",
-    y = "NMDS2"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5, face = "bold")
-  )
-
-# Display the plot
-nmds_plot
-
-# Optionally, save the plot
-ggsave(
-  "data/output/plots/nmds_plot.png",
-  nmds_plot,
-  width = 10,
-  height = 8,
-  dpi = 300
 )

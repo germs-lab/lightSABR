@@ -21,21 +21,23 @@ pacman::p_load(
   janitor,
   mia,
   microbiome,
-  metagMisc
+  metagMisc,
+  BRCore
 )
 
-## List files and source each
-list.files(here::here("R/functions/*.R"), full.names = TRUE) %>%
+# List files and source each
+list.files(here::here("R/functions"), pattern = "\\.R$", full.names = TRUE) %>%
   purrr::map(source)
 
-# # Objects
-# list.files(
-#   here::here("data/output"),
-#   full.names = TRUE,
-#   recursive = TRUE,
-#   pattern = "\\.rda$"
-# ) %>%
-#   purrr::walk(., load, envir = .GlobalEnv)
+# Objects
+list.files(
+  here::here("data/output/processed"),
+  full.names = TRUE,
+  recursive = TRUE,
+  pattern = "\\.rda$"
+) %>%
+  purrr::walk(~ load(.x, envir = .GlobalEnv))
+
 
 # Solve known conflicts
 conflict_prefer("select", "dplyr")
