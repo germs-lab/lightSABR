@@ -1,7 +1,7 @@
 #####################################################################
 # Exploratory Data Analysis of Microbial Communities
 #
-# This script performs basi exploratory data analysis for micrbiome data set.
+# This script performs basic exploratory data analysis for micrbiome data set.
 # Calculates summary statistic, read counts, Good's coverage, prevalence and core
 # taxa analysis (albeit brief) and  Non-Metric Multidimensional Scaling (NMDS)
 # analysis on the phyloseq object to visualize the microbial community
@@ -53,7 +53,7 @@ reads <- readcount(physeq) |>
   rownames_to_column(var = "sample_id") |>
   rename(n_seqs = "readcount(physeq)") |>
   dplyr::right_join(
-    rownames_to_column(metadata, var = "sample_id"),
+    rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
     by = "sample_id"
   ) |>
   filter(sample_id %in% names_list)
