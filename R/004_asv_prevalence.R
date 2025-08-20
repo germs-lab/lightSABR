@@ -117,7 +117,7 @@ head(rare)
 #--------------------------------------------------------
 
 # Get taxonomy table
-tax_table_data <- tax_table(physeq_rel)
+tax_table_data <- tax_table(sabr_2023_physeq_relab)
 
 # Extract taxonomy for high-prevalence ASVs
 high_prevalence_taxa <- tax_table_data[high_prevalence_asvs, ]
