@@ -12,52 +12,53 @@
 
 # Load required libraries
 source("R/utils/000_setup.R")
-
-load(file = "data/output/processed/sabr_2023_physeq_object.rda")
-# Ensure the phyloseq object (physeq) is loaded before running this script
+# Ensure the phyloseq object (sabr_2023_physeq) is loaded before running this script
 
 #--------------------------------------------------------
-# Examine raw data properties
-# and Transform to Relative Abundance
+# Examine raw data properties and Normalize
 #--------------------------------------------------------
+
+#------------------------------
+#  Relative Abundance
+#------------------------------
 
 # Display summary statistics of the raw count data
-summary(as.vector(otu_table(physeq)))
+summary(as.vector(otu_table(sabr_2023_physeq)))
 
 # Calculate and display the sum of counts for each sample
-sample_sums(physeq)
+sample_sums(sabr_2023_physeq)
 
 # Convert counts to relative abundance
-physeq_rel <- transform_sample_counts(physeq, function(x) x / sum(x))
+sabr_2023_physeq_relab <- transform_sample_counts(
+  sabr_2023_physeq,
+  function(x) x / sum(x)
+)
+dim(otu_table(sabr_2023_physeq_relab))
 
 # Verify (should all be 1)
-sample_sums(physeq_rel)
+sample_sums(sabr_2023_physeq_relab)
 
-#--------------------------------------------------------
-# Extract and export relative abundance data
-#--------------------------------------------------------
-
-# Convert OTU table to a data frame
-asv_table_rel_df <- as.data.frame(otu_table(physeq_rel))
+asv_table_relab_df <- as.data.frame(otu_table(sabr_2023_physeq_relab))
 
 # Save the relative abundance table as a CSV file
-# Update the file path to match your directory structure
 write.csv(
   asv_table_rel_df,
-  file = "data/output/processed/sabr_2023_asv_table_rel_abun.csv",
+  file = "data/output/processed/sabr_2023_asv_table_relab.csv",
   row.names = TRUE
 )
 
-# Display dimensions of the OTU table
-dim(otu_table(physeq_rel))
-
-
-#--------------------------------------------------------
+save(
+  sabr_2023_physeq_relab,
+  file = "data/output/processed/sabr_2023_physeq_relab.rda"
+)
+#------------------------------
 # Rarefaction
-#--------------------------------------------------------
+#------------------------------
+
+# Rarefaction depth is informed by 002_eda_analyses.R, see `reads_sum`
 
 asv_table_rrfy <- multi_rarefy(
-  physeq,
+  sabr_2023_physeq,
   depth_level = 5000,
   num_iter = 50,
   .summarize = FALSE,
@@ -69,7 +70,7 @@ save(
   file = "data/output/processed/sabr_2023_asv_table_rrfy.rda"
 )
 
-#Let's make a rarefied data frame with it's corresponding metadata
+# Let's make a rarefied data frame with it's corresponding metadata
 
 #--------------------------------------------------------
 # Rarefied Master Data Frame
@@ -83,14 +84,14 @@ rownames(taxa) <- paste0("ASV_", 1:nrow(taxa))
 
 # These should be loaded already by 000_setup.R
 # load(file = "data/output/processed/sabr_2023_metadata_clean.rda")
-# load(file = file = "data/output/processed/sabr_2023_asv_table_rrafy.rda")
+# load(file = file = "data/output/processed/sabr_2023_asv_table_rrfy.rda")
 
 # Master DF to match metadata to ASV iterations
 mtr_rrfy_df <- asv_table_rrfy %>%
   rownames_to_column(., var = "iter_id") %>%
   dplyr::left_join(
     .,
-    metadata %>% rownames_to_column(., var = "SampleID"),
+    sabr_2023_metadata_clean %>% rownames_to_column(., var = "SampleID"),
     by = "SampleID"
   ) %>%
   column_to_rownames(., var = "iter_id") %>%
@@ -104,11 +105,12 @@ mtr_metadata <- mtr_rrfy_df %>% # Metadata matched to all the samples in each it
 
 ## Master ASV table, rarefied
 mtr_asv <- mtr_rrfy_df %>%
-  select(starts_with("ASV_"))
+  select(starts_with("ASV_")) %>%
+  t()
 
 # New, rarefied phyloseq object
 mtr_physeq <- phyloseq(
-  otu_table(as.matrix(t(mtr_asv)), taxa_are_rows = TRUE),
+  otu_table(as.matrix(mtr_asv), taxa_are_rows = TRUE),
   tax_table(as.matrix(taxa)),
   sample_data(mtr_metadata)
 )

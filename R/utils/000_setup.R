@@ -9,20 +9,23 @@
 #####################################################################
 
 # Package and Environment setup
-if (!require("pacman")) {
-  install.packages("pacman")
-}
 
-pacman::p_load(
-  conflicted,
-  phyloseq,
-  vegan,
-  tidyverse,
-  janitor,
-  mia,
-  microbiome,
-  metagMisc,
-  BRCore
+invisible(
+  lapply(
+    c(
+      "conflicted",
+      "phyloseq",
+      "vegan",
+      "tidyverse",
+      "janitor",
+      "mia",
+      "microbiome",
+      "metagMisc",
+      "BRCore"
+    ),
+    library,
+    character.only = TRUE
+  )
 )
 
 # List files and source each
@@ -46,3 +49,4 @@ conflict_prefer("rename", "dplyr")
 conflict_prefer("mutate", "dplyr")
 conflict_prefer("intersect", "base")
 conflict_prefer("survival", "cluster")
+conflict_prefer("setdiff", "Biostrings")

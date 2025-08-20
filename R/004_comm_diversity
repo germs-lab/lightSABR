@@ -19,7 +19,7 @@ source("R/utils/000_setup.R")
 
 ## Richness
 plot_richness(
-  physeq,
+  mtr_physeq,
   x = "plot",
   measures = c("Observed", "Shannon", "Simpson"),
   color = "plant",
@@ -28,14 +28,14 @@ plot_richness(
 )
 
 # Reshape the data for ggplot (long format for diversity indices)
-mtr_physeq_long <- mtr_rfy_physeq %>%
+mtr_rrfy_df_long <- mtr_rrfy_df %>%
   tidyr::pivot_longer(
     cols = c(observed, shannon, simpson, invsimpson),
     names_to = "Diversity_Index",
     values_to = "Value"
   )
 
-ggplot(mtr_physeq_long, aes(x = sampling_location, y = Value)) +
+ggplot(mtr_rrfy_df_long, aes(x = sampling_location, y = Value)) +
   geom_boxplot(alpha = 0, width = 0.6) +
   geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.03) +
   facet_wrap(~Diversity_Index, scales = "free_y") +
@@ -51,11 +51,11 @@ ggplot(mtr_physeq_long, aes(x = sampling_location, y = Value)) +
 #--------------------------------------------------------
 
 # Calculate Bray-Curtis distance matrix
-bc_dist <- phyloseq::distance(physeq, method = "bray")
+bc_dist <- phyloseq::distance(mtr_physeq, method = "bray")
 
 # Perform NMDS analysis (k=2 reduces to 2 dimensions)
 # trymax=100 ensures convergence by trying up to 100 different random starts
-nmds <- ordinate(physeq, method = "NMDS", distance = "bray", trymax = 100)
+nmds <- ordinate(mtr_physeq, method = "NMDS", distance = "bray", trymax = 100)
 
 #--------------------------------------------------------
 # Generate and display NMDS plot

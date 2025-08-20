@@ -1,7 +1,7 @@
 #####################################################################
 # Exploratory Data Analysis of Microbial Communities
 #
-# This script performs basi exploratory data analysis for micrbiome data set.
+# This script performs basic exploratory data analysis for microbiome data set.
 # Calculates summary statistic, read counts, Good's coverage, prevalence and core
 # taxa analysis (albeit brief) and  Non-Metric Multidimensional Scaling (NMDS)
 # analysis on the phyloseq object to visualize the microbial community
@@ -15,25 +15,23 @@
 # Setup
 source("R/utils/000_setup.R")
 
-load(file = "data/output/processed/sabr_2023_physeq_object.rda")
-
 #--------------------------------------------------------
 # Exploration of data set
 #--------------------------------------------------------
 ## Basic metadata exploration
-colnames(tax_table(physeq))
-colnames(sample_data(physeq))
+colnames(tax_table(sabr_2023_physeq))
+colnames(sample_data(sabr_2023_physeq))
 
 #--------------------------------------------------------
 # Summaries and Read Counts
 #--------------------------------------------------------
-metagMisc::phyloseq_summary(physeq, more_stats = F, long = F)
-microbiome::summarize_phyloseq(physeq)
+metagMisc::phyloseq_summary(sabr_2023_physeq, more_stats = F, long = F)
+microbiome::summarize_phyloseq(sabr_2023_physeq)
 # All samples have at least 5000 reads
 
 # Taxonomic distribution
 percent_phyla_clean <- phyloseq_ntaxa_by_tax(
-  physeq,
+  sabr_2023_physeq,
   TaxRank = "phylum",
   relative = F,
   add_meta_data = F
@@ -46,14 +44,14 @@ percent_phyla_clean <- phyloseq_ntaxa_by_tax(
 #--------------------------------------------------------
 # Read Count Analysis
 #--------------------------------------------------------
-names_list <- colnames(physeq@otu_table)
+names_list <- colnames(sabr_2023_physeq@otu_table)
 
-reads <- readcount(physeq) |>
+reads <- readcount(sabr_2023_physeq) |>
   as.data.frame() |>
   rownames_to_column(var = "sample_id") |>
-  rename(n_seqs = "readcount(physeq)") |>
+  rename(n_seqs = "readcount(sabr_2023_physeq)") |>
   dplyr::right_join(
-    rownames_to_column(metadata, var = "sample_id"),
+    rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
     by = "sample_id"
   ) |>
   filter(sample_id %in% names_list)
@@ -93,9 +91,13 @@ reads |>
 # Good's Coverage Analysis
 #--------------------------------------------------------
 ## Coverage estimates
-cover_chao <- phyloseq_coverage(physeq, correct_singletons = T, add_attr = T)
+cover_chao <- phyloseq_coverage(
+  sabr_2023_physeq,
+  correct_singletons = T,
+  add_attr = T
+)
 
-ps_melt <- physeq |>
+ps_melt <- sabr_2023_physeq |>
   psmelt() |>
   janitor::clean_names() |>
   rename(sample_id = sample, asv = otu) |>
@@ -126,7 +128,7 @@ cover_goods |>
 
 ## Prevalence visualization
 metagMisc::phyloseq_prevalence_plot(
-  physeq,
+  sabr_2023_physeq,
   prev.trh = 0.5,
   taxcolor = "phylum",
   facet = TRUE,
@@ -136,7 +138,7 @@ metagMisc::phyloseq_prevalence_plot(
 
 ## Host plant-specific averages
 ps_average <- metagMisc::phyloseq_average(
-  physeq,
+  sabr_2023_physeq,
   avg_type = "arithmetic",
   acomp_zero_impute = NULL,
   aldex_samples = 213,
@@ -149,29 +151,35 @@ ps_average <- metagMisc::phyloseq_average(
 
 ## Core microbiome analysis
 microbiome::core_abundance(
-  physeq@otu_table,
+  #The core taxa are defined as those that exceed the given population prevalence threshold at the given detection level.
+  sabr_2023_physeq@otu_table,
   detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
 )
 
 microbiome::rare_abundance(
-  physeq@otu_table,
+  #The rarity function provides the abundance of the least abundant taxa within each sample, regardless of the population prevalence.
+  sabr_2023_physeq@otu_table,
   detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
 )
 
 core_tax <- microbiome::core_members(
-  physeq,
+  sabr_2023_physeq,
   detection = 0,
   prevalence = 90 / 100,
   include.lowest = FALSE
 )
 
+core_tax
+
 rare_tax <- microbiome::rare_members(
-  physeq,
+  sabr_2023_physeq,
   detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
 )
+
+rare_tax

@@ -13,11 +13,7 @@
 # Load required libraries
 source("R/utils/000_setup.R")
 
-load(file = "data/output/processed/sabr_2023_physeq_object.rda")
-load(file = "data/output/processed/sabr_2023_master_rfy_df.rda")
-
-
-# Ensure ps_rel (phyloseq object with relative abundances) is loaded
+# Ensure physeq_rel (phyloseq object with relative abundances) is loaded
 
 #--------------------------------------------------------
 # Calculate ASV prevalence across samples
@@ -59,23 +55,30 @@ ggplot(asv_count_df, aes(x = reorder(OTU, -Sample_Counts), y = Sample_Counts)) +
 #--------------------------------------------------------
 # Back to using the raw count objects
 
-ps <- convertFromPhyloseq(physeq)
-mia::getPrevalence(ps, prevalence = 90 / 100)
-mia::getPrevalent(ps, prevalence = 90 / 100)
+ps <- convertFromPhyloseq(sabr_2023_physeq)
+
+prevalence_freq <- mia::getPrevalence(ps, prevalence = 90 / 100, sort = TRUE)
+prevalence_count <- prevalence_freq * ncol(ps)
+
+
+# Counts
+prevalent <- mia::getPrevalent(
+  ps,
+  rank = "phylum",
+  detection = 0 / 100,
+  prevalence = 90 / 100
+)
+head(prevalent)
+
+# # Add relative aundance data
 ps <- mia::transformAssay(
-  physeq,
+  sabr_2023_physeq,
   assay.type = "counts",
   method = "relabundance"
 )
 
-mia::getRare(
-  ps,
-  rank = "phylum",
-  assay.type = "counts",
-  detection = 0 / 100,
-  prevalence = 90 / 100
-)
 
+# Gets a subset of object that includes prevalent taxa
 altExp(ps, "prevalent") <- subsetByPrevalent(
   ps,
   rank = "phylum",
@@ -86,13 +89,35 @@ altExp(ps, "prevalent") <- subsetByPrevalent(
 
 altExp(ps, "prevalent")
 
+# getRare returns the inverse
+rare <- mia::getRare(
+  ps,
+  rank = "phylum",
+  assay.type = "counts",
+  detection = 0 / 100,
+  prevalence = 90 / 100
+)
+head(rare)
+#-------------------------------------
+# microbiome::rare_members(
+#   # Provides rare taxa ASV
+#   sabr_2023_physeq,
+#   detection = 0,
+#   prevalence = 90 / 100,
+#   include.lowest = FALSE
+# )
+#------------------------------------------
+
+# TODO
+# Reimplement threshold cut off and analysis with mia::getPrevalence()
+# and associated functions. See documentation
 
 #--------------------------------------------------------
 # Extract taxonomy for high-prevalence ASVs
 #--------------------------------------------------------
 
 # Get taxonomy table
-tax_table_data <- tax_table(ps_rel)
+tax_table_data <- tax_table(sabr_2023_physeq_relab)
 
 # Extract taxonomy for high-prevalence ASVs
 high_prevalence_taxa <- tax_table_data[high_prevalence_asvs, ]
