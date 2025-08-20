@@ -1,5 +1,5 @@
 #####################################################################
-# ASV Prevalence Analysis
+# Dataset description: ASV Prevalence Analysis
 #
 # This script analyzes the prevalence of ASVs across samples,
 # identifying and examining high-prevalence ASVs that are present
@@ -13,13 +13,16 @@
 # Load required libraries
 source("R/utils/000_setup.R")
 
-# Ensure physeq_rel (phyloseq object with relative abundances) is loaded
+# Ensure sabr_2023_physeq_relab (phyloseq object with relative abundances) is loaded
 
+#---------------------------------------------------------------------------------
+# `phyloseq` PACKAGE WORKFLOW
+#---------------------------------------------------------------------------------
 #--------------------------------------------------------
 # Calculate ASV prevalence across samples
 #--------------------------------------------------------
 
-ps <- physeq_rel
+ps <- sabr_2023_physeq_relab
 # Extract OTU table as data frame
 asv_table_data <- as.data.frame(t(otu_table(ps)))
 
@@ -50,54 +53,88 @@ ggplot(asv_count_df, aes(x = reorder(OTU, -Sample_Counts), y = Sample_Counts)) +
     plot.title = element_text(hjust = 0.5, face = "bold")
   )
 
+#---------------------------------------------------------------------------------
+# `mia` PACKAGE WORKFLOW
+#---------------------------------------------------------------------------------
+# Here we are using the `mia` package which uses a TreeSummarizedExperiment S4 object
+
 #--------------------------------------------------------
 # Identify high-prevalence ASVs (>90% samples)
 #--------------------------------------------------------
 # Back to using the raw count objects
 
-ps <- convertFromPhyloseq(sabr_2023_physeq)
+ps_tse <- convertFromPhyloseq(sabr_2023_physeq)
 
-prevalence_freq <- mia::getPrevalence(ps, prevalence = 90 / 100, sort = TRUE)
-prevalence_count <- prevalence_freq * ncol(ps)
+prevalence_freq <- mia::getPrevalence(
+  ps_tse,
+  prevalence = 90 / 100,
+  sort = TRUE
+)
+prevalence_count <- prevalence_freq * ncol(ps_tse)
 
 
 # Counts
 prevalent <- mia::getPrevalent(
-  ps,
+  ps_tse,
   rank = "phylum",
   detection = 0 / 100,
   prevalence = 90 / 100
 )
 head(prevalent)
 
+
 # # Add relative aundance data
-ps <- mia::transformAssay(
-  sabr_2023_physeq,
+# mia::transformAssay() expects a TreeSummarizedExperiment or similar,
+# not a phyloseq object.
+
+ps_tse <- mia::transformAssay(
+  ps_tse,
   assay.type = "counts",
   method = "relabundance"
 )
 
+#------------------------
+# Rarefaction via `mia`
+#------------------------
 
+ps_tse_rrfy <- rarefyAssay(
+  ps_tse,
+  sample = 5000,
+  name = "rarefied",
+  replace = TRUE,
+  seed = 1938
+)
+ps_tse_rrfy
+
+
+#-------------------------------------------------------------------------------------------
+# Once we have done this and created a "relabundance" assay, `ps` object contains
+# "counts" assay which is equivalent to `sabr_2023_physeq` with raw counts and
+# "relabundance" is equivalent to `sabr_2023_physeq_relab`phyloseq objects.
+# This might be a little redundant but the TreeSummarizedExperiment object and framework that
+# the `mia` package provides has many built in functions and methods that I would otherwise
+# build custom functions for.
+#--------------------------------------------------------------------------------------------
 # Gets a subset of object that includes prevalent taxa
-altExp(ps, "prevalent") <- subsetByPrevalent(
-  ps,
+altExp(ps_tse, "prevalent90") <- mia::subsetByPrevalent(
+  ps_tse,
   rank = "phylum",
   assay.type = "counts",
-  detection = 0 / 100,
+  detection = 1 / 100,
   prevalence = 90 / 100
 )
 
-altExp(ps, "prevalent")
+altExp(ps_tse, "prevalent90")
 
-# getRare returns the inverse
-rare <- mia::getRare(
-  ps,
+# getRare/subsetByRare returns the inverse
+altExp(ps_tse, "rare") <- mia::subsetByRare(
+  ps_tse,
   rank = "phylum",
   assay.type = "counts",
-  detection = 0 / 100,
+  detection = 1 / 100,
   prevalence = 90 / 100
 )
-head(rare)
+altExp(ps_tse, "rare")
 #-------------------------------------
 # microbiome::rare_members(
 #   # Provides rare taxa ASV
@@ -112,17 +149,47 @@ head(rare)
 # Reimplement threshold cut off and analysis with mia::getPrevalence()
 # and associated functions. See documentation
 
-#--------------------------------------------------------
-# Extract taxonomy for high-prevalence ASVs
-#--------------------------------------------------------
+#----------------------------------------------------------------------
+# Extract taxonomy for prevalent and rare ASVs at different thresholds
+# and ranks
+#----------------------------------------------------------------------
 
-# Get taxonomy table
-tax_table_data <- tax_table(sabr_2023_physeq_relab)
+# Phylum and species
 
-# Extract taxonomy for high-prevalence ASVs
-high_prevalence_taxa <- tax_table_data[high_prevalence_asvs, ]
-print(high_prevalence_taxa)
+ranks <- c("phylum", "species")
+for (rnk in ranks) {
+  ps_tse <- add_prevalent_rare_altExps(
+    ps_tse,
+    thresholds = c(90, 80, 70, 60),
+    rank = rnk,
+    rank_name = rnk,
+    detection = 1 / 100,
+    assay.type = "counts"
+  )
+}
 
+for (rnk in ranks) {
+  ps_tse_rrfy <- add_prevalent_rare_altExps(
+    ps_tse_rrfy,
+    thresholds = c(90, 80, 70, 60),
+    rank = rnk,
+    rank_name = rnk,
+    detection = 1 / 100,
+    assay.type = "counts"
+  )
+}
+
+
+ps_mae <- MultiAssayExperiment::MultiAssayExperiment(
+  c("original_TSE" = ps_tse, "rarefied_TSE" = ps_tse_rrfy)
+)
+ps_mae
+
+save(ps_mae, file = "data/output/processed/sabr_2023_ps_mae.rda")
+
+# Much like phyloseq::transform_sample_counts()
+tse <- transformAssay(ps_tse, method = "relabundance")
+phy2 <- convertToPhyloseq(tse, assay.type = "relabundance")
 #--------------------------------------------------------
 # Create a phyloseq object with only high-prevalence ASVs
 #--------------------------------------------------------
