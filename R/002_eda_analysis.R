@@ -1,7 +1,7 @@
 #####################################################################
 # Exploratory Data Analysis of Microbial Communities
 #
-# This script performs basic exploratory data analysis for micrbiome data set.
+# This script performs basic exploratory data analysis for microbiome data set.
 # Calculates summary statistic, read counts, Good's coverage, prevalence and core
 # taxa analysis (albeit brief) and  Non-Metric Multidimensional Scaling (NMDS)
 # analysis on the phyloseq object to visualize the microbial community
