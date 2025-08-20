@@ -29,21 +29,28 @@ summary(as.vector(otu_table(sabr_2023_physeq)))
 sample_sums(sabr_2023_physeq)
 
 # Convert counts to relative abundance
-physeq_rel <- transform_sample_counts(sabr_2023_physeq, function(x) x / sum(x))
-dim(otu_table(physeq_rel))
+sabr_2023_physeq_relab <- transform_sample_counts(
+  sabr_2023_physeq,
+  function(x) x / sum(x)
+)
+dim(otu_table(sabr_2023_physeq_relab))
 
 # Verify (should all be 1)
-sample_sums(physeq_rel)
+sample_sums(sabr_2023_physeq_relab)
 
-asv_table_rel_df <- as.data.frame(otu_table(physeq_rel))
+asv_table_relab_df <- as.data.frame(otu_table(sabr_2023_physeq_relab))
 
 # Save the relative abundance table as a CSV file
 write.csv(
   asv_table_rel_df,
-  file = "data/output/processed/sabr_2023_asv_table_rel_abun.csv",
+  file = "data/output/processed/sabr_2023_asv_table_relab.csv",
   row.names = TRUE
 )
 
+save(
+  sabr_2023_physeq_relab,
+  file = "data/output/processed/sabr_2023_physeq_relab.rda"
+)
 #------------------------------
 # Rarefaction
 #------------------------------

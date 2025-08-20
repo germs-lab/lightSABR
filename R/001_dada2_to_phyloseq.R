@@ -408,9 +408,9 @@ tax_table(physeq) # Taxonomy table
 
 # # Save phyloseq object as RDS file
 # Name change
-sabr_2023_physeq <- physeq
+sabr_2023_physeq <- physeq # Name change for saving purposes
 remove(physeq)
 save(
   sabr_2023_physeq,
-  file = "data/output/processed/sabr_2023_physeq_object.rda"
+  file = "data/output/processed/sabr_2023_physeq.rda"
 )
