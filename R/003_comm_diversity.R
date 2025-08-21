@@ -3,19 +3,22 @@
 #
 # This script explores general community diversity patterns in SABR data set.
 # We explore, richness, alpha and beta diversity using NMDS, PCoA, PERMANOVAS , etc.
-# Author: Jaejin Lee
-# Modified by: Bolívar Aponte Rolón
-# Date: 2025-05-05
+#
+# We briefly explore coomunity diversity with the phyloseq object but move on with
+# the TreeSummarized Experiment object
+
+# Author: Jaejin Lee & Bolívar Aponte Rolón
+# Last modified: 2025-08-21
 #####################################################################
 
 # Load required libraries
 source("R/utils/000_setup.R")
 
 #------------------------------------------------------
-# Community Diversity
+# PHYLOSEQ: Community Diversity
 #--------------------------------------------------------
 
-#plot_bar(physeq, x = "samples", fill = "phylum")
+plot_bar(physeq, x = "samples", fill = "phylum")
 
 ## Richness
 plot_richness(
@@ -39,7 +42,7 @@ ggplot(mtr_rrfy_df_long, aes(x = sampling_location, y = Value)) +
   geom_boxplot(alpha = 0, width = 0.6) +
   geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.03) +
   facet_wrap(~Diversity_Index, scales = "free_y") +
-  theme_minimal() +
+  #theme_minimal() +
   labs(
     title = "Diversity Indices Across Sampling Locations",
     x = "Sampling Location",
@@ -93,10 +96,35 @@ ggsave(
   dpi = 300
 )
 
+#--------------------------------------------------------
+# mia
+#--------------------------------------------------------
+ps_mae@ExperimentList$original_TSE <- addDissimilarity(
+  ps_mae@ExperimentList$original_TSE,
+  method = "bray",
+  assay.type = "relabundance"
+)
 
-# Much like phyloseq::transform_sample_counts()
-tse <- transformAssay(ps_tse, method = "relabundance")
-phy2 <- convertToPhyloseq(tse, assay.type = "relabundance")
+# ps_mae@ExperimentList$rarefied_TSE <- addDissimilarity(
+#   ps_mae@ExperimentList$rarefied_TSE,
+#   method = "bray",
+#   assay.type = "relabundance"
+# )
+
+metadata(ps_mae@ExperimentList$original_TSE)[["bray"]][1:6, 1:6]
+ps_tse <- addNMDS(
+  ps_tse,
+  FUN = vegdist,
+  method = "bray",
+  nmds.fun = "monoMDS",
+  altexp = "relabundance",
+  ncomponents = 2,
+  subset.row = NULL,
+  scale = FALSE,
+  keep.dist = TRUE,
+  name = "NMDS"
+)
+ps_tse <- ps_mae@ExperimentList$original_TSE
 #--------------------------------------------------------
 # Create a phyloseq object with only high-prevalence ASVs
 #--------------------------------------------------------

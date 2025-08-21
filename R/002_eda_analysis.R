@@ -441,26 +441,6 @@ ps_tse_rrfy <- convertFromPhyloseq(mtr_physeq) %>%
 # the `mia` package provides has many built in functions and methods that I would otherwise
 # build custom functions for.
 #--------------------------------------------------------------------------------------------
-# Gets a subset of object that includes prevalent taxa
-altExp(ps_tse, "prevalent90") <- mia::subsetByPrevalent(
-  ps_tse,
-  rank = "phylum",
-  assay.type = "counts",
-  detection = 1 / 100,
-  prevalence = 90 / 100
-)
-
-altExp(ps_tse, "prevalent90")
-
-# getRare/subsetByRare returns the inverse
-altExp(ps_tse, "rare") <- mia::subsetByRare(
-  ps_tse,
-  rank = "phylum",
-  assay.type = "counts",
-  detection = 1 / 100,
-  prevalence = 90 / 100
-)
-altExp(ps_tse, "rare")
 
 #----------------------------------------------------------------------
 # Extract taxonomy for prevalent and rare ASVs at different thresholds
