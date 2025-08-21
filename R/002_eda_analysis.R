@@ -37,7 +37,6 @@ microbiome::summarize_phyloseq(sabr_2023_physeq)
 # Taxonomic distribution
 percent_phyla_clean <- phyloseq_ntaxa_by_tax(
   sabr_2023_physeq,
-  sabr_2023_physeq,
   TaxRank = "phylum",
   relative = F,
   add_meta_data = F
