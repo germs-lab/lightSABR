@@ -37,6 +37,7 @@ microbiome::summarize_phyloseq(sabr_2023_physeq)
 # Taxonomic distribution
 percent_phyla_clean <- phyloseq_ntaxa_by_tax(
   sabr_2023_physeq,
+  sabr_2023_physeq,
   TaxRank = "phylum",
   relative = F,
   add_meta_data = F
@@ -50,12 +51,16 @@ percent_phyla_clean <- phyloseq_ntaxa_by_tax(
 # Read Count Analysis
 #--------------------------------------------------------
 names_list <- colnames(sabr_2023_physeq@otu_table)
+names_list <- colnames(sabr_2023_physeq@otu_table)
 
 reads <- readcount(sabr_2023_physeq) |>
+  reads <- readcount(sabr_2023_physeq) |>
   as.data.frame() |>
   rownames_to_column(var = "sample_id") |>
   rename(n_seqs = "readcount(sabr_2023_physeq)") |>
+  rename(n_seqs = "readcount(sabr_2023_physeq)") |>
   dplyr::right_join(
+    rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
     rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
     by = "sample_id"
   ) |>
@@ -101,8 +106,14 @@ cover_chao <- phyloseq_coverage(
   correct_singletons = T,
   add_attr = T
 )
+cover_chao <- phyloseq_coverage(
+  sabr_2023_physeq,
+  correct_singletons = T,
+  add_attr = T
+)
 
 ps_melt <- sabr_2023_physeq |>
+  ps_melt <- sabr_2023_physeq |>
   psmelt() |>
   janitor::clean_names() |>
   rename(sample_id = sample, asv = otu) |>
@@ -276,6 +287,7 @@ save(mtr_rrfy_df, file = "data/output/processed/sabr_2023_mtr_rrfy_df.rda")
 ## Prevalence visualization
 metagMisc::phyloseq_prevalence_plot(
   sabr_2023_physeq,
+  sabr_2023_physeq,
   prev.trh = 0.5,
   taxcolor = "phylum",
   facet = TRUE,
@@ -285,6 +297,7 @@ metagMisc::phyloseq_prevalence_plot(
 
 ## Host plant-specific averages
 ps_average <- metagMisc::phyloseq_average(
+  sabr_2023_physeq,
   sabr_2023_physeq,
   avg_type = "arithmetic",
   acomp_zero_impute = NULL,
@@ -354,6 +367,7 @@ microbiome::rare_abundance(
 
 core_tax <- microbiome::core_members(
   sabr_2023_physeq,
+  sabr_2023_physeq,
   detection = 0,
   prevalence = 90 / 100,
   include.lowest = FALSE
@@ -361,7 +375,10 @@ core_tax <- microbiome::core_members(
 
 core_tax
 
+core_tax
+
 rare_tax <- microbiome::rare_members(
+  sabr_2023_physeq,
   sabr_2023_physeq,
   detection = 0,
   prevalence = 50 / 100,
