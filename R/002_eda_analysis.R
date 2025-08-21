@@ -61,6 +61,10 @@ reads <- readcount(sabr_2023_physeq) |>
   rename(n_seqs = "readcount(sabr_2023_physeq)") |>
   dplyr::right_join(
     rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
+  as.data.frame() |>
+  rownames_to_column(var = "sample_id") |>
+  rename(n_seqs = "readcount(sabr_2023_physeq)") |>
+  dplyr::right_join(
     rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
     by = "sample_id"
   ) |>
