@@ -115,7 +115,6 @@ cover_chao <- phyloseq_coverage(
   add_attr = T
 )
 ps_melt <- sabr_2023_physeq |>
-  ps_melt <- sabr_2023_physeq |>
   psmelt() |>
   janitor::clean_names() |>
   rename(sample_id = sample, asv = otu) |>
