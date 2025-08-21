@@ -413,16 +413,25 @@ ps_tse <- mia::transformAssay(
 #------------------------
 # Rarefaction via `mia`
 #------------------------
+# Rarefaction via `mia` depends on phyloseq::rarefy_even_depth()
+# which replaces samples, trimsOTUS a single time.
+# It is a single rarefaction event.
+# I am opting to use the rarefied `mtr_physeq` generated in SECTION 2
+# and convert it to a TreeSummarizedExperiment
 
-ps_tse_rrfy <- rarefyAssay(
-  ps_tse,
-  sample = 5000,
-  name = "rarefied",
-  replace = TRUE,
-  seed = 1938
-)
-ps_tse_rrfy
-
+ps_tse_rrfy <- convertFromPhyloseq(mtr_physeq) %>%
+  mia::transformAssay(
+    .,
+    assay.type = "counts",
+    method = "relabundance"
+  )
+# ps_tse_rrfy <- rarefyAssay(
+#   ps_tse,
+#   sample = 5000,
+#   name = "rarefied",
+#   replace = TRUE,
+#   seed = 1938
+# )
 
 #-------------------------------------------------------------------------------------------
 # Once we have done this and created a "relabundance" assay, `ps` object contains
