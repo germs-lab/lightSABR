@@ -12,7 +12,7 @@
 #' @param detection Detection threshold for mia functions (default 1/100).
 #' @param assay.type Assay type for mia functions (default "counts").
 #'
-#' @return A list of phyloseq objects for each threshold.
+#' @return A named list of phyloseq objects. Each element corresponds to a prevalent or rare subset for a given threshold, with names constructed as "<prev_name>_<threshold>" or "<rare_name>_<threshold>" (e.g., "prevalent_90", "rare_80"). The list may contain both prevalent and rare subsets for each threshold, depending on the data.
 
 get_prevalent_rare <- function(
   ps,
