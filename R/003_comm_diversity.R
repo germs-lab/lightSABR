@@ -1,127 +1,130 @@
 #####################################################################
-# ASV Prevalence Analysis
+# Community Diversity Analyses
 #
-# This script analyzes the prevalence of ASVs across samples,
-# identifying and examining high-prevalence ASVs that are present
-# in a large proportion of samples.
+# This script explores general community diversity patterns in SABR data set.
+# We explore, richness, alpha and beta diversity using NMDS, PCoA, PERMANOVAS , etc.
 #
-# Author: Jaejin Lee
-# Modified by: Bolívar Aponte Rolón
-# Date: 2025-05-05
+# We briefly explore coomunity diversity with the phyloseq object but move on with
+# the TreeSummarized Experiment object
+
+# Author: Jaejin Lee & Bolívar Aponte Rolón
+# Last modified: 2025-08-21
 #####################################################################
 
 # Load required libraries
 source("R/utils/000_setup.R")
 
-# Ensure physeq_rel (phyloseq object with relative abundances) is loaded
-
-#--------------------------------------------------------
-# Calculate ASV prevalence across samples
+#------------------------------------------------------
+# PHYLOSEQ: Community Diversity
 #--------------------------------------------------------
 
-ps <- physeq_rel
-# Extract OTU table as data frame
-asv_table_data <- as.data.frame(t(otu_table(ps)))
+plot_bar(physeq, x = "samples", fill = "phylum")
 
-# Count how many samples contain each ASV (presence > 0)
-asv_sample_counts <- colSums(asv_table_data > 0)
-
-# Create a data frame for visualization
-asv_count_df <- data.frame(
-  OTU = names(asv_sample_counts),
-  Sample_Counts = asv_sample_counts
+## Richness
+plot_richness(
+  mtr_physeq,
+  x = "plot",
+  measures = c("Observed", "Shannon", "Simpson"),
+  color = "plant",
+  shape = "sampling_location",
+  scales = "free"
 )
 
+# Reshape the data for ggplot (long format for diversity indices)
+mtr_rrfy_df_long <- mtr_rrfy_df %>%
+  tidyr::pivot_longer(
+    cols = c(observed, shannon, simpson, invsimpson),
+    names_to = "Diversity_Index",
+    values_to = "Value"
+  )
+
+ggplot(mtr_rrfy_df_long, aes(x = sampling_location, y = Value)) +
+  geom_boxplot(alpha = 0, width = 0.6) +
+  geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.03) +
+  facet_wrap(~Diversity_Index, scales = "free_y") +
+  #theme_minimal() +
+  labs(
+    title = "Diversity Indices Across Sampling Locations",
+    x = "Sampling Location",
+    y = "Diversity Index Value",
+    color = "Sampling Location"
+  )
 #--------------------------------------------------------
-# Visualize ASV prevalence
+# Calculate Bray-Curtis distance and perform NMDS analysis
 #--------------------------------------------------------
 
-# Create a bar plot showing the number of samples each ASV is found in
-ggplot(asv_count_df, aes(x = reorder(OTU, -Sample_Counts), y = Sample_Counts)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
+# Calculate Bray-Curtis distance matrix
+bc_dist <- phyloseq::distance(mtr_physeq, method = "bray")
+
+# Perform NMDS analysis (k=2 reduces to 2 dimensions)
+# trymax=100 ensures convergence by trying up to 100 different random starts
+nmds <- ordinate(mtr_physeq, method = "NMDS", distance = "bray", trymax = 100)
+
+#--------------------------------------------------------
+# Generate and display NMDS plot
+#--------------------------------------------------------
+
+# Create NMDS plot with samples colored by Plant, shaped by Location, and faceted by Date
+nmds_plot <- plot_ordination(
+  physeq,
+  nmds,
+  color = "plant",
+  shape = "sampling_location"
+) +
+  geom_point(size = 3, alpha = 0.8) +
+  facet_wrap(~sampling_date, ncol = 2) + # Separate panels by Date
   labs(
-    title = "Number of ASVs per sample",
-    x = "ASV",
-    y = "Number of Samples"
+    title = "NMDS of Microbial Communities by Date",
+    x = "NMDS1",
+    y = "NMDS2"
   ) +
   theme_minimal() +
   theme(
-    axis.text.x = element_blank(), # Remove x-axis labels as there are too many ASVs
+    legend.position = "right",
     plot.title = element_text(hjust = 0.5, face = "bold")
   )
 
+# Display the plot
+nmds_plot
+
+# Optionally, save the plot
+ggsave(
+  "data/output/plots/nmds_plot.png",
+  nmds_plot,
+  width = 10,
+  height = 8,
+  dpi = 300
+)
+
 #--------------------------------------------------------
-# Identify high-prevalence ASVs (>90% samples)
+# mia
 #--------------------------------------------------------
-# Back to using the raw count objects
-
-ps <- convertFromPhyloseq(sabr_2023_physeq)
-
-prevalence_freq <- mia::getPrevalence(ps, prevalence = 90 / 100, sort = TRUE)
-prevalence_count <- prevalence_freq * ncol(ps)
-
-
-# Counts
-prevalent <- mia::getPrevalent(
-  ps,
-  rank = "phylum",
-  detection = 0 / 100,
-  prevalence = 90 / 100
-)
-head(prevalent)
-
-# # Add relative aundance data
-ps <- mia::transformAssay(
-  sabr_2023_physeq,
-  assay.type = "counts",
-  method = "relabundance"
+ps_mae@ExperimentList$original_TSE <- addDissimilarity(
+  ps_mae@ExperimentList$original_TSE,
+  method = "bray",
+  assay.type = "relabundance"
 )
 
-
-# Gets a subset of object that includes prevalent taxa
-altExp(ps, "prevalent") <- subsetByPrevalent(
-  ps,
-  rank = "phylum",
-  assay.type = "counts",
-  detection = 0 / 100,
-  prevalence = 90 / 100
-)
-
-altExp(ps, "prevalent")
-
-# getRare returns the inverse
-rare <- mia::getRare(
-  ps,
-  rank = "phylum",
-  assay.type = "counts",
-  detection = 0 / 100,
-  prevalence = 90 / 100
-)
-head(rare)
-#-------------------------------------
-# microbiome::rare_members(
-#   # Provides rare taxa ASV
-#   sabr_2023_physeq,
-#   detection = 0,
-#   prevalence = 90 / 100,
-#   include.lowest = FALSE
+# ps_mae@ExperimentList$rarefied_TSE <- addDissimilarity(
+#   ps_mae@ExperimentList$rarefied_TSE,
+#   method = "bray",
+#   assay.type = "relabundance"
 # )
-#------------------------------------------
 
-# TODO
-# Reimplement threshold cut off and analysis with mia::getPrevalence()
-# and associated functions. See documentation
+metadata(ps_mae@ExperimentList$original_TSE)[["bray"]][1:6, 1:6]
+ps_mae@ExperimentList$original_TSE <- addNMDS(
+  ps_mae@ExperimentList$original_TSE,
+  FUN = vegdist,
+  method = "bray",
+  nmds.fun = "monoMDS",
+  assay.type = "relabundance",
+  ncomponents = 2,
+  subset.row = NULL,
+  scale = FALSE,
+  keep.dist = TRUE,
+  name = "NMDS"
+)
 
-#--------------------------------------------------------
-# Extract taxonomy for high-prevalence ASVs
-#--------------------------------------------------------
-
-# Get taxonomy table
-tax_table_data <- tax_table(sabr_2023_physeq_relab)
-
-# Extract taxonomy for high-prevalence ASVs
-high_prevalence_taxa <- tax_table_data[high_prevalence_asvs, ]
-print(high_prevalence_taxa)
 
 #--------------------------------------------------------
 # Create a phyloseq object with only high-prevalence ASVs
