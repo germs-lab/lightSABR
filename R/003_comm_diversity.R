@@ -112,19 +112,20 @@ ps_mae@ExperimentList$original_TSE <- addDissimilarity(
 # )
 
 metadata(ps_mae@ExperimentList$original_TSE)[["bray"]][1:6, 1:6]
-ps_tse <- addNMDS(
-  ps_tse,
+ps_mae@ExperimentList$original_TSE <- addNMDS(
+  ps_mae@ExperimentList$original_TSE,
   FUN = vegdist,
   method = "bray",
   nmds.fun = "monoMDS",
-  altexp = "relabundance",
+  assay.type = "relabundance",
   ncomponents = 2,
   subset.row = NULL,
   scale = FALSE,
   keep.dist = TRUE,
   name = "NMDS"
 )
-ps_tse <- ps_mae@ExperimentList$original_TSE
+
+
 #--------------------------------------------------------
 # Create a phyloseq object with only high-prevalence ASVs
 #--------------------------------------------------------

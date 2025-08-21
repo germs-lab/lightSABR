@@ -12,10 +12,6 @@
 #
 # Section 3. ASV Prevalence Analysis: Explores prevalence and core taxa analysis
 #
-# Sections 1-2 use a phyloseq object (`phyloseq` package), later we convert the
-# phyloseq object in section 3 to a TreeSummarizedExperiment object using
-# the `mia` package.
-#
 #
 # Author: Jaejin Lee & Bolívar Aponte Rolón
 # Last modified: 2025-08-21
@@ -256,7 +252,7 @@ mtr_rrfy_df <- mtr_rrfy_df %>%
     .before = ASV_1
   )
 
-save(mtr_rrfy_df, file = "data/output/processed/sabr_2023_master_rrfy_df.rda")
+save(mtr_rrfy_df, file = "data/output/processed/sabr_2023_mtr_rrfy_df.rda")
 
 
 #####################################################################
@@ -300,6 +296,41 @@ ps_average <- metagMisc::phyloseq_average(
   progress = "text",
 )
 
+
+#--------------------------------------------------------
+# Visualize ASV prevalence
+#--------------------------------------------------------
+
+# Create a bar plot showing the number of samples each ASV is found in
+ggplot(
+  sabr_2023_physeq_relab %>%
+    phyloseq::otu_table(.) %>%
+    t(.) %>%
+    as.data.frame(.) %>%
+    {
+      \(df) colSums(df > 0)
+    }() %>%
+    {
+      \(counts) data.frame(OTU = names(counts), Sample_Counts = counts)
+    }(),
+  aes(x = reorder(OTU, -Sample_Counts), y = Sample_Counts)
+) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(
+    title = "Number of ASVs per sample",
+    x = "ASV",
+    y = "Number of Samples"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_blank(),
+    plot.title = element_text(hjust = 0.5, face = "bold")
+  )
+
+#--------------------------------------------------------
+# Identify high-prevalence ASVs (>90% samples)
+#--------------------------------------------------------
+# Back to using the raw count objects
 ## Core & rare microbiome
 
 # The core taxa are defined as those that exceed the given population
@@ -339,143 +370,40 @@ rare_tax <- microbiome::rare_members(
 
 rare_tax
 
-#--------------------------------------------------------
-# Visualize ASV prevalence
-#--------------------------------------------------------
-
-# Create a bar plot showing the number of samples each ASV is found in
-ggplot(
-  sabr_2023_physeq_relab %>%
-    phyloseq::otu_table(.) %>%
-    t(.) %>%
-    as.data.frame(.) %>%
-    {
-      \(df) colSums(df > 0)
-    }() %>%
-    {
-      \(counts) data.frame(OTU = names(counts), Sample_Counts = counts)
-    }(),
-  aes(x = reorder(OTU, -Sample_Counts), y = Sample_Counts)
-) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  labs(
-    title = "Number of ASVs per sample",
-    x = "ASV",
-    y = "Number of Samples"
-  ) +
-  theme_minimal() +
-  theme(
-    axis.text.x = element_blank(),
-    plot.title = element_text(hjust = 0.5, face = "bold")
-  )
-
-
-#---------------------------------------------------------------------------------
-# `mia` PACKAGE WORKFLOW
-#---------------------------------------------------------------------------------
-# Here we are using the `mia` package which uses a TreeSummarizedExperiment S4 object
-
-#--------------------------------------------------------
-# Identify high-prevalence ASVs (>90% samples)
-#--------------------------------------------------------
-# Back to using the raw count objects
-
-ps_tse <- convertFromPhyloseq(sabr_2023_physeq)
-
-prevalence_freq <- mia::getPrevalence(
-  ps_tse,
-  prevalence = 90 / 100,
-  sort = TRUE
-)
-prevalence_count <- prevalence_freq * ncol(ps_tse)
-
-
-# Counts
-prevalent <- mia::getPrevalent(
-  ps_tse,
-  rank = "phylum",
-  detection = 0 / 100,
-  prevalence = 90 / 100
-)
-head(prevalent)
-
-
-# # Add relative aundance data
-# mia::transformAssay() expects a TreeSummarizedExperiment or similar,
-# not a phyloseq object.
-
-ps_tse <- mia::transformAssay(
-  ps_tse,
-  assay.type = "counts",
-  method = "relabundance"
-)
-
-#------------------------
-# Rarefaction via `mia`
-#------------------------
-# Rarefaction via `mia` depends on phyloseq::rarefy_even_depth()
-# which replaces samples, trimsOTUS a single time.
-# It is a single rarefaction event.
-# I am opting to use the rarefied `mtr_physeq` generated in SECTION 2
-# and convert it to a TreeSummarizedExperiment
-
-ps_tse_rrfy <- convertFromPhyloseq(mtr_physeq) %>%
-  mia::transformAssay(
-    .,
-    assay.type = "counts",
-    method = "relabundance"
-  )
-# ps_tse_rrfy <- rarefyAssay(
-#   ps_tse,
-#   sample = 5000,
-#   name = "rarefied",
-#   replace = TRUE,
-#   seed = 1938
-# )
-
-#-------------------------------------------------------------------------------------------
-# Once we have done this and created a "relabundance" assay, `ps` object contains
-# "counts" assay which is equivalent to `sabr_2023_physeq` with raw counts and
-# "relabundance" is equivalent to `sabr_2023_physeq_relab`phyloseq objects.
-# This might be a little redundant but the TreeSummarizedExperiment object and framework that
-# the `mia` package provides has many built in functions and methods that I would otherwise
-# build custom functions for.
-#--------------------------------------------------------------------------------------------
 
 #----------------------------------------------------------------------
 # Extract taxonomy for prevalent and rare ASVs at different thresholds
 # and ranks
 #----------------------------------------------------------------------
 
-# Phylum and species
-
-ranks <- c("phylum", "species")
-for (rnk in ranks) {
-  ps_tse <- add_prevalent_rare_altExps(
-    ps_tse,
-    thresholds = c(90, 80, 70, 60),
-    rank = rnk,
-    rank_name = rnk,
-    detection = 1 / 100,
-    assay.type = "counts"
-  )
-}
-
-for (rnk in ranks) {
-  ps_tse_rrfy <- add_prevalent_rare_altExps(
-    ps_tse_rrfy,
-    thresholds = c(90, 80, 70, 60),
-    rank = rnk,
-    rank_name = rnk,
-    detection = 1 / 100,
-    assay.type = "counts"
-  )
-}
-
-
-ps_mae <- MultiAssayExperiment::MultiAssayExperiment(
-  c("original_TSE" = ps_tse, "rarefied_TSE" = ps_tse_rrfy)
+ps_list_og <- get_prevalent_rare(
+  sabr_2023_physeq,
+  thresholds = c(90, 80, 70, 60, 30),
+  detection = 0 / 100,
+  include.lowest = FALSE
 )
-ps_mae
 
-save(ps_mae, file = "data/output/processed/sabr_2023_ps_mae.rda")
+ps_list_relab <- get_prevalent_rare(
+  sabr_2023_physeq_relab,
+  thresholds = c(90, 80, 70, 60, 30),
+  detection = 0 / 100,
+  include.lowest = FALSE
+)
+
+ps_list_rrfy <- get_prevalent_rare(
+  mtr_physeq,
+  thresholds = c(90, 80, 70, 60, 30),
+  detection = 0 / 100,
+  include.lowest = FALSE
+)
+
+mtr_physeq_list <- list(
+  original_phyloseq_lists = ps_list_og,
+  relab_phyloseq_lists = ps_list_relab,
+  rarefied_phyloseq_lists = ps_list_rrfy
+)
+
+save(
+  mtr_physeq_list,
+  file = "data/output/processed/sabr_2023_mtr_physeq_list.rda"
+)

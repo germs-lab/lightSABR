@@ -12,26 +12,22 @@
 #' @param detection Detection threshold for mia functions (default 1/100).
 #' @param assay.type Assay type for mia functions (default "counts").
 #'
-#' @return TreeSummarizedExperiment with new altExps added for each threshold.
-#' @examples
-#' ps <- add_prevalent_rare_altExps(ps)
-add_prevalent_rare_altExps <- function(
+#' @return A list of phyloseq objects for each threshold.
+
+get_prevalent_rare <- function(
   ps,
   prev_name = NULL,
   rare_name = NULL,
   thresholds = c(90, 80, 70, 60),
-  rank = "phylum",
-  rank_name = NULL,
   detection = 1 / 100,
-  assay.type = "counts"
+  include.lowest = FALSE
 ) {
+  result_list <- list()
+
   for (thr in thresholds) {
-    # Build altExp names
-    prev_suffix <- if (!is.null(rank_name)) {
-      paste0("_", rank_name, "_", thr)
-    } else {
-      paste0("_", thr)
-    }
+    # Build names
+    prev_suffix <- paste0("_", thr)
+
     prev_exp_name <- if (!is.null(prev_name)) {
       paste0(prev_name, prev_suffix)
     } else {
@@ -43,23 +39,33 @@ add_prevalent_rare_altExps <- function(
       paste0("rare", prev_suffix)
     }
 
-    # Add prevalent taxa subset
-    altExp(ps, prev_exp_name) <- subsetByPrevalent(
+    # Get core/prevalent taxa members
+    core_taxa <- microbiome::core_members(
       ps,
-      rank = rank,
-      assay.type = assay.type,
       detection = detection,
-      prevalence = thr / 100
+      prevalence = thr / 100,
+      include.lowest = include.lowest
     )
 
-    # Add rare taxa subset (inverse)
-    altExp(ps, rare_exp_name) <- subsetByRare(
+    # Get rare taxa members
+    rare_taxa <- microbiome::rare_members(
       ps,
-      rank = rank,
-      assay.type = assay.type,
       detection = detection,
-      prevalence = thr / 100
+      prevalence = thr / 100,
+      include.lowest = include.lowest
     )
+
+    # Create phyloseq subsets
+    if (length(core_taxa) > 0) {
+      prevalent_ps <- prune_taxa(core_taxa, ps)
+      result_list[[prev_exp_name]] <- prevalent_ps
+    }
+
+    if (length(rare_taxa) > 0) {
+      rare_ps <- prune_taxa(rare_taxa, ps)
+      result_list[[rare_exp_name]] <- rare_ps
+    }
   }
-  return(ps)
+
+  return(result_list)
 }
