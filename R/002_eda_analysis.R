@@ -115,7 +115,6 @@ cover_chao <- phyloseq_coverage(
   correct_singletons = T,
   add_attr = T
 )
-
 ps_melt <- sabr_2023_physeq |>
   ps_melt <- sabr_2023_physeq |>
   psmelt() |>
