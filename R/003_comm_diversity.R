@@ -15,40 +15,60 @@
 source("R/utils/000_setup.R")
 
 #------------------------------------------------------
-# PHYLOSEQ: Community Diversity
+# Community Diversity: Alpha Diversity
 #--------------------------------------------------------
 
-plot_bar(physeq, x = "samples", fill = "phylum")
-
 ## Richness
-plot_richness(
-  mtr_physeq,
-  x = "plot",
-  measures = c("Observed", "Shannon", "Simpson"),
-  color = "plant",
-  shape = "sampling_location",
-  scales = "free"
-)
-
-# Reshape the data for ggplot (long format for diversity indices)
-mtr_rrfy_df_long <- mtr_rrfy_df %>%
-  tidyr::pivot_longer(
-    cols = c(observed, shannon, simpson, invsimpson),
-    names_to = "Diversity_Index",
-    values_to = "Value"
+sabr_alpha <- ggplot(
+  estimate_richness(
+    sabr_2023_physeq,
+    measures = c("Observed", "Shannon", "Simpson", "InvSimpson"),
+  ) %>%
+    janitor::clean_names() %>%
+    tidyr::pivot_longer(
+      cols = c(observed, shannon, simpson, inv_simpson),
+      names_to = "Diversity_Index",
+      values_to = "Value"
+    ),
+  aes(x = sampling_location, y = Value)
+) +
+  geom_boxplot(alpha = 0, width = 0.6) +
+  geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.7) +
+  theme_bw() +
+  labs(
+    title = "Alpha Diversity Indices Across Sampling Locations",
+    subtitle = "Raw data",
+    x = "",
+    y = "Alpha Diversity Measure",
+    color = "Sampling Location"
   )
+sabr_alpha
 
-ggplot(mtr_rrfy_df_long, aes(x = sampling_location, y = Value)) +
+sabr_alpha_rrfy <-
+  ggplot(
+    mtr_rrfy_df %>%
+      tidyr::pivot_longer(
+        cols = c(observed, shannon, simpson, invsimpson),
+        names_to = "Diversity_Index",
+        values_to = "Value"
+      ),
+    aes(x = sampling_location, y = Value)
+  ) +
   geom_boxplot(alpha = 0, width = 0.6) +
   geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.03) +
   facet_wrap(~Diversity_Index, scales = "free_y") +
-  #theme_minimal() +
+  theme_bw() +
   labs(
-    title = "Diversity Indices Across Sampling Locations",
-    x = "Sampling Location",
-    y = "Diversity Index Value",
+    title = "Alpha Diversity Indices Across Sampling Locations",
+    subtitle = "Rarefied data",
+    x = "",
+    y = "Alpha Diversity Measure",
     color = "Sampling Location"
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(alpha = 1)))
+
+sabr_alpha_rrfy
+
 #--------------------------------------------------------
 # Calculate Bray-Curtis distance and perform NMDS analysis
 #--------------------------------------------------------
