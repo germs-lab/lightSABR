@@ -49,17 +49,14 @@ percent_phyla_clean <- phyloseq_ntaxa_by_tax(
 #--------------------------------------------------------
 # Read Count Analysis
 #--------------------------------------------------------
-names_list <- colnames(sabr_2023_physeq@otu_table)
-
 reads <- readcount(sabr_2023_physeq) |>
   as.data.frame() |>
   rownames_to_column(var = "sample_id") |>
   rename(n_seqs = "readcount(sabr_2023_physeq)") |>
-  dplyr::right_join(
+  dplyr::left_join(
     rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
     by = "sample_id"
-  ) |>
-  filter(sample_id %in% names_list)
+  )
 
 reads_sum <- reads |>
   group_by(sample_id) |>

@@ -17,23 +17,38 @@ source("R/utils/000_setup.R")
 #------------------------------------------------------
 # Community Diversity: Alpha Diversity
 #--------------------------------------------------------
-
-## Richness
-sabr_alpha <- ggplot(
-  estimate_richness(
-    sabr_2023_physeq,
-    measures = c("Observed", "Shannon", "Simpson", "InvSimpson"),
+temp_alpha <- estimate_richness(
+  sabr_2023_physeq,
+  measures = c("Observed", "Shannon", "Simpson", "InvSimpson")
+) %>%
+  janitor::clean_names() %>%
+  rownames_to_column(var = "sample_id") %>%
+  mutate(
+    # estimate_richness() messes up sample names, now wee neeed to clean them
+    sample_id = gsub(
+      pattern = "\\.",
+      replacement = "-",
+      x = sample_id
+    )
   ) %>%
-    janitor::clean_names() %>%
-    tidyr::pivot_longer(
-      cols = c(observed, shannon, simpson, inv_simpson),
-      names_to = "Diversity_Index",
-      values_to = "Value"
-    ),
+  dplyr::left_join(
+    rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
+    by = "sample_id"
+  ) %>%
+  tidyr::pivot_longer(
+    cols = c(observed, shannon, simpson, inv_simpson),
+    names_to = "Diversity_Index",
+    values_to = "Value"
+  )
+
+
+sabr_alpha <- ggplot(
+  temp_alpha,
   aes(x = sampling_location, y = Value)
 ) +
-  geom_boxplot(alpha = 0, width = 0.6) +
   geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.7) +
+  geom_boxplot(alpha = 0, width = 0.6) +
+  facet_wrap(~Diversity_Index, scales = "free_y") +
   theme_bw() +
   labs(
     title = "Alpha Diversity Indices Across Sampling Locations",
@@ -48,14 +63,14 @@ sabr_alpha_rrfy <-
   ggplot(
     mtr_rrfy_df %>%
       tidyr::pivot_longer(
-        cols = c(observed, shannon, simpson, invsimpson),
+        cols = c(observed, shannon, simpson, inv_simpson),
         names_to = "Diversity_Index",
         values_to = "Value"
       ),
     aes(x = sampling_location, y = Value)
   ) +
-  geom_boxplot(alpha = 0, width = 0.6) +
   geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.03) +
+  geom_boxplot(alpha = 0, width = 0.6) +
   facet_wrap(~Diversity_Index, scales = "free_y") +
   theme_bw() +
   labs(
