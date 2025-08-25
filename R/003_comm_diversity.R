@@ -14,9 +14,24 @@
 # Load required libraries
 source("R/utils/000_setup.R")
 
+
 #------------------------------------------------------
 # Community Diversity: Alpha Diversity
 #--------------------------------------------------------
+#----------------------
+# Features to test
+#----------------------
+feat <- c(
+  "year",
+  "plot",
+  "sampling_location",
+  "replicate",
+  "sampling_date",
+  "fertilization"
+)
+#----------------------
+
+# Temporary/visualization datasets
 temp_alpha <- estimate_richness(
   sabr_2023_physeq,
   measures = c("Observed", "Shannon", "Simpson", "InvSimpson")
@@ -42,58 +57,100 @@ temp_alpha <- estimate_richness(
   )
 
 
-sabr_alpha <- ggplot(
-  temp_alpha,
-  aes(x = sampling_location, y = Value)
-) +
-  geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.7) +
-  geom_boxplot(alpha = 0, width = 0.6) +
-  facet_wrap(~Diversity_Index, scales = "free_y") +
-  theme_bw() +
-  labs(
-    title = "Alpha Diversity Indices Across Sampling Locations",
-    subtitle = "Raw data",
-    x = "",
-    y = "Alpha Diversity Measure",
-    color = "Sampling Location"
+temp_mtr_long <- mtr_rrfy_df %>%
+  tidyr::pivot_longer(
+    cols = c(observed, shannon, simpson, inv_simpson),
+    names_to = "Diversity_Index",
+    values_to = "Value"
   )
-sabr_alpha
 
-sabr_alpha_rrfy <-
-  ggplot(
-    mtr_rrfy_df %>%
-      tidyr::pivot_longer(
-        cols = c(observed, shannon, simpson, inv_simpson),
-        names_to = "Diversity_Index",
-        values_to = "Value"
-      ),
-    aes(x = sampling_location, y = Value)
-  ) +
-  geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.03) +
-  geom_boxplot(alpha = 0, width = 0.6) +
-  facet_wrap(~Diversity_Index, scales = "free_y") +
-  theme_bw() +
-  labs(
-    title = "Alpha Diversity Indices Across Sampling Locations",
-    subtitle = "Rarefied data",
-    x = "",
-    y = "Alpha Diversity Measure",
-    color = "Sampling Location"
-  ) +
-  guides(color = guide_legend(override.aes = list(alpha = 1)))
 
-sabr_alpha_rrfy
+# Master list with Alpha diversity plots for raw, relative abundance and rarefied data
+# Define the datasets and their corresponding names
+datasets <- list(
+  raw = temp_alpha,
+  #relab = temp_alpha_relab, # You'll want to replace this with your actual relab data
+  rarefied = temp_mtr_long
+)
+
+# Define alpha values for each dataset type
+alpha_values <- list(
+  raw = 0.8,
+  #relab = 0.8,
+  rarefied = 0.03
+)
+
+# Create the master list using nested purrr::map()
+alpha_plots_master <- purrr::map(
+  names(datasets),
+  ~ {
+    dataset_name <- .x
+    dataset <- datasets[[.x]]
+    alpha_val <- alpha_values[[.x]]
+
+    # Create plots for each feature within this dataset
+    feature_plots <- purrr::map(
+      feat,
+      ~ {
+        alpha_plots(
+          dataset,
+          feat = !!rlang::sym(.x),
+          .x = !!rlang::sym(.x),
+          .y = Value,
+          .color = !!rlang::sym(.x),
+          .facet = Diversity_Index,
+          title = paste("Alpha Diversity by", .x, "-", toupper(dataset_name)),
+          subtitle = "Faceted by Diversity Index",
+          x_lab = .x,
+          y_lab = "Alpha Diversity Measure",
+          legend_by = .x,
+          alpha = alpha_val
+        )
+      }
+    )
+
+    names(feature_plots) <- feat
+    return(feature_plots)
+  }
+)
+
+# Name the top-level list
+names(alpha_plots_master) <- names(datasets)
+
 
 #--------------------------------------------------------
 # Calculate Bray-Curtis distance and perform NMDS analysis
 #--------------------------------------------------------
 
 # Calculate Bray-Curtis distance matrix
-bc_dist <- phyloseq::distance(mtr_physeq, method = "bray")
+bc_dist <- phyloseq::distance(sabr_2023_physeq, method = "bray")
+
+br_sabr_raw <- vegdist(
+  otu_table(sabr_2023_physeq),
+  method = "bray",
+  upper = FALSE,
+  binary = FALSE,
+  na.rm = TRUE
+)
+
+
+test_nmds <- brc_nmds(
+  asv_matrix = otu_table(sabr_2023_physeq),
+  physeq = sabr_2023_physeq,
+  ncores = 2,
+  k = 2,
+  trymax = 100
+)
+
 
 # Perform NMDS analysis (k=2 reduces to 2 dimensions)
 # trymax=100 ensures convergence by trying up to 100 different random starts
-nmds <- ordinate(mtr_physeq, method = "NMDS", distance = "bray", trymax = 100)
+nmds <- ordinate(
+  sabr_2023_physeq,
+  method = "NMDS",
+  distance = "bray",
+  trymax = 100
+)
 
 #--------------------------------------------------------
 # Generate and display NMDS plot
@@ -101,7 +158,7 @@ nmds <- ordinate(mtr_physeq, method = "NMDS", distance = "bray", trymax = 100)
 
 # Create NMDS plot with samples colored by Plant, shaped by Location, and faceted by Date
 nmds_plot <- plot_ordination(
-  physeq,
+  sabr_2023_physeq,
   nmds,
   color = "plant",
   shape = "sampling_location"
@@ -129,35 +186,6 @@ ggsave(
   width = 10,
   height = 8,
   dpi = 300
-)
-
-#--------------------------------------------------------
-# mia
-#--------------------------------------------------------
-ps_mae@ExperimentList$original_TSE <- addDissimilarity(
-  ps_mae@ExperimentList$original_TSE,
-  method = "bray",
-  assay.type = "relabundance"
-)
-
-# ps_mae@ExperimentList$rarefied_TSE <- addDissimilarity(
-#   ps_mae@ExperimentList$rarefied_TSE,
-#   method = "bray",
-#   assay.type = "relabundance"
-# )
-
-metadata(ps_mae@ExperimentList$original_TSE)[["bray"]][1:6, 1:6]
-ps_mae@ExperimentList$original_TSE <- addNMDS(
-  ps_mae@ExperimentList$original_TSE,
-  FUN = vegdist,
-  method = "bray",
-  nmds.fun = "monoMDS",
-  assay.type = "relabundance",
-  ncomponents = 2,
-  subset.row = NULL,
-  scale = FALSE,
-  keep.dist = TRUE,
-  name = "NMDS"
 )
 
 
