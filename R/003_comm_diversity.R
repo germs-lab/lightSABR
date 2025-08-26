@@ -43,13 +43,14 @@ temp_alpha <- estimate_richness(
     sample_id = gsub(
       pattern = "\\.",
       replacement = "-",
-      x = sample_id
+      x = sample_id,
     )
   ) %>%
   dplyr::left_join(
     rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
     by = "sample_id"
   ) %>%
+  mutate(sampling_date = as.character(sampling_date)) %>%
   tidyr::pivot_longer(
     cols = c(observed, shannon, simpson, inv_simpson),
     names_to = "Diversity_Index",
@@ -58,6 +59,7 @@ temp_alpha <- estimate_richness(
 
 
 temp_mtr_long <- mtr_rrfy_df %>%
+  mutate(sampling_date = as.character(sampling_date)) %>%
   tidyr::pivot_longer(
     cols = c(observed, shannon, simpson, inv_simpson),
     names_to = "Diversity_Index",
@@ -65,18 +67,16 @@ temp_mtr_long <- mtr_rrfy_df %>%
   )
 
 
-# Master list with Alpha diversity plots for raw, relative abundance and rarefied data
+# Master list with Alpha diversity plots for raw and rarefied data
+# Alpha diversity measures for relative abundance dataset are the same as raw dataset.
 # Define the datasets and their corresponding names
 datasets <- list(
   raw = temp_alpha,
-  #relab = temp_alpha_relab, # You'll want to replace this with your actual relab data
   rarefied = temp_mtr_long
 )
 
-# Define alpha values for each dataset type
 alpha_values <- list(
   raw = 0.8,
-  #relab = 0.8,
   rarefied = 0.03
 )
 
@@ -88,7 +88,6 @@ alpha_plots_master <- purrr::map(
     dataset <- datasets[[.x]]
     alpha_val <- alpha_values[[.x]]
 
-    # Create plots for each feature within this dataset
     feature_plots <- purrr::map(
       feat,
       ~ {
@@ -117,6 +116,35 @@ alpha_plots_master <- purrr::map(
 # Name the top-level list
 names(alpha_plots_master) <- names(datasets)
 
+
+# Fixing `sampling_date`
+alpha_plots_master$raw$sampling_date <- alpha_plots_master$raw$sampling_date +
+  theme(axis.text.x = element_blank())
+alpha_plots_master$rarefied$sampling_date <- alpha_plots_master$rarefied$sampling_date +
+  theme(axis.text.x = element_blank())
+
+# Print
+purrr::iwalk(
+  alpha_plots_master,
+  ~ {
+    dataset_name <- .y
+    cat("\n", rep("=", 60), "\n")
+    cat("DATASET:", toupper(dataset_name), "\n")
+    cat(rep("=", 60), "\n\n")
+
+    purrr::iwalk(
+      .x,
+      ~ {
+        feature_name <- .y
+        cat(rep("-", 40), "\n")
+        cat("FEATURE:", toupper(feature_name), "\n")
+        cat(rep("-", 40), "\n")
+        print(.x)
+        cat("\n\n")
+      }
+    )
+  }
+)
 
 #--------------------------------------------------------
 # Calculate Bray-Curtis distance and perform NMDS analysis

@@ -4,7 +4,7 @@ alpha_plots <- function(
   .x,
   .y,
   .color = .x,
-  .facet,
+  .facet = NULL,
   title,
   subtitle,
   x_lab,
@@ -24,17 +24,32 @@ alpha_plots <- function(
     aes(x = !!.x, y = !!.y)
   ) +
     geom_jitter(aes(color = !!.color), width = 0.2, alpha = alpha) +
-    geom_boxplot(alpha = 0, width = 0.6) +
-    facet_wrap(vars(!!.facet), scales = "free_y") +
-    theme_bw() +
-    labs(
-      title = title,
-      subtitle = subtitle,
-      x = x_lab,
-      y = y_lab,
-      color = legend_by
-    ) +
-    guides(color = guide_legend(override.aes = list(alpha = 1)))
+    geom_boxplot(alpha = 0, width = 0.6)
+  # Check if .facet was provided (not NULL)
+  if (rlang::quo_is_null(.facet)) {
+    plot <- plot +
+      theme_bw() +
+      labs(
+        title = title,
+        subtitle = subtitle,
+        x = x_lab,
+        y = y_lab,
+        color = legend_by
+      ) +
+      guides(color = guide_legend(override.aes = list(alpha = 1)))
+  } else {
+    plot <- plot +
+      facet_wrap(vars(!!.facet), scales = "free_y") +
+      theme_bw() +
+      labs(
+        title = title,
+        subtitle = subtitle,
+        x = x_lab,
+        y = y_lab,
+        color = legend_by
+      ) +
+      guides(color = guide_legend(override.aes = list(alpha = 1)))
+  }
 
   return(plot)
 }
