@@ -49,25 +49,14 @@ percent_phyla_clean <- phyloseq_ntaxa_by_tax(
 #--------------------------------------------------------
 # Read Count Analysis
 #--------------------------------------------------------
-names_list <- colnames(sabr_2023_physeq@otu_table)
-names_list <- colnames(sabr_2023_physeq@otu_table)
-
 reads <- readcount(sabr_2023_physeq) |>
-  reads <- readcount(sabr_2023_physeq) |>
   as.data.frame() |>
   rownames_to_column(var = "sample_id") |>
   rename(n_seqs = "readcount(sabr_2023_physeq)") |>
-  rename(n_seqs = "readcount(sabr_2023_physeq)") |>
-  dplyr::right_join(
-    rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
-  as.data.frame() |>
-  rownames_to_column(var = "sample_id") |>
-  rename(n_seqs = "readcount(sabr_2023_physeq)") |>
-  dplyr::right_join(
+  dplyr::left_join(
     rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
     by = "sample_id"
-  ) |>
-  filter(sample_id %in% names_list)
+  )
 
 reads_sum <- reads |>
   group_by(sample_id) |>
@@ -195,7 +184,8 @@ asv_table_rrfy <- multi_rarefy(
   num_iter = 50,
   .summarize = FALSE,
   set_seed = 345
-)
+) %>%
+  rename(., sample_id = SampleID)
 
 save(
   asv_table_rrfy,
@@ -223,11 +213,11 @@ mtr_rrfy_df <- asv_table_rrfy %>%
   rownames_to_column(., var = "iter_id") %>%
   dplyr::left_join(
     .,
-    sabr_2023_metadata_clean %>% rownames_to_column(., var = "SampleID"),
-    by = "SampleID"
+    sabr_2023_metadata_clean %>% rownames_to_column(., var = "sample_id"),
+    by = "sample_id"
   ) %>%
   column_to_rownames(., var = "iter_id") %>%
-  relocate(., c(16881:16890), .after = "SampleID")
+  relocate(., c(16881:16890), .after = "sample_id")
 
 ## Master metadata
 mtr_metadata <- mtr_rrfy_df %>% # Metadata matched to all the samples in each iteration
@@ -257,10 +247,10 @@ mtr_rrfy_df <- mtr_rrfy_df %>%
     observed = rowSums(select(., -c(1:11)) > 0),
     shannon = vegan::diversity(select(., -c(1:11)), index = "shannon"),
     simpson = vegan::diversity(select(., -c(1:11)), index = "simpson"),
-    invsimpson = vegan::diversity(select(., -c(1:11)), index = "invsimpson")
+    inv_simpson = vegan::diversity(select(., -c(1:11)), index = "invsimpson")
   ) %>%
   relocate(
-    any_of(c("observed", "shannon", "simpson", "invsimpson")),
+    any_of(c("observed", "shannon", "simpson", "inv_simpson")),
     .before = ASV_1
   )
 

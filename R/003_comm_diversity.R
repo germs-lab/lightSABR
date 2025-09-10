@@ -14,51 +14,171 @@
 # Load required libraries
 source("R/utils/000_setup.R")
 
+
 #------------------------------------------------------
-# PHYLOSEQ: Community Diversity
+# Community Diversity: Alpha Diversity
 #--------------------------------------------------------
-
-plot_bar(physeq, x = "samples", fill = "phylum")
-
-## Richness
-plot_richness(
-  mtr_physeq,
-  x = "plot",
-  measures = c("Observed", "Shannon", "Simpson"),
-  color = "plant",
-  shape = "sampling_location",
-  scales = "free"
+#----------------------
+# Features to test
+#----------------------
+feat <- c(
+  "year",
+  "plot",
+  "sampling_location",
+  "replicate",
+  "sampling_date",
+  "fertilization"
 )
+#----------------------
 
-# Reshape the data for ggplot (long format for diversity indices)
-mtr_rrfy_df_long <- mtr_rrfy_df %>%
+# Temporary/visualization datasets
+temp_alpha <- estimate_richness(
+  sabr_2023_physeq,
+  measures = c("Observed", "Shannon", "Simpson", "InvSimpson")
+) %>%
+  janitor::clean_names() %>%
+  rownames_to_column(var = "sample_id") %>%
+  mutate(
+    # estimate_richness() messes up sample names, now wee neeed to clean them
+    sample_id = gsub(
+      pattern = "\\.",
+      replacement = "-",
+      x = sample_id,
+    )
+  ) %>%
+  dplyr::left_join(
+    rownames_to_column(sabr_2023_metadata_clean, var = "sample_id"),
+    by = "sample_id"
+  ) %>%
+  mutate(sampling_date = as.character(sampling_date)) %>%
   tidyr::pivot_longer(
-    cols = c(observed, shannon, simpson, invsimpson),
+    cols = c(observed, shannon, simpson, inv_simpson),
     names_to = "Diversity_Index",
     values_to = "Value"
   )
 
-ggplot(mtr_rrfy_df_long, aes(x = sampling_location, y = Value)) +
-  geom_boxplot(alpha = 0, width = 0.6) +
-  geom_jitter(aes(color = sampling_location), width = 0.2, alpha = 0.03) +
-  facet_wrap(~Diversity_Index, scales = "free_y") +
-  #theme_minimal() +
-  labs(
-    title = "Diversity Indices Across Sampling Locations",
-    x = "Sampling Location",
-    y = "Diversity Index Value",
-    color = "Sampling Location"
+
+temp_mtr_long <- mtr_rrfy_df %>%
+  mutate(sampling_date = as.character(sampling_date)) %>%
+  tidyr::pivot_longer(
+    cols = c(observed, shannon, simpson, inv_simpson),
+    names_to = "Diversity_Index",
+    values_to = "Value"
   )
+
+
+# Master list with Alpha diversity plots for raw and rarefied data
+# Alpha diversity measures for relative abundance dataset are the same as raw dataset.
+# Define the datasets and their corresponding names
+datasets <- list(
+  raw = temp_alpha,
+  rarefied = temp_mtr_long
+)
+
+alpha_values <- list(
+  raw = 0.8,
+  rarefied = 0.03
+)
+
+# Create the master list using nested purrr::map()
+alpha_plots_master <- purrr::map(
+  names(datasets),
+  ~ {
+    dataset_name <- .x
+    dataset <- datasets[[.x]]
+    alpha_val <- alpha_values[[.x]]
+
+    feature_plots <- purrr::map(
+      feat,
+      ~ {
+        alpha_plots(
+          dataset,
+          feat = !!rlang::sym(.x),
+          .x = !!rlang::sym(.x),
+          .y = Value,
+          .color = !!rlang::sym(.x),
+          .facet = Diversity_Index,
+          title = paste("Alpha Diversity by", .x, "-", toupper(dataset_name)),
+          subtitle = "Faceted by Diversity Index",
+          x_lab = .x,
+          y_lab = "Alpha Diversity Measure",
+          legend_by = .x,
+          alpha = alpha_val
+        )
+      }
+    )
+
+    names(feature_plots) <- feat
+    return(feature_plots)
+  }
+)
+
+# Name the top-level list
+names(alpha_plots_master) <- names(datasets)
+
+
+# Fixing `sampling_date`
+alpha_plots_master$raw$sampling_date <- alpha_plots_master$raw$sampling_date +
+  theme(axis.text.x = element_blank())
+alpha_plots_master$rarefied$sampling_date <- alpha_plots_master$rarefied$sampling_date +
+  theme(axis.text.x = element_blank())
+
+# Print
+purrr::iwalk(
+  alpha_plots_master,
+  ~ {
+    dataset_name <- .y
+    cat("\n", rep("=", 60), "\n")
+    cat("DATASET:", toupper(dataset_name), "\n")
+    cat(rep("=", 60), "\n\n")
+
+    purrr::iwalk(
+      .x,
+      ~ {
+        feature_name <- .y
+        cat(rep("-", 40), "\n")
+        cat("FEATURE:", toupper(feature_name), "\n")
+        cat(rep("-", 40), "\n")
+        print(.x)
+        cat("\n\n")
+      }
+    )
+  }
+)
+
 #--------------------------------------------------------
 # Calculate Bray-Curtis distance and perform NMDS analysis
 #--------------------------------------------------------
 
 # Calculate Bray-Curtis distance matrix
-bc_dist <- phyloseq::distance(mtr_physeq, method = "bray")
+bc_dist <- phyloseq::distance(sabr_2023_physeq, method = "bray")
+
+br_sabr_raw <- vegdist(
+  otu_table(sabr_2023_physeq),
+  method = "bray",
+  upper = FALSE,
+  binary = FALSE,
+  na.rm = TRUE
+)
+
+
+test_nmds <- brc_nmds(
+  asv_matrix = otu_table(sabr_2023_physeq),
+  physeq = sabr_2023_physeq,
+  ncores = 2,
+  k = 2,
+  trymax = 100
+)
+
 
 # Perform NMDS analysis (k=2 reduces to 2 dimensions)
 # trymax=100 ensures convergence by trying up to 100 different random starts
-nmds <- ordinate(mtr_physeq, method = "NMDS", distance = "bray", trymax = 100)
+nmds <- ordinate(
+  sabr_2023_physeq,
+  method = "NMDS",
+  distance = "bray",
+  trymax = 100
+)
 
 #--------------------------------------------------------
 # Generate and display NMDS plot
@@ -66,7 +186,7 @@ nmds <- ordinate(mtr_physeq, method = "NMDS", distance = "bray", trymax = 100)
 
 # Create NMDS plot with samples colored by Plant, shaped by Location, and faceted by Date
 nmds_plot <- plot_ordination(
-  physeq,
+  sabr_2023_physeq,
   nmds,
   color = "plant",
   shape = "sampling_location"
@@ -94,35 +214,6 @@ ggsave(
   width = 10,
   height = 8,
   dpi = 300
-)
-
-#--------------------------------------------------------
-# mia
-#--------------------------------------------------------
-ps_mae@ExperimentList$original_TSE <- addDissimilarity(
-  ps_mae@ExperimentList$original_TSE,
-  method = "bray",
-  assay.type = "relabundance"
-)
-
-# ps_mae@ExperimentList$rarefied_TSE <- addDissimilarity(
-#   ps_mae@ExperimentList$rarefied_TSE,
-#   method = "bray",
-#   assay.type = "relabundance"
-# )
-
-metadata(ps_mae@ExperimentList$original_TSE)[["bray"]][1:6, 1:6]
-ps_mae@ExperimentList$original_TSE <- addNMDS(
-  ps_mae@ExperimentList$original_TSE,
-  FUN = vegdist,
-  method = "bray",
-  nmds.fun = "monoMDS",
-  assay.type = "relabundance",
-  ncomponents = 2,
-  subset.row = NULL,
-  scale = FALSE,
-  keep.dist = TRUE,
-  name = "NMDS"
 )
 
 

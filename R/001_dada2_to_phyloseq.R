@@ -361,7 +361,7 @@ physeq
 #--------------------------------------------------------
 
 # Load metadata from CSV file
-metadata <- readxl::read_xlsx(
+metadata_1 <- readxl::read_xlsx(
   "data/input/metadata_CABBI_SABR2023_DNA.xlsx"
 ) |>
   janitor::clean_names() |>
@@ -374,10 +374,29 @@ metadata <- readxl::read_xlsx(
     across(where(is.numeric), as.factor)
   ) |>
   distinct(id, .keep_all = TRUE) |>
-  column_to_rownames(var = "id")
+  rename(sample_id = id)
+# column_to_rownames(var = "id")
 
+metadata_2 <- readxl::read_xlsx(
+  "data/input/overall_data.xlsx",
+  sheet = "OVERALL",
+) |>
+  janitor::clean_names() |>
+  mutate(
+    initial_order = as.character(initial_order),
+    sampling = as.character(sampling),
+    plot = as.character(plot),
+    column = as.character(column),
+    plate_number = as.character(plate_number),
+    sample = sprintf('SABR_%s', sample)
+  ) |>
+  rename(sample_id = sample) |>
+  select(c(sample_id, dna_conc_ng_ul:gwc_g_g))
 
-sabr_2023_metadata_clean <- metadata # Name change for saving purposes
+metadata_join <- dplyr::left_join(metadata_1, metadata_2, by = "sample_id") |>
+  column_to_rownames(var = "sample_id")
+
+sabr_2023_metadata_clean <- metadata_join # Name change for saving purposes
 save(
   sabr_2023_metadata_clean,
   file = "data/output/processed/sabr_2023_metadata_clean.rda"
@@ -385,12 +404,12 @@ save(
 
 # Check for sample name consistency between phyloseq and metadata
 head(sample_names(physeq))
-head(rownames(metadata))
-base::setdiff(sample_names(physeq), rownames(metadata)) # In phyloseq but not in metadata
-base::setdiff(rownames(metadata), sample_names(physeq)) # In metadata but not in phyloseq
+head(rownames(metadata_join))
+base::setdiff(sample_names(physeq), rownames(metadata_join)) # In phyloseq but not in metadata
+base::setdiff(rownames(metadata_join), sample_names(physeq)) # In metadata but not in phyloseq
 
 # Convert metadata to phyloseq sample_data format
-sampledata <- sample_data(metadata)
+sampledata <- sample_data(metadata_join)
 sampledata
 
 # Add metadata to phyloseq object
