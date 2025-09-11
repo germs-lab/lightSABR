@@ -18,18 +18,6 @@ source("R/utils/000_setup.R")
 #------------------------------------------------------
 # Community Diversity: Alpha Diversity
 #--------------------------------------------------------
-#----------------------
-# Features to test
-#----------------------
-feat <- c(
-  "year",
-  "plot",
-  "sampling_location",
-  "replicate",
-  "sampling_date",
-  "fertilization"
-)
-#----------------------
 
 # Temporary/visualization datasets
 temp_alpha <- estimate_richness(
@@ -59,7 +47,7 @@ temp_alpha <- estimate_richness(
   select(-c(nitrogen_conc, dna_conc_ng_ul, x16s_copies_g, amo_a_337, cnor_b))
 
 
-temp_mtr_long <- mtr_rrfy_df %>%
+temp_main_long <- main_rarefied_df %>%
   mutate(sampling_date = as.character(sampling_date)) %>%
   tidyr::pivot_longer(
     cols = c(observed, shannon, simpson, inv_simpson),
@@ -68,21 +56,41 @@ temp_mtr_long <- mtr_rrfy_df %>%
   )
 
 
-# Master list with Alpha diversity plots for raw and rarefied data
+# Main list with Alpha diversity plots for raw and rarefied data
 # Alpha diversity measures for relative abundance dataset are the same as raw dataset.
 # Define the datasets and their corresponding names
+#----------------------
+# Features to test
+#----------------------
+cat_feat <- c(
+  "year",
+  "plot",
+  "sampling_location",
+  "replicate",
+  "sampling_date",
+  "fertilization"
+)
+cont_feat <- c(
+  "gnha",
+  "nitrate_ppm",
+  "ammonia_ppm",
+  "n_available",
+  "gwc_g_g"
+)
+#----------------------
+
 datasets <- list(
-  raw = temp_alpha,
-  rarefied = temp_mtr_long
+  # raw = temp_alpha,
+  rarefied = temp_main_long
 )
 
 alpha_values <- list(
-  raw = 0.8,
+  # raw = 0.8,
   rarefied = 0.03
 )
 
-# Create the master list using nested purrr::map()
-alpha_plots_master <- purrr::map(
+# Create the main list using nested purrr::map()
+alpha_cat_plots_main <- purrr::map(
   names(datasets),
   ~ {
     dataset_name <- .x
@@ -90,7 +98,7 @@ alpha_plots_master <- purrr::map(
     alpha_val <- alpha_values[[.x]]
 
     feature_plots <- purrr::map(
-      feat,
+      cat_feat,
       ~ {
         alpha_plots(
           dataset,
@@ -115,18 +123,18 @@ alpha_plots_master <- purrr::map(
 )
 
 # Name the top-level list
-names(alpha_plots_master) <- names(datasets)
+names(alpha_cat_plots_main) <- names(datasets)
 
 
 # Fixing `sampling_date`
-alpha_plots_master$raw$sampling_date <- alpha_plots_master$raw$sampling_date +
-  theme(axis.text.x = element_blank())
-alpha_plots_master$rarefied$sampling_date <- alpha_plots_master$rarefied$sampling_date +
+# alpha_cat_plots_main$raw$sampling_date <- alpha_cat_plots_main$raw$sampling_date +
+#   theme(axis.text.x = element_blank())
+alpha_cat_plots_main$rarefied$sampling_date <- alpha_cat_plots_main$rarefied$sampling_date +
   theme(axis.text.x = element_blank())
 
 # Print
 purrr::iwalk(
-  alpha_plots_master,
+  alpha_cat_plots_main,
   ~ {
     dataset_name <- .y
     cat("\n", rep("=", 60), "\n")
@@ -146,3 +154,11 @@ purrr::iwalk(
     )
   }
 )
+
+# Correlations
+
+ggplot(
+  main_rarefied_df,
+  aes(y = "observed", x = "nitrate_ppm")
+) +
+  geom_jitter(width = 0.2)

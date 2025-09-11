@@ -1,5 +1,6 @@
 alpha_plots <- function(
   df,
+  feat,
   .x,
   .y,
   .color = .x,
@@ -14,6 +15,7 @@ alpha_plots <- function(
   # Capture quosures safely
   .x <- rlang::enquo(.x)
   .y <- rlang::enquo(.y)
+  feat <- rlang::enquo(feat)
   .facet <- rlang::enquo(.facet)
   .color <- rlang::enquo(.color)
 
