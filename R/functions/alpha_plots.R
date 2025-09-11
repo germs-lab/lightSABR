@@ -24,13 +24,15 @@ alpha_plots <- function(
     aes(x = !!.x, y = !!.y)
   ) +
     geom_jitter(aes(color = !!.color), width = 0.2, alpha = alpha) +
-    geom_boxplot(alpha = 0, width = 0.6) +
+    geom_boxplot(alpha = 0, width = 0.6)
 
-    if (!rlang::quo_is_null(.facet)) {
-      plot <- plot +
-        facet_wrap(vars(!!.facet), scales = "free_y")
-    }
+  if (!rlang::quo_is_null(.facet)) {
+    plot <- plot +
+      facet_wrap(vars(!!.facet), scales = "free_y")
+  }
+
   plot <- plot +
+    facet_wrap(vars(!!.facet), scales = "free_y") +
     theme_bw() +
     labs(
       title = title,

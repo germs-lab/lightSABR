@@ -163,7 +163,7 @@ asv_table_relab_df <- as.data.frame(otu_table(sabr_2023_physeq_relab))
 
 # Save the relative abundance table as a CSV file
 write.csv(
-  asv_table_rel_df,
+  asv_table_relab_df,
   file = "data/output/processed/sabr_2023_asv_table_relab.csv",
   row.names = TRUE
 )
@@ -178,7 +178,7 @@ save(
 
 # Rarefaction depth is informed by 002_eda_analyses.R, see `reads_sum`
 
-asv_table_rrfy <- multi_rarefy(
+asv_table_rarefied <- multi_rarefy(
   sabr_2023_physeq,
   depth_level = 5000,
   num_iter = 50,
@@ -188,8 +188,8 @@ asv_table_rrfy <- multi_rarefy(
   rename(., sample_id = SampleID)
 
 save(
-  asv_table_rrfy,
-  file = "data/output/processed/sabr_2023_asv_table_rrfy.rda"
+  asv_table_rarefied,
+  file = "data/output/processed/sabr_2023_asv_table_rarefied.rda"
 )
 
 
@@ -208,8 +208,8 @@ rownames(taxa) <- paste0("ASV_", 1:nrow(taxa))
 # load(file = "data/output/processed/sabr_2023_metadata_clean.rda")
 # load(file = file = "data/output/processed/sabr_2023_asv_table_rrfy.rda")
 
-# Master DF to match metadata to ASV iterations
-mtr_rrfy_df <- asv_table_rrfy %>%
+# Main rarefied DF to match metadata to ASV iterations
+main_rarefied_df <- asv_table_rarefied %>%
   rownames_to_column(., var = "iter_id") %>%
   dplyr::left_join(
     .,
@@ -217,44 +217,50 @@ mtr_rrfy_df <- asv_table_rrfy %>%
     by = "sample_id"
   ) %>%
   column_to_rownames(., var = "iter_id") %>%
-  relocate(., c(16881:16890), .after = "sample_id")
+  relocate(., c(16881:16900), .after = "sample_id")
 
-## Master metadata
-mtr_metadata <- mtr_rrfy_df %>% # Metadata matched to all the samples in each iteration
+## Main metadata
+main_rarefied_metadata <- main_rarefied_df %>% # Metadata matched to all the samples in each iteration
   rownames_to_column(., var = "iter_id") %>%
-  select(c(iter_id:nitrogen_conc)) %>%
+  select(c(iter_id:gwc_g_g)) %>%
   column_to_rownames(., var = "iter_id")
 
-## Master ASV table, rarefied
-mtr_asv <- mtr_rrfy_df %>%
+## Main ASV table, rarefied
+main_rarefied_asv <- main_rarefied_df %>%
   select(starts_with("ASV_")) %>%
   t()
 
 # New, rarefied phyloseq object
-mtr_physeq <- phyloseq(
-  otu_table(as.matrix(mtr_asv), taxa_are_rows = TRUE),
+main_rarefied_physeq <- phyloseq(
+  otu_table(as.matrix(main_rarefied_asv), taxa_are_rows = TRUE),
   tax_table(as.matrix(taxa)),
-  sample_data(mtr_metadata)
+  sample_data(main_rarefied_metadata)
 )
 
-save(mtr_physeq, file = "data/output/processed/sabr_2023_mtr_physeq.rda")
+save(
+  main_rarefied_physeq,
+  file = "data/output/processed/sabr_2023_main_rarefied_physeq.rda"
+)
 
 #--------------------------------------------------------
 # Calculate Diversity indices
 #--------------------------------------------------------
-mtr_rrfy_df <- mtr_rrfy_df %>%
+main_rarefied_df <- main_rarefied_df %>%
   mutate(
-    observed = rowSums(select(., -c(1:11)) > 0),
-    shannon = vegan::diversity(select(., -c(1:11)), index = "shannon"),
-    simpson = vegan::diversity(select(., -c(1:11)), index = "simpson"),
-    inv_simpson = vegan::diversity(select(., -c(1:11)), index = "invsimpson")
+    observed = rowSums(select(., -c(1:21)) > 0),
+    shannon = vegan::diversity(select(., -c(1:21)), index = "shannon"),
+    simpson = vegan::diversity(select(., -c(1:21)), index = "simpson"),
+    inv_simpson = vegan::diversity(select(., -c(1:21)), index = "invsimpson")
   ) %>%
   relocate(
     any_of(c("observed", "shannon", "simpson", "inv_simpson")),
     .before = ASV_1
   )
 
-save(mtr_rrfy_df, file = "data/output/processed/sabr_2023_mtr_rrfy_df.rda")
+save(
+  main_rarefied_df,
+  file = "data/output/processed/sabr_2023_main_rarefied_df.rda"
+)
 
 
 #####################################################################

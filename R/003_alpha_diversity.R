@@ -117,7 +117,7 @@ alpha_cat_plots_main <- purrr::map(
       }
     )
 
-    names(feature_plots) <- feat
+    names(feature_plots) <- cat_feat
     return(feature_plots)
   }
 )
@@ -157,8 +157,76 @@ purrr::iwalk(
 
 # Correlations
 
-ggplot(
-  main_rarefied_df,
-  aes(y = "observed", x = "nitrate_ppm")
-) +
-  geom_jitter(width = 0.2)
+main_rarefied_df |>
+  filter(!is.na(nitrate_ppm), !is.na(gwc_g_g)) |>
+  ggplot(aes(x = nitrate_ppm, y = observed)) +
+  geom_jitter(width = 0.2, height = 0, alpha = 0.03)
+scale_x_log10() +
+  scale_y_log10()
+
+
+parameters <- c("plot", "plant", "sampling_location")
+
+cont_feat <- c(
+  "gnha",
+  "nitrate_ppm",
+  "ammonia_ppm",
+  "n_available",
+  "gwc_g_g"
+)
+
+use_log_y <- TRUE
+
+alpha_param_plots <- cont_feat %>%
+  set_names() %>%
+  map(function(feat) {
+    parameters %>%
+      set_names() %>%
+      map(function(par) {
+        df <- main_rarefied_df %>%
+          mutate(
+            !!feat := as.numeric(.data[[feat]]),
+            !!par := as.factor(.data[[par]])
+          )
+
+        df <- if (use_log_y) {
+          df %>% filter(!is.na(.data[[feat]]), .data[[feat]] > 0)
+        } else {
+          df %>% filter(!is.na(.data[[feat]]))
+        }
+
+        p <- ggplot(
+          df,
+          aes(x = .data[[par]], y = .data[[feat]], color = .data[[par]])
+        ) +
+          geom_boxplot(outlier.shape = NA, alpha = 0.35) +
+          geom_jitter(width = 0.2, height = 0, alpha = 0.25) +
+          labs(
+            title = paste(
+              str_to_title(gsub("_", " ", feat)),
+              "by",
+              str_to_title(gsub("_", " ", par))
+            ),
+            x = str_to_title(gsub("_", " ", par)),
+            y = str_to_title(gsub("_", " ", feat)),
+            color = str_to_title(gsub("_", " ", par))
+          ) +
+          scale_color_manual(values = pals::glasbey(32)) +
+          #scale_fill_manual(values = pals::glasbey(32))
+          theme_minimal() +
+          theme(legend.position = "right")
+
+        if (use_log_y) {
+          p <- p + scale_y_log10(labels = scales::label_number())
+        }
+
+        p
+      })
+  })
+
+alpha_param_plots$gnha$plot
+alpha_param_plots$gnha$sampling_location
+
+# or
+# alpha_nitrate_plots[["shannon"]]
+# alpha_nitrate_plots[["inv_simpson"]]
