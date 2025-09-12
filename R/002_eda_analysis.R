@@ -192,7 +192,6 @@ save(
   file = "data/output/processed/sabr_2023_asv_table_rarefied.rda"
 )
 
-
 #--------------------------------------------------------
 # Rarefied Master Data Frame
 # (ASVs and metadata, no taxonomical info)
@@ -213,7 +212,9 @@ main_rarefied_df <- asv_table_rarefied %>%
   rownames_to_column(., var = "iter_id") %>%
   dplyr::left_join(
     .,
-    sabr_2023_metadata_clean %>% rownames_to_column(., var = "sample_id"),
+    {
+      sabr_2023_metadata_clean %>% rownames_to_column(., var = "sample_id")
+    },
     by = "sample_id"
   ) %>%
   column_to_rownames(., var = "iter_id") %>%
@@ -421,3 +422,264 @@ save(
   mtr_physeq_list,
   file = "data/output/processed/sabr_2023_mtr_physeq_list.rda"
 )
+
+#----------------------------------------------------------------------
+# SECTION 4: mean, SD, and autocorrelations (ACF) for each feature
+#----------------------------------------------------------------------
+
+# Inputs
+features <- c("gnha", "nitrate_ppm", "ammonia_ppm", "n_available", "gwc_g_g")
+parameters <- c("plot", "plant", "sampling_location")
+time_col <- "sampling_date"
+
+
+feature_summary <- map_dfr(features, function(f) {
+  set.seed(123)
+  x <- suppressWarnings(as.numeric(main_rarefied_df[[f]]))
+  x <- x[is.finite(x) & !is.na(x)]
+  n_non_na <- length(x)
+
+  # Safe initialization
+  sh_W <- NA_real_
+  sh_p <- NA_real_
+  sh_n <- NA_integer_
+  sh_note <- NA_character_
+
+  if (n_non_na >= 3) {
+    # Since Missing values are allowed, but the number of non-missing values must be between 3 and 5000.
+
+    x_use <- if (n_non_na > 5000) {
+      sh_note <- "Random sample of 5K"
+      sample(x, 5000)
+    }
+    if (n_non_na < 5000) {
+      x
+    }
+    # Extracting useful stats
+    sh <- stats::shapiro.test(x_use)
+    sh_W <- unname(sh$statistic)
+    sh_p <- sh$p.value
+    sh_n <- length(x_use)
+  }
+  if (n_non_na <= 3) {
+    sh_note <- "Insufficient non-NA values for Shapiro-Wilk (n < 3)"
+  }
+
+  # QQ plots per feature
+  qq_plot <-
+    if (n_non_na > 3) {
+      df_plot <- tibble(value = x)
+      ggplot(df_plot, aes(sample = value)) +
+        stat_qq(alpha = 0.6) +
+        stat_qq_line(
+          color = "red",
+          linewidth = 0.6,
+          distribution = stats::qnorm,
+        ) +
+        labs(
+          title = paste("QQ plot:", str_to_title(gsub("_", " ", f))),
+          x = "Theoretical Quantiles",
+          y = "Sample Quantiles"
+        ) +
+        theme_minimal()
+    }
+  if (n_non_na < 3) {
+    ggplot() +
+      annotate(
+        "text",
+        x = 0.5,
+        y = 0.5,
+        label = paste0(f, ": insufficient data (n < 3)")
+      ) +
+      theme_void()
+  }
+
+  tibble(
+    feature = f,
+    n = n_non_na,
+    mean = mean(x, na.rm = TRUE),
+    sd = sd(x, na.rm = TRUE),
+    min = suppressWarnings(min(x, na.rm = TRUE)),
+    max = suppressWarnings(max(x, na.rm = TRUE)),
+    shapiro_W = sh_W,
+    shapiro_p = sh_p,
+    shapiro_n = sh_n,
+    shapiro_note = sh_note,
+    qqplot = list(qq_plot)
+  )
+})
+
+
+feature_summary
+feature_summary$qqplot
+# Looks like there all is non-normally distributed.
+
+# 2) Global ACF (one series per feature, aggregated to 1 value per date)
+#-----------------
+# Helpers
+#-----------------
+acf_preprocess <- function(
+  df,
+  feature,
+  time_col = "sampling_date",
+  agg_fun = mean,
+  na_rm = TRUE
+) {
+  series <- df %>%
+    filter(!is.na(.data[[time_col]])) %>%
+    group_by(.data[[time_col]]) %>%
+    summarise(
+      value = agg_fun(
+        as.numeric(.data[[feature]]),
+        na.rm = na_rm
+      ),
+      .groups = "drop"
+    ) %>%
+    arrange(.data[[time_col]]) %>%
+    filter(is.finite(value))
+
+  return(series)
+}
+
+
+acf_plots <- function(
+  df,
+  feature,
+  time_col = "sampling_date",
+  title = NULL,
+  lag_max = NULL,
+  agg_fun = mean
+) {
+  series <- acf_preprocess(
+    df,
+    feature = feature,
+    time_col = time_col,
+    agg_fun = agg_fun
+  )
+  ac <- stats::acf(series$value, plot = FALSE, na.action = stats::na.pass)
+
+  df_ac <- data.frame(
+    lag = as.integer(ac$lag[, 1, 1]),
+    acf = as.numeric(ac$acf[, 1, 1])
+  )
+
+  conf <- 1.96 / sqrt(ac$n.used)
+  if (is.null(title)) {
+    title <- "ACF"
+  }
+
+  ggplot(df_ac, aes(lag, acf)) +
+    geom_hline(yintercept = 0, color = "grey50") +
+    geom_hline(
+      yintercept = c(-conf, conf),
+      linetype = "dashed",
+      color = "red"
+    ) +
+    geom_col(width = 0.8, fill = "steelblue") +
+    labs(title = title, x = "Lag", y = "ACF") +
+    theme_minimal()
+}
+#----------------
+
+# Compute ACF stats
+acf_global <- map_dfr(features, function(feat) {
+  series <- acf_preprocess(
+    main_rarefied_df,
+    feature = feat,
+    time_col = "sampling_date"
+  )
+  n <- nrow(series)
+
+  if (n < 3) {
+    return(tibble(
+      feature = feat,
+      lag = NA_integer_,
+      acf = NA_real_,
+      conf = NA_real_,
+      n = n
+    ))
+  }
+
+  ac <- stats::acf(
+    series$value,
+    type = "correlation",
+    plot = FALSE,
+    na.action = na.pass
+  )
+
+  tibble(
+    feature = feat,
+    lag = as.integer(ac$lag[, 1, 1]),
+    acf = as.numeric(ac$acf[, 1, 1]),
+    conf = 1.96 / sqrt(ac$n.used),
+    n = ac$n.used
+  )
+})
+
+
+acf_global <- acf_global %>%
+  mutate(
+    plots = map(
+      feature,
+      ~ acf_plots(
+        df = main_rarefied_df,
+        feature = .x,
+        time_col = "sampling_date",
+        title = paste("ACF:", str_to_title(gsub("_", " ", .x)))
+      )
+    )
+  )
+acf_global$plots[[1]]
+acf_global$plots[[20]]
+
+# # 3) Grouped ACF (by each parameter), same aggregation to 1 value per date
+# acf_by_group <- map_dfr(parameters, function(par) {
+#   if (!par %in% names(df0)) {
+#     return(tibble())
+#   }
+
+#   df0 %>%
+#     group_by(.data[[par]]) %>%
+#     group_modify(
+#       ~ {
+#         grp <- .x %>% arrange(date_tmp)
+#         map_dfr(features, function(f) {
+#           series <- grp %>%
+#             group_by(date_tmp) %>%
+#             summarise(
+#               value = mean(.data[[f]], na.rm = TRUE),
+#               .groups = "drop"
+#             ) %>%
+#             arrange(date_tmp) %>%
+#             filter(!is.na(value))
+
+#           n <- nrow(series)
+#           if (n < 3) {
+#             return(tibble(
+#               feature = f,
+#               lag = NA_integer_,
+#               acf = NA_real_,
+#               conf = NA_real_,
+#               n = n
+#             ))
+#           }
+#           ac <- stats::acf(series$value, plot = FALSE, na.action = na.pass)
+#           tibble(
+#             feature = f,
+#             lag = as.integer(ac$lag[, 1, 1]),
+#             acf = as.numeric(ac$acf[, 1, 1]),
+#             conf = 1.96 / sqrt(n),
+#             n = n
+#           )
+#         })
+#       }
+#     ) %>%
+#     ungroup() %>%
+#     rename(group = !!par) %>%
+#     mutate(parameter = par)
+# })
+
+# Outputs:
+# - feature_summary: one row per feature with n/mean/sd
+# - acf_global: ACF per feature (lags, acf, and ±conf bounds)
+# - acf_by_group: ACF per feature within each group and parameter

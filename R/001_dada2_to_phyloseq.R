@@ -388,7 +388,8 @@ metadata_2 <- readxl::read_xlsx(
     plot = as.character(plot),
     column = as.character(column),
     plate_number = as.character(plate_number),
-    sample = sprintf('SABR_%s', sample)
+    sample = sprintf('SABR_%s', sample),
+    across(dna_conc_ng_ul:gwc_g_g, as.numeric)
   ) |>
   rename(sample_id = sample) |>
   select(c(sample_id, dna_conc_ng_ul:gwc_g_g))
