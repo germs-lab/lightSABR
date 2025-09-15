@@ -34,7 +34,7 @@ list.files(here::here("R/functions"), pattern = "\\.R$", full.names = TRUE) %>%
 
 # Objects
 list.files(
-  here::here("data/output/processed"),
+  here::here("data/output/processed/rdata/"),
   full.names = TRUE,
   recursive = TRUE,
   pattern = "\\.rda$"

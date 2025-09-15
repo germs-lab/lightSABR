@@ -284,7 +284,10 @@ cat("After removing chimeras:", sum(seqtab.nochim), "\n")
 # Save file
 save(
   seqtab.nochim,
-  file = file.path(out_dir, "processed/sabr_2023_asv_table.rda")
+  file = file.path(
+    out_dir,
+    "data/output/processed/asv_tables/raw/sabr_2023_asv_table.rda"
+  )
 )
 write.csv(
   seqtab.nochim,
@@ -400,7 +403,7 @@ metadata_join <- dplyr::left_join(metadata_1, metadata_2, by = "sample_id") |>
 sabr_2023_metadata_clean <- metadata_join # Name change for saving purposes
 save(
   sabr_2023_metadata_clean,
-  file = "data/output/processed/sabr_2023_metadata_clean.rda"
+  file = "data/output/processed/metadata/sabr_2023_metadata_clean.rda"
 )
 
 # Check for sample name consistency between phyloseq and metadata
@@ -432,5 +435,5 @@ sabr_2023_physeq <- physeq # Name change for saving purposes
 remove(physeq)
 save(
   sabr_2023_physeq,
-  file = "data/output/processed/sabr_2023_physeq.rda"
+  file = "data/output/processed/rdata/phyloseq/sabr_2023_physeq.rda"
 )

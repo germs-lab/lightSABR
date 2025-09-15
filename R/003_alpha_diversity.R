@@ -155,7 +155,8 @@ purrr::iwalk(
   }
 )
 
-# Correlations
+# Auto correlation between feastures/covariates Correlations
+# How does the data look like for features?
 
 main_rarefied_df |>
   filter(!is.na(nitrate_ppm), !is.na(gwc_g_g)) |>
