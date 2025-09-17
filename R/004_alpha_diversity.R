@@ -93,13 +93,13 @@ use_log_x <- TRUE
 #----------------------
 
 datasets <- list(
-  raw = temp_alpha,
+  raw = temp_alpha
   #rarefied = temp_main_long
 )
 
 alpha_values <- list(
-  # raw = 0.8,
-  rarefied = 0.03
+  raw = 0.8
+  #rarefied = 0.03
 )
 
 # Create the main list using nested purrr::map()
@@ -141,33 +141,35 @@ names(alpha_cat_plots_main) <- names(datasets)
 
 
 # Fixing `sampling_date`
-# alpha_cat_plots_main$raw$sampling_date <- alpha_cat_plots_main$raw$sampling_date +
-#   theme(axis.text.x = element_blank())
-alpha_cat_plots_main$rarefied$sampling_date <- alpha_cat_plots_main$rarefied$sampling_date +
+alpha_cat_plots_main$raw$sampling_date <- alpha_cat_plots_main$raw$sampling_date +
   theme(axis.text.x = element_blank())
+# alpha_cat_plots_main$rarefied$sampling_date <- alpha_cat_plots_main$rarefied$sampling_date +
+#   theme(axis.text.x = element_blank())
 
 # Print
-purrr::iwalk(
-  alpha_cat_plots_main,
-  ~ {
-    dataset_name <- .y
-    cat("\n", rep("=", 60), "\n")
-    cat("DATASET:", toupper(dataset_name), "\n")
-    cat(rep("=", 60), "\n\n")
+print(alpha_cat_plots_main)
 
-    purrr::iwalk(
-      .x,
-      ~ {
-        feature_name <- .y
-        cat(rep("-", 40), "\n")
-        cat("FEATURE:", toupper(feature_name), "\n")
-        cat(rep("-", 40), "\n")
-        print(.x)
-        cat("\n\n")
-      }
-    )
-  }
-)
+# purrr::iwalk(
+#   alpha_cat_plots_main,
+#   ~ {
+#     dataset_name <- .y
+#     cat("\n", rep("=", 60), "\n")
+#     cat("DATASET:", toupper(dataset_name), "\n")
+#     cat(rep("=", 60), "\n\n")
+
+#     purrr::iwalk(
+#       .x,
+#       ~ {
+#         feature_name <- .y
+#         cat(rep("-", 40), "\n")
+#         cat("FEATURE:", toupper(feature_name), "\n")
+#         cat(rep("-", 40), "\n")
+#         print(.x)
+#         cat("\n\n")
+#       }
+#     )
+#   }
+# )
 
 # Aplha diversity and feature simple linear regressions
 
@@ -205,9 +207,12 @@ alpha_feat_lm <- diversity_measures %>%
           ) +
           labs(
             title = paste(
-              str_to_title(feat),
+              str_to_title(
+                div
+              ),
+              "Index",
               "by",
-              str_to_title(gsub("_", " ", div))
+              str_to_title(feat)
             ),
             x = paste("log10(", feat, ")"),
             y = str_to_title(gsub("_", " ", div))
@@ -222,31 +227,34 @@ alpha_feat_lm <- diversity_measures %>%
       })
   })
 
-alpha_feat_lm$shannon
-alpha_feat_lm$simpson
 
 # Print
+print(alpha_feat_lm)
 purrr::iwalk(
   alpha_feat_lm,
   ~ {
-    diversity_measures <- .y
-    cat("\n", rep("=", 60), "\n")
-    cat("DIVERSITY INDEX:", toupper(diversity_measures), "\n")
-    cat(rep("=", 60), "\n\n")
-
-    purrr::iwalk(
-      .x,
-      ~ {
-        feature_name <- .y
-        cat(rep("-", 40), "\n")
-        cat("FEATURE:", toupper(feature_name), "\n")
-        cat(rep("-", 40), "\n")
-        print(.x)
-        cat("\n\n")
-      }
-    )
+    feature_name <- .y
+    cat(rep("-", 40), "\n")
+    cat("DIVERSITY INDEX:", toupper(feature_name), "\n")
+    cat(rep("-", 40), "\n")
+    print(.x)
+    cat("\n\n")
   }
 )
+
+#     # purrr::iwalk(
+#     #   .x,
+#     #   ~ {
+#     #     feature_name <- .y
+#     #     cat(rep("-", 40), "\n")
+#     #     cat("FEATURE:", toupper(feature_name), "\n")
+#     #     cat(rep("-", 40), "\n")
+#     #     print(.x)
+#     #     cat("\n\n")
+#     #   }
+#     #)
+#   }
+# )
 
 # For individual plots
 # ggplot(

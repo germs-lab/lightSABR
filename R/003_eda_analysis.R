@@ -23,8 +23,9 @@ source("R/utils/000_setup.R")
 # SECTION 1: Exploration of data set
 #--------------------------------------------------------
 ## Basic metadata exploration
-colnames(tax_table(sabr_2023_physeq))
-colnames(sample_data(sabr_2023_physeq))
+base::colnames(tax_table(sabr_2023_physeq))
+base::colnames(sample_data(sabr_2023_physeq))
+names_list <- base::rownames(sample_data(sabr_2023_physeq))
 
 #--------------------------------------------------------
 # Summaries and Read Counts
@@ -44,6 +45,8 @@ percent_phyla_clean <- phyloseq_ntaxa_by_tax(
   mutate(sum = sum(N.OTU)) |>
   group_by(phylum) |>
   summarise(occurance_in_samples = n())
+
+percent_phyla_clean
 
 #--------------------------------------------------------
 # Read Count Analysis
@@ -84,9 +87,9 @@ ggplot(
   geom_line() +
   coord_cartesian(ylim = c(0, 100000))
 
-reads |>
-  arrange(n_seqs) |>
-  filter(sample_id %in% names_list)
+# reads |>
+#   arrange(n_seqs) |>
+#   filter(sample_id %in% names_list)
 
 #--------------------------------------------------------
 # Good's Coverage Analysis
@@ -97,11 +100,9 @@ cover_chao <- phyloseq_coverage(
   correct_singletons = T,
   add_attr = T
 )
-cover_chao <- phyloseq_coverage(
-  sabr_2023_physeq,
-  correct_singletons = T,
-  add_attr = T
-)
+
+cover_chao
+
 ps_melt <- sabr_2023_physeq |>
   psmelt() |>
   janitor::clean_names() |>
@@ -138,16 +139,12 @@ cover_goods |>
 # S4 `TreeSummarizedExperiement` object.
 #####################################################################
 
-#--------------------------------------------------------------------
-# `phyloseq` PACKAGE WORKFLOW
-#--------------------------------------------------------------------
 #--------------------------------------------------------
 # Prevalence & Core Microbiome Analysis
 #--------------------------------------------------------
 
 ## Prevalence visualization
 metagMisc::phyloseq_prevalence_plot(
-  sabr_2023_physeq,
   sabr_2023_physeq,
   prev.trh = 0.5,
   taxcolor = "phylum",
@@ -159,7 +156,6 @@ metagMisc::phyloseq_prevalence_plot(
 ## Host plant-specific averages
 ps_average <- metagMisc::phyloseq_average(
   sabr_2023_physeq,
-  sabr_2023_physeq,
   avg_type = "arithmetic",
   acomp_zero_impute = NULL,
   aldex_samples = 213,
@@ -169,6 +165,7 @@ ps_average <- metagMisc::phyloseq_average(
   verbose = TRUE,
   progress = "text",
 )
+ps_average
 
 
 #--------------------------------------------------------
@@ -209,7 +206,7 @@ ggplot(
 
 # The core taxa are defined as those that exceed the given population
 # prevalence threshold at the given detection level.
-microbiome::core_abundance(
+core_abun <- microbiome::core_abundance(
   sabr_2023_physeq@otu_table,
   detection = 0,
   prevalence = 50 / 100,
@@ -219,7 +216,7 @@ microbiome::core_abundance(
 # The rarity function provides the abundance of the least abundant taxa
 # within each sample, regardless of the population prevalence.
 
-microbiome::rare_abundance(
+rare_abun <- microbiome::rare_abundance(
   sabr_2023_physeq@otu_table,
   detection = 0,
   prevalence = 50 / 100,
@@ -228,7 +225,6 @@ microbiome::rare_abundance(
 
 core_tax <- microbiome::core_members(
   sabr_2023_physeq,
-  sabr_2023_physeq,
   detection = 0,
   prevalence = 90 / 100,
   include.lowest = FALSE
@@ -236,25 +232,21 @@ core_tax <- microbiome::core_members(
 
 core_tax
 
-core_tax
-
 rare_tax <- microbiome::rare_members(
-  sabr_2023_physeq,
   sabr_2023_physeq,
   detection = 0,
   prevalence = 50 / 100,
   include.lowest = FALSE
 )
 
-rare_tax
-
+#rare_tax
 
 #----------------------------------------------------------------------
 # Extract taxonomy for prevalent and rare ASVs at different thresholds
 # and ranks
 #----------------------------------------------------------------------
 
-ps_list_og <- get_prevalent_rare(
+ps_list_raw <- get_prevalent_rare(
   sabr_2023_physeq,
   thresholds = c(90, 80, 70, 60, 30),
   detection = 0 / 100,
@@ -268,30 +260,39 @@ ps_list_relab <- get_prevalent_rare(
   include.lowest = FALSE
 )
 
-ps_list_rrfy <- get_prevalent_rare(
-  main_physeq,
+ps_list_rarefied <- get_prevalent_rare(
+  main_rarefied_physeq,
   thresholds = c(90, 80, 70, 60, 30),
   detection = 0 / 100,
   include.lowest = FALSE
 )
 
 main_physeq_list <- list(
-  original_phyloseq_lists = ps_list_og,
+  raw_phyloseq_lists = ps_list_raw,
   relab_phyloseq_lists = ps_list_relab,
-  rarefied_phyloseq_lists = ps_list_rrfy
+  rarefied_phyloseq_lists = ps_list_rarefied
 )
+ps_list_raw
 
-save(
-  main_physeq_list,
-  file = "data/output/processed/rdata/phyloseq/sabr_2023_main_physeq_list.rda"
-)
+# save(
+#   main_physeq_list,
+#   file = "data/output/processed/rdata/phyloseq/sabr_2023_main_physeq_list.rda"
+# )
 
 #----------------------------------------------------------------------
 # SECTION 3: mean, SD, and autocorrelations (ACF) for each feature
 #----------------------------------------------------------------------
 
 # Inputs
-features <- c("gnha", "nitrate_ppm", "ammonia_ppm", "n_available", "gwc_g_g")
+features <- c(
+  "gnha",
+  "nitrate_ppm",
+  "ammonia_ppm",
+  "amo_a_337",
+  "cnor_b",
+  #  "n_available",
+  "gwc_g_g"
+)
 parameters <- c("plot", "plant", "sampling_location")
 time_col <- "sampling_date"
 use_log_y <- TRUE
@@ -424,7 +425,7 @@ feature_boxplots <- features %>%
               str_to_title(gsub("_", " ", par))
             ),
             x = str_to_title(gsub("_", " ", par)),
-            y = str_to_title(gsub("_", " ", feat)),
+            y = paste("log10(", str_to_title(gsub("_", " ", feat)), ")"),
             color = str_to_title(gsub("_", " ", par))
           ) +
           scale_color_manual(values = pals::glasbey(32)) +
@@ -492,6 +493,7 @@ acf_global <- map_dfr(features, function(feat) {
 
 
 acf_global <- acf_global %>%
+  distinct(feature) %>% # one row per feature
   mutate(
     plots = map(
       feature,
@@ -503,8 +505,8 @@ acf_global <- acf_global %>%
       )
     )
   )
-acf_global$plots[[1]]
-acf_global$plots[[20]]
+acf_global$plots
+
 
 # 3) Grouped ACF (by each parameter), same aggregation to 1 value per date
 acf_by_group <- map_dfr(parameters, function(par) {
@@ -558,7 +560,7 @@ acf_by_group <- map_dfr(parameters, function(par) {
 # Correlation coefficients
 
 metadata_matrix <- sabr_2023_metadata_clean |>
-  select(c(gnha, nitrate_ppm:gwc_g_g))
+  select(c(gnha, amo_a_337:gwc_g_g))
 
 cor(
   metadata_matrix,
