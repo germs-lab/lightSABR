@@ -23,7 +23,7 @@ source("R/utils/000_setup.R")
 # Creating main_df: no data transformation,
 # just manipulation for visualization and testing.
 
-main_df <- sabr_2023_physeq %>%
+main_raw_df <- sabr_2023_physeq %>%
   otu_table() %>%
   as.data.frame() %>%
   t() %>%
@@ -148,18 +148,59 @@ save(
 #--------------------------------------------------------
 # Calculate Diversity indices
 #--------------------------------------------------------
-main_rarefied_df <- main_rarefied_df %>%
-  mutate(
-    observed = rowSums(select(., -c(1:21)) > 0),
-    shannon = vegan::diversity(select(., -c(1:21)), index = "shannon"),
-    simpson = vegan::diversity(select(., -c(1:21)), index = "simpson"),
-    inv_simpson = vegan::diversity(select(., -c(1:21)), index = "invsimpson")
-  ) %>%
-  relocate(
-    any_of(c("observed", "shannon", "simpson", "inv_simpson")),
-    .before = ASV_1
-  )
+datasets <- list(
+  raw = main_raw_df,
+  rarefied = main_rarefied_df
+)
 
+unwanted_cols <- 1:21 # columns to keep as metadata; ASVs start after this
+
+compute_diversity <- function(
+  dataset,
+  drop = unwanted_cols,
+  first_asv_col = NULL
+) {
+  # Abundance block (ASVs) as numeric matrix
+  abund <- dataset %>% select(-all_of(drop))
+  abund_mat <- as.matrix(abund)
+
+  out <- dataset %>%
+    mutate(
+      observed = rowSums(abund_mat > 0, na.rm = TRUE),
+      shannon = vegan::diversity(abund_mat, index = "shannon"),
+      simpson = vegan::diversity(abund_mat, index = "simpson"),
+      inv_simpson = vegan::diversity(abund_mat, index = "invsimpson")
+    )
+
+  # Figure out where to relocate the new columns
+  if (is.null(first_asv_col)) {
+    # put before the first ASV column after the dropped block
+    first_asv_col <- colnames(dataset)[min(setdiff(
+      seq_len(ncol(dataset)),
+      drop
+    ))]
+  }
+
+  out %>%
+    relocate(
+      any_of(c("observed", "shannon", "simpson", "inv_simpson")),
+      .before = all_of(first_asv_col)
+    )
+}
+
+main_dataframes <- imap(
+  datasets,
+  ~ compute_diversity(.x, drop = unwanted_cols, first_asv_col = "ASV_1")
+)
+
+
+main_raw_df <- main_dataframes$raw
+main_rarefied_df <- main_dataframes$rarefied
+
+save(
+  main_raw_df,
+  file = "data/output/processed/rdata/dataframes/sabr_2023_main_raw_df.rda"
+)
 save(
   main_rarefied_df,
   file = "data/output/processed/rdata/dataframes/sabr_2023_main_rarefied_df.rda"

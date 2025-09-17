@@ -93,8 +93,8 @@ use_log_x <- TRUE
 #----------------------
 
 datasets <- list(
-  #raw = temp_alpha,
-  rarefied = temp_main_long
+  raw = temp_alpha,
+  #rarefied = temp_main_long
 )
 
 alpha_values <- list(
@@ -171,86 +171,92 @@ purrr::iwalk(
 
 # Aplha diversity and feature simple linear regressions
 
-# df <-main_rarefied_df %>%
-#   {
-#     .[(rownames(.) %in% main_rarefied_df$sample_id), , drop = FALSE]
-#   } %>%
-#TODO 2025-09-16
-main_df <- sabr_2023_physeq %>%
-  as.data.frame(otu_table(sabr_2023_physeq_relab))
-
-
-mutate(
-  observed = rowSums(select(., -c(1:21)) > 0),
-  shannon = vegan::diversity(select(., -c(1:21)), index = "shannon"),
-  simpson = vegan::diversity(select(., -c(1:21)), index = "simpson"),
-  inv_simpson = vegan::diversity(select(., -c(1:21)), index = "invsimpson")
-) %>%
-  relocate(
-    any_of(c("observed", "shannon", "simpson", "inv_simpson")),
-    .before = ASV_1
-  )
-
 alpha_feat_lm <- diversity_measures %>%
   set_names() %>%
-  map(function(feat) {
+  map(function(div) {
     cont_feat %>%
       set_names() %>%
-      map(function(div) {
-        df <- main_rarefied_df %>%
-          mutate(
-            !!feat := as.numeric(.data[[feat]]),
-            !!div := as.factor(.data[[div]])
-          )
+      map(function(feat) {
+        df <- main_raw_df %>%
+          select(all_of(c(feat, div))) %>%
+          rename(.x = all_of(feat), .y = all_of(div)) %>%
+          filter(!is.na(.x), !is.na(.y))
 
-        # df <- if (use_log_x) {
-        #   df %>% filter(!is.na(.data[[feat]]), .data[[feat]] > 0)
-        # } else {
-        #   df %>% filter(!is.na(.data[[feat]]))
-        # }
-
-        p <- ggplot(
-          df,
-          aes(x = .data[[feat]], y = .data[[div]])
-        ) +
-          geom_jitter(
-            width = 0.2,
-            height = 0,
-            alpha = 0.25
+        p <- ggplot(df, aes(x = .x, y = .y)) +
+          geom_point(alpha = 0.35, size = 1.4) +
+          geom_smooth(
+            method = "lm",
+            formula = y ~ x,
+            se = TRUE,
+            color = "steelblue"
           ) +
-          #geom_smooth(method = "lm") +
+          ggpmisc::stat_poly_eq(
+            ggpmisc::use_label(c(
+              "adj.R2",
+              "f",
+              "p",
+              "n"
+            )),
+            label.y = "bottom"
+          ) +
+          labs(
+            x = gsub("_", " ", feat),
+            y = gsub("_", " ", div)
+          ) +
           labs(
             title = paste(
-              str_to_title(gsub("_", " ", feat)),
+              str_to_title(feat),
               "by",
               str_to_title(gsub("_", " ", div))
             ),
-            x = str_to_title(gsub("_", " ", div)),
-            y = str_to_title(gsub("_", " ", feat))
+            x = paste("log10(", feat, ")"),
+            y = str_to_title(gsub("_", " ", div))
           ) +
-          scale_color_manual(values = pals::glasbey(32)) +
-          #scale_fill_manual(values = pals::glasbey(32))
-          theme_minimal() +
-          theme(axis.text.y = element_blank())
+          theme_minimal()
 
-        # if (use_log_x) {
-        #   p <- p + scale_x_log10(labels = scales::label_number())
-        # }
+        if (use_log_x) {
+          p <- p + scale_x_log10(labels = scales::label_number())
+        }
 
         p
       })
   })
-alpha_feat_lm$shannon$nitrate_ppm
 
+alpha_feat_lm$shannon
+alpha_feat_lm$simpson
 
-ggplot(
-  main_rarefied_df,
-  aes(x = main_rarefied_df$gnha, y = observed)
-) +
-  geom_jitter(
-    width = 0.2,
-    height = 0,
-    alpha = 0.25
-  ) +
-  geom_smooth(method = "lm") +
-  scale_x_log10(labels = scales::label_number())
+# Print
+purrr::iwalk(
+  alpha_feat_lm,
+  ~ {
+    diversity_measures <- .y
+    cat("\n", rep("=", 60), "\n")
+    cat("DIVERSITY INDEX:", toupper(diversity_measures), "\n")
+    cat(rep("=", 60), "\n\n")
+
+    purrr::iwalk(
+      .x,
+      ~ {
+        feature_name <- .y
+        cat(rep("-", 40), "\n")
+        cat("FEATURE:", toupper(feature_name), "\n")
+        cat(rep("-", 40), "\n")
+        print(.x)
+        cat("\n\n")
+      }
+    )
+  }
+)
+
+# For individual plots
+# ggplot(
+#   main_raw_df,
+#   aes(x = amo_a_337, y = shannon)
+# ) +
+#   geom_jitter(
+#     width = 0.2,
+#     height = 0,
+#     alpha = 0.25
+#   ) +
+#   geom_smooth(method = "lm") +
+#   scale_x_log10(labels = scales::label_number())
