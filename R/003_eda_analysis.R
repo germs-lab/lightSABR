@@ -7,12 +7,11 @@
 # Section 1. Exploration of dataset: Calculates summary statistic, read counts &
 # Good's coverage,
 #
-# Section 2. Data Transformation & Export: Transforms the raw count data to
-# relative abundance and performs rarefaction of sequences,
+# Section 2. ASV Prevalence Analysis: Explores prevalence and core taxa analysis
 #
-# Section 3. ASV Prevalence Analysis: Explores prevalence and core taxa analysis
-#
-#
+# Section 3: Summary statistics, autocorrelations (ACF) and correlation coefficients
+#  for each feature
+
 # Author: Jaejin Lee & Bolívar Aponte Rolón
 # Last modified: 2025-08-21
 ##################################################################################
@@ -127,145 +126,9 @@ cover_goods |>
   filter(n_seqs > 750) |>
   arrange(goods)
 
-#####################################################################
-# SECTION 2: Data Transformation and Export
-#
-# This section of the script transforms the raw count data to
-# relative abundance, performs rarefaction of sequences,examines basic
-# properties of the dataset, and exports the transformed data for
-# further analysis.
-#
-#####################################################################
-
-# Ensure the phyloseq object (sabr_2023_physeq) is loaded.
-
-#------------------------------
-#  Relative Abundance
-#------------------------------
-
-# Display summary statistics of the raw count data
-summary(as.vector(otu_table(sabr_2023_physeq)))
-
-# Calculate and display the sum of counts for each sample
-sample_sums(sabr_2023_physeq)
-
-# Convert counts to relative abundance
-sabr_2023_physeq_relab <- transform_sample_counts(
-  sabr_2023_physeq,
-  function(x) x / sum(x)
-)
-dim(otu_table(sabr_2023_physeq_relab))
-
-# Verify (should all be 1)
-sample_sums(sabr_2023_physeq_relab)
-
-asv_table_relab_df <- as.data.frame(otu_table(sabr_2023_physeq_relab))
-
-# Save the relative abundance table as a CSV file
-write.csv(
-  asv_table_relab_df,
-  file = "data/output/processed/asv_tables/derived/sabr_2023_asv_table_relab.csv",
-  row.names = TRUE
-)
-
-save(
-  sabr_2023_physeq_relab,
-  file = "data/output/processed/rdata/phyloseq/sabr_2023_physeq_relab.rda"
-)
-#------------------------------
-# Rarefaction
-#------------------------------
-
-# Rarefaction depth is informed by 002_eda_analyses.R, see `reads_sum`
-
-asv_table_rarefied <- multi_rarefy(
-  sabr_2023_physeq,
-  depth_level = 5000,
-  num_iter = 50,
-  .summarize = FALSE,
-  set_seed = 345
-) %>%
-  rename(., sample_id = SampleID)
-
-save(
-  asv_table_rarefied,
-  file = "data/output/processed/asv_tables/derived/sabr_2023_asv_table_rarefied.rda"
-)
-
-#--------------------------------------------------------
-# Rarefied Master Data Frame
-# (ASVs and metadata, no taxonomical info)
-#--------------------------------------------------------
-
-taxa <- read.csv(file.path("data/output/processed/sabr_2023_taxonomy.csv")) %>%
-  rename(., sequence = X) %>%
-  rename_with(str_to_lower, .cols = everything()) # Clean up needed after importing from .csv
-
-rownames(taxa) <- paste0("ASV_", 1:nrow(taxa))
-
-# These should be loaded already by 000_setup.R
-# load(file = "data/output/processed/sabr_2023_metadata_clean.rda")
-# load(file = file = "data/output/processed/sabr_2023_asv_table_rrfy.rda")
-
-# Main rarefied DF to match metadata to ASV iterations
-main_rarefied_df <- asv_table_rarefied %>%
-  rownames_to_column(., var = "iter_id") %>%
-  dplyr::left_join(
-    .,
-    {
-      sabr_2023_metadata_clean %>% rownames_to_column(., var = "sample_id")
-    },
-    by = "sample_id"
-  ) %>%
-  column_to_rownames(., var = "iter_id") %>%
-  relocate(., c(16881:16900), .after = "sample_id")
-
-## Main metadata
-main_rarefied_metadata <- main_rarefied_df %>% # Metadata matched to all the samples in each iteration
-  rownames_to_column(., var = "iter_id") %>%
-  select(c(iter_id:gwc_g_g)) %>%
-  column_to_rownames(., var = "iter_id")
-
-## Main ASV table, rarefied
-main_rarefied_asv <- main_rarefied_df %>%
-  select(starts_with("ASV_")) %>%
-  t()
-
-# New, rarefied phyloseq object
-main_rarefied_physeq <- phyloseq(
-  otu_table(as.matrix(main_rarefied_asv), taxa_are_rows = TRUE),
-  tax_table(as.matrix(taxa)),
-  sample_data(main_rarefied_metadata)
-)
-
-save(
-  main_rarefied_physeq,
-  file = "data/output/processed/rdata/phyloseq/sabr_2023_main_rarefied_physeq.rda"
-)
-
-#--------------------------------------------------------
-# Calculate Diversity indices
-#--------------------------------------------------------
-main_rarefied_df <- main_rarefied_df %>%
-  mutate(
-    observed = rowSums(select(., -c(1:21)) > 0),
-    shannon = vegan::diversity(select(., -c(1:21)), index = "shannon"),
-    simpson = vegan::diversity(select(., -c(1:21)), index = "simpson"),
-    inv_simpson = vegan::diversity(select(., -c(1:21)), index = "invsimpson")
-  ) %>%
-  relocate(
-    any_of(c("observed", "shannon", "simpson", "inv_simpson")),
-    .before = ASV_1
-  )
-
-save(
-  main_rarefied_df,
-  file = "data/output/processed/rdata/dataframes/sabr_2023_main_rarefied_df.rda"
-)
-
 
 #####################################################################
-# SECTION 3: ASV Prevalence Analysis
+# SECTION 2: ASV Prevalence Analysis
 #
 # This section analyzes the prevalence of ASVs across
 # samples, identifying and examining ASVs prevalent in a large
@@ -424,14 +287,15 @@ save(
 )
 
 #----------------------------------------------------------------------
-# SECTION 4: mean, SD, and autocorrelations (ACF) for each feature
+# SECTION 3: mean, SD, and autocorrelations (ACF) for each feature
 #----------------------------------------------------------------------
 
 # Inputs
 features <- c("gnha", "nitrate_ppm", "ammonia_ppm", "n_available", "gwc_g_g")
 parameters <- c("plot", "plant", "sampling_location")
 time_col <- "sampling_date"
-
+use_log_y <- TRUE
+#-------------------
 
 feature_summary <- map_dfr(features, function(f) {
   set.seed(123)
@@ -513,9 +377,84 @@ feature_summary <- map_dfr(features, function(f) {
 feature_summary
 feature_summary$qqplot
 # Looks like there all is non-normally distributed.
+# Use log10 scale, or other normalization technique, when plotting or testing in models
+
+# LEt's look at some boxplots
+
+feature_boxplots <- features %>%
+  set_names() %>%
+  map(function(feat) {
+    parameters %>%
+      set_names() %>%
+      map(function(par) {
+        df <- sabr_2023_metadata_clean %>%
+          {
+            .[(rownames(.) %in% main_rarefied_df$sample_id), , drop = FALSE]
+          } %>%
+          mutate(
+            !!feat := as.numeric(.data[[feat]]),
+            !!par := as.factor(.data[[par]])
+          )
+
+        df <- if (use_log_y) {
+          df %>% filter(!is.na(.data[[feat]]), .data[[feat]] > 0)
+        } else {
+          df %>% filter(!is.na(.data[[feat]]))
+        }
+
+        p <- ggplot(
+          df,
+          aes(x = .data[[par]], y = .data[[feat]], color = .data[[par]])
+        ) +
+          geom_boxplot(
+            #,
+            outlier.shape = NA,
+            alpha = 0.35
+          ) +
+          geom_jitter(
+            aes(color = .data[[par]]),
+            width = 0.2,
+            height = 0,
+            alpha = 0.25
+          ) +
+          labs(
+            title = paste(
+              str_to_title(gsub("_", " ", feat)),
+              "by",
+              str_to_title(gsub("_", " ", par))
+            ),
+            x = str_to_title(gsub("_", " ", par)),
+            y = str_to_title(gsub("_", " ", feat)),
+            color = str_to_title(gsub("_", " ", par))
+          ) +
+          scale_color_manual(values = pals::glasbey(32)) +
+          #scale_fill_manual(values = pals::glasbey(32))
+          theme_minimal() +
+          theme(legend.position = "right")
+
+        if (use_log_y) {
+          p <- p + scale_y_log10(labels = scales::label_number())
+        }
+
+        p
+      })
+  })
+
+
+purrr::iwalk(
+  feature_boxplots,
+  ~ {
+    feature_name <- .y
+    cat(rep("-", 40), "\n")
+    cat("FEATURE:", toupper(feature_name), "\n")
+    cat(rep("-", 40), "\n")
+    print(.x)
+    cat("\n\n")
+  }
+)
+
 
 # 2) Global ACF (one series per feature, aggregated to 1 value per date)
-
 # Compute ACF stats
 acf_global <- map_dfr(features, function(feat) {
   series <- acf_preprocess(
@@ -567,54 +506,83 @@ acf_global <- acf_global %>%
 acf_global$plots[[1]]
 acf_global$plots[[20]]
 
-# # 3) Grouped ACF (by each parameter), same aggregation to 1 value per date
-# acf_by_group <- map_dfr(parameters, function(par) {
-#   if (!par %in% names(df0)) {
-#     return(tibble())
-#   }
+# 3) Grouped ACF (by each parameter), same aggregation to 1 value per date
+acf_by_group <- map_dfr(parameters, function(par) {
+  if (!par %in% names(main_rarefied_df)) {
+    return(tibble())
+  }
 
-#   df0 %>%
-#     group_by(.data[[par]]) %>%
-#     group_modify(
-#       ~ {
-#         grp <- .x %>% arrange(date_tmp)
-#         map_dfr(features, function(f) {
-#           series <- grp %>%
-#             group_by(date_tmp) %>%
-#             summarise(
-#               value = mean(.data[[f]], na.rm = TRUE),
-#               .groups = "drop"
-#             ) %>%
-#             arrange(date_tmp) %>%
-#             filter(!is.na(value))
+  main_rarefied_df %>%
+    group_by(.data[[par]]) %>%
+    group_modify(
+      ~ {
+        map_dfr(features, function(f) {
+          series <- acf_preprocess(
+            main_rarefied_df,
+            feature = f,
+            time_col = "sampling_date"
+          )
 
-#           n <- nrow(series)
-#           if (n < 3) {
-#             return(tibble(
-#               feature = f,
-#               lag = NA_integer_,
-#               acf = NA_real_,
-#               conf = NA_real_,
-#               n = n
-#             ))
-#           }
-#           ac <- stats::acf(series$value, plot = FALSE, na.action = na.pass)
-#           tibble(
-#             feature = f,
-#             lag = as.integer(ac$lag[, 1, 1]),
-#             acf = as.numeric(ac$acf[, 1, 1]),
-#             conf = 1.96 / sqrt(n),
-#             n = n
-#           )
-#         })
-#       }
-#     ) %>%
-#     ungroup() %>%
-#     rename(group = !!par) %>%
-#     mutate(parameter = par)
-# })
+          n <- nrow(series)
+          if (n < 3) {
+            return(tibble(
+              feature = f,
+              lag = NA_integer_,
+              acf = NA_real_,
+              conf = NA_real_,
+              n = n
+            ))
+          }
+          ac <- stats::acf(
+            series$value,
+            type = "correlation",
+            plot = FALSE,
+            na.action = na.pass
+          )
+          tibble(
+            feature = f,
+            lag = as.integer(ac$lag[, 1, 1]),
+            acf = as.numeric(ac$acf[, 1, 1]),
+            conf = 1.96 / sqrt(n),
+            n = n
+          )
+        })
+      }
+    ) %>%
+    ungroup() %>%
+    rename(group = !!par) %>%
+    mutate(parameter = par)
+})
 
-# Outputs:
-# - feature_summary: one row per feature with n/mean/sd
-# - acf_global: ACF per feature (lags, acf, and ±conf bounds)
-# - acf_by_group: ACF per feature within each group and parameter
+
+# Correlation coefficients
+
+metadata_matrix <- sabr_2023_metadata_clean |>
+  select(c(gnha, nitrate_ppm:gwc_g_g))
+
+cor(
+  metadata_matrix,
+  use = "complete.obs",
+  method = 'pearson'
+)
+
+
+ggcorrplot::ggcorrplot(
+  cor(
+    metadata_matrix,
+    use = "complete.obs",
+    method = 'pearson'
+  ),
+  method = "square",
+  hc.order = TRUE,
+  lab = TRUE,
+  digits = 3,
+  type = "lower",
+  p.mat = ggcorrplot::cor_pmat(metadata_matrix),
+  insig = "blank",
+  colors = c("#6D9EC1", "white", "#E46726")
+)
+
+# To be expected, nitrate_ppm, ammonia_ppm and N_available are highly correlated.
+# Specially nitrate_ppm and n_available. For downstream analysses we will focus
+# ammonia_ppm and nitrate_ppm.

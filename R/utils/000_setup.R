@@ -41,6 +41,8 @@ list.files(
 ) %>%
   purrr::walk(~ load(.x, envir = .GlobalEnv))
 
+load("data/output/processed/metadata/sabr_2023_metadata_clean.rda")
+
 
 # Solve known conflicts
 conflict_prefer("select", "dplyr")
