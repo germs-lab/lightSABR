@@ -6,3 +6,8 @@
 data/input/SILVA/SILVA_138.2_SSURef_NR99_tax_silva.fasta.gz
 data/input/SILVA/silva_nr99_v138.2_toSpecies_trainset.fa.gz
 data/output/processed/sabr_2023_mtr_physeq_list.rda
+
+# quarto rendering files
+.*
+reports/sabr_exploratory_and_diversity_cache/*
+reports/sabr_exploratory_and_diversity_files/*

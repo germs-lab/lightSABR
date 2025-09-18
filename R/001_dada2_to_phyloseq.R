@@ -284,15 +284,18 @@ cat("After removing chimeras:", sum(seqtab.nochim), "\n")
 # Save file
 save(
   seqtab.nochim,
-  file = file.path(out_dir, "processed/sabr_2023_asv_table.rda")
+  file = file.path(
+    out_dir,
+    "processed/asv_tables/raw/sabr_2023_asv_table.rda"
+  )
 )
 write.csv(
   seqtab.nochim,
-  file.path(out_dir, "processed/sabr_2023_asv_table.csv")
+  file.path(out_dir, "processed/asv_tables/raw/sabr_2023_asv_table.csv")
 ) # Long file name but it indicates this file has gone through all the steps in the pipeline.
 
 load(
-  file.path(out_dir, "processed/sabr_2023_asv_table.rda")
+  file.path(out_dir, "processed/asv_tables/raw/sabr_2023_asv_table.rda")
 )
 
 #--------------------------------------------------------
@@ -319,10 +322,13 @@ summary(taxa)
 # Save object
 write.csv(
   taxa,
-  file.path(out_dir, "processed/sabr_2023_taxonomy.csv")
+  file.path(out_dir, "processed/metadata/sabr_2023_taxonomy.csv")
 )
 
-taxa <- read.csv(file.path(out_dir, "processed/sabr_2023_taxonomy.csv")) %>%
+taxa <- read.csv(file.path(
+  out_dir,
+  "processed/metadata/sabr_2023_taxonomy.csv"
+)) %>%
   rename(., sequence = X) %>%
   rename_with(str_to_lower, .cols = everything()) # Clean up needed after importing from .csv
 
@@ -388,7 +394,8 @@ metadata_2 <- readxl::read_xlsx(
     plot = as.character(plot),
     column = as.character(column),
     plate_number = as.character(plate_number),
-    sample = sprintf('SABR_%s', sample)
+    sample = sprintf('SABR_%s', sample),
+    across(dna_conc_ng_ul:gwc_g_g, as.numeric)
   ) |>
   rename(sample_id = sample) |>
   select(c(sample_id, dna_conc_ng_ul:gwc_g_g))
@@ -399,7 +406,7 @@ metadata_join <- dplyr::left_join(metadata_1, metadata_2, by = "sample_id") |>
 sabr_2023_metadata_clean <- metadata_join # Name change for saving purposes
 save(
   sabr_2023_metadata_clean,
-  file = "data/output/processed/sabr_2023_metadata_clean.rda"
+  file = "data/output/processed/metadata/sabr_2023_metadata_clean.rda"
 )
 
 # Check for sample name consistency between phyloseq and metadata
@@ -431,5 +438,5 @@ sabr_2023_physeq <- physeq # Name change for saving purposes
 remove(physeq)
 save(
   sabr_2023_physeq,
-  file = "data/output/processed/sabr_2023_physeq.rda"
+  file = "data/output/processed/rdata/phyloseq/sabr_2023_physeq.rda"
 )

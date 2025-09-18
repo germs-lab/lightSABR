@@ -1,0 +1,5 @@
+project:
+  title: "lightSABR"
+  # optional: publish HTML to docs/ (GitHub Pages)
+  execute-dir: project
+  output-dir: reports
