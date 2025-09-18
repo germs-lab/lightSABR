@@ -32,7 +32,6 @@ alpha_plots <- function(
   }
 
   plot <- plot +
-    facet_wrap(vars(!!.facet), scales = "free_y") +
     theme_bw() +
     labs(
       title = title,

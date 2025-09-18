@@ -99,7 +99,9 @@ save(
 # (ASVs and metadata, no taxonomical info)
 #--------------------------------------------------------
 
-taxa <- read.csv(file.path("data/output/processed/sabr_2023_taxonomy.csv")) %>%
+taxa <- read.csv(file.path(
+  "data/output/processed/metadata/sabr_2023_taxonomy.csv"
+)) %>%
   rename(., sequence = X) %>%
   rename_with(str_to_lower, .cols = everything()) # Clean up needed after importing from .csv
 

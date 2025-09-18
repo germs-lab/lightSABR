@@ -318,7 +318,7 @@ feature_summary <- map_dfr(features, function(f) {
       sample(x, 5000)
     }
     if (n_non_na < 5000) {
-      x
+      x_use <- x
     }
     # Extracting useful stats
     sh <- stats::shapiro.test(x_use)

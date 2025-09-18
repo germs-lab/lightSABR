@@ -286,16 +286,16 @@ save(
   seqtab.nochim,
   file = file.path(
     out_dir,
-    "data/output/processed/asv_tables/raw/sabr_2023_asv_table.rda"
+    "processed/asv_tables/raw/sabr_2023_asv_table.rda"
   )
 )
 write.csv(
   seqtab.nochim,
-  file.path(out_dir, "processed/sabr_2023_asv_table.csv")
+  file.path(out_dir, "processed/asv_tables/raw/sabr_2023_asv_table.csv")
 ) # Long file name but it indicates this file has gone through all the steps in the pipeline.
 
 load(
-  file.path(out_dir, "processed/sabr_2023_asv_table.rda")
+  file.path(out_dir, "processed/asv_tables/raw/sabr_2023_asv_table.rda")
 )
 
 #--------------------------------------------------------
@@ -322,10 +322,13 @@ summary(taxa)
 # Save object
 write.csv(
   taxa,
-  file.path(out_dir, "processed/sabr_2023_taxonomy.csv")
+  file.path(out_dir, "processed/metadata/sabr_2023_taxonomy.csv")
 )
 
-taxa <- read.csv(file.path(out_dir, "processed/sabr_2023_taxonomy.csv")) %>%
+taxa <- read.csv(file.path(
+  out_dir,
+  "processed/metadata/sabr_2023_taxonomy.csv"
+)) %>%
   rename(., sequence = X) %>%
   rename_with(str_to_lower, .cols = everything()) # Clean up needed after importing from .csv
 

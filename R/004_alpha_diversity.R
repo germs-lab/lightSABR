@@ -1,12 +1,10 @@
 #####################################################################
-# Community Diversity Analyses
+# Alpha Diversity Analyses
 #
 # This script explores general community diversity patterns in SABR data set.
-# We explore, richness, alpha and beta diversity using NMDS, PCoA, PERMANOVAS , etc.
+# We explore, richness, alpha diversity through observed diversity,
+# Shannon's index, Simposon index and Inv. Simspon's (aka Hill numbers)
 #
-# We briefly explore coomunity diversity with the phyloseq object but move on with
-# the TreeSummarized Experiment object
-
 # Author: Jaejin Lee & Bolívar Aponte Rolón
 # Last modified: 2025-08-21
 #####################################################################
