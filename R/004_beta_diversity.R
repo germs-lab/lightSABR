@@ -1,16 +1,16 @@
-#####################################################################
-# Beta Diversity Analyses
-#
-# This script explores general community diversity patterns in SABR data set.
-# We explore, richness, alpha and beta diversity using NMDS, PCoA, PERMANOVAS , etc.
+-
+  #####################################################################
+  # Beta Diversity Analyses
+  #
+  # This script explores general community diversity patterns in SABR data set.
+  # We explore, richness, alpha and beta diversity using NMDS, PCoA, PERMANOVAS , etc.
 
-# Author: Jaejin Lee & Bolívar Aponte Rolón
-# Last modified: 2025-08-21
-#####################################################################
+  # Author: Bolívar Aponte Rolón
+  # Last modified: 2025-09-19
+  #####################################################################
 
-# Load required libraries
-source("R/utils/000_setup.R")
-
+  # Load required libraries
+  source("R/utils/000_setup.R")
 
 #--------------------------------------------------------
 # Calculate Bray-Curtis distance and perform NMDS analysis
@@ -91,10 +91,11 @@ nmds <- ordinate(
 # )
 
 #--------------------------------------------------------
-# Create a phyloseq object with only high-prevalence ASVs
+# Gnerate NMDS from phyloseq object at different thresholds
 #--------------------------------------------------------
 
-test_list <- list(
+prevalence_list <- list(
+  prevalent_100 = sabr_2023_physeq,
   prevalent_90 = main_physeq_list$original_phyloseq_lists$prevalent_90,
   prevalent_80 = main_physeq_list$original_phyloseq_lists$prevalent_80,
   prevalent_70 = main_physeq_list$original_phyloseq_lists$prevalent_70,
@@ -102,24 +103,24 @@ test_list <- list(
   prevalent_30 = main_physeq_list$original_phyloseq_lists$prevalent_30
 )
 
-
-test_nmds <- BRCore::brc_nmds(
-  asv_matrix = t(as(phyloseq::otu_table(sabr_2023_physeq), "matrix")),
-  physeq = sabr_2023_physeq,
-  ncores = 1,
-  k = 2,
-  trymax = 500
+# plot theme
+nmds_theme <- list(
+  geom_point(
+    aes(color = plant, shape = sampling_location),
+    stroke = 1,
+    alpha = 1,
+    na.rm = TRUE,
+    size = 2.5
+  ),
+  facet_wrap(~sampling_date),
+  theme_minimal()
 )
 
 
-test_map <- purrr::imap(
-  test_list,
+prevalence_nmds_map <- purrr::imap(
+  prevalence_list,
   function(ps_obj, prev_label) {
-    # Guard against empty or trivial objects
-    if (phyloseq::ntaxa(ps_obj) < 2 || phyloseq::nsamples(ps_obj) < 2) {
-      return(NULL)
-    }
-    mat <- as(phyloseq::otu_table(sabr_2023_physeq), "matrix")
+    mat <- as(phyloseq::otu_table(ps_obj), "matrix")
     # Ensure samples are rows (adjust if brc_nmds expects otherwise)
     if (phyloseq::taxa_are_rows(ps_obj)) {
       mat <- t(mat)
@@ -137,21 +138,72 @@ test_map <- purrr::imap(
   }
 )
 
-# Suppose each element in test_map has something like res$points or res$ordination
-coords_tbl <- purrr::imap_dfr(
-  test_map,
-  function(res, prev_label) {
-    if (is.null(res)) {
-      return(dplyr::tibble())
-    }
-    # Adjust slot access to whatever brc_nmds returns (example: res$scores or res$points)
-    df <- as.data.frame(res$points)
-    df$sample_id <- rownames(df)
-    df$prevalence <- prev_label
-    df
+# Verifying that all calculations are based on their corresponding matrices.
+purrr::imap(prevalence_nmds_map, function(res, nm) {
+  cat("\n---", nm, "---\n")
+  if (is.null(res)) {
+    cat("Result is NULL\n")
+  } else {
+    print(head(res$nmds_scores))
+    cat("Stress:", res$ordi$stress, "\n")
   }
+  invisible(NULL)
+})
+
+sapply(prevalence_list, function(ps) {
+  m <- as(phyloseq::otu_table(ps), "matrix")
+  if (phyloseq::taxa_are_rows(ps)) {
+    m <- t(m)
+  }
+  message(
+    ": dim=",
+    paste(dim(m), collapse = "x"),
+    " hash=",
+    digest::digest(m)
+  )
+})
+
+# Plots should all be different
+
+# Test plot
+BRCore::brc_gg_ordi(
+  .data = prevalence_nmds_map$prevalent_30$nmds_df,
+  .color = plant,
+  "NMDS"
+) +
+  nmds_theme
+########################
+
+nmds_df_list <- list(
+  prevalent_100 = prevalence_nmds_map$prevalent_100$nmds_df,
+  prevalent_90 = prevalence_nmds_map$prevalent_90$nmds_df,
+  prevalent_80 = prevalence_nmds_map$prevalent_80$nmds_df,
+  prevalent_70 = prevalence_nmds_map$prevalent_70$nmds_df,
+  prevalent_60 = prevalence_nmds_map$prevalent_60$nmds_df,
+  prevalent_30 = prevalence_nmds_map$prevalent_30$nmds_df
 )
 
+beta_nmds_plots <-
+  imap(nmds_df_list, function(nmds_df, prev_label) {
+    nmds_df <- nmds_df %>% mutate(prevalence_level = prev_label)
+    # Make a nice title from the name "prevalent30" -> "Prevalent 30%"
+    title_label <- prev_label %>%
+      str_replace("^prevalent_?(\\d+).*", "ASVs Prevalent at \\1% occupancy")
+
+    p <- BRCore::brc_gg_ordi(
+      .data = nmds_df,
+      .color = plant,
+      "NMDS"
+    ) +
+      nmds_theme +
+      labs(title = title_label)
+
+    # Attach label
+    attr(p, "prevalence_level") <- prev_label
+    p
+  })
+
+beta_nmds_plots
 # # Extract OTU table for high-prevalence ASVs
 # asv_high_prev <- asv_table_data[high_prevalence_asvs, ]
 # asv_high_prev <- otu_table(asv_high_prev, taxa_are_rows = TRUE)
