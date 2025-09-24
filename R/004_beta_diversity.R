@@ -18,7 +18,7 @@
 
 # Calculate Bray-Curtis distance matrix
 
-main_raw_nmds <- BRCore::brc_nmds(
+main_raw_nmds <- brc_nmds(
   asv_matrix = t(as(phyloseq::otu_table(sabr_2023_physeq), "matrix")), # Samples as rows
   physeq = sabr_2023_physeq,
   ncores = 1,
@@ -31,7 +31,7 @@ main_raw_nmds <- BRCore::brc_nmds(
 # ... Similar to previous best
 # *** Best solution repeated 1 times
 
-BRCore::brc_gg_ordi(.data = main_raw_nmds$nmds_df, .color = plant, "NMDS") +
+brc_gg_ordi(.data = main_raw_nmds$nmds_df, .color = plant, "NMDS") +
   geom_point(
     aes(color = plant, shape = sampling_location),
     stroke = 1,
@@ -50,11 +50,11 @@ BRCore::brc_gg_ordi(.data = main_raw_nmds$nmds_df, .color = plant, "NMDS") +
 
 prevalence_list <- list(
   prevalent_100 = sabr_2023_physeq,
-  prevalent_90 = main_physeq_list$original_phyloseq_lists$prevalent_90,
-  prevalent_80 = main_physeq_list$original_phyloseq_lists$prevalent_80,
-  prevalent_70 = main_physeq_list$original_phyloseq_lists$prevalent_70,
-  prevalent_60 = main_physeq_list$original_phyloseq_lists$prevalent_60,
-  prevalent_30 = main_physeq_list$original_phyloseq_lists$prevalent_30
+  prevalent_90 = main_physeq_list$raw_phyloseq_lists$prevalent_90,
+  prevalent_80 = main_physeq_list$raw_phyloseq_lists$prevalent_80,
+  prevalent_70 = main_physeq_list$raw_phyloseq_lists$prevalent_70,
+  prevalent_60 = main_physeq_list$raw_phyloseq_lists$prevalent_60,
+  prevalent_30 = main_physeq_list$raw_phyloseq_lists$prevalent_30
 )
 
 # plot theme
@@ -79,7 +79,7 @@ prevalence_nmds_map <- purrr::imap(
     if (phyloseq::taxa_are_rows(ps_obj)) {
       mat <- t(mat)
     }
-    result <- BRCore::brc_nmds(
+    result <- brc_nmds(
       asv_matrix = mat,
       physeq = ps_obj,
       ncores = 1,
@@ -122,7 +122,7 @@ prevalence_nmds_map <- purrr::imap(
 # Plots should all be different
 
 # Test plot
-BRCore::brc_gg_ordi(
+brc_gg_ordi(
   .data = prevalence_nmds_map$prevalent_30$nmds_df,
   .color = plant,
   "NMDS"
@@ -171,7 +171,7 @@ beta_nmds_plots <-
         .(asv_count) * ")"
     )
 
-    p <- BRCore::brc_gg_ordi(
+    p <- brc_gg_ordi(
       .data = nmds_df,
       .color = plant,
       "NMDS"
@@ -196,25 +196,25 @@ beta_nmds_plots
 # Hellinger transformation
 
 asv_matrices_list <- list(
-  asvs_100pct = as(phyloseq::otu_table(sabr_2023_physeq), "matrix"),
-  asvs_90pct = as(
-    phyloseq::otu_table(main_physeq_list$original_phyloseq_lists$prevalent_90),
+  prevalent_100 = as(phyloseq::otu_table(sabr_2023_physeq), "matrix"),
+  prevalent_90 = as(
+    phyloseq::otu_table(main_physeq_list$raw_phyloseq_lists$prevalent_90),
     "matrix"
   ),
-  asvs_80pct = as(
-    phyloseq::otu_table(main_physeq_list$original_phyloseq_lists$prevalent_80),
+  prevalent_80 = as(
+    phyloseq::otu_table(main_physeq_list$raw_phyloseq_lists$prevalent_80),
     "matrix"
   ),
-  asvs_70pct = as(
-    phyloseq::otu_table(main_physeq_list$original_phyloseq_lists$prevalent_70),
+  prevalent_70 = as(
+    phyloseq::otu_table(main_physeq_list$raw_phyloseq_lists$prevalent_70),
     "matrix"
   ),
-  asvs_60pct = as(
-    phyloseq::otu_table(main_physeq_list$original_phyloseq_lists$prevalent_60),
+  prevalent_60 = as(
+    phyloseq::otu_table(main_physeq_list$raw_phyloseq_lists$prevalent_60),
     "matrix"
   ),
-  asvs_30pct = as(
-    phyloseq::otu_table(main_physeq_list$original_phyloseq_lists$prevalent_30),
+  prevalent_30 = as(
+    phyloseq::otu_table(main_physeq_list$raw_phyloseq_lists$prevalent_30),
     "matrix"
   )
 )
@@ -239,7 +239,7 @@ hellinger_matrices_list <- purrr::map(asv_matrices_list, function(asv_matrix) {
 dbrda_traits <- sabr_2023_metadata_clean %>%
   select(., c(plot:sampling_location, sampling_date, gnha:gwc_g_g)) %>%
   dplyr::filter(
-    rownames(.) %in% colnames(hellinger_matrices_list$asvs_100pct)
+    rownames(.) %in% colnames(hellinger_matrices_list$prevalent_100)
   ) %>%
   rownames_to_column(., var = "id") %>%
   mutate(sample_id = id) %>%
@@ -247,8 +247,8 @@ dbrda_traits <- sabr_2023_metadata_clean %>%
   relocate(., sample_id)
 
 # Build dbRDA models with different constraints
-dbrda_00 <- capscale(
-  hellinger_matrices_list$asvs_90pct ~ 1,
+dbrda_00 <- dbrda(
+  hellinger_matrices_list$prevalent_90 ~ 1,
   distance = "bray",
   dfun = vegdist,
   data = dbrda_traits,
@@ -258,27 +258,27 @@ dbrda_00 <- capscale(
 str(dbrda_00)
 
 dbrda_01_bc_core <- dbrda(
-  t(hell_matrix) ~ .,
+  t(hellinger_matrices_list$prevalent_90) ~ .,
   distance = "bray",
   dfun = vegdist,
   data = dbrda_traits,
-  parallel = 8,
+  parallel = 82,
   na.action = na.omit
 )
 
 dbrda_02 <- dbrda(
-  t(hellinger_matrices_list$asvs_90pct) ~ plot + plant,
+  t(hellinger_matrices_list$prevalent_90) ~ plant + plot,
   distance = "bray",
   dfun = vegdist,
   data = dbrda_traits,
   parallel = 2,
   na.action = na.omit
 )
-BRCore::brc_flex_ordi(
+brc_flex_ordi(
   dbrda_02,
   dbrda_traits,
   color_var = "plant",
   sample_id_col = "sample_id",
   biplot = TRUE,
-  biplot_n = 18
+  biplot_n = 5
 )

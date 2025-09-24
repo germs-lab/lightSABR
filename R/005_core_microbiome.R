@@ -1,5 +1,5 @@
 #####################################################################
-# Core Microbiome Analysis
+# Corn Interrow/Row Analysis
 #
 # This script analyzes the core microbiome across different corn plots
 # and locations, identifying ASVs that are consistently present across
@@ -11,14 +11,21 @@
 #####################################################################
 
 # Load required libraries
-library(phyloseq)
-library(ggplot2)
+source("R/utils/000_setup.R")
 
-# Ensure ps_rel (phyloseq object with relative abundances) is loaded
 
 #--------------------------------------------------------
 # Subset data by corn plant, plots, and locations
 #--------------------------------------------------------
+corn_prevalence_list <- list(
+  prevalent_100 = sabr_2023_physeq,
+  prevalent_90 = main_physeq_list$raw_phyloseq_lists$prevalent_90,
+  prevalent_80 = main_physeq_list$raw_phyloseq_lists$prevalent_80,
+  prevalent_70 = main_physeq_list$raw_phyloseq_lists$prevalent_70,
+  prevalent_60 = main_physeq_list$raw_phyloseq_lists$prevalent_60,
+  prevalent_30 = main_physeq_list$raw_phyloseq_lists$prevalent_30
+)
+
 
 # Subset to include only Corn samples
 ps_corn <- subset_samples(ps_rel, Plant == "Corn")
