@@ -49,7 +49,7 @@ corn_combined_rel_abund <- imap_dfr(
 
 # Select top ASVs per location within each prevalence threshold
 # Top 20 per location within each prevalence
-per_loc_top <- corn_combined_rel_abund %>%
+per_location_top <- corn_combined_rel_abund %>%
   group_by(prevalence_level, sampling_location, asv) %>%
   summarise(
     mean_rel = mean(rel_abundance, na.rm = TRUE),
@@ -59,7 +59,7 @@ per_loc_top <- corn_combined_rel_abund %>%
   ungroup()
 
 # Collapse to per-prevalence unique ASVs, rank by overall mean and cap at 20
-corn_top20_pairs_union <- per_loc_top %>%
+corn_top20_pairs_union <- per_location_top %>%
   group_by(prevalence_level, asv) %>%
   summarise(
     mean_rel_overall = mean(mean_rel, na.rm = TRUE),
@@ -89,6 +89,55 @@ corn_combined_top_asv <- corn_combined_rel_abund %>%
     )
   )
 
+# Data ready for plotting
+nested_names <- corn_combined_top_asv %>%
+  group_by(prevalence_level) %>%
+  arrange(prevalence_level) %>%
+  tidyr::nest()
+
+dfs_by_prev <- corn_combined_top_asv %>%
+  group_by(prevalence_level) %>%
+  arrange(prevalence_level) %>%
+  group_split(.keep = TRUE) %>%
+  setNames(., nested_names$prevalence_level)
+
+# Prepping df for binned plots
+n_bins <- 8
+global_breaks <- quantile(
+  corn_combined_top_asv$gnha,
+  probs = seq(0, 1, 0.25),
+  na.rm = TRUE
+) %>%
+  unique()
+
+dfs_by_prev_binned <- corn_combined_top_asv %>%
+  mutate(
+    gnha_bin = cut(
+      gnha,
+      breaks = global_breaks,
+      include.lowest = TRUE,
+      dig.lab = 6
+    )
+  ) %>%
+  filter(!is.na(gnha_bin)) %>%
+  group_by(prevalence_level, asv, gnha_bin) %>%
+  summarise(
+    mean_rel = mean(rel_abundance, na.rm = TRUE),
+    .groups = "drop_last"
+  ) %>%
+  group_by(prevalence_level) %>%
+  arrange(prevalence_level) %>%
+  group_split(.keep = TRUE) %>%
+  setNames(., nested_names$prevalence_level)
+
+# Theming
+axes_themes <- theme(
+  plot.title = element_text(face = "bold"),
+  strip.text = element_text(size = 5),
+  axis.title = element_markdown(face = "bold"),
+  axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+  panel.grid.minor = element_blank()
+)
 #---------------------
 # Scatter plot
 #---------------------
@@ -144,17 +193,11 @@ corn_combined_top_asv <- corn_combined_rel_abund %>%
 # p_scatter
 
 # Make one plot per prevalence with facet_grid/wrap over ASV
-nested_names <- corn_combined_top_asv %>%
-  group_by(prevalence_level) %>%
-  arrange(prevalence_level) %>%
-  tidyr::nest()
+scatter_plots_by_prev <- dfs_by_prev %>%
+  imap(function(df_prev, prev_label) {
+    # Percentages
+    pct <- stringr::str_extract(prev_label, "\\d+")
 
-scatter_plots_by_prev <- corn_combined_top_asv %>%
-  group_by(prevalence_level) %>%
-  arrange(prevalence_level) %>%
-  group_split(.keep = TRUE) %>%
-  setNames(., nested_names$prevalence_level) %>%
-  imap(function(df_prev, prev_lbl) {
     ggplot(
       df_prev,
       aes(x = gnha, y = rel_abundance, color = sampling_location)
@@ -178,8 +221,11 @@ scatter_plots_by_prev <- corn_combined_top_asv %>%
         labels = scales::label_number()
       ) +
       labs(
-        title = paste("CORN: ASV Relative Abundance:", prev_lbl),
-        x = "log10(gnha)",
+        title = sprintf(
+          "CORN: ASV Relative Abundance at %s%% prevalence threshold",
+          pct
+        ),
+        x = "log<sub>10</sub>[g N (N<sub>2</sub>O) ha<sup>-1</sup>]", # "g N (N₂O) ha⁻¹"
         y = "Relative Abundance",
         subtitle = sprintf(
           "Top %d ASVs per location within each prevalence threshold selected by mean relative abundance",
@@ -187,98 +233,106 @@ scatter_plots_by_prev <- corn_combined_top_asv %>%
         )
       ) +
       theme_bw(base_size = 10) +
-      theme(
-        strip.text = element_text(size = 5),
-        axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
-        panel.grid.minor = element_blank()
-      )
+      axes_themes
   })
 
-# final_fig <- patchwork::wrap_plots(scatter_plots_by_prev, ncol = 1)
-# final_fig
-scatter_plots_by_prev
 
-safe_name <- function(x) str_replace_all(x, "[^A-Za-z0-9._-]+", "_")
-purrr::iwalk(
-  scatter_plots_by_prev,
-  ~ {
-    base <- file.path("data/output/plots/", paste0("scatter_", safe_name(.y)))
-    ggsave(
-      paste0(base, ".png"),
-      .x,
-      width = 14,
-      height = 8,
-      dpi = 600,
-      units = "in"
-    )
-    ggsave(paste0(base, ".pdf"), .x, width = 14, height = 8, units = "in")
-  }
-)
+scatter_plots_by_prev
 
 #------------------
 # Binned plots
 #------------------
 
 # Aggregate view: Mean relative abundance per gnha bin (global)
-# Prepping df
-n_bins <- 8
-global_breaks <- quantile(
-  corn_combined_top_asv$gnha,
-  probs = seq(0, 1, length.out = n_bins + 1),
-  na.rm = TRUE
-) %>%
-  unique()
 
-corn_combined_binned <- corn_combined_top_asv %>%
-  mutate(
-    gnha_bin = cut(
-      gnha,
-      breaks = global_breaks,
-      include.lowest = TRUE,
-      dig.lab = 6
-    )
-  ) %>%
-  filter(!is.na(gnha_bin)) %>%
-  group_by(prevalence_level, asv, gnha_bin) %>%
-  summarise(mean_rel = mean(rel_abundance, na.rm = TRUE), .groups = "drop")
+binned_plots_by_prev <- dfs_by_prev_binned %>%
+  imap(function(df_prev, prev_label) {
+    # Percentages
+    pct <- stringr::str_extract(prev_label, "\\d+")
 
-# Plot
+    ggplot(
+      df_prev,
+      aes(x = gnha_bin, y = mean_rel, group = asv, color = asv)
+    ) +
+      geom_line(linewidth = 0.4, alpha = 0.85) +
+      geom_point(size = 1) +
+      # facet_grid(
+      #   prevalence_level ~ fct_reorder(asv, parse_number(asv), .fun = min),
+      #   scales = "free_y"
+      # ) +
+      scale_y_continuous(labels = scales::percent_format(accuracy = 0.1)) +
+      labs(
+        title = sprintf(
+          "CORN: ASV  Mean Relative Abundance at %s%% prevalence threshold",
+          pct
+        ),
+        x = "log<sub>10</sub>[g N (N<sub>2</sub>O) ha<sup>-1</sup>]", # "g N (N₂O) ha⁻¹"
+        y = "Mean Relative Abundance",
+        subtitle = sprintf(
+          "Top %d ASVs per location within each prevalence threshold selected by mean relative abundance",
+          20
+        ),
+        caption = "Global Quantiles Binned"
+      ) +
+      theme_bw() +
+      axes_themes
+  })
+binned_plots_by_prev
 
-p_binned <- ggplot(
-  corn_combined_binned,
-  aes(x = gnha_bin, y = mean_rel, group = asv, color = asv)
-) +
-  geom_line(linewidth = 0.4, alpha = 0.85) +
-  geom_point(size = 1) +
-  facet_grid(~prevalence_level, scales = "free_y") +
-  scale_y_continuous(labels = scales::percent_format(accuracy = 0.1)) +
-  labs(
-    title = "CORN: Mean Relative Abundance vs gnha (Global Quantile Bins)",
-    x = "gnha (binned)",
-    y = "Mean Relative Abundance"
-  ) +
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# # List and save
+# corn_top_asv_n2o_plots <- list(
+#   scatter_facet = scatter_plots_by_prev,
+#   binned_lines = binned_plots_by_prev
+# )
 
-p_binned
+# safe_name <- function(x) str_replace_all(x, "[^A-Za-z0-9._-]+", "_")
 
+# # recursive saver: handles ggplot/grob/gtable OR nested lists of them
+# save_plot_or_list <- function(obj, base) {
+#   if (inherits(obj, c("ggplot", "gg", "grob", "gtable"))) {
+#     ggsave(
+#       paste0(base, ".png"),
+#       obj,
+#       width = 14,
+#       height = 8,
+#       dpi = 600,
+#       units = "in",
+#       create.dir = TRUE
+#     )
+#     ggsave(
+#       paste0(base, ".pdf"),
+#       obj,
+#       width = 14,
+#       height = 8,
+#       units = "in",
+#       create.dir = TRUE
+#     )
+#   } else if (is.list(obj)) {
+#     iwalk(
+#       obj,
+#       function(child, child_name) {
+#         child_base <- file.path(
+#           dirname(base),
+#           paste0(basename(base), "_", safe_name(child_name))
+#         )
+#         save_plot_or_list(child, child_base)
+#       }
+#     )
+#   } else {
+#     warning(
+#       "Skipping unsupported object type: ",
+#       paste(class(obj), collapse = ", ")
+#     )
+#   }
+# }
 
-# List and save
-corn_top_asv_n2o_plots <- list(
-  scatter_facet = p_scatter,
-  binned_lines = p_binned
-)
-
-purrr::iwalk(
-  corn_top_asv_n2o_plots,
-  ~ ggsave(
-    filename = paste0("data/output/plots/", .y, ".png"),
-    plot = .x,
-    width = if (.y == "scatter_facet") 14 else 10,
-    height = if (.y == "scatter_facet") 8 else 6,
-    dpi = 600
-  )
-)
+# purrr::iwalk(
+#   corn_top_asv_n2o_plots,
+#   ~ {
+#     base <- file.path("data/output/plots", paste0(safe_name(.y)))
+#     save_plot_or_list(.x, base)
+#   }
+# )
 ################################################################
 # Scraps
 # 4. Format prevalence labels for nicer facet strip titles

@@ -20,7 +20,8 @@ invisible(
       "janitor",
       "mia",
       "microbiome",
-      "metagMisc"
+      "metagMisc",
+      "ggtext"
     ),
     library,
     character.only = TRUE

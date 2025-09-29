@@ -1,0 +1,73 @@
+---
+title: "SABR: Top ASVs correlated with g N (N2O) per hectare"
+author:
+  - "Bolívar Aponte Rolón"
+date: last-modified
+format:
+#  html:
+#    theme: cosmo
+#    toc: true
+#    toc-depth: 3
+#    number-sections: true
+#    code-fold: true
+#    df-print: paged
+  pdf:
+    documentclass: scrartcl
+    papersize: letter
+
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: false
+  freeze: auto
+---
+
+# Data preparation and goal
+
+**Goal**: end up with 20 ASVs per prevalence group (e.g., prevalent_80), across both sampling locations combined, not 20 per sampling location (e.g. 20 at "interrow" and 20 at "row").
+
+_Pre-filtering: Find the best ASVs within each location_
+For each prevalence group and each sampling location separately (e.g., Row and interrow), we:
+1) Compute the _mean relative abundance_ of every ASV.
+
+2) Within each prevalence × location, we take the top 20 ASVs by that mean.
+
+**Result**: a shortlist that may include up to 40 ASVs per prevalence (20 from Row + 20 from interrow), with duplicates if the same ASV is top in both locations.
+
+_For each ASV (within a prevalence group)_
+Combine locations and re-rank to keep only 20 per prevalence
+
+1) Collapse that shortlist to unique ASVs per prevalence (i.e., remove duplicates across locations).
+
+2) Average its “top-list” means across locations to get one overall score.
+
+3) Re-rank ASVs within each prevalence group by this overall score and keep the top 20.
+
+This ensured the top 20 ASVs per prevalence group, even if Row and interrow had different top-20s.
+
+
+::: callout-note
+Render from the repository root:
+
+-   CLI: `quarto render sabr_top_asvs_nitrogen.qmd --execute-dir .`
+-   R: `quarto::quarto_render("sabr_top_asvs_nitrogen.qmd")`
+:::
+
+```{r}
+#| label: setup
+#| include: false
+# Keep objects in the global knit environment so both scripts can share state if needed
+knitr::knit_hooks$set(document = function(x) x)
+# sets the working directory for code execution to the repo root
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+```{r}
+source(
+  "R/005_core_microbiome.R",
+  local = knitr::knit_global(),
+  echo = TRUE,
+  print.eval = TRUE
+)
+```
