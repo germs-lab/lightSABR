@@ -205,7 +205,7 @@ scatter_plots_by_prev <- dfs_by_prev %>%
       geom_point(alpha = 0.35, size = 0.9) +
       geom_smooth(method = "lm", se = FALSE, linewidth = 0.5) +
       ggpmisc::stat_poly_eq(
-        ggpmisc::use_label(c("p")),
+        ggpmisc::use_label(c("adj.R2", "p")),
         label.x = 0.02,
         label.y = c(0.95, 0.85),
         size = 2
@@ -238,7 +238,7 @@ scatter_plots_by_prev <- dfs_by_prev %>%
   })
 
 
-scatter_plots_by_prev
+scatter_plots_by_prev$full_community
 
 #------------------
 # Binned plots
@@ -400,142 +400,168 @@ purrr::iwalk(
   }
 )
 # Maybe for prettier tables
-# library(dplyr)
-# library(tidyr)
-# library(readr)
-# library(purrr)
-# library(gt)
 
-# # 1) Choose colors to match your plots
-# row_col <- "#1b9e77" # Row color
-# interrow_col <- "#d95f02" # interrow color
+# 1) Choose colors to match your plots
+row_col <- "#1b9e77" # Row color
+interrow_col <- "#d95f02" # interrow color
 
-# # 2) Correlation direction per prevalence × ASV × location
-# corr_signs <- corn_combined_top_asv %>%
-#   group_by(prevalence_level, asv, sampling_location) %>%
-#   summarise(
-#     r = suppressWarnings(cor(
-#       gnha,
-#       rel_abundance,
-#       use = "pairwise.complete.obs"
-#     )),
-#     .groups = "drop"
-#   ) %>%
-#   mutate(
-#     arrow = dplyr::case_when(
-#       is.na(r) ~ "–", # no data / undefined
-#       r > 0 ~ "↑",
-#       r < 0 ~ "↓",
-#       TRUE ~ "–"
-#     )
-#   ) %>%
-#   select(prevalence_level, asv, sampling_location, arrow) %>%
-#   pivot_wider(
-#     names_from = sampling_location,
-#     values_from = arrow,
-#     names_glue = "arrow_{sampling_location}"
-#   )
+# 2) Correlation direction per prevalence × ASV × location
+# adj_r2 <- function(r2, n, p = 1L) {
+#   # r2: R-squared
+#   # n: sample size (number of paired observations)
+#   # p: number of predictors (exclude intercept). For simple x ~ y, p = 1.
+#   out <- ifelse(n - p - 1 > 0, 1 - (1 - r2) * (n - 1) / (n - p - 1), NA_real_)
+#   out
+# }
+corr_stats <- corn_combined_rel_abund %>%
+  filter(prevalence_level == "full_community") %>%
+  group_by(prevalence_level, asv, sampling_location) %>%
+  summarise(
+    n = sum(is.finite(gnha) & is.finite(rel_abundance)),
+    r = {
+      mask <- is.finite(gnha) & is.finite(rel_abundance)
+      x <- gnha[mask]
+      y <- rel_abundance[mask]
+      if (length(x) >= 3 && stats::var(x) > 0 && stats::var(y) > 0) {
+        stats::cor(x, y)
+      } else {
+        NA_real_
+      }
+    },
+    p = {
+      mask <- is.finite(gnha) & is.finite(rel_abundance)
+      x <- gnha[mask]
+      y <- rel_abundance[mask]
+      if (length(x) >= 3 && stats::var(x) > 0 && stats::var(y) > 0) {
+        stats::cor.test(
+          x,
+          y,
+          alternative = "two.sided",
+          method = "pearson"
+        )$p.value
+      } else {
+        NA_real_
+      }
+    },
+    .groups = "drop"
+  ) %>%
+  mutate(
+    r2 = r^2,
+    r2_adj = ifelse(
+      n - p - 1 > 0,
+      1 - (1 - r2) * (n - 1) / (n - 1L - 1),
+      NA_real_
+    ), # p=1 or 1L for simple regression/correlation
+    arrow = dplyr::case_when(
+      is.na(r) ~ "–",
+      r > 0 ~ "↑",
+      r < 0 ~ "↓",
+      TRUE ~ "–"
+    )
+  )
 
-# # 3) Base taxonomy table (distinct ASV taxonomy per prevalence)
-# tax_base <- corn_combined_top_asv %>%
-#   distinct(
-#     prevalence_level,
-#     asv,
-#     kingdom,
-#     phylum,
-#     class,
-#     family,
-#     genus,
-#     species
-#   ) %>%
-#   mutate(
-#     asv_num = readr::parse_number(asv),
-#     prevalence_level = factor(
-#       prevalence_level,
-#       levels = c(
-#         "full_community",
-#         "prevalent_30",
-#         "prevalent_60",
-#         "prevalent_70",
-#         "prevalent_80",
-#         "prevalent_90"
-#       )
-#     )
-#   )
 
-# # 4) Join arrows and order rows
-# tax_with_corr <- tax_base %>%
-#   left_join(corr_signs, by = c("prevalence_level", "asv")) %>%
-#   arrange(prevalence_level, asv_num, asv)
+# 3) Base taxonomy table (distinct ASV taxonomy per prevalence)
+tax_base <- corn_combined_top_asv %>%
+  distinct(
+    prevalence_level,
+    asv,
+    kingdom,
+    phylum,
+    class,
+    family,
+    genus,
+    species
+  ) %>%
+  mutate(
+    asv_num = readr::parse_number(asv),
+    prevalence_level = factor(
+      prevalence_level,
+      levels = c(
+        "full_community",
+        "prevalent_30",
+        "prevalent_60",
+        "prevalent_70",
+        "prevalent_80",
+        "prevalent_90"
+      )
+    )
+  )
 
-# # 5) Split into one data frame per prevalence; name from the data (avoids mismatches)
-# tables_by_prev <- tax_with_corr %>%
-#   group_split(prevalence_level, .keep = TRUE)
+# 4) Join arrows and order rows
+tax_with_corr <- tax_base %>%
+  left_join(corr_signs, by = c("prevalence_level", "asv")) %>%
+  arrange(prevalence_level, asv_num, asv)
 
-# names(tables_by_prev) <- tax_with_corr %>%
-#   distinct(prevalence_level) %>%
-#   pull(prevalence_level) %>%
-#   as.character()
+# 5) Split into one data frame per prevalence; name from the data (avoids mismatches)
+tables_by_prev <- tax_with_corr %>%
+  group_split(prevalence_level, .keep = TRUE)
 
-# # 6) Build nicely formatted gt tables with colored arrows
-# gt_tables_by_prev <- imap(
-#   tables_by_prev,
-#   function(df_prev, prev_label) {
-#     # Ensure arrow columns exist even if one location is absent
-#     if (!"arrow_Row" %in% names(df_prev)) {
-#       df_prev$arrow_Row <- "–"
-#     }
-#     if (!"arrow_interrow" %in% names(df_prev)) {
-#       df_prev$arrow_interrow <- "–"
-#     }
+names(tables_by_prev) <- tax_with_corr %>%
+  distinct(prevalence_level) %>%
+  pull(prevalence_level) %>%
+  as.character()
 
-#     df_prev %>%
-#       select(
-#         prevalence_level,
-#         asv,
-#         kingdom,
-#         phylum,
-#         class,
-#         family,
-#         genus,
-#         species,
-#         arrow_Row,
-#         arrow_interrow
-#       ) %>%
-#       gt() %>%
-#       cols_label(
-#         prevalence_level = "Prevalence",
-#         asv = "ASV",
-#         kingdom = "Kingdom",
-#         phylum = "Phylum",
-#         class = "Class",
-#         family = "Family",
-#         genus = "Genus",
-#         species = "Species",
-#         arrow_Row = "Row",
-#         arrow_interrow = "Interrow"
-#       ) %>%
-#       tab_header(
-#         title = paste0("ASV Taxonomy and Correlation Direction — ", prev_label)
-#       ) %>%
-#       # Color the arrow columns
-#       tab_style(
-#         style = cell_text(color = row_col, weight = "bold"),
-#         locations = cells_body(columns = "arrow_Row")
-#       ) %>%
-#       tab_style(
-#         style = cell_text(color = interrow_col, weight = "bold"),
-#         locations = cells_body(columns = "arrow_interrow")
-#       ) %>%
-#       # Optional: center the arrow columns
-#       cols_align(align = "center", columns = c(arrow_Row, arrow_interrow)) %>%
-#       # Optional: compact look
-#       opt_table_lines("none")
-#   }
-# )
+# 6) Build nicely formatted gt tables with colored arrows
+gt_tables_by_prev <- imap(
+  tables_by_prev,
+  function(df_prev, prev_label) {
+    # Ensure arrow columns exist even if one location is absent
+    if (!"arrow_Row" %in% names(df_prev)) {
+      df_prev$arrow_Row <- "–"
+    }
+    if (!"arrow_interrow" %in% names(df_prev)) {
+      df_prev$arrow_interrow <- "–"
+    }
 
-# # 7) Print all tables (in a Quarto report, this will render each table inline)
-# invisible(lapply(gt_tables_by_prev, print))
+    df_prev %>%
+      select(
+        prevalence_level,
+        asv,
+        kingdom,
+        phylum,
+        class,
+        family,
+        genus,
+        species,
+        arrow_Row,
+        arrow_interrow
+      ) %>%
+      gt() %>%
+      cols_label(
+        prevalence_level = "Prevalence",
+        asv = "ASV",
+        kingdom = "Kingdom",
+        phylum = "Phylum",
+        class = "Class",
+        family = "Family",
+        genus = "Genus",
+        species = "Species",
+        arrow_Row = "Row",
+        arrow_interrow = "Interrow"
+      ) %>%
+      tab_header(
+        title = paste0("ASV Taxonomy and Correlation Direction — ", prev_label)
+      ) %>%
+      # Color the arrow columns
+      tab_style(
+        style = cell_text(color = row_col, weight = "bold"),
+        locations = cells_body(columns = "arrow_Row")
+      ) %>%
+      tab_style(
+        style = cell_text(color = interrow_col, weight = "bold"),
+        locations = cells_body(columns = "arrow_interrow")
+      ) %>%
+      # Optional: center the arrow columns
+      cols_align(align = "center", columns = c(arrow_Row, arrow_interrow)) %>%
+      # Optional: compact look
+      opt_table_lines("none")
+  }
+)
+
+# 7) Print all tables (in a Quarto report, this will render each table inline)
+invisible(lapply(gt_tables_by_prev, print))
+
 ################################################################
 # Scraps
 # 4. Format prevalence labels for nicer facet strip titles
