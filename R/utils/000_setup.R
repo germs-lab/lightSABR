@@ -21,7 +21,8 @@ invisible(
       "mia",
       "microbiome",
       "metagMisc",
-      "ggtext"
+      "ggtext",
+      "gt"
     ),
     library,
     character.only = TRUE
