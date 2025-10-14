@@ -5,9 +5,9 @@
 # and locations, identifying ASVs that are consistently present across
 # different combinations of samples.
 #
-# Author: Jaejin Lee
-# Modified by: Bolívar Aponte Rolón
+# Author: Bolívar Aponte Rolón & Jaejin Lee
 # Date: 2025-05-05
+# Last modified: 2025-10-14
 #####################################################################
 
 # Load required libraries
@@ -285,8 +285,9 @@ binned_plots_by_prev <- dfs_by_prev_binned %>%
       )
   })
 binned_plots_by_prev
-
-# # List and save
+# -----------------------
+# #List and save
+# #------------------------
 # corn_top_asv_n2o_plots <- list(
 #   scatter_facet = scatter_plots_by_prev,
 #   binned_lines = binned_plots_by_prev
@@ -399,18 +400,12 @@ purrr::iwalk(
     print(knitr::kable(.x %>% select(-prevalence_level)))
   }
 )
-# Maybe for prettier tables
+
+# Pretty tables with gt
 
 # Correlation direction per prevalence × ASV × location
-# adj_r2 <- function(r2, n, p = 1L) {
-#   # r2: R-squared
-#   # n: sample size (number of paired observations)
-#   # p: number of predictors (exclude intercept). For simple x ~ y, p = 1.
-#   out <- ifelse(n - p - 1 > 0, 1 - (1 - r2) * (n - 1) / (n - p - 1), NA_real_)
-#   out
-# }
 corn_corr_stats <- corn_combined_rel_abund %>%
-  filter(prevalence_level == "full_community") %>%
+  filter(prevalence_level == "full_community") %>% # Filter prevalence levels to obtain the community you want
   group_by(prevalence_level, asv, sampling_location) %>%
   summarise(
     n = sum(is.finite(gnha) & is.finite(rel_abundance)),
@@ -489,7 +484,6 @@ names(corn_tables_by_prev) <- corn_tax_with_corr %>%
   as.character()
 
 # Build nicely formatted gt tables with colored arrows
-# Choose colors to match your plots
 pos_arrow <- "#38d005ff"
 neg_arrow <- "#ff0000"
 
@@ -498,7 +492,6 @@ gt_tables_by_prev <- imap(
   corn_tables_by_prev,
   function(df_prev, prev_label) {
     # Ensure arrow columns exist even if one location is absent
-
     df_prev %>%
       select(
         -prevalence_level,
@@ -536,7 +529,7 @@ gt_tables_by_prev <- imap(
       ) %>%
       tab_header(
         title = paste0("ASV Taxonomy and Correlation Direction — ", prev_label),
-        subtitle = md("*n* = 994")
+        subtitle = md("sample *n* = 994; ASV *n* = 988")
       ) %>%
       tab_style(
         style = cell_text(weight = "bolder"),
@@ -590,7 +583,7 @@ gt_tables_by_prev <- imap(
   }
 )
 
-# 7) Print all tables (in a Quarto report, this will render each table inline)
+# Print all tables
 invisible(lapply(gt_tables_by_prev, print))
 
 
@@ -598,6 +591,57 @@ gtsave(
   gt_tables_by_prev$full_community,
   filename = "data/output/significant_asvs.html"
 )
+
+#-------------------------------------------------------------
+# Select significantly correlated AVS for downtream BLASTing
+#-------------------------------------------------------------
+
+duplicates <- corn_tax_with_corr |>
+  group_by(asv) |>
+  filter(n() > 1) |>
+  ungroup()
+
+corn_signif_asvs_strings <- corn_tax_with_corr |>
+  distinct(asv) |>
+  pull(asv)
+
+# Subset to phyloseq to FASTA file
+
+corn_signif_physeq_fullcomm <- corn_prevalence_list$full_community %>%
+  prune_taxa(taxa_names(.) %in% corn_signif_asvs_strings, .)
+
+
+physeq2fasta <- function(physeq, seq_col) {
+  physeq_df <- physeq %>%
+    tax_table(.) %>%
+    as.data.frame(.)
+
+  asv_headers <- paste0(">", rownames(physeq_df)) # ASV names must be rownames
+
+  asv_seqs <- physeq_df[[seq_col]]
+
+  asv_fasta <- c(rbind(asv_headers, asv_seqs))
+
+  return(list(
+    asv_fasta = asv_fasta,
+    asv_headers = asv_headers
+  ))
+}
+
+
+corn_signif_asvs_fasta <- physeq2fasta(
+  corn_signif_physeq_fullcomm,
+  seq_col = "sequence"
+)
+
+
+write(
+  corn_signif_asvs_fasta$asv_fasta,
+  file.path(
+    "data/output/processed/sequences/sabr_2023_corn_signif_asv_fullcomm.fa"
+  )
+)
+
 ################################################################
 # Scraps
 # 4. Format prevalence labels for nicer facet strip titles
