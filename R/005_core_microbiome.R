@@ -607,14 +607,14 @@ corn_signif_asvs_strings <- corn_tax_with_corr |>
 
 # Subset to phyloseq to FASTA file
 
-corn_signif_physeq_fullcomm <- corn_prevalence_list$full_community %>%
+corn_signif_physeq_fcm <- corn_prevalence_list$full_community %>%
   prune_taxa(taxa_names(.) %in% corn_signif_asvs_strings, .)
 
 
 physeq2fasta <- function(physeq, seq_col) {
   physeq_df <- physeq %>%
-    tax_table(.) %>%
-    as.data.frame(.)
+    phyloseq::tax_table(.) %>%
+    phyloseq::as.data.frame(.)
 
   asv_headers <- paste0(">", rownames(physeq_df)) # ASV names must be rownames
 
@@ -630,7 +630,7 @@ physeq2fasta <- function(physeq, seq_col) {
 
 
 corn_signif_asvs_fasta <- physeq2fasta(
-  corn_signif_physeq_fullcomm,
+  corn_signif_physeq_fcm,
   seq_col = "sequence"
 )
 
@@ -638,7 +638,7 @@ corn_signif_asvs_fasta <- physeq2fasta(
 write(
   corn_signif_asvs_fasta$asv_fasta,
   file.path(
-    "data/output/processed/sequences/sabr_2023_corn_signif_asv_fullcomm.fa"
+    "data/output/processed/sequences/sabr_2023_corn_signif_asv_fcm.fa"
   )
 )
 
