@@ -11,6 +11,8 @@ set -Eeuo pipefail
 FASTA="$1"
 OUT="$2"
 THREADS="${3:-2}"
+FIELDS="qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen staxids ssciname stitle"
+
 
 if [[ -z "$FASTA" || -z "$OUT" ]]; then
   echo "Usage: $0 asv.fasta blast_remote.tsv [threads]" >&2
@@ -31,8 +33,13 @@ blastn \
   -max_hsps 1 \
   -dust no \
   -entrez_query "$ENTREZ_QUERY" \
-  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen staxids ssciname stitle' \
+  -outfmt "6 $FIELDS" \
   -out "$OUT"
+
+tmp=$(mktemp)
+printf '%s\n' "$(echo "$FIELDS" | tr ' ' '\t')" > "$tmp"
+cat "$OUT" >> "$tmp"
+mv "$tmp" "$OUT"
 
 # BLAST 2.13.0+
 # USAGE

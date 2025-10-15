@@ -1,0 +1,1070 @@
+qseqid	sseqid	pident	length	mismatch	gapopen	qstart	qend	sstart	send	evalue	bitscore	qlen	staxids	ssciname	stitle
+ASV_3	gi|3033062162|gb|PX022939.1|	100.000	253	0	0	1	253	157	409	6.66e-128	468	253	121292	N/A	Pseudarthrobacter sulfonivorans strain S15 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3032678433|gb|PX022367.1|	100.000	253	0	0	1	253	483	735	6.66e-128	468	253	409290	N/A	Arthrobacter oryzae strain KC18 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3022638303|gb|PV931895.1|	100.000	253	0	0	1	253	487	739	6.66e-128	468	253	410837	N/A	Pseudarthrobacter defluvii strain KSPAN4 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3014841930|gb|PV876263.1|	100.000	253	0	0	1	253	439	691	6.66e-128	468	253	409291	N/A	Arthrobacter humicola strain CAS48 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3014841928|gb|PV876261.1|	100.000	253	0	0	1	253	425	677	6.66e-128	468	253	1356565	N/A	Arthrobacter ginsengisoli strain CAS34 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3014841927|gb|PV876260.1|	100.000	253	0	0	1	253	450	702	6.66e-128	468	253	409291	N/A	Arthrobacter humicola strain CAS26 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3012973051|gb|PV874905.1|	100.000	253	0	0	1	253	97	349	6.66e-128	468	253	1904863	N/A	Micrococcaceae bacterium strain Bernburg_DiControl_Isolate_116-2 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3012972960|gb|PV874814.1|	100.000	253	0	0	1	253	98	350	6.66e-128	468	253	1904863	N/A	Micrococcaceae bacterium strain Bernburg_DiControl_Isolate_110-11 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3012972952|gb|PV874806.1|	100.000	253	0	0	1	253	79	331	6.66e-128	468	253	1904863	N/A	Micrococcaceae bacterium strain Bernburg_DiControl_Isolate_109-22 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3012972861|gb|PV874715.1|	100.000	253	0	0	1	253	99	351	6.66e-128	468	253	1904863	N/A	Micrococcaceae bacterium strain Bernburg_DiControl_Isolate_105-4 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3012972851|gb|PV874705.1|	100.000	253	0	0	1	253	99	351	6.66e-128	468	253	1904863	N/A	Micrococcaceae bacterium strain Bernburg_DiControl_Isolate_104-18 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3012972847|gb|PV874701.1|	100.000	253	0	0	1	253	100	352	6.66e-128	468	253	1904863	N/A	Micrococcaceae bacterium strain Bernburg_DiControl_Isolate_104-13 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3012972820|gb|PV874674.1|	100.000	253	0	0	1	253	98	350	6.66e-128	468	253	1904863	N/A	Micrococcaceae bacterium strain Bernburg_DiControl_Isolate_103-4 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3012972807|gb|PV874661.1|	100.000	253	0	0	1	253	96	348	6.66e-128	468	253	1904863	N/A	Micrococcaceae bacterium strain Bernburg_DiControl_Isolate_102-13 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3012972804|gb|PV874658.1|	100.000	253	0	0	1	253	97	349	6.66e-128	468	253	1904863	N/A	Micrococcaceae bacterium strain Bernburg_DiControl_Isolate_102-10 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3009451189|gb|PV856286.1|	100.000	253	0	0	1	253	459	711	6.66e-128	468	253	2716202	N/A	Arthrobacter ipis strain 3 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3005508690|gb|PV839997.1|	100.000	253	0	0	1	253	482	734	6.66e-128	468	253	2697569	N/A	Pseudarthrobacter psychrotolerans strain CEMTC_11144 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3005508679|gb|PV839986.1|	100.000	253	0	0	1	253	480	732	6.66e-128	468	253	409290	N/A	Arthrobacter oryzae strain CEMTC_11142 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3005508678|gb|PV839985.1|	100.000	253	0	0	1	253	480	732	6.66e-128	468	253	409290	N/A	Arthrobacter oryzae strain CEMTC_168 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3005508677|gb|PV839984.1|	100.000	253	0	0	1	253	482	734	6.66e-128	468	253	409291	N/A	Arthrobacter humicola strain CEMTC_11156 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3004834820|gb|PV834031.1|	100.000	253	0	0	1	253	455	707	6.66e-128	468	253	1677	N/A	Arthrobacter pascens strain Y-H-21 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3002442400|gb|PV802679.1|	100.000	253	0	0	1	253	294	546	6.66e-128	468	253	409291	N/A	Arthrobacter humicola strain CS33 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3002442399|gb|PV802678.1|	100.000	253	0	0	1	253	343	595	6.66e-128	468	253	409291	N/A	Arthrobacter humicola strain CS19 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3002442391|gb|PV802670.1|	100.000	253	0	0	1	253	218	470	6.66e-128	468	253	409291	N/A	Arthrobacter humicola strain CS20 16S ribosomal RNA gene, partial sequence
+ASV_3	gi|3002442253|gb|PV802588.1|	100.000	253	0	0	1	253	331	583	6.66e-128	468	253	121292	N/A	Pseudarthrobacter sulfonivorans strain CAS47 16S ribosomal RNA gene, partial sequence
+ASV_12	gi|532761294|gb|KC921181.1|	100.000	253	0	0	1	253	465	717	6.66e-128	468	253	1391540	N/A	Actinobacterium WWH12 16S ribosomal RNA gene, partial sequence
+ASV_30	gi|1774780226|gb|MN686629.1|	100.000	253	0	0	1	253	466	718	6.66e-128	468	253	1404360	N/A	Solirubrobacter phytolaccae strain GTGR-8(T) 16S ribosomal RNA gene, partial sequence
+ASV_30	gi|1313744207|dbj|LC342020.1|	100.000	253	0	0	1	253	144	396	6.66e-128	468	253	2900548	N/A	Actinobacteria bacterium YG49 gene for 16S ribosomal RNA, partial sequence
+ASV_30	gi|566084828|ref|NR_108192.1|	100.000	253	0	0	1	253	530	782	6.66e-128	468	253	77133;211446;490573	N/A	Solirubrobacter ginsenosidimutans strain BXN5-15 16S ribosomal RNA, partial sequence
+ASV_30	gi|343200678|ref|NR_041365.1|	100.000	253	0	0	1	253	515	767	6.66e-128	468	253	211446;363832	N/A	Solirubrobacter soli strain Gsoil 355 16S ribosomal RNA, partial sequence
+ASV_30	gi|2578831940|gb|OR564082.1|	99.605	253	1	0	1	253	509	761	3.10e-126	462	253	1395955	N/A	Solirubrobacter taibaiensis strain HS040 16S ribosomal RNA gene, partial sequence
+ASV_30	gi|2156865955|gb|OL677210.1|	99.605	253	1	0	1	253	515	767	3.10e-126	462	253	166793	N/A	Solirubrobacter pauli strain 21SJ02S-54 16S ribosomal RNA gene, partial sequence
+ASV_30	gi|959495007|ref|NR_133858.1|	99.605	253	1	0	1	253	482	734	3.10e-126	462	253	1404360	N/A	Solirubrobacter phytolaccae strain GTGR-8 16S ribosomal RNA, partial sequence
+ASV_30	gi|961555207|ref|NR_134176.1|	99.605	253	1	0	1	253	458	710	3.10e-126	462	253	211446;1395955	N/A	Solirubrobacter taibaiensis strain GTJR-20 16S ribosomal RNA, partial sequence
+ASV_30	gi|37961857|gb|AY234700.1|	99.605	253	1	0	1	253	509	761	3.10e-126	462	253	234333	N/A	Bacterium Ellin6048 16S ribosomal RNA gene, partial sequence
+ASV_30	gi|37961780|gb|AY234623.1|	99.605	253	1	0	1	253	509	761	3.10e-126	462	253	234331	N/A	Bacterium Ellin5272 16S ribosomal RNA gene, partial sequence
+ASV_30	gi|37961757|gb|AY234600.1|	99.605	253	1	0	1	253	509	761	3.10e-126	462	253	234329	N/A	Bacterium Ellin5249 16S ribosomal RNA gene, partial sequence
+ASV_30	gi|37961709|gb|AY234552.1|	99.209	253	2	0	1	253	509	761	1.44e-124	457	253	234328;234332	N/A	Bacterium Ellin5201 16S ribosomal RNA gene, partial sequence
+ASV_30	gi|37961656|gb|AY234499.1|	99.209	253	2	0	1	253	431	683	1.44e-124	457	253	234327	N/A	Bacterium Ellin5082 16S ribosomal RNA gene, partial sequence
+ASV_30	gi|1215531063|emb|LT853782.1|	99.569	232	1	0	1	232	464	695	1.46e-114	424	253	1404360	N/A	Solirubrobacter phytolaccae partial 16S rRNA gene, strain TSDHB10-85F
+ASV_35	gi|2872331787|gb|PQ795595.1|	99.209	253	2	0	1	253	179	431	1.44e-124	457	253	1869227	N/A	Bacterium strain ASV43719 16S ribosomal RNA gene, partial sequence
+ASV_59	gi|2872330560|gb|PQ794368.1|	100.000	253	0	0	1	253	179	431	6.66e-128	468	253	1869227	N/A	Bacterium strain ASV3137 16S ribosomal RNA gene, partial sequence
+ASV_60	gi|2872330466|gb|PQ794274.1|	99.209	253	2	0	1	253	178	430	1.44e-124	457	253	1869227	N/A	Bacterium strain ASV969 16S ribosomal RNA gene, partial sequence
+ASV_66	gi|2843846448|gb|PQ552112.1|	100.000	253	0	0	1	253	1	253	6.66e-128	468	253	77133;133154;1645740;1869227	N/A	Uncultured bacterium gp16 clone OTU_45 16S ribosomal RNA gene, partial sequence
+ASV_71	gi|2872331246|gb|PQ795054.1|	100.000	253	0	0	1	253	177	429	6.66e-128	468	253	77133;1869227	N/A	Uncultured bacterium clone OTU43 16S ribosomal RNA gene, partial sequence
+ASV_74	gi|2872330604|gb|PQ794412.1|	100.000	253	0	0	1	253	179	431	6.66e-128	468	253	221106;1869227	N/A	Uncultured Candidatus Rokubacteria bacterium clone OTU142 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|2941027271|gb|PV369208.1|	100.000	253	0	0	1	253	411	663	6.66e-128	468	253	1882682	N/A	Microvirga ossetica strain QTB36 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|2886516111|gb|PQ870330.1|	100.000	253	0	0	1	253	427	679	6.66e-128	468	253	1882682	N/A	Microvirga ossetica strain P20/4-1 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1477913150|gb|MH930104.1|	100.000	253	0	0	1	253	393	645	6.66e-128	468	253	1402137	N/A	Microvirga zambiensis strain G81 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1477913149|gb|MH930103.1|	100.000	253	0	0	1	253	399	651	6.66e-128	468	253	1402137	N/A	Microvirga zambiensis strain G80 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1344721430|gb|MG966036.1|	100.000	253	0	0	1	253	365	617	6.66e-128	468	253	1869227	N/A	Bacterium strain C2-11-27F.seq 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1344721420|gb|MG966026.1|	100.000	253	0	0	1	253	365	617	6.66e-128	468	253	1869227	N/A	Bacterium strain C3-9-27F.seq 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1864207127|ref|NR_169421.1|	100.000	253	0	0	1	253	442	694	6.66e-128	468	253	2715425	N/A	Microvirga rosea strain MAH-2 16S ribosomal RNA, partial sequence
+ASV_91	gi|1313741783|dbj|LC341977.1|	100.000	253	0	0	1	253	127	379	6.66e-128	468	253	1913988	N/A	Alphaproteobacteria bacterium YG06 gene for 16S ribosomal RNA, partial sequence
+ASV_91	gi|1071929731|gb|KX576555.1|	100.000	253	0	0	1	253	429	681	6.66e-128	468	253	1882682	N/A	Microvirga ossetica strain V5/13 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1071929730|gb|KX576554.1|	100.000	253	0	0	1	253	430	682	6.66e-128	468	253	1882682	N/A	Microvirga ossetica strain V5/5K 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1071929729|gb|KX576553.1|	100.000	253	0	0	1	253	429	681	6.66e-128	468	253	1882682	N/A	Microvirga ossetica strain V5/5M 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1384992300|ref|NR_156049.1|	100.000	253	0	0	1	253	430	682	6.66e-128	468	253	1882682	N/A	Microvirga ossetica strain V5/3M 16S ribosomal RNA, partial sequence
+ASV_91	gi|1049766302|gb|CP016616.1|	100.000	253	0	0	1	253	100658	100910	6.66e-128	468	253	1882682	N/A	Microvirga ossetica strain V5/3M, complete sequence.
+ASV_91	gi|524853350|gb|KF160608.1|	100.000	253	0	0	1	253	428	680	6.66e-128	468	253	1358176	N/A	Bacterium 145_xplvp335 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1894821758|gb|MT909484.1|	100.000	253	0	0	1	253	397	649	6.66e-128	468	253	1869227	N/A	Bacterium strain GSD10346 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1894821635|gb|MT909361.1|	100.000	253	0	0	1	253	394	646	6.66e-128	468	253	1869227	N/A	Bacterium strain GSD10222 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|343483699|gb|JN377668.1|	100.000	253	0	0	1	253	412	664	6.66e-128	468	253	28210	N/A	Chelatococcus asaccharovorans strain BLH-w22 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|645320705|ref|NR_117847.1|	100.000	253	0	0	1	253	458	710	6.66e-128	468	253	864070	N/A	Microvirga zambiensis WSM3693 16S ribosomal RNA, partial sequence
+ASV_91	gi|57996740|emb|AJ871432.1|	100.000	253	0	0	1	253	168	420	6.66e-128	468	253	53254	N/A	Bosea thiooxidans partial 16S rRNA gene, isolate CP183aa
+ASV_91	gi|1810929563|gb|MT078707.1|	99.605	253	1	0	1	253	474	726	3.10e-126	462	253	2719797	N/A	Microvirga terricola strain c23x22 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|2999023713|gb|PV791420.1|	99.605	253	1	0	1	253	434	686	3.10e-126	462	253	2719797	N/A	Microvirga terricola strain 851 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|2363086154|ref|NR_181329.1|	99.605	253	1	0	1	253	452	704	3.10e-126	462	253	2791025	N/A	Microvirga alba strain BT350 16S ribosomal RNA, partial sequence
+ASV_91	gi|2246519838|gb|ON629907.1|	99.605	253	1	0	1	253	100	352	3.10e-126	462	253	1882682	N/A	Microvirga ossetica strain ZSTM23188 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|1878348208|gb|MT795757.1|	99.605	253	1	0	1	253	452	704	3.10e-126	462	253	2791025	N/A	Microvirga alba strain BT350 16S ribosomal RNA gene, partial sequence
+ASV_91	gi|2710189954|gb|PP583284.1|	99.209	253	2	0	1	253	337	589	1.44e-124	457	253	670291	N/A	Microvirga aerophila strain T2C14 16S ribosomal RNA gene, partial sequence
+ASV_93	gi|532761382|gb|KC921189.1|	100.000	253	0	0	1	253	470	722	6.66e-128	468	253	1391513	N/A	Bacterium WX65 16S ribosomal RNA gene, partial sequence
+ASV_117	gi|356874590|dbj|AB529677.1|	99.209	253	2	0	1	253	338	590	1.44e-124	457	253	685826	N/A	Bacterium YO-33 gene for 16S ribosomal RNA, partial sequence
+ASV_182	gi|1603476255|gb|MK696433.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	1069963	N/A	Janibacter alkaliphilus strain JK51 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|1402368514|gb|MH482330.1|	100.000	253	0	0	1	253	445	697	6.66e-128	468	253	1069963	N/A	Janibacter alkaliphilus strain 20BR2R1 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2645243140|gb|PP087035.1|	100.000	253	0	0	1	253	475	727	6.66e-128	468	253	1069963	N/A	Janibacter alkaliphilus strain HNS-S29 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|566085411|ref|NR_109453.1|	100.000	253	0	0	1	253	457	709	6.66e-128	468	253	1069963	N/A	Janibacter alkaliphilus strain SCSIO 10480 16S ribosomal RNA, partial sequence
+ASV_182	gi|3002844855|gb|PV803587.1|	99.605	253	1	0	1	253	509	761	3.10e-126	462	253	882824	N/A	Knoellia locipacati strain IL-LBD-Z1 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|3002844854|gb|PV803586.1|	99.605	253	1	0	1	253	511	763	3.10e-126	462	253	882824	N/A	Knoellia locipacati strain IL-LBD-Z3 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|3048872793|gb|PX225949.1|	99.605	253	1	0	1	253	443	695	3.10e-126	462	253	2730921	N/A	Knoellia koreensis strain CA20 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|3002456272|gb|CP194734.1|	99.605	253	1	0	1	253	2219489	2219237	3.10e-126	462	253	857417	N/A	Janibacter indicus strain 1P10AC chromosome
+ASV_182	gi|2955315893|dbj|LC807687.1|	99.605	253	1	0	1	253	487	739	3.10e-126	462	253	262209	N/A	Janibacter melonis R102 gene for 16S rRNA, partial sequence
+ASV_182	gi|2924878203|gb|PV247679.1|	99.605	253	1	0	1	253	516	768	3.10e-126	462	253	3404795	N/A	Knoellia altitudinis strain CPCC 206391 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2871829340|gb|PQ779986.1|	99.605	253	1	0	1	253	483	735	3.10e-126	462	253	1879010	N/A	Bacillota bacterium strain ZHCPRcN20 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2805779781|gb|PQ344106.1|	99.605	253	1	0	1	253	475	727	3.10e-126	462	253	442954	N/A	Knoellia aerolata strain SCK_607 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2738947385|gb|PP863089.1|	99.605	253	1	0	1	253	426	678	3.10e-126	462	253	857417	N/A	Janibacter indicus strain WS-68 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2736093823|dbj|LC800720.1|	99.605	253	1	0	1	253	457	709	3.10e-126	462	253	364298	N/A	Janibacter hoylei agarose(NA)23 gene for 16S ribosomal RNA, partial sequence
+ASV_182	gi|2732501705|gb|CP144167.1|	99.605	253	1	0	1	253	2463699	2463447	3.10e-126	462	253	103817	N/A	Janibacter terrae strain Sec5.9 chromosome, complete genome
+ASV_182	gi|2691249668|gb|PP424981.1|	99.605	253	1	0	1	253	456	708	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2365 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2691249626|gb|PP424943.1|	99.605	253	1	0	1	253	457	709	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2320 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2691249582|gb|PP424900.1|	99.605	253	1	0	1	253	455	707	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2269 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2691249566|gb|PP424884.1|	99.605	253	1	0	1	253	447	699	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2250 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2691249530|gb|PP424850.1|	99.605	253	1	0	1	253	427	679	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2215 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2691249525|gb|PP424845.1|	99.605	253	1	0	1	253	464	716	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2210 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2691249501|gb|PP424821.1|	99.605	253	1	0	1	253	465	717	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2182 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2691249472|gb|PP424792.1|	99.605	253	1	0	1	253	465	717	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2149 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2691249463|gb|PP424784.1|	99.605	253	1	0	1	253	458	710	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2139 16S ribosomal RNA gene, partial sequence
+ASV_182	gi|2691249452|gb|PP424773.1|	99.605	253	1	0	1	253	458	710	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST2124 16S ribosomal RNA gene, partial sequence
+ASV_210	gi|1441204311|ref|NR_157726.1|	99.209	253	2	0	1	253	502	754	1.44e-124	457	253	1892554	N/A	Adhaeribacter terrae strain HY02 16S ribosomal RNA, partial sequence
+ASV_210	gi|631253062|ref|NR_114260.1|	99.209	253	2	0	1	253	496	748	1.44e-124	457	253	529703	N/A	Adhaeribacter terreus strain NBRC 104235 16S ribosomal RNA, partial sequence
+ASV_210	gi|343206003|ref|NR_044551.1|	99.209	253	2	0	1	253	516	768	1.44e-124	457	253	529703	N/A	Adhaeribacter terreus strain DNG6 16S ribosomal RNA, partial sequence
+ASV_212	gi|2363085484|ref|NR_180991.1|	100.000	253	0	0	1	253	527	779	6.66e-128	468	253	2682097	N/A	Lysobacter gilvus strain HX-5-24 16S ribosomal RNA, partial sequence
+ASV_212	gi|2790585557|gb|PQ215983.1|	100.000	253	0	0	1	253	505	757	6.66e-128	468	253	2888523	N/A	Noviluteimonas lactosilytica strain HC039 16S ribosomal RNA gene, partial sequence
+ASV_212	gi|1206483194|gb|KY753263.1|	100.000	253	0	0	1	253	495	747	6.66e-128	468	253	414050	N/A	Noviluteimonas dokdonensis strain YR-23 16S ribosomal RNA gene, partial sequence
+ASV_212	gi|2329567325|gb|OP847103.1|	100.000	253	0	0	1	253	507	759	6.66e-128	468	253	2682097	N/A	Lysobacter gilvus strain PS3R-13 16S ribosomal RNA gene, partial sequence
+ASV_212	gi|636559888|ref|NR_115948.1|	100.000	253	0	0	1	253	507	759	6.66e-128	468	253	1300345	N/A	Lysobacter dokdonensis DS-58 16S ribosomal RNA, partial sequence
+ASV_212	gi|2119849196|gb|OK576875.1|	99.605	253	1	0	1	253	527	779	3.10e-126	462	253	2888523	N/A	Noviluteimonas lactosilytica strain A6 16S ribosomal RNA gene, partial sequence
+ASV_223	gi|182894550|gb|EU594496.1|	99.605	253	1	0	1	253	188	440	3.10e-126	462	253	518708	N/A	Soil bacterium T16 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|1269860193|ref|NR_028945.2|	100.000	253	0	0	1	253	508	760	6.66e-128	468	253	152142	N/A	Mycobacterium holsaticum strain 1406 16S ribosomal RNA, complete sequence
+ASV_227	gi|2591109104|gb|OR648427.1|	100.000	253	0	0	1	253	464	716	6.66e-128	468	253	152142	N/A	Mycolicibacterium holsaticum strain 35_MI15_03829 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2207605878|gb|CP060018.1|	100.000	253	0	0	1	253	2870970	2871222	6.66e-128	468	253	1226752	N/A	Mycobacterium holsaticum DSM 44478 = JCM 12374 strain DSM 44478 chromosome, complete genome
+ASV_227	gi|2082078276|gb|CP080998.1|	100.000	253	0	0	1	253	1562350	1562602	6.66e-128	468	253	1226752	N/A	Mycolicibacterium holsaticum DSM 44478 = JCM 12374 chromosome, complete genome
+ASV_227	gi|2022900707|gb|MW882248.1|	100.000	253	0	0	1	253	477	729	6.66e-128	468	253	1883427	N/A	Actinomycetes bacterium strain HBU208059 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|12750960|emb|AJ310467.1|	100.000	253	0	0	1	253	510	762	6.66e-128	468	253	152142	N/A	Mycobacterium holsaticum 16S rRNA gene, strain 1406
+ASV_227	gi|1806410789|dbj|AP022604.1|	99.605	253	1	0	1	253	2899083	2899335	3.10e-126	462	253	1792	N/A	Mycolicibacterium chitae JCM 12403 DNA, nearly complete genome
+ASV_227	gi|1398891162|gb|MH458861.1|	99.605	253	1	0	1	253	437	689	3.10e-126	462	253	1794	N/A	Mycolicibacterium gadium strain ArASM126 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|1539981673|emb|LR134355.1|	99.605	253	1	0	1	253	1329990	1330242	3.10e-126	462	253	1792	N/A	Mycolicibacterium chitae strain NCTC10485 genome assembly, chromosome: 1
+ASV_227	gi|2591109091|gb|OR648414.1|	99.605	253	1	0	1	253	459	711	3.10e-126	462	253	1792	N/A	Mycolicibacterium chitae strain 32_MI14_10721 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2415991232|gb|OQ096661.1|	99.605	253	1	0	1	253	483	735	3.10e-126	462	253	56689	N/A	Mycolicibacterium mucogenicum strain ShilD7 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2177159060|gb|OK539002.1|	99.605	253	1	0	1	253	404	656	3.10e-126	462	253	1792	N/A	Mycolicibacterium chitae strain 55_00891B 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|339764871|gb|JN049506.1|	99.605	253	1	0	1	253	423	675	3.10e-126	462	253	1792	N/A	Mycobacterium chitae strain FMUNAM62 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|265678912|ref|NR_029220.1|	99.605	253	1	0	1	253	505	757	3.10e-126	462	253	1792	N/A	Mycolicibacterium chitae strain 2502 16S ribosomal RNA, partial sequence
+ASV_227	gi|3048834618|dbj|AP043664.1|	99.209	253	2	0	1	253	2701929	2702181	1.44e-124	457	253	1807	N/A	Mycolicibacterium obuense SRL2023-024 DNA, complete genome
+ASV_227	gi|3048829179|dbj|AP043663.1|	99.209	253	2	0	1	253	2632928	2633180	1.44e-124	457	253	1807	N/A	Mycolicibacterium obuense SRL2021-291 DNA, complete genome
+ASV_227	gi|3048823777|dbj|AP043662.1|	99.209	253	2	0	1	253	2260214	2260466	1.44e-124	457	253	1807	N/A	Mycolicibacterium obuense SRL2019-498 DNA, complete genome
+ASV_227	gi|3022098682|gb|PV927186.1|	99.209	253	2	0	1	253	450	702	1.44e-124	457	253	2212479	N/A	Mycobacterium kyogaense strain MBLB5180 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2990622502|gb|PV739400.1|	99.209	253	2	0	1	253	464	716	1.44e-124	457	253	1869227	N/A	Bacterium strain H22F55-2AGC48 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2890678601|gb|PQ897140.1|	99.209	253	2	0	1	253	415	667	1.44e-124	457	253	117567	N/A	Mycolicibacterium frederiksbergense strain BC18 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2718525954|gb|PP682317.1|	99.209	253	2	0	1	253	418	670	1.44e-124	457	253	1869227	N/A	Bacterium strain JXDB143 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2718525945|gb|PP682313.1|	99.209	253	2	0	1	253	414	666	1.44e-124	457	253	1869227	N/A	Bacterium strain JXDB138 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2718525872|gb|PP682282.1|	99.209	253	2	0	1	253	410	662	1.44e-124	457	253	1869227	N/A	Bacterium strain JXDB79 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2700384523|gb|PP499327.1|	99.209	253	2	0	1	253	508	760	1.44e-124	457	253	3064284	N/A	[Mycobacterium] wendilense strain Mu0050 16S ribosomal RNA gene, partial sequence
+ASV_227	gi|2591109087|gb|OR648410.1|	99.209	253	2	0	1	253	455	707	1.44e-124	457	253	319707	N/A	Mycolicibacterium aubagnense strain 125_MI15_11405 16S ribosomal RNA gene, partial sequence
+ASV_286	gi|1885537435|dbj|LC523944.1|	99.209	253	2	0	1	253	467	719	1.44e-124	457	253	1891241	N/A	Betaproteobacteria bacterium 2-D8 gene for 16S ribosomal RNA, partial sequence
+ASV_304	gi|1835951153|gb|MT415183.1|	100.000	253	0	0	1	253	465	717	6.66e-128	468	253	279573	N/A	Agromyces humatus strain CsMH-113 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|1834409201|gb|MT373570.1|	100.000	253	0	0	1	253	400	652	6.66e-128	468	253	293890	N/A	Agromyces subbeticus strain BaOD-279 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|1679580107|dbj|LC481661.1|	100.000	253	0	0	1	253	421	673	6.66e-128	468	253	279573	N/A	Agromyces humatus NGB-R18 gene for 16S ribosomal RNA, partial sequence
+ASV_304	gi|1569967617|gb|MK506375.1|	100.000	253	0	0	1	253	453	705	6.66e-128	468	253	1869227	N/A	Bacterium strain C22B 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2805779858|gb|PQ344183.1|	100.000	253	0	0	1	253	487	739	6.66e-128	468	253	279573	N/A	Agromyces humatus strain SM_813 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|1523761249|gb|MK229096.1|	100.000	253	0	0	1	253	431	683	6.66e-128	468	253	717856	N/A	Agromyces iriomotensis strain V30 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2249938286|gb|ON698114.1|	100.000	253	0	0	1	253	466	718	6.66e-128	468	253	717856	N/A	Agromyces iriomotensis strain HIB-113 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2562833079|gb|OR437053.1|	100.000	253	0	0	1	253	462	714	6.66e-128	468	253	717856	N/A	Agromyces iriomotensis strain 23242 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2294002251|gb|OP355341.1|	100.000	253	0	0	1	253	508	760	6.66e-128	468	253	717856	N/A	Agromyces iriomotensis strain BT825 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|723266309|gb|KM374721.1|	100.000	253	0	0	1	253	518	770	6.66e-128	468	253	279573	N/A	Agromyces humatus strain 3S10 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2246519950|gb|ON630019.1|	100.000	253	0	0	1	253	190	442	6.66e-128	468	253	717856	N/A	Agromyces iriomotensis strain ZSBA23102 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2058286375|gb|MZ452529.1|	100.000	253	0	0	1	253	431	683	6.66e-128	468	253	717856	N/A	Agromyces iriomotensis strain EpV30 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|480359160|gb|KC618494.1|	100.000	253	0	0	1	253	376	628	6.66e-128	468	253	1308924	N/A	Agromyces bauzanensis strain Uz1807 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|959494809|ref|NR_133690.1|	100.000	253	0	0	1	253	495	747	6.66e-128	468	253	717856	N/A	Agromyces iriomotensis strain IY07-20 16S ribosomal RNA, partial sequence
+ASV_304	gi|343202643|ref|NR_043027.1|	100.000	253	0	0	1	253	469	721	6.66e-128	468	253	279573	N/A	Agromyces humatus strain CD5 16S ribosomal RNA, partial sequence
+ASV_304	gi|310975073|ref|NR_036937.1|	100.000	253	0	0	1	253	491	743	6.66e-128	468	253	269420	N/A	Agromyces neolithicus strain 23-23 16S ribosomal RNA, partial sequence
+ASV_304	gi|2941139610|gb|PV370010.1|	99.605	253	1	0	1	253	274	526	3.10e-126	462	253	269420	N/A	Agromyces neolithicus strain BK269 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2501504036|gb|OQ943276.1|	99.605	253	1	0	1	253	463	715	3.10e-126	462	253	1766800	N/A	Agromyces humi strain MG2T24 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2320082215|gb|OP696653.1|	99.605	253	1	0	1	253	474	726	3.10e-126	462	253	1869227	N/A	Bacterium strain OP 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2180566342|ref|NR_174218.1|	99.605	253	1	0	1	253	515	767	3.10e-126	462	253	1766800	N/A	Agromyces humi strain ANK073 16S ribosomal RNA, partial sequence
+ASV_304	gi|2317534191|gb|OP648117.1|	99.605	253	1	0	1	253	484	736	3.10e-126	462	253	717856	N/A	Agromyces iriomotensis strain CEMTC_6432 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2205688625|gb|OM943702.1|	99.605	253	1	0	1	253	455	707	3.10e-126	462	253	2900548	N/A	Actinobacteria bacterium strain MGb2-16 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|1916341507|gb|MW092895.1|	99.605	253	1	0	1	253	487	739	3.10e-126	462	253	717856	N/A	Agromyces iriomotensis strain HFBPR44 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|1894821435|gb|MT909161.1|	99.605	253	1	0	1	253	445	697	3.10e-126	462	253	1869227	N/A	Bacterium strain GSD10019 16S ribosomal RNA gene, partial sequence
+ASV_304	gi|2656677815|gb|PP196019.1|	99.209	253	2	0	1	253	397	649	4.01e-125	459	253	1308924	N/A	Agromyces bauzanensis strain VRL_M1_24 16S ribosomal RNA gene, partial sequence
+ASV_313	gi|1772810644|gb|MN647626.1|	99.605	253	1	0	1	253	475	727	3.10e-126	462	253	2665159	N/A	Hyphomicrobium album strain XQ2 16S ribosomal RNA gene, partial sequence
+ASV_313	gi|2215065308|gb|ON137053.1|	99.605	253	1	0	1	253	1	253	3.10e-126	462	253	51670;77133	N/A	Uncultured bacterium clone dongzy2tff4417 16S ribosomal RNA gene, partial sequence
+ASV_313	gi|2363085336|ref|NR_180916.1|	99.605	253	1	0	1	253	475	727	3.10e-126	462	253	2665159	N/A	Hyphomicrobium album strain XQ2 16S ribosomal RNA, partial sequence
+ASV_313	gi|532761017|gb|KC921159.1|	99.605	253	1	0	1	253	374	626	3.10e-126	462	253	1391521	N/A	Hyphomicrobiaceae bacterium LX49 16S ribosomal RNA gene, partial sequence
+ASV_344	gi|37961598|gb|AY234441.1|	99.605	253	1	0	1	253	480	732	3.10e-126	462	253	234318	N/A	Bacterium Ellin5024 16S ribosomal RNA gene, partial sequence
+ASV_352	gi|2705606341|gb|PP554295.1|	99.209	253	2	0	1	253	484	736	1.44e-124	457	253	1882271	N/A	Geodermatophilaceae bacterium strain CPCC_205249 16S ribosomal RNA gene, partial sequence
+ASV_352	gi|1137647771|ref|NR_145553.1|	99.209	253	2	0	1	253	506	758	1.44e-124	457	253	1608613	N/A	Modestobacter lapidis strain MON3.1 16S ribosomal RNA, partial sequence
+ASV_359	gi|2293333181|gb|OP344400.1|	100.000	253	0	0	1	253	434	686	6.66e-128	468	253	433659	N/A	Nocardioides mesophilus strain W478 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|1116030235|ref|NR_144693.1|	100.000	253	0	0	1	253	420	672	6.66e-128	468	253	1325935	N/A	Nocardioides massiliensis strain GD13 16S ribosomal RNA, partial sequence
+ASV_359	gi|408718610|gb|JX841005.1|	100.000	253	0	0	1	253	489	741	6.66e-128	468	253	715784	N/A	Nocardioides iriomotensis strain CB-281467 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|1898514180|gb|CP060713.1|	100.000	253	0	0	1	253	151212	150960	6.66e-128	468	253	433659	N/A	Nocardioides mesophilus strain KACC 16243 chromosome, complete genome
+ASV_359	gi|636559967|ref|NR_116027.1|	100.000	253	0	0	1	253	458	710	6.66e-128	468	253	433659	N/A	Nocardioides mesophilus strain MSL-22 16S ribosomal RNA, partial sequence
+ASV_359	gi|1544889019|dbj|LC430050.1|	99.605	253	1	0	1	253	423	675	3.10e-126	462	253	661483	N/A	Marmoricola ginsengisoli S-6 gene for 16S ribosomal RNA, partial sequence
+ASV_359	gi|1215531074|emb|LT853793.1|	99.605	253	1	0	1	253	433	685	3.10e-126	462	253	86796	N/A	Marmoricola aurantiacus partial 16S rRNA gene, strain TSDHC15-101F
+ASV_359	gi|2640698102|gb|PP049571.1|	99.605	253	1	0	1	253	479	731	3.10e-126	462	253	642780	N/A	Nocardioides scoriae strain N34 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|2638458570|gb|PP024020.1|	99.605	253	1	0	1	253	434	686	3.10e-126	462	253	715784	N/A	Nocardioides iriomotensis strain M19 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|1085860874|emb|LT629757.1|	99.605	253	1	0	1	253	1196967	1196715	3.10e-126	462	253	642780	N/A	Marmoricola scoriae strain DSM 22127 genome assembly, chromosome: I
+ASV_359	gi|1679775897|ref|NR_163619.1|	99.605	253	1	0	1	253	432	684	3.10e-126	462	253	1645666	N/A	Marmoricola silvestris strain S20-100 16S ribosomal RNA, partial sequence
+ASV_359	gi|2428167247|gb|OQ255085.1|	99.605	253	1	0	1	253	468	720	3.10e-126	462	253	1645666	N/A	Marmoricola silvestris strain S4-18 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|755223236|gb|KM891546.1|	99.605	253	1	0	1	253	446	698	3.10e-126	462	253	86796	N/A	Marmoricola aurantiacus strain DS1-5B 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|1013172408|ref|NR_135875.1|	99.605	253	1	0	1	253	486	738	3.10e-126	462	253	1542737	N/A	Nocardioides marmorisolisilvae strain KIS18-7 16S ribosomal RNA, partial sequence
+ASV_359	gi|1937370461|gb|MW295519.1|	99.605	253	1	0	1	253	482	734	3.10e-126	462	253	715784	N/A	Nocardioides iriomotensis strain 20SRW-23 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|645319566|ref|NR_116965.1|	99.605	253	1	0	1	253	486	738	3.10e-126	462	253	642780	N/A	Nocardioides scoriae strain Sco-D01 16S ribosomal RNA, partial sequence
+ASV_359	gi|631251852|ref|NR_113050.1|	99.605	253	1	0	1	253	469	721	3.10e-126	462	253	715784	N/A	Nocardioides iriomotensis strain IR27-S3 16S ribosomal RNA, partial sequence
+ASV_359	gi|2798604835|gb|PQ285284.1|	99.209	253	2	0	1	253	427	679	1.44e-124	457	253	86796	N/A	Nocardioides aurantiacus strain A3 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|2640698096|gb|PP049570.1|	99.209	253	2	0	1	253	470	722	1.44e-124	457	253	661483	N/A	Nocardioides marmoriginsengisoli strain N33 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|2638458571|gb|PP024021.1|	99.209	253	2	0	1	253	440	692	1.44e-124	457	253	1343103	N/A	Nocardioides pacificus strain M20 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|2428167272|gb|OQ255110.1|	99.209	253	2	0	1	253	472	724	1.44e-124	457	253	433659	N/A	Nocardioides mesophilus strain S4-43 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|2363086358|ref|NR_181431.1|	99.209	253	2	0	1	253	499	751	1.44e-124	457	253	2773426	N/A	Nocardioides malaquae strain Y6 16S ribosomal RNA, partial sequence
+ASV_359	gi|2363084567|ref|NR_180532.1|	99.209	253	2	0	1	253	482	734	1.44e-124	457	253	2849501	N/A	Nocardioides panacis strain G188 16S ribosomal RNA, partial sequence
+ASV_359	gi|2310188470|gb|OP542415.1|	99.209	253	2	0	1	253	481	733	1.44e-124	457	253	1343103	N/A	Nocardioides pacificus strain Du230 16S ribosomal RNA gene, partial sequence
+ASV_359	gi|2308794562|gb|OP521964.1|	99.209	253	2	0	1	253	417	669	1.44e-124	457	253	642780	N/A	Marmoricola scoriae strain ML-290 16S ribosomal RNA gene, partial sequence
+ASV_392	gi|270610443|gb|GU187039.1|	100.000	253	0	0	1	253	459	711	6.66e-128	468	253	755195	N/A	Acidobacteria bacterium IGE-018 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2528974138|gb|OR215419.1|	100.000	253	0	0	1	253	441	693	6.66e-128	468	253	1038928	N/A	Streptomyces xinghaiensis strain CCR158 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2955133874|gb|CP134822.1|	100.000	253	0	0	1	253	351351	351603	6.66e-128	468	253	1038928	N/A	Streptomyces xinghaiensis strain sf106 chromosome, complete genome
+ASV_402	gi|2916682729|gb|PV168343.1|	100.000	253	0	0	1	253	500	752	6.66e-128	468	253	1038928	N/A	Streptomyces xinghaiensis strain HDN190910 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2842777655|gb|PQ526362.1|	100.000	253	0	0	1	253	443	695	6.66e-128	468	253	1226757	N/A	Streptomyces rapamycinicus strain TM26 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2745588751|gb|PP935388.1|	100.000	253	0	0	1	253	443	695	6.66e-128	468	253	1038928	N/A	Streptomyces xinghaiensis strain GXL0088 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2700707212|gb|PP504445.1|	100.000	253	0	0	1	253	428	680	6.66e-128	468	253	1436133	N/A	Actinacidiphila bryophytorum strain SP16 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2691248258|gb|PP424024.1|	100.000	253	0	0	1	253	452	704	6.66e-128	468	253	3107983	N/A	Marine bacterium strain ST1293 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2623919273|gb|OR844358.1|	100.000	253	0	0	1	253	126	378	6.66e-128	468	253	1869227	N/A	Bacterium strain NCA_408 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2654614406|gb|CP108540.1|	100.000	253	0	0	1	253	1039339	1039087	6.66e-128	468	253	1038928	N/A	Streptomyces xinghaiensis strain NBC_01215 chromosome, complete genome
+ASV_402	gi|2638409128|gb|PP002440.1|	100.000	253	0	0	1	253	462	714	6.66e-128	468	253	1911520	N/A	Actinomycetales bacterium strain D214C03 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2638409126|gb|PP002438.1|	100.000	253	0	0	1	253	463	715	6.66e-128	468	253	1911520	N/A	Actinomycetales bacterium strain D213G01 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2638409114|gb|PP002426.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	1911520	N/A	Actinomycetales bacterium strain D12G05 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2591512313|gb|OR654316.1|	100.000	253	0	0	1	253	424	676	6.66e-128	468	253	1038928	N/A	Streptomyces xinghaiensis strain M7 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2574656250|gb|OR527151.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	310782	N/A	Actinacidiphila paucisporea strain AN696 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2518758266|gb|OR133507.1|	100.000	253	0	0	1	253	447	699	6.66e-128	468	253	1038928	N/A	Streptomyces xinghaiensis strain INA01375 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2487244459|gb|OQ824997.1|	100.000	253	0	0	1	253	480	732	6.66e-128	468	253	51201	N/A	Streptomyces griseocarneus strain ALP-13 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2431576919|gb|OQ326963.1|	100.000	253	0	0	1	253	396	648	6.66e-128	468	253	1038928	N/A	Streptomyces xinghaiensis strain MTZ3.17 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2363087059|ref|NR_181785.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	2875706	N/A	Streptomyces gobiensis strain 1_25 16S ribosomal RNA, partial sequence
+ASV_402	gi|2363080329|ref|NR_178391.1|	100.000	253	0	0	1	253	465	717	6.66e-128	468	253	665083	N/A	Allostreptomyces indica strain YIM 75704 16S ribosomal RNA, partial sequence
+ASV_402	gi|2315799967|gb|OP615208.1|	100.000	253	0	0	1	253	458	710	6.66e-128	468	253	2666184	N/A	Streptomyces desertarenae strain G4 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2288105553|gb|OP268477.1|	100.000	253	0	0	1	253	491	743	6.66e-128	468	253	2900548	N/A	Actinobacteria bacterium strain KUMS/AM1 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2170315708|gb|OM019278.1|	100.000	253	0	0	1	253	416	668	6.66e-128	468	253	2250578	N/A	Streptomyces reniochalinae strain J-167 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2165726435|gb|CP086120.1|	100.000	253	0	0	1	253	426007	425755	6.66e-128	468	253	2875706	N/A	Streptomyces gobiensis strain 1_25 chromosome, complete genome
+ASV_402	gi|2116728072|gb|OK513253.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	1436133	N/A	Actinacidiphila bryophytorum strain WG8 16S ribosomal RNA gene, partial sequence
+ASV_402	gi|2623919278|gb|OR844363.1|	99.605	253	1	0	1	253	128	380	8.62e-127	464	253	1869227	N/A	Bacterium strain NCA_414 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057917703|gb|PX290281.1|	100.000	253	0	0	1	253	480	732	6.66e-128	468	253	1797754	N/A	Bacillus nitroreducens strain BBAC03 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057900705|gb|PX286118.1|	100.000	253	0	0	1	253	477	729	6.66e-128	468	253	2026189	N/A	Bacillus albus strain TVCGN08 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057886437|gb|PX285958.1|	100.000	253	0	0	1	253	477	729	6.66e-128	468	253	1428	N/A	Bacillus thuringiensis strain TVCGN07 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057886404|gb|PX285954.1|	100.000	253	0	0	1	253	476	728	6.66e-128	468	253	1396	N/A	Bacillus cereus strain TVCGN06 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057885600|gb|PX285914.1|	100.000	253	0	0	1	253	490	742	6.66e-128	468	253	1396	N/A	Bacillus cereus strain BTLBi3 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057697149|gb|PX285700.1|	100.000	253	0	0	1	253	522	774	6.66e-128	468	253	2026192	N/A	Bacillus proteolyticus strain Bp1 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057490665|gb|PX285249.1|	100.000	253	0	0	1	253	470	722	6.66e-128	468	253	1396	N/A	Bacillus cereus strain SS5003 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057399010|gb|PX283353.1|	100.000	253	0	0	1	253	439	691	6.66e-128	468	253	155322	N/A	Bacillus toyonensis strain 544 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057399009|gb|PX283352.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	1428	N/A	Bacillus thuringiensis strain 647 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3057395587|gb|PX281876.1|	100.000	253	0	0	1	253	494	746	6.66e-128	468	253	1428	N/A	Bacillus thuringiensis strain SKM-2 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056960428|gb|PX272173.1|	100.000	253	0	0	1	253	511	763	6.66e-128	468	253	1890302	N/A	Bacillus wiedmannii strain Sequence_ID32027F 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056960426|gb|PX272171.1|	100.000	253	0	0	1	253	228	480	6.66e-128	468	253	2026192	N/A	Bacillus proteolyticus strain Sequence_ID291492R 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056960425|gb|PX272170.1|	100.000	253	0	0	1	253	506	758	6.66e-128	468	253	1405	N/A	Bacillus mycoides strain Sequence_ID29427F 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056960424|gb|PX272169.1|	100.000	253	0	0	1	253	507	759	6.66e-128	468	253	2026190	N/A	Bacillus mobilis strain Sequence_ID50127F 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056960423|gb|PX272168.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	1396	N/A	Bacillus cereus strain Sequence_ID11027F 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056960421|gb|PX272166.1|	100.000	253	0	0	1	253	507	759	6.66e-128	468	253	2026189	N/A	Bacillus albus strain Sequence_ID49427F 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056960383|gb|PX272162.1|	100.000	253	0	0	1	253	167	419	6.66e-128	468	253	1402	N/A	Bacillus licheniformis strain D2 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056958620|gb|PX271255.1|	100.000	253	0	0	1	253	540	792	6.66e-128	468	253	1396	N/A	Bacillus cereus strain SF1 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056516080|gb|PX262056.1|	100.000	253	0	0	1	253	487	739	6.66e-128	468	253	2026191	N/A	Bacillus luti strain SS-13-3-49 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3056512462|gb|PX261272.1|	100.000	253	0	0	1	253	474	726	6.66e-128	468	253	1428	N/A	Bacillus thuringiensis strain YN5 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3055979551|gb|PX257961.1|	100.000	253	0	0	1	253	464	716	6.66e-128	468	253	1396	N/A	Bacillus cereus strain S33 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3055968950|gb|PX257864.1|	100.000	253	0	0	1	253	515	767	6.66e-128	468	253	1428	N/A	Bacillus thuringiensis strain BOTRUEML159 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3055968949|gb|PX257863.1|	100.000	253	0	0	1	253	517	769	6.66e-128	468	253	2026189	N/A	Bacillus albus strain H 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3055968945|gb|PX257862.1|	100.000	253	0	0	1	253	515	767	6.66e-128	468	253	1392	N/A	Bacillus anthracis strain BOTRUEML158 16S ribosomal RNA gene, partial sequence
+ASV_448	gi|3055968580|gb|PX257813.1|	100.000	253	0	0	1	253	510	762	6.66e-128	468	253	1396	N/A	Bacillus cereus strain BOTRUEML156 16S ribosomal RNA gene, partial sequence
+ASV_456	gi|2843846742|gb|PQ552406.1|	99.605	253	1	0	2	254	2	254	3.11e-126	462	254	1869227	N/A	Bacterium strain OTU_1822 16S ribosomal RNA gene, partial sequence
+ASV_456	gi|2155011100|gb|OL629123.1|	99.123	228	2	0	1	228	307	534	1.14e-110	411	254	2789776	N/A	Actinomarinicola tropica strain BD15-2 16S ribosomal RNA gene, partial sequence
+ASV_482	gi|2946244245|gb|PV399655.1|	99.203	251	2	0	1	251	176	426	1.87e-123	453	253	77133;1869227	N/A	Uncultured bacterium clone ASV_126_(0.2151%) 16S ribosomal RNA gene, partial sequence
+ASV_482	gi|2946244328|gb|PV399738.1|	99.203	251	2	0	1	251	176	426	1.87e-123	453	253	77133;1869227	N/A	Uncultured bacterium clone ASV_251_(0.112%) 16S ribosomal RNA gene, partial sequence
+ASV_482	gi|2946244251|gb|PV399661.1|	99.203	251	2	0	1	251	176	426	1.87e-123	453	253	77133;1869227	N/A	Uncultured bacterium clone ASV_181_(0.1581%) 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|3027626449|gb|PV952708.1|	100.000	253	0	0	1	253	395	647	6.66e-128	468	253	384	N/A	Rhizobium leguminosarum strain TNJI 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|3006035059|gb|CP101418.1|	100.000	253	0	0	1	253	3211771	3211519	6.66e-128	468	253	1138190	N/A	Rhizobium binae strain YTUBH007 chromosome, complete genome
+ASV_494	gi|3002443012|gb|PV802900.1|	100.000	253	0	0	1	253	418	670	6.66e-128	468	253	411945	N/A	Rhizobium miluonense strain J1 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|3002443011|gb|PV802899.1|	100.000	253	0	0	1	253	419	671	6.66e-128	468	253	29449	N/A	Rhizobium etli strain I1 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2995290990|gb|PV775632.1|	100.000	253	0	0	1	253	436	688	6.66e-128	468	253	411945	N/A	Rhizobium miluonense strain 1136 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2990961754|gb|PV739958.1|	100.000	253	0	0	1	253	437	689	6.66e-128	468	253	398	N/A	Rhizobium tropici strain 47,3 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2962448472|gb|PV574424.1|	100.000	253	0	0	1	253	385	637	6.66e-128	468	253	384	N/A	Rhizobium leguminosarum strain UMER8 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2962410856|gb|PV574229.1|	100.000	253	0	0	1	253	471	723	6.66e-128	468	253	396	N/A	Rhizobium phaseoli strain ATCC 14482 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2959639827|gb|PV545378.1|	100.000	253	0	0	1	253	414	666	6.66e-128	468	253	1535242	N/A	Rhizobium sophorae strain X-AB-122 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2959639826|gb|PV545377.1|	100.000	253	0	0	1	253	414	666	6.66e-128	468	253	384	N/A	Rhizobium leguminosarum strain X-AB-121 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2916694172|gb|PV169182.1|	100.000	253	0	0	1	253	422	674	6.66e-128	468	253	3019934	N/A	Rhizobium beringeri strain Ch7/2-4 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2916694171|gb|PV169181.1|	100.000	253	0	0	1	253	430	682	6.66e-128	468	253	3019934	N/A	Rhizobium beringeri strain Ch7/2-2 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2916684765|gb|PV168529.1|	100.000	253	0	0	1	253	336	588	6.66e-128	468	253	359	N/A	Rhizobium rhizogenes strain YKB15607 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2916254841|gb|PV162762.1|	100.000	253	0	0	1	253	413	665	6.66e-128	468	253	411945	N/A	Rhizobium miluonense strain YRFlrC0 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2899348399|dbj|AP028250.1|	100.000	253	0	0	1	253	3684863	3684611	6.66e-128	468	253	384	N/A	Rhizobium leguminosarum Chiba-1 DNA, complete genome
+ASV_494	gi|2871849217|gb|PQ782549.1|	100.000	253	0	0	1	253	437	689	6.66e-128	468	253	411945	N/A	Rhizobium miluonense strain LT403 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2871849174|gb|PQ782506.1|	100.000	253	0	0	1	253	441	693	6.66e-128	468	253	411945	N/A	Rhizobium miluonense strain LT236 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2871837923|gb|PQ781495.1|	100.000	253	0	0	1	253	437	689	6.66e-128	468	253	410764	N/A	Rhizobium multihospitium strain XG614 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2871837784|gb|PQ781356.1|	100.000	253	0	0	1	253	437	689	6.66e-128	468	253	398	N/A	Rhizobium tropici strain LG115 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2871837780|gb|PQ781352.1|	100.000	253	0	0	1	253	439	691	6.66e-128	468	253	1079800	N/A	Rhizobium mesoamericanum strain LG111 16S ribosomal RNA gene, partial sequence
+ASV_494	gi|2870610601|gb|CP176004.1|	100.000	253	0	0	1	253	3683697	3683445	6.66e-128	468	253	3019933	N/A	Rhizobium johnstonii strain 3841 chromosome, complete genome
+ASV_494	gi|2855068299|gb|CP171844.1|	100.000	253	0	0	1	253	3702425	3702173	6.66e-128	468	253	384	N/A	Rhizobium leguminosarum strain Vaf12 chromosome, complete genome
+ASV_494	gi|2853260751|gb|CP171853.1|	100.000	253	0	0	1	253	5683	5431	6.66e-128	468	253	2081791	N/A	Rhizobium ruizarguesonis strain Vaf-46 chromosome, complete genome
+ASV_494	gi|2844883702|gb|CP172584.1|	100.000	253	0	0	1	253	3682433	3682181	6.66e-128	468	253	3019933	N/A	Rhizobium johnstonii strain NaPi chromosome, complete genome
+ASV_494	gi|2831410028|gb|CP171201.1|	100.000	253	0	0	1	253	3858204	3857952	6.66e-128	468	253	2081791	N/A	Rhizobium ruizarguesonis strain Vst36-3 chromosome, complete genome
+ASV_507	gi|3003480208|gb|PV810320.1|	100.000	253	0	0	1	253	476	728	6.66e-128	468	253	882448	N/A	Nonomuraea jabiensis strain GD112 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|3002197288|gb|CP191923.1|	100.000	253	0	0	1	253	2233138	2233390	6.66e-128	468	253	1955412	N/A	[Actinomadura] parvosata strain CA-116504 chromosome, complete genome
+ASV_507	gi|3001806825|gb|CP191880.1|	100.000	253	0	0	1	253	688038	688290	6.66e-128	468	253	404385	N/A	Nonomuraea bangladeshensis strain CA-248923 chromosome, complete genome
+ASV_507	gi|2950583220|gb|PV449791.1|	100.000	253	0	0	1	253	255	507	6.66e-128	468	253	404386	N/A	Nonomuraea coxensis strain CUMB KK-15 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2917938601|gb|PV185804.1|	100.000	253	0	0	1	253	495	747	6.66e-128	468	253	2878562	N/A	Nonomuraea aurantiaca strain 631 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2905364885|gb|PV083064.1|	100.000	253	0	0	1	253	411	663	6.66e-128	468	253	404385	N/A	Nonomuraea bangladeshensis strain H-810 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2814154904|gb|CP170570.1|	100.000	253	0	0	1	253	4632	4380	6.66e-128	468	253	46173	N/A	Nonomuraea fastidiosa strain KACC 16795 chromosome, complete genome
+ASV_507	gi|2778124853|gb|PQ084652.1|	100.000	253	0	0	1	253	473	725	6.66e-128	468	253	281186	N/A	Nonomuraea kuesteri strain 24GG04S-56 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2736090142|gb|PP837292.1|	100.000	253	0	0	1	253	467	719	6.66e-128	468	253	2878562	N/A	Nonomuraea aurantiaca strain QTP242240 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2736090023|gb|PP837173.1|	100.000	253	0	0	1	253	467	719	6.66e-128	468	253	2047744	N/A	Nonomuraea glycinis strain QTP242137 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2578831932|gb|OR564074.1|	100.000	253	0	0	1	253	474	726	6.66e-128	468	253	46182	N/A	Nonomuraea spiralis strain A145 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2449303644|gb|OQ509746.1|	100.000	253	0	0	1	253	8	260	6.66e-128	468	253	2047744	N/A	Nonomuraea glycinis strain MYC-10C 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2206778740|gb|OM967343.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	633440	N/A	Nonomuraea jiangxiensis strain A7611 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2363087243|ref|NR_181877.1|	100.000	253	0	0	1	253	497	749	6.66e-128	468	253	2878562	N/A	Nonomuraea aurantiaca strain NEAU-L178 16S ribosomal RNA, partial sequence
+ASV_507	gi|2363083471|ref|NR_179984.1|	100.000	253	0	0	1	253	501	753	6.66e-128	468	253	2219224	N/A	Nonomuraea phyllanthi strain WYY166 16S ribosomal RNA, partial sequence
+ASV_507	gi|2363082043|ref|NR_179268.1|	100.000	253	0	0	1	253	476	728	6.66e-128	468	253	2219224	N/A	Nonomuraea phyllanthi strain PA1-10 16S ribosomal RNA, partial sequence
+ASV_507	gi|2363081026|ref|NR_178756.1|	100.000	253	0	0	1	253	432	684	6.66e-128	468	253	1581193	N/A	Nonomuraea indica strain DRQ-2 16S ribosomal RNA, partial sequence
+ASV_507	gi|2363080571|ref|NR_178526.1|	100.000	253	0	0	1	253	481	733	6.66e-128	468	253	1187855	N/A	Nonomuraea cypriaca strain K274 16S ribosomal RNA, partial sequence
+ASV_507	gi|2330143385|gb|OP854829.1|	100.000	253	0	0	1	253	447	699	6.66e-128	468	253	1642303	N/A	Nonomuraea zeae strain W13 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2324822345|gb|OP764002.1|	100.000	253	0	0	1	253	470	722	6.66e-128	468	253	2045107	N/A	Nonomuraea cavernae strain MMS22-SW7 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2130625566|gb|OL414792.1|	100.000	253	0	0	1	253	446	698	6.66e-128	468	253	882448	N/A	Nonomuraea jabiensis strain S33 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2221405162|ref|NR_175411.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	2495887	N/A	Nonomuraea basaltis strain 160415 16S ribosomal RNA, partial sequence
+ASV_507	gi|2170638973|gb|OM033457.1|	100.000	253	0	0	1	253	475	727	6.66e-128	468	253	1883427	N/A	Actinomycetes bacterium strain MAT4 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2101453983|gb|OK287918.1|	100.000	253	0	0	1	253	497	749	6.66e-128	468	253	2878562	N/A	Nonomuraea aurantiaca strain NEAU-L178 16S ribosomal RNA gene, partial sequence
+ASV_507	gi|2104817525|gb|CP084058.1|	100.000	253	0	0	1	253	2130888	2131140	6.66e-128	468	253	93944	N/A	Nonomuraea gerenzanensis strain L70 chromosome, complete genome
+ASV_528	gi|343206016|ref|NR_044568.1|	99.606	254	0	1	1	253	476	729	3.10e-126	462	253	543615	N/A	Solitalea koreensis strain R2A36-4 16S ribosomal RNA, partial sequence
+ASV_545	gi|3063045765|gb|PX396492.1|	100.000	253	0	0	1	253	425	677	6.66e-128	468	253	1930	N/A	Streptomyces scabiei strain CS14 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3061084461|gb|PX362440.1|	100.000	253	0	0	1	253	440	692	6.66e-128	468	253	945052	N/A	Streptomyces heilongjiangensis strain 82402 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3060300627|gb|PX352514.1|	100.000	253	0	0	1	253	472	724	6.66e-128	468	253	249581	N/A	Streptomyces ossamyceticus strain 6214 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3057490649|gb|PX285234.1|	100.000	253	0	0	1	253	247	499	6.66e-128	468	253	1930	N/A	Streptomyces scabiei strain SS1TI 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538328|gb|PX128992.1|	100.000	253	0	0	1	253	426	678	6.66e-128	468	253	1930	N/A	Streptomyces scabiei strain HLT1-9 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538323|gb|PX128987.1|	100.000	253	0	0	1	253	420	672	6.66e-128	468	253	2993540	N/A	Streptomyces griseiscabiei strain NXT2-0 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538322|gb|PX128986.1|	100.000	253	0	0	1	253	418	670	6.66e-128	468	253	146819	N/A	Streptomyces europaeiscabiei strain SDT3-2 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538321|gb|PX128985.1|	100.000	253	0	0	1	253	415	667	6.66e-128	468	253	2993540	N/A	Streptomyces griseiscabiei strain NMT8-1 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538314|gb|PX128978.1|	100.000	253	0	0	1	253	349	601	6.66e-128	468	253	1930	N/A	Streptomyces scabiei strain HLS1-8 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538310|gb|PX128974.1|	100.000	253	0	0	1	253	422	674	6.66e-128	468	253	2993540	N/A	Streptomyces griseiscabiei strain ZJS1-1 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538286|gb|PX128950.1|	100.000	253	0	0	1	253	415	667	6.66e-128	468	253	1550619	N/A	Streptomyces polymachus strain BJT3-1 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538285|gb|PX128949.1|	100.000	253	0	0	1	253	422	674	6.66e-128	468	253	1550619	N/A	Streptomyces polymachus strain HBT7-0 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538284|gb|PX128948.1|	100.000	253	0	0	1	253	421	673	6.66e-128	468	253	1550619	N/A	Streptomyces polymachus strain GSS1-0 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3044538239|gb|PX128903.1|	100.000	253	0	0	1	253	480	732	6.66e-128	468	253	1930	N/A	Streptomyces scabiei strain GSS13 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3040294358|gb|PX111558.1|	100.000	253	0	0	1	253	450	702	6.66e-128	468	253	424188	N/A	Streptomyces deccanensis strain B109 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3039838654|gb|PX107866.1|	100.000	253	0	0	1	253	193	445	6.66e-128	468	253	1930	N/A	Streptomyces scabiei strain CS17 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|3012355538|gb|PV871389.1|	100.000	253	0	0	1	253	461	713	6.66e-128	468	253	1930	N/A	Streptomyces scabiei strain SH1 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|2993396842|gb|PV764426.1|	100.000	253	0	0	1	253	501	753	6.66e-128	468	253	1930	N/A	Streptomyces scabiei strain A4 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|2973175049|gb|PV628118.1|	100.000	253	0	0	1	253	449	701	6.66e-128	468	253	1869227	N/A	Bacterium strain I37 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|2973175048|gb|PV628117.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	1869227	N/A	Bacterium strain G41 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|2963128528|gb|PV576462.1|	100.000	253	0	0	1	253	305	557	6.66e-128	468	253	1930	N/A	Streptomyces scabiei strain OM259 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|2943119617|gb|PV382312.1|	100.000	253	0	0	1	253	66	318	6.66e-128	468	253	146819	N/A	Streptomyces europaeiscabiei strain 85P_S.europaeiscabiei 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|2927203490|gb|PV264910.1|	100.000	253	0	0	1	253	439	691	6.66e-128	468	253	146819	N/A	Streptomyces europaeiscabiei strain KACC 20186 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|2911994182|gb|PV110961.1|	100.000	253	0	0	1	253	416	668	6.66e-128	468	253	146819	N/A	Streptomyces europaeiscabiei strain LYZ1138 16S ribosomal RNA gene, partial sequence
+ASV_545	gi|2906268309|gb|PV088632.1|	100.000	253	0	0	1	253	469	721	6.66e-128	468	253	1869227	N/A	Bacterium strain XZN3-1 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|1820083079|gb|MT163375.1|	100.000	253	0	0	1	253	508	760	6.66e-128	468	253	502333	N/A	Ramlibacter ginsenosidimutans strain DST20 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|1750411832|gb|MN498046.1|	100.000	253	0	0	1	253	507	759	6.66e-128	468	253	2079448	N/A	Ramlibacter albus strain GTP1 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|1205917621|gb|KY649387.1|	100.000	253	0	0	1	253	438	690	6.66e-128	468	253	502333	N/A	Ramlibacter ginsenosidimutans strain HC-1 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|1491514511|ref|NR_159166.1|	100.000	253	0	0	1	253	510	762	6.66e-128	468	253	1926872	N/A	Ramlibacter monticola strain G-3-2 16S ribosomal RNA, partial sequence
+ASV_573	gi|984880169|emb|LN876299.1|	100.000	253	0	0	1	253	475	727	6.66e-128	468	253	1702928	N/A	Comamonadaceae bacterium URHA0027 partial 16S rRNA gene, strain URHA0027
+ASV_573	gi|1880164012|gb|MT804117.1|	100.000	253	0	0	1	253	490	742	6.66e-128	468	253	1926872	N/A	Ramlibacter monticola strain PL_2 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|959494981|ref|NR_133836.1|	100.000	253	0	0	1	253	508	760	6.66e-128	468	253	502333	N/A	Ramlibacter ginsenosidimutans strain BXN5-27 16S ribosomal RNA, partial sequence
+ASV_573	gi|2221405394|ref|NR_175506.1|	99.605	253	1	0	1	253	507	759	3.10e-126	462	253	2795217	N/A	Ramlibacter algicola strain CrO1 16S ribosomal RNA, partial sequence
+ASV_573	gi|1769125577|gb|MN603953.1|	99.605	253	1	0	1	253	506	758	3.10e-126	462	253	2764187	N/A	Ramlibacter cellulosilyticus strain USB13 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|1750411835|gb|MN498047.1|	99.605	253	1	0	1	253	507	759	3.10e-126	462	253	2780087	N/A	Ramlibacter pallidus strain HM2 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2810195216|gb|PQ386284.1|	99.605	253	1	0	1	253	506	758	3.10e-126	462	253	502333	N/A	Ramlibacter ginsenosidimutans strain IJ1-15 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2798604878|gb|PQ285327.1|	99.605	253	1	0	1	253	454	706	3.10e-126	462	253	502333	N/A	Ramlibacter ginsenosidimutans strain BP1 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|1491514564|ref|NR_159174.1|	99.605	253	1	0	1	253	472	724	3.10e-126	462	253	2039631	N/A	Ramlibacter alkalitolerans strain CJ661 16S ribosomal RNA, partial sequence
+ASV_573	gi|939468446|gb|KT888023.1|	99.605	253	1	0	1	253	463	715	3.10e-126	462	253	1738449	N/A	Comamonadaceae bacterium POES5 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|3043003736|gb|PX122331.1|	99.209	253	2	0	1	253	490	742	1.44e-124	457	253	80869	N/A	Paracidovorax citrulli strain AS-12 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2969443545|gb|PV599844.1|	99.209	253	2	0	1	253	496	748	1.44e-124	457	253	1177982	N/A	Paracidovorax wautersii strain CEMTC_11103 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2811773122|gb|PQ397120.1|	99.209	253	2	0	1	253	470	722	1.44e-124	457	253	1177982	N/A	Paracidovorax wautersii strain V8384 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2811773018|gb|PQ397016.1|	99.209	253	2	0	1	253	466	718	1.44e-124	457	253	1177982	N/A	Paracidovorax wautersii strain V8272 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2811772820|gb|PQ396819.1|	99.209	253	2	0	1	253	471	723	1.44e-124	457	253	1177982	N/A	Paracidovorax wautersii strain V7972 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2811769559|gb|PQ395868.1|	99.209	253	2	0	1	253	470	722	1.44e-124	457	253	1177982	N/A	Paracidovorax wautersii strain V8365 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2811769558|gb|PQ395867.1|	99.209	253	2	0	1	253	462	714	1.44e-124	457	253	1177982	N/A	Paracidovorax wautersii strain V8328 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2811769555|gb|PQ395864.1|	99.209	253	2	0	1	253	466	718	1.44e-124	457	253	1177982	N/A	Paracidovorax wautersii strain V4640 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2811769552|gb|PQ395861.1|	99.209	253	2	0	1	253	470	722	1.44e-124	457	253	1177982	N/A	Paracidovorax wautersii strain V4369 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2811769550|gb|PQ395859.1|	99.209	253	2	0	1	253	471	723	1.44e-124	457	253	1177982	N/A	Paracidovorax wautersii strain V4024 16S ribosomal RNA gene, partial sequence
+ASV_573	gi|2811769551|gb|PQ395860.1|	99.209	253	2	0	1	253	471	723	1.44e-124	457	253	1177982;1872122	N/A	Acidovorax sp. strain AC4-10 F46 16S ribosomal RNA gene, partial sequence
+ASV_668	gi|524853357|gb|KF160615.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	1358184	N/A	Bacterium 152_xplvp404 16S ribosomal RNA gene, partial sequence
+ASV_668	gi|2215064809|gb|ON136554.1|	99.209	253	2	0	1	253	1	253	1.44e-124	457	253	1303477	N/A	Daejeonella huanghensis isolate Otu542 16S ribosomal RNA gene, partial sequence
+ASV_668	gi|961555157|ref|NR_134126.1|	99.209	253	2	0	1	253	473	725	1.44e-124	457	253	1303477	N/A	Daejeonella huanghensis strain M1-27 16S ribosomal RNA, partial sequence
+ASV_733	gi|3040294286|gb|PX111486.1|	100.000	253	0	0	1	253	328	580	6.66e-128	468	253	1867719	N/A	Phyllobacterium zundukense strain B36 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|3040294285|gb|PX111485.1|	100.000	253	0	0	1	253	414	666	6.66e-128	468	253	1334106	N/A	Phyllobacterium loti strain B35 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|3033062148|gb|PX022925.1|	100.000	253	0	0	1	253	158	410	6.66e-128	468	253	1149773	N/A	Phyllobacterium endophyticum strain A23 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|3033062147|gb|PX022924.1|	100.000	253	0	0	1	253	157	409	6.66e-128	468	253	1334106	N/A	Phyllobacterium loti strain A22 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|3018321638|gb|PV889259.1|	100.000	253	0	0	1	253	447	699	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain sample_14 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|3018321636|gb|PV889258.1|	100.000	253	0	0	1	253	452	704	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain sample_13 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|3018321626|gb|PV889253.1|	100.000	253	0	0	1	253	450	702	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain sample_5 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2990622477|gb|PV739375.1|	100.000	253	0	0	1	253	426	678	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain H22FB22AGC52 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2973170015|gb|PV627588.1|	100.000	253	0	0	1	253	418	670	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain ERB91 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2886516114|gb|PQ870333.1|	100.000	253	0	0	1	253	420	672	6.66e-128	468	253	1867719	N/A	Phyllobacterium zundukense strain P17/1-7 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2710190116|gb|PP583446.1|	100.000	253	0	0	1	253	415	667	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain T19C4 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2780207678|gb|PQ106872.1|	100.000	253	0	0	1	253	360	612	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain ME1C035 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2755777163|gb|PP998601.1|	100.000	253	0	0	1	253	428	680	6.66e-128	468	253	300193	N/A	Phyllobacterium trifolii strain K_S_19_6 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2737831382|gb|PP854827.1|	100.000	253	0	0	1	253	392	644	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain MZ12 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2737831378|gb|PP854825.1|	100.000	253	0	0	1	253	365	617	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain MZ10 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2737831363|gb|PP854816.1|	100.000	253	0	0	1	253	422	674	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain MZ1 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2672038768|gb|PP301507.1|	100.000	253	0	0	1	253	447	699	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain 0TCS1.6C 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2672038767|gb|PP301506.1|	100.000	253	0	0	1	253	354	606	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain 0TCS1.6A 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2644498411|gb|PP079217.1|	100.000	253	0	0	1	253	444	696	6.66e-128	468	253	300193	N/A	Phyllobacterium trifolii strain BU6-25 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2509486653|gb|OR039137.1|	100.000	253	0	0	1	253	306	558	6.66e-128	468	253	1334106	N/A	Phyllobacterium loti strain BE03AUS 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2468055851|gb|OQ699150.1|	100.000	253	0	0	1	253	422	674	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain Z17L1 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2466623471|gb|OQ690728.1|	100.000	253	0	0	1	253	520	772	6.66e-128	468	253	1334106	N/A	Phyllobacterium loti strain FH-6 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2411505770|gb|OP986395.1|	100.000	253	0	0	1	253	468	720	6.66e-128	468	253	28101	N/A	Phyllobacterium myrsinacearum strain AFS021021 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2672084694|gb|PP301840.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	28101;1871046	N/A	Phyllobacterium sp. strain 0TCS1.6C 16S ribosomal RNA gene, partial sequence
+ASV_733	gi|2363086754|ref|NR_181634.1|	100.000	253	0	0	1	253	427	679	6.66e-128	468	253	1867719	N/A	Phyllobacterium zundukense strain Tri-48 16S ribosomal RNA, partial sequence
+ASV_759	gi|343200563|ref|NR_041250.1|	100.000	253	0	0	1	253	534	786	6.66e-128	468	253	296052	N/A	Terrimonas lutea strain DY 16S ribosomal RNA, partial sequence
+ASV_759	gi|1061876492|gb|KX656691.1|	99.605	253	1	0	1	253	179	431	3.10e-126	462	253	207831	N/A	Bacterium enrichment culture isolate DGGE gel band _2014_B19 16S ribosomal RNA gene, partial sequence
+ASV_759	gi|1779814805|ref|NR_164880.1|	99.209	253	2	0	1	253	523	775	1.44e-124	457	253	2662614	N/A	Terrimonas suqianensis strain personal::C3-5 16S ribosomal RNA, partial sequence
+ASV_759	gi|608789149|gb|KJ395420.1|	99.209	253	2	0	1	253	172	424	1.44e-124	457	253	1485704	N/A	bacterium enrichment culture SBR_L_B16 16S ribosomal RNA gene, partial sequence
+ASV_759	gi|1384992320|ref|NR_156069.1|	99.209	253	2	0	1	253	481	733	1.44e-124	457	253	624405	N/A	Terrimonas rhizosphaerae strain CR94 16S ribosomal RNA, partial sequence
+ASV_781	gi|2363087033|ref|NR_181773.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	2843197	N/A	Geomonas diazotrophica strain Red69 16S ribosomal RNA, partial sequence
+ASV_781	gi|2363087031|ref|NR_181772.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	2843196	N/A	Geomonas azotofigens strain Red51 16S ribosomal RNA, partial sequence
+ASV_781	gi|2363086967|ref|NR_181740.1|	100.000	253	0	0	1	253	486	738	6.66e-128	468	253	2873702	N/A	Geomonas agri strain RG53 16S ribosomal RNA, partial sequence
+ASV_781	gi|2363086963|ref|NR_181738.1|	100.000	253	0	0	1	253	483	735	6.66e-128	468	253	2847989	N/A	Geomonas subterranea strain RG2 16S ribosomal RNA, partial sequence
+ASV_781	gi|2363082182|ref|NR_179338.1|	100.000	253	0	0	1	253	493	745	6.66e-128	468	253	2740185	N/A	Geomonas paludis strain Red736 16S ribosomal RNA, partial sequence
+ASV_781	gi|2363082141|ref|NR_179317.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	2740186	N/A	Geomonas limicola strain Red745 16S ribosomal RNA, partial sequence
+ASV_781	gi|2363082139|ref|NR_179316.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	2740184	N/A	Geomonas silvestris strain Red330 16S ribosomal RNA, partial sequence
+ASV_781	gi|2233265061|gb|CP096574.1|	100.000	253	0	0	1	253	881978	882230	6.66e-128	468	253	2740185	N/A	Geomonas paludis strain RG22 chromosome, complete genome
+ASV_781	gi|2065935127|gb|CP078096.1|	100.000	253	0	0	1	253	1916520	1916268	6.66e-128	468	253	2847989	N/A	Geomonas subterranea strain RG3 chromosome, complete genome
+ASV_781	gi|2060227305|gb|CP077683.1|	100.000	253	0	0	1	253	2781753	2781501	6.66e-128	468	253	2847989	N/A	Geomonas subterranea strain RG2 chromosome, complete genome
+ASV_781	gi|2060223057|gb|CP077684.1|	100.000	253	0	0	1	253	753329	753581	6.66e-128	468	253	2843197	N/A	Geomonas diazotrophica strain RF4 chromosome, complete genome
+ASV_781	gi|2056222742|gb|CP076724.1|	100.000	253	0	0	1	253	652380	652632	6.66e-128	468	253	2843197	N/A	Geomonas diazotrophica strain RG29 chromosome, complete genome
+ASV_781	gi|2056214585|gb|CP076723.1|	100.000	253	0	0	1	253	775596	775848	6.66e-128	468	253	2847992	N/A	Geomonas oryzisoli strain RG10 chromosome, complete genome
+ASV_781	gi|2052292936|gb|MZ377297.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	2843197	N/A	Geomonas diazotrophica strain Red69 16S ribosomal RNA gene, partial sequence
+ASV_781	gi|2052292932|gb|MZ377295.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	2843196	N/A	Geomonas azotofigens strain Red51 16S ribosomal RNA gene, partial sequence
+ASV_781	gi|2043685993|gb|MZ266328.1|	100.000	253	0	0	1	253	498	750	6.66e-128	468	253	2847989	N/A	Geomonas subterranea strain RG3 16S ribosomal RNA gene, partial sequence
+ASV_781	gi|2363086987|ref|NR_181750.1|	100.000	253	0	0	1	253	477	729	6.66e-128	468	253	2847989	N/A	Geomonas fuzhouensis strain RG17 16S ribosomal RNA, partial sequence
+ASV_781	gi|2033774437|gb|MZ148508.1|	100.000	253	0	0	1	253	486	738	6.66e-128	468	253	2873702	N/A	Geomonas agri strain RG53 16S ribosomal RNA gene, partial sequence
+ASV_781	gi|2033774432|gb|MZ148503.1|	100.000	253	0	0	1	253	481	733	6.66e-128	468	253	2847992	N/A	Geomonas oryzisoli strain RG10 16S ribosomal RNA gene, partial sequence
+ASV_781	gi|2033774422|gb|MZ148493.1|	100.000	253	0	0	1	253	484	736	6.66e-128	468	253	2843197	N/A	Geomonas diazotrophica strain RG29 16S ribosomal RNA gene, partial sequence
+ASV_781	gi|2363086965|ref|NR_181739.1|	100.000	253	0	0	1	253	482	734	6.66e-128	468	253	2843197	N/A	Geomonas nitrogeniifigens strain RF4 16S ribosomal RNA, partial sequence
+ASV_781	gi|2033774411|gb|MZ148482.1|	100.000	253	0	0	1	253	483	735	6.66e-128	468	253	2847989	N/A	Geomonas subterranea strain RG2 16S ribosomal RNA gene, partial sequence
+ASV_781	gi|1886376207|dbj|AP023213.1|	100.000	253	0	0	1	253	967418	967670	6.66e-128	468	253	60035	N/A	Geobacter bremensis R4 DNA, complete genome
+ASV_781	gi|1886376186|dbj|LC549121.1|	100.000	253	0	0	1	253	493	745	6.66e-128	468	253	2740185	N/A	Geomonas paludis gene for 16S rRNA, partial sequence
+ASV_781	gi|1886376179|dbj|LC505064.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	2740186	N/A	Geomonas limicola Red745 gene for 16S ribosomal RNA, partial sequence
+ASV_786	gi|24637793|gb|AF530989.1|	99.209	253	2	0	1	253	132	384	1.44e-124	457	253	210459	N/A	Bacteroidetes bacterium wo31 16S ribosomal RNA gene, partial sequence
+ASV_788	gi|2946244338|gb|PV399748.1|	99.602	251	1	0	1	251	152	402	4.01e-125	459	253	77133;1869227	N/A	Uncultured bacterium clone ASV_297_(0.2833%) 16S ribosomal RNA gene, partial sequence
+ASV_815	gi|38564757|gb|AY234719.1|	99.209	253	2	0	1	253	500	752	1.44e-124	457	253	234418	N/A	Bacterium Ellin6067 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|3060999013|gb|PX360613.1|	100.000	253	0	0	1	253	462	714	6.66e-128	468	253	1869227	N/A	Bacterium strain 4e54df3e3a8d75cf53fad081d3c5a2a182af824e 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|1782941680|dbj|AB835018.1|	100.000	253	0	0	1	253	141	393	6.66e-128	468	253	1363351	N/A	Oxalobacteraceae bacterium Se3Ps_2513 gene for 16S rRNA, partial sequence
+ASV_971	gi|1569259509|gb|MH259951.1|	100.000	253	0	0	1	253	471	723	6.66e-128	468	253	573739	N/A	Oxalicibacterium horti strain SYR33 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|2578831919|gb|OR564061.1|	100.000	253	0	0	1	253	501	753	6.66e-128	468	253	1125875	N/A	Noviherbaspirillum psychrotolerans strain H165 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|2428167316|gb|OQ255154.1|	100.000	253	0	0	1	253	489	741	6.66e-128	468	253	1125875	N/A	Noviherbaspirillum psychrotolerans strain S5-10 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|2428167200|gb|OQ255038.1|	100.000	253	0	0	1	253	488	740	6.66e-128	468	253	1125875	N/A	Noviherbaspirillum psychrotolerans strain S3-65 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|543890067|gb|KF641671.1|	100.000	253	0	0	1	253	482	734	6.66e-128	468	253	1398539	N/A	Beta proteobacterium F3H1_a3 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|631252977|ref|NR_114175.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	69280	N/A	Oxalicibacterium solurbis strain NBRC 102665 16S ribosomal RNA, partial sequence
+ASV_971	gi|631252422|ref|NR_113620.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	573739	N/A	Oxalicibacterium horti strain NBRC 13594 16S ribosomal RNA, partial sequence
+ASV_971	gi|1900737907|gb|MT992769.1|	100.000	253	0	0	1	253	500	752	6.66e-128	468	253	303380	N/A	Herminiimonas fonticola strain BT572 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|312179363|gb|HQ406764.1|	100.000	253	0	0	1	253	487	739	6.66e-128	468	253	964	N/A	Herbaspirillum seropedicae strain TY3nrD 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|299883579|emb|FN563004.1|	100.000	253	0	0	1	253	538	790	6.66e-128	468	253	688644	N/A	Photoautotrophic bacterium GMMC_Photoauto_1 partial 16S rRNA gene, isolate GMMC_Photoauto_1
+ASV_971	gi|253683351|dbj|AB512142.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	303380	N/A	Herminiimonas fonticola gene for 16S rRNA, partial sequence, strain: da Costa S-94
+ASV_971	gi|631251635|ref|NR_112833.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	573739	N/A	Oxalicibacterium horti strain OD1 16S ribosomal RNA, partial sequence
+ASV_971	gi|119394207|gb|EF103206.1|	100.000	253	0	0	1	253	433	685	6.66e-128	468	253	416249	N/A	Comamonadaceae bacterium MSCB-9 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|343198624|ref|NR_043090.1|	100.000	253	0	0	1	253	486	738	6.66e-128	468	253	303380	N/A	Herminiimonas fonticola strain S-94 16S ribosomal RNA, partial sequence
+ASV_971	gi|3152409|dbj|AB008505.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	69282	N/A	Ultramicrobacterium str. D-7 gene for 16S rRNA, partial sequence
+ASV_971	gi|3152408|dbj|AB008504.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	69281	N/A	Ultramicrobacterium str. D-6 gene for 16S rRNA, partial sequence
+ASV_971	gi|631250833|ref|NR_112029.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	69280	N/A	Oxalicibacterium solurbis strain MY14 16S ribosomal RNA, partial sequence
+ASV_971	gi|3040294254|gb|PX111454.1|	99.605	253	1	0	1	253	469	721	3.10e-126	462	253	1064518	N/A	Noviherbaspirillum soli strain B4 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|2647494084|gb|PP111668.1|	99.605	253	1	0	1	253	509	761	3.10e-126	462	253	213312	N/A	Herbaspirillum lusitanum strain CPO_E3-28 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|2647494069|gb|PP111653.1|	99.605	253	1	0	1	253	513	765	3.10e-126	462	253	213312	N/A	Herbaspirillum lusitanum strain CPO_E2-20 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|2647494068|gb|PP111652.1|	99.605	253	1	0	1	253	513	765	3.10e-126	462	253	213312	N/A	Herbaspirillum lusitanum strain CPO_E2-16 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|2647494065|gb|PP111649.1|	99.605	253	1	0	1	253	512	764	3.10e-126	462	253	213312	N/A	Herbaspirillum lusitanum strain CPO_E2-10 16S ribosomal RNA gene, partial sequence
+ASV_971	gi|2647494059|gb|PP111643.1|	99.605	253	1	0	1	253	509	761	3.10e-126	462	253	213312	N/A	Herbaspirillum lusitanum strain CPO_E2-2 16S ribosomal RNA gene, partial sequence
+ASV_974	gi|2215064761|gb|ON136506.1|	99.209	253	2	0	1	253	1	253	1.44e-124	457	253	670288	N/A	Adhaeribacter aerophilus isolate Otu1085 16S ribosomal RNA gene, partial sequence
+ASV_992	gi|1730672182|gb|MK519076.1|	100.000	253	0	0	1	253	456	708	6.66e-128	468	253	1743261	N/A	Lysobacter terricola strain Nd120-7 16S ribosomal RNA gene, partial sequence
+ASV_992	gi|2363084168|ref|NR_180333.1|	100.000	253	0	0	1	253	539	791	6.66e-128	468	253	2865112	N/A	Lysobacter terrestris strain II4 16S ribosomal RNA, partial sequence
+ASV_992	gi|1206483184|gb|KY753253.1|	100.000	253	0	0	1	253	486	738	6.66e-128	468	253	1537378	N/A	Lysobacter fragariae strain YR-13 16S ribosomal RNA gene, partial sequence
+ASV_992	gi|1206483136|gb|KY753205.1|	100.000	253	0	0	1	253	487	739	6.66e-128	468	253	1537378	N/A	Lysobacter fragariae strain MR-6 16S ribosomal RNA gene, partial sequence
+ASV_992	gi|1230874636|ref|NR_148797.1|	100.000	253	0	0	1	253	510	762	6.66e-128	468	253	1743261	N/A	Lysobacter terricola strain 5GH18-14 16S ribosomal RNA, partial sequence
+ASV_992	gi|937353068|gb|KT868777.1|	100.000	253	0	0	1	253	167	419	6.66e-128	468	253	346182	N/A	Lysobacter yangpyeongensis strain CMPH-4 16S ribosomal RNA gene, partial sequence
+ASV_992	gi|1811131496|ref|NR_165678.1|	100.000	253	0	0	1	253	493	745	6.66e-128	468	253	1537376	N/A	Lysobacter tyrosinelyticus strain THG-DN8.2 16S ribosomal RNA, partial sequence
+ASV_992	gi|1024974882|ref|NR_136843.1|	100.000	253	0	0	1	253	505	757	6.66e-128	468	253	1537377	N/A	Lysobacter rhizosphaerae strain THG-DN8.3 16S ribosomal RNA, partial sequence
+ASV_992	gi|1024974884|ref|NR_136844.1|	100.000	253	0	0	1	253	494	746	6.66e-128	468	253	1537378	N/A	Lysobacter fragariae strain THG-DN8.7 16S ribosomal RNA, partial sequence
+ASV_992	gi|2363087079|ref|NR_181795.1|	100.000	253	0	0	1	253	533	785	6.66e-128	468	253	2865112	N/A	Agrilutibacter terrestris strain II4 16S ribosomal RNA, partial sequence
+ASV_992	gi|2363080743|ref|NR_178613.1|	100.000	253	0	0	1	253	482	734	6.66e-128	468	253	1390358	N/A	Lysobacter terrae strain THG-A13 16S ribosomal RNA, partial sequence
+ASV_992	gi|359803617|dbj|AB682414.1|	100.000	253	0	0	1	253	507	759	6.66e-128	468	253	380628	N/A	Lysobacter niabensis gene for 16S rRNA, partial sequence, strain: NBRC 106398
+ASV_992	gi|1899444021|gb|CP060820.1|	100.000	253	0	0	1	253	1002157	1001905	6.66e-128	468	253	2865112	N/A	Agrilutibacter terrestris strain II4 chromosome, complete genome
+ASV_992	gi|1897695722|gb|MT941001.1|	100.000	253	0	0	1	253	511	763	6.66e-128	468	253	1743261	N/A	Lysobacter terricola strain JD4017 16S ribosomal RNA gene, partial sequence
+ASV_992	gi|343205178|ref|NR_043867.1|	100.000	253	0	0	1	253	506	758	6.66e-128	468	253	77133;380628	N/A	Agrilutibacter niabensis strain GH34-4 16S ribosomal RNA, partial sequence
+ASV_992	gi|301153959|gb|HM480335.1|	99.216	255	0	2	1	253	465	719	4.01e-125	459	253	346182	N/A	Lysobacter yangpyeongensis strain WIFD46 16S ribosomal RNA gene, partial sequence
+ASV_996	gi|2946244338|gb|PV399748.1|	99.203	251	2	0	1	251	152	402	1.87e-123	453	253	77133;1869227	N/A	Uncultured bacterium clone ASV_297_(0.2833%) 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3063704729|gb|PX401657.1|	100.000	253	0	0	1	253	494	746	6.66e-128	468	253	303	N/A	Pseudomonas putida strain P-1 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3002844996|gb|PV803728.1|	100.000	253	0	0	1	253	495	747	6.66e-128	468	253	515393	N/A	Pseudomonas yamanorum strain I6-DB-D1 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3039652638|gb|CP196740.1|	100.000	253	0	0	1	253	458978	459230	6.66e-128	468	253	515393	N/A	Pseudomonas yamanorum strain BA90-3 chromosome, complete genome
+ASV_1016	gi|3034226568|gb|PX056902.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	515393	N/A	Pseudomonas yamanorum strain CEMTC_9536 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3034226566|gb|PX056901.1|	100.000	253	0	0	1	253	493	745	6.66e-128	468	253	515393	N/A	Pseudomonas yamanorum strain CEMTC_9524 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3034226558|gb|PX056897.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	515393	N/A	Pseudomonas yamanorum strain CEMTC_6792 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3034226556|gb|PX056896.1|	100.000	253	0	0	1	253	493	745	6.66e-128	468	253	515393	N/A	Pseudomonas yamanorum strain CEMTC_4982 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3034226552|gb|PX056894.1|	100.000	253	0	0	1	253	495	747	6.66e-128	468	253	515393	N/A	Pseudomonas yamanorum strain CEMTC_4674 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3033170219|gb|PX023256.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain E176 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3033170218|gb|PX023255.1|	100.000	253	0	0	1	253	515	767	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain C64 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3018321715|gb|PV889299.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain sample_117 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3018321713|gb|PV889298.1|	100.000	253	0	0	1	253	473	725	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain sample_116 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3018321709|gb|PV889296.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain sample_113 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3018321707|gb|PV889295.1|	100.000	253	0	0	1	253	457	709	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain sample_110 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3018321703|gb|PV889293.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain sample_107 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3018321701|gb|PV889292.1|	100.000	253	0	0	1	253	514	766	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain sample_106 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3018321699|gb|PV889291.1|	100.000	253	0	0	1	253	502	754	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain sample_104 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3018321697|gb|PV889290.1|	100.000	253	0	0	1	253	501	753	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain sample_103 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3018321695|gb|PV889289.1|	100.000	253	0	0	1	253	509	761	6.66e-128	468	253	104087	N/A	Pseudomonas frederiksbergensis strain sample_100 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3012355867|gb|PV871485.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	163011	N/A	Pseudomonas lini strain CEMTC_8474 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3012355866|gb|PV871484.1|	100.000	253	0	0	1	253	493	745	6.66e-128	468	253	163011	N/A	Pseudomonas lini strain CEMTC_7349 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3012355865|gb|PV871483.1|	100.000	253	0	0	1	253	493	745	6.66e-128	468	253	163011	N/A	Pseudomonas lini strain CEMTC_7070 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3012355863|gb|PV871481.1|	100.000	253	0	0	1	253	493	745	6.66e-128	468	253	163011	N/A	Pseudomonas lini strain CEMTC_5829 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|3002442394|gb|PV802673.1|	100.000	253	0	0	1	253	342	594	6.66e-128	468	253	2045200	N/A	Pseudomonas rhizophila strain CS41 16S ribosomal RNA gene, partial sequence
+ASV_1016	gi|2991088767|gb|PV746216.1|	100.000	253	0	0	1	253	508	760	6.66e-128	468	253	294	N/A	Pseudomonas fluorescens strain UZ-TK-SM4BA2 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2784290737|gb|PQ151686.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain AS22 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|3040294280|gb|PX111480.1|	100.000	253	0	0	1	253	422	674	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain B30 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|3012973061|gb|PV874915.1|	100.000	253	0	0	1	253	94	346	6.66e-128	468	253	1913961	N/A	Rhizobiaceae bacterium strain Bernburg_DiControl_Isolate_116-20 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2973175010|gb|PV628079.1|	100.000	253	0	0	1	253	416	668	6.66e-128	468	253	1869227	N/A	Bacterium strain N5 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2959920115|gb|PV547913.1|	100.000	253	0	0	1	253	416	668	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain SNTT1 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2871849500|gb|PQ782832.1|	100.000	253	0	0	1	253	419	671	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain YT222 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2871848960|gb|PQ782292.1|	100.000	253	0	0	1	253	389	641	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain CT510 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2862457935|gb|PQ651421.1|	100.000	253	0	0	1	253	472	724	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain XP-5 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2743059607|gb|PP908691.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	555315	N/A	Ensifer canadensis strain 45.46 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2838082001|dbj|LC848646.1|	100.000	253	0	0	1	253	452	704	6.66e-128	468	253	1913961	N/A	Rhizobiaceae bacterium Tubac6 gene for 16S rRNA, partial sequence
+ASV_1155	gi|2811237671|gb|CP170159.1|	100.000	253	0	0	1	253	272256	272004	6.66e-128	468	253	555315	N/A	Ensifer canadensis strain T4 plasmid pa, complete sequence
+ASV_1155	gi|2811237670|gb|CP170158.1|	100.000	253	0	0	1	253	260090	260342	6.66e-128	468	253	555315	N/A	Ensifer canadensis strain T4 chromosome 2, complete sequence
+ASV_1155	gi|2811237669|gb|CP170157.1|	100.000	253	0	0	1	253	421306	421558	6.66e-128	468	253	555315	N/A	Ensifer canadensis strain T4 chromosome 1, complete sequence
+ASV_1155	gi|2805779830|gb|PQ344155.1|	100.000	253	0	0	1	253	425	677	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain SM_494 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2719790658|gb|PP702785.1|	100.000	253	0	0	1	253	415	667	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain ST46 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2719789494|gb|PP702712.1|	100.000	253	0	0	1	253	425	677	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain KKP 4128 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2705466127|gb|PP549959.1|	100.000	253	0	0	1	253	398	650	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain KK238 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2693155740|gb|PP439359.1|	100.000	253	0	0	1	253	442	694	6.66e-128	468	253	1869227	N/A	Bacterium strain HZ17 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2676546097|gb|PP345788.1|	100.000	253	0	0	1	253	419	671	6.66e-128	468	253	1214071	N/A	Ensifer sesbaniae strain DY22 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2620324020|gb|OR801758.1|	100.000	253	0	0	1	253	429	681	6.66e-128	468	253	1869227	N/A	Bacterium strain RPA12 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2616098654|gb|OR764924.1|	100.000	253	0	0	1	253	439	691	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain CEMTC_9456 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2616098652|gb|OR764922.1|	100.000	253	0	0	1	253	440	692	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain CEMTC_9090 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2616098647|gb|OR764917.1|	100.000	253	0	0	1	253	440	692	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain CEMTC_8680 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2581542622|gb|OR594202.1|	100.000	253	0	0	1	253	440	692	6.66e-128	468	253	106592	N/A	Ensifer adhaerens strain SS23 16S ribosomal RNA gene, partial sequence
+ASV_1155	gi|2580171941|gb|OR578405.1|	100.000	253	0	0	1	253	433	685	6.66e-128	468	253	1869227	N/A	Bacterium strain RDB 16S ribosomal RNA gene, partial sequence
+ASV_1237	gi|37651304|dbj|AB121772.1|	99.209	253	2	0	1	253	471	723	1.44e-124	457	253	248738	N/A	Alpha proteobacterium Shinshu-th1 gene for 16S rRNA
+ASV_1369	gi|3039034297|gb|PX106058.1|	100.000	253	0	0	1	253	505	757	6.66e-128	468	253	633403	N/A	Sporosarcina contaminans strain X-L34 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|2987298620|dbj|LC875685.1|	100.000	253	0	0	1	253	484	736	6.66e-128	468	253	633403	N/A	Sporosarcina contaminans 30-25 gene for 16S rRNA, partial sequence
+ASV_1369	gi|2987298617|dbj|LC875682.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	633403	N/A	Sporosarcina contaminans 30-22 gene for 16S rRNA, partial sequence
+ASV_1369	gi|2960548554|gb|PV553842.1|	100.000	253	0	0	1	253	489	741	6.66e-128	468	253	633403	N/A	Sporosarcina contaminans strain AKO-11 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|1475929021|gb|MH894239.1|	100.000	253	0	0	1	253	487	739	6.66e-128	468	253	334735	N/A	Sporosarcina koreensis strain 9-CIP-1 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|1530829076|gb|MG709191.1|	100.000	253	0	0	1	253	506	758	6.66e-128	468	253	334736	N/A	Sporosarcina soli strain B23 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|1530829052|gb|MG709167.1|	100.000	253	0	0	1	253	509	761	6.66e-128	468	253	334736	N/A	Sporosarcina soli strain A18 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|1344721400|gb|MG966006.1|	100.000	253	0	0	1	253	425	677	6.66e-128	468	253	1869227	N/A	Bacterium strain D2-5-27F.seq 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|2516277852|gb|OR121752.1|	100.000	253	0	0	1	253	483	735	6.66e-128	468	253	633403	N/A	Sporosarcina contaminans strain Y289 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|2516277815|gb|OR121715.1|	100.000	253	0	0	1	253	484	736	6.66e-128	468	253	633403	N/A	Sporosarcina contaminans strain Y183 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|745739463|gb|KP236179.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	633403	N/A	Sporosarcina contaminans strain 0038 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|965874269|gb|KT318808.1|	100.000	253	0	0	1	253	471	723	6.66e-128	468	253	633403	N/A	Sporosarcina contaminans strain FI217 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|685424991|gb|KM009134.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	334736	N/A	Sporosarcina soli strain CV1 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|625295160|gb|KJ485701.1|	100.000	253	0	0	1	253	515	767	6.66e-128	468	253	334736	N/A	Sporosarcina soli strain B7-22 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|310974888|gb|HQ331532.1|	100.000	253	0	0	1	253	505	757	6.66e-128	468	253	363855	N/A	Sporosarcina ginsengisoli strain CR5 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|645319552|ref|NR_116955.1|	100.000	253	0	0	1	253	509	761	6.66e-128	468	253	633403	N/A	Sporosarcina contaminans strain CCUG 53915 16S ribosomal RNA, partial sequence
+ASV_1369	gi|574587579|gb|KF771408.1|	99.605	253	1	0	1	253	149	401	8.62e-127	464	253	363855	N/A	Sporosarcina ginsengisoli strain ODB103 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|3036607641|gb|PX070514.1|	99.605	253	1	0	1	253	121	373	3.10e-126	462	253	86668	N/A	Neobacillus niacini strain OLV78 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|3036607634|gb|PX070508.1|	99.605	253	1	0	1	253	97	349	3.10e-126	462	253	220684	N/A	Neobacillus drentensis strain OLV71 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|3036607632|gb|PX070506.1|	99.605	253	1	0	1	253	100	352	3.10e-126	462	253	86668	N/A	Neobacillus niacini strain OLV69 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|3033062166|gb|PX022943.1|	99.605	253	1	0	1	253	158	410	3.10e-126	462	253	363869	N/A	Neobacillus pocheonensis strain S19 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|3033062150|gb|PX022927.1|	99.605	253	1	0	1	253	160	412	3.10e-126	462	253	220685	N/A	Neobacillus bataviensis strain A25 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|3033062137|gb|PX022914.1|	99.605	253	1	0	1	253	153	405	3.10e-126	462	253	220685	N/A	Neobacillus bataviensis strain A10 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|2988219091|gb|PV700995.1|	99.605	253	1	0	1	253	480	732	3.10e-126	462	253	86668	N/A	Neobacillus niacini strain 136 16S ribosomal RNA gene, partial sequence
+ASV_1369	gi|2986528547|gb|PV682685.1|	99.605	253	1	0	1	253	488	740	3.10e-126	462	253	86668	N/A	Neobacillus niacini strain CSB- 17a 16S ribosomal RNA gene, partial sequence
+ASV_1377	gi|1393199450|gb|MF503624.1|	99.605	253	1	0	1	253	459	711	3.10e-126	462	253	2315689	N/A	Sphingomonas edaphi strain DAC4 16S ribosomal RNA gene, partial sequence
+ASV_1377	gi|2363082940|ref|NR_179718.1|	99.605	253	1	0	1	253	459	711	3.10e-126	462	253	2315689	N/A	Sphingomonas edaphi strain DAC4 16S ribosomal RNA, partial sequence
+ASV_1377	gi|18149284|dbj|AB074731.1|	99.605	253	1	0	1	253	174	426	3.10e-126	462	253	179598	N/A	Alpha proteobacterium S-N(1)-8A gene for 16S ribosomal RNA, partial sequence
+ASV_1377	gi|1617850872|gb|MK796047.1|	99.209	253	2	0	1	253	450	702	1.44e-124	457	253	2904799	N/A	Sphingomonas cremea strain G124 16S ribosomal RNA gene, partial sequence
+ASV_1377	gi|2640698792|gb|PP049696.1|	99.209	253	2	0	1	253	371	623	1.44e-124	457	253	2071607	N/A	Sphingomonas rhizophila strain N160 16S ribosomal RNA gene, partial sequence
+ASV_1377	gi|1491522545|ref|NR_159352.1|	99.209	253	2	0	1	253	457	709	1.44e-124	457	253	2071607	N/A	Sphingomonas rhizophila strain THG-T61 16S ribosomal RNA, partial sequence
+ASV_1377	gi|1898509264|gb|CP060717.1|	99.209	253	2	0	1	253	2391758	2392010	1.44e-124	457	253	2071607	N/A	Sphingomonas rhizophila strain KACC 19189 chromosome, complete genome
+ASV_1377	gi|18149281|dbj|AB074728.1|	99.209	253	1	1	1	253	174	425	5.19e-124	455	253	179597	N/A	Alpha proteobacterium S-N(1)-21B gene for 16S ribosomal RNA, partial sequence
+ASV_1417	gi|1402131462|gb|MH479094.1|	100.000	252	0	0	1	252	450	701	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain M64F 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|1402131458|gb|MH479090.1|	100.000	252	0	0	1	252	447	698	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain M44F 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|2700707217|gb|PP504450.1|	100.000	252	0	0	1	252	445	696	2.38e-127	466	252	1837343	N/A	Paenibacillus qinlingensis strain SP25 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|2623980677|gb|OR855863.1|	100.000	252	0	0	1	252	431	682	2.38e-127	466	252	1837343	N/A	Paenibacillus qinlingensis strain T1P1F1 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|1024639464|gb|KU341401.1|	100.000	252	0	0	1	252	506	757	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain SS2-25 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|2553413508|gb|OR352526.1|	100.000	252	0	0	1	252	511	762	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain PAMC 29634 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|2231800367|gb|ON366415.1|	100.000	252	0	0	1	252	502	753	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain NAT2 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|407079951|gb|JX483765.1|	100.000	252	0	0	1	252	410	661	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain BJC16-A32 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|406685818|gb|JX401499.1|	100.000	252	0	0	1	252	443	694	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain BJC15-A14 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|403949531|gb|JX464213.1|	100.000	252	0	0	1	252	443	694	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain BJC15-C22 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|332691931|gb|JF496380.1|	100.000	252	0	0	1	252	480	731	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain AS4-9 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|343205969|ref|NR_044487.1|	100.000	252	0	0	1	252	479	730	2.38e-127	466	252	512399	N/A	Paenibacillus pectinilyticus strain RCB-08 16S ribosomal RNA, partial sequence
+ASV_1417	gi|1384992377|ref|NR_156153.1|	99.603	252	1	0	1	252	507	758	1.11e-125	460	252	1837343	N/A	Paenibacillus qinlingensis strain TEGT-2 16S ribosomal RNA, partial sequence
+ASV_1417	gi|2087400810|gb|MZ950782.1|	99.603	252	1	0	1	252	459	710	1.11e-125	460	252	1837343	N/A	Paenibacillus qinlingensis strain KIGAM478 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|1778102113|gb|MN728288.1|	99.603	252	1	0	1	252	507	758	1.11e-125	460	252	1837343	N/A	Paenibacillus qinlingensis strain TEGT-2 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|1764222348|gb|MN559443.1|	99.209	253	1	1	1	252	507	759	5.16e-124	455	252	1837343	N/A	Paenibacillus qinlingensis strain CFH1-26 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|1621556925|gb|MK302257.1|	99.206	252	2	0	1	252	477	728	5.16e-124	455	252	1837343	N/A	Paenibacillus qinlingensis strain JBRI-MO-0042 16S ribosomal RNA gene, partial sequence
+ASV_1417	gi|403949381|gb|JX464208.1|	99.206	252	2	0	1	252	453	704	5.16e-124	455	252	59839	N/A	Paenibacillus alginolyticus strain BJC15-C16 16S ribosomal RNA gene, partial sequence
+ASV_1421	gi|2946244314|gb|PV399724.1|	100.000	251	0	0	1	251	177	427	8.62e-127	464	253	1869227	N/A	Bacterium strain ASV_947_(0.1295%) 16S ribosomal RNA gene, partial sequence
+ASV_1437	gi|304561158|gb|HM163249.1|	100.000	253	0	0	1	253	458	710	6.66e-128	468	253	878577	N/A	Alpha proteobacterium OR-205 16S ribosomal RNA gene, partial sequence
+ASV_1437	gi|984880308|emb|LN876436.1|	99.605	253	1	0	1	253	420	672	8.62e-127	464	253	1703172	N/A	Alpha proteobacterium. URHD0017 partial 16S rRNA gene, strain URHD0017
+ASV_1437	gi|1782942627|dbj|AB835963.1|	99.209	253	2	0	1	253	120	372	1.44e-124	457	253	1360399	N/A	Alpha proteobacterium So2Ps_808 gene for 16S rRNA, partial sequence
+ASV_1437	gi|1782941728|dbj|AB835066.1|	99.209	253	2	0	1	253	126	378	1.44e-124	457	253	1360370	N/A	Alpha proteobacterium Se3Ps_2567 gene for 16S rRNA, partial sequence
+ASV_1437	gi|566085594|ref|NR_109674.1|	99.209	253	2	0	1	253	457	709	1.44e-124	457	253	1230389	N/A	Reyranella soli strain KIS14-15 16S ribosomal RNA, partial sequence
+ASV_1437	gi|224027584|emb|AM989075.1|	99.209	253	2	0	1	253	455	707	1.44e-124	457	253	522240	N/A	alpha proteobacterium AKB-2008-TA3A partial 16S rRNA gene, strain AKB-2008-TA3A
+ASV_1443	gi|532761233|gb|KC921177.1|	99.209	253	2	0	1	253	474	726	1.44e-124	457	253	1391519	N/A	Acidobacteria bacterium WY67 16S ribosomal RNA gene, partial sequence
+ASV_1450	gi|1743553035|gb|MH158518.2|	99.605	253	1	0	1	253	467	719	3.10e-126	462	253	2487129	N/A	Frigidibacter oleivorans strain XJ4 16S ribosomal RNA gene, partial sequence
+ASV_1450	gi|2574145265|gb|OR520603.1|	99.605	253	1	0	1	253	480	732	3.10e-126	462	253	3073604	N/A	Ruixingdingia sedimenti 16S ribosomal RNA gene, partial sequence
+ASV_1450	gi|2363083583|ref|NR_180039.1|	99.605	253	1	0	1	253	467	719	3.10e-126	462	253	2487129	N/A	Frigidibacter oleivorans strain XJ4 16S ribosomal RNA, partial sequence
+ASV_1450	gi|2957405788|gb|PV524602.1|	99.209	253	2	0	1	253	461	713	1.44e-124	457	253	453584	N/A	Rhodovulum kholense strain X21 16S ribosomal RNA gene, partial sequence
+ASV_1450	gi|2698019012|gb|PP479197.1|	99.209	253	2	0	1	253	376	628	1.44e-124	457	253	589035	N/A	Gemmobacter caeni strain R39 16S ribosomal RNA gene, partial sequence
+ASV_1450	gi|187293506|emb|AM990716.1|	99.209	253	2	0	1	253	443	695	1.44e-124	457	253	523385	N/A	Rhodobacteraceae bacterium MOLA 449 partial 16S rRNA gene, culture collection MOLA:449
+ASV_1450	gi|187293492|emb|AM990702.1|	99.209	253	2	0	1	253	472	724	1.44e-124	457	253	523384	N/A	Rhodobacteraceae bacterium MOLA 435 partial 16S rRNA gene, culture collection MOLA:435
+ASV_1450	gi|343202359|ref|NR_042645.1|	99.209	253	2	0	1	253	432	684	1.44e-124	457	253	453584	N/A	Rhodovulum kholense strain JA297 16S ribosomal RNA, partial sequence
+ASV_1562	gi|2872331011|gb|PQ794819.1|	99.605	253	1	0	1	253	178	430	3.10e-126	462	253	77133;1869227	N/A	Uncultured bacterium clone OTU11 16S ribosomal RNA gene, partial sequence
+ASV_1575	gi|356874590|dbj|AB529677.1|	99.605	253	1	0	1	253	338	590	3.10e-126	462	253	685826	N/A	Bacterium YO-33 gene for 16S ribosomal RNA, partial sequence
+ASV_1576	gi|1675235123|gb|MK999979.1|	99.209	253	2	0	1	253	466	718	1.44e-124	457	253	992289	N/A	Flavobacterium nitratireducens strain POL1 16S ribosomal RNA gene, partial sequence
+ASV_1576	gi|1523709463|gb|MK226319.1|	99.209	253	2	0	1	253	505	757	1.44e-124	457	253	992289	N/A	Flavobacterium nitratireducens strain IMCC34944 16S ribosomal RNA gene, partial sequence
+ASV_1576	gi|2482055250|gb|CP121111.1|	99.209	253	2	0	1	253	38512	38764	1.44e-124	457	253	992289	N/A	Flavobacterium nitratireducens strain JCM 17678 chromosome, complete genome
+ASV_1576	gi|566084978|ref|NR_108520.1|	99.209	253	2	0	1	253	466	718	1.44e-124	457	253	992289	N/A	Flavobacterium nitratireducens strain N1 16S ribosomal RNA, partial sequence
+ASV_1584	gi|2843846397|gb|PQ552061.1|	99.605	253	1	0	1	253	1	253	3.10e-126	462	253	77133;1869227	N/A	Uncultured bacterium clone 989109_AL200_106403 16S ribosomal RNA gene, partial sequence
+ASV_1715	gi|2946244378|gb|PV399788.1|	99.203	251	2	0	1	251	155	405	1.87e-123	453	253	77133;1869227	N/A	Uncultured bacterium clone ASV_221_(0.1087%) 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|3063338239|gb|PX397432.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	1389020	N/A	Agromyces marinus strain 4HN05-56 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|1810970938|gb|MT081296.1|	100.000	253	0	0	1	253	458	710	6.66e-128	468	253	41986	N/A	Agromyces mediolanus strain YA-7B 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|1707431955|gb|MN199487.1|	100.000	253	0	0	1	253	379	631	6.66e-128	468	253	1817495	N/A	Agromyces binzhouensis strain 31 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|1500150128|gb|MK110483.1|	100.000	253	0	0	1	253	497	749	6.66e-128	468	253	1817495	N/A	Agromyces binzhouensis strain BT102 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|2805779800|gb|PQ344125.1|	100.000	253	0	0	1	253	482	734	6.66e-128	468	253	766966	N/A	Agromyces arachidis strain SCK_820 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|2638458553|gb|PP024003.1|	100.000	253	0	0	1	253	451	703	6.66e-128	468	253	1817495	N/A	Agromyces binzhouensis strain M2 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|1061214030|gb|KX792245.1|	100.000	253	0	0	1	253	410	662	6.66e-128	468	253	269420	N/A	Agromyces neolithicus strain A20 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|2562379863|gb|OR429370.1|	100.000	253	0	0	1	253	462	714	6.66e-128	468	253	1858653	N/A	Agromyces mangrovi strain 23735 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|2465742394|dbj|AP027734.1|	100.000	253	0	0	1	253	1431549	1431297	6.66e-128	468	253	1389020	N/A	Agromyces marinus NBRC 109019 DNA, complete genome
+ASV_1843	gi|532691434|dbj|AB847105.1|	100.000	253	0	0	1	253	488	740	6.66e-128	468	253	1389020	N/A	Agromyces marinus gene for 16S ribosomal RNA, partial sequence
+ASV_1843	gi|375312754|gb|JQ342912.1|	100.000	253	0	0	1	253	446	698	6.66e-128	468	253	279572	N/A	Agromyces italicus strain GYB2 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|342502713|gb|JF682057.1|	100.000	253	0	0	1	253	398	650	6.66e-128	468	253	165814	N/A	Agromyces aurantiacus strain LFS13 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|161172571|gb|EU221378.1|	100.000	253	0	0	1	253	515	767	6.66e-128	468	253	248902	N/A	Agromyces ulmi strain Y2S10 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|1679580201|dbj|LC482446.1|	99.605	253	1	0	1	253	470	722	3.10e-126	462	253	1817495	N/A	Agromyces binzhouensis NGB-R93 gene for 16S ribosomal RNA, partial sequence
+ASV_1843	gi|1103220309|gb|KY194308.1|	99.605	253	1	0	1	253	457	709	3.10e-126	462	253	555371	N/A	Agromyces tropicus strain JZ113 16S ribosomal RNA gene, partial sequence
+ASV_1843	gi|2177283301|gb|CP087879.1|	99.605	253	1	0	1	253	337069	337321	3.10e-126	462	253	1389020	N/A	Agromyces marinus strain DSM 26151 chromosome, complete genome
+ASV_1843	gi|974142172|ref|NR_134692.1|	99.605	253	1	0	1	253	488	740	3.10e-126	462	253	1389020	N/A	Agromyces marinus strain H23-8 16S ribosomal RNA, partial sequence
+ASV_1843	gi|2252370258|gb|ON743045.1|	99.209	253	2	0	1	253	418	670	1.44e-124	457	253	1389020	N/A	Agromyces marinus strain NCT252 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2784290747|gb|PQ151696.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain AS32 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2740069998|gb|PP874729.1|	100.000	253	0	0	1	253	417	669	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain WBK1 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2740069995|gb|PP874726.1|	100.000	253	0	0	1	253	420	672	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain L2B2483c 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2739485227|gb|PP869078.1|	100.000	253	0	0	1	253	450	702	6.66e-128	468	253	1913961	N/A	Rhizobiaceae bacterium strain KIS69-18 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2702916311|gb|PP529730.1|	100.000	253	0	0	1	253	387	639	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain LC14 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2702916310|gb|PP529729.1|	100.000	253	0	0	1	253	370	622	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain LC13 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2699406786|gb|PP494579.1|	100.000	253	0	0	1	253	441	693	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain HX37 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2699406784|gb|PP494577.1|	100.000	253	0	0	1	253	433	685	6.66e-128	468	253	50338	N/A	Rhizobium sullae strain HX29 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2689334509|gb|PP411538.1|	100.000	253	0	0	1	253	353	605	6.66e-128	468	253	335017	N/A	Rhizobium mesosinicum strain IRAMC:0168 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2647494078|gb|PP111662.1|	100.000	253	0	0	1	253	456	708	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain CPO_E3-20 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2638789365|gb|PP029394.1|	100.000	253	0	0	1	253	413	665	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain RCA33 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2624480565|gb|OR865312.1|	100.000	253	0	0	1	253	361	613	6.66e-128	468	253	1977087	N/A	Pseudomonadota bacterium strain VX57N1ii 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2611871110|gb|OR754800.1|	100.000	253	0	0	1	253	419	671	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain PvR117 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2611871046|gb|OR754772.1|	100.000	253	0	0	1	253	414	666	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain PvR072 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2563221393|gb|OR447587.1|	100.000	253	0	0	1	253	385	637	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain WNB13 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2563221392|gb|OR447586.1|	100.000	253	0	0	1	253	405	657	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain WNB12 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2425865816|gb|OQ236358.1|	100.000	253	0	0	1	253	468	720	6.66e-128	468	253	56730	N/A	Rhizobium gallicum strain RL00701 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2425865802|gb|OQ236344.1|	100.000	253	0	0	1	253	468	720	6.66e-128	468	253	56730	N/A	Rhizobium gallicum strain RS2020 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2425865794|gb|OQ236336.1|	100.000	253	0	0	1	253	469	721	6.66e-128	468	253	56730	N/A	Rhizobium gallicum strain RT00801 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2425865727|gb|OQ236269.1|	100.000	253	0	0	1	253	468	720	6.66e-128	468	253	56730	N/A	Rhizobium gallicum strain RT2050 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2279682083|gb|OP108799.1|	100.000	253	0	0	1	253	425	677	6.66e-128	468	253	492774	N/A	Rhizobium alamii strain 6-6-820-16r 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2449303661|gb|OQ509763.1|	100.000	253	0	0	1	253	8	260	6.66e-128	468	253	335017	N/A	Rhizobium mesosinicum strain MYC-9D 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2304601877|gb|OP458395.1|	100.000	253	0	0	1	253	345	597	6.66e-128	468	253	384	N/A	Rhizobium leguminosarum strain MNF_25 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2304601876|gb|OP458394.1|	100.000	253	0	0	1	253	345	597	6.66e-128	468	253	384	N/A	Rhizobium leguminosarum strain MNF_24 16S ribosomal RNA gene, partial sequence
+ASV_1868	gi|2304601863|gb|OP458381.1|	100.000	253	0	0	1	253	431	683	6.66e-128	468	253	384	N/A	Rhizobium leguminosarum strain MNF_11 16S ribosomal RNA gene, partial sequence
+ASV_1916	gi|2872330490|gb|PQ794298.1|	99.605	253	1	0	1	253	179	431	3.10e-126	462	253	77133;1869227	N/A	Uncultured bacterium clone OTU125 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|3048840025|dbj|AP043665.1|	100.000	253	0	0	1	253	3530739	3530487	6.66e-128	468	253	182220	N/A	Mycolicibacterium murale SRL2023-035 DNA, complete genome
+ASV_2047	gi|3023463124|gb|PV936635.1|	100.000	253	0	0	1	253	449	701	6.66e-128	468	253	1804	N/A	Mycolicibacterium gilvum strain PD-6 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|3023463118|gb|PV936632.1|	100.000	253	0	0	1	253	431	683	6.66e-128	468	253	59750	N/A	Mycolicibacterium wolinskyi strain PD-3 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2961957204|gb|PV570220.1|	100.000	253	0	0	1	253	419	671	6.66e-128	468	253	39695	N/A	Mycolicibacterium tokaiense strain BM58 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2947654624|gb|CP185960.1|	100.000	253	0	0	1	253	2101611	2101863	6.66e-128	468	253	3410264	N/A	Mycolicibacterium wolinskyi str. Jessa 2025 chromosome, complete genome
+ASV_2047	gi|2677126362|gb|PP350498.1|	100.000	253	0	0	1	253	442	694	6.66e-128	468	253	258533	N/A	Mycolicibacterium cosmeticum strain G4R23 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2905364882|gb|PV083061.1|	100.000	253	0	0	1	253	411	663	6.66e-128	468	253	258505	N/A	Mycolicibacterium fluoranthenivorans strain H-804 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2665554414|gb|PP237316.1|	100.000	253	0	0	1	253	143	395	6.66e-128	468	253	258533	N/A	Mycolicibacterium cosmeticum strain RS01/19-154NF 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2844709696|gb|PQ560734.1|	100.000	253	0	0	1	253	447	699	6.66e-128	468	253	1791	N/A	Mycolicibacterium aurum strain XIEG-2R44 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2844709686|gb|PQ560724.1|	100.000	253	0	0	1	253	437	689	6.66e-128	468	253	912594	N/A	Mycolicibacterium iranicum strain XIEG-2R23 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2715066979|gb|PP621855.1|	100.000	253	0	0	1	253	433	685	6.66e-128	468	253	228230	N/A	Mycolicibacterium canariasense strain HM6 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2700707166|gb|PP504399.1|	100.000	253	0	0	1	253	413	665	6.66e-128	468	253	370524	N/A	Mycolicibacterium pallens strain FP65 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2641399329|gb|PP053196.1|	100.000	253	0	0	1	253	390	642	6.66e-128	468	253	1431246	N/A	Mycolicibacterium anyangense strain X10 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2593196288|gb|OR686184.1|	100.000	253	0	0	1	253	468	720	6.66e-128	468	253	344984	N/A	Mycobacterium jacuzzii strain R1Q3 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2463625897|gb|ON684603.2|	100.000	253	0	0	1	253	438	690	6.66e-128	468	253	258533	N/A	Mycolicibacterium cosmeticum strain N041 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2460939270|dbj|AP027452.1|	100.000	253	0	0	1	253	4758	4506	6.66e-128	468	253	53462	N/A	Mycolicibacterium mageritense H4_3_1 DNA, complete genome
+ASV_2047	gi|2451340670|gb|OQ569252.1|	100.000	253	0	0	1	253	378	630	6.66e-128	468	253	1883427	N/A	Actinomycetia bacterium strain B130_2 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2444214763|gb|OQ439174.1|	100.000	253	0	0	1	253	450	702	6.66e-128	468	253	912594	N/A	Mycolicibacterium iranicum strain BJC15-D27 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2441520592|gb|OQ405644.1|	100.000	253	0	0	1	253	462	714	6.66e-128	468	253	39695	N/A	Mycolicibacterium tokaiense strain G41 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2414444460|gb|OQ062268.1|	100.000	253	0	0	1	253	474	726	6.66e-128	468	253	1431246	N/A	Mycolicibacterium anyangense strain ABIP 3023 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2414444424|gb|OQ062232.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	1431246	N/A	Mycolicibacterium anyangense strain ABIP 2977 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2411505917|gb|OP986507.1|	100.000	253	0	0	1	253	494	746	6.66e-128	468	253	258533	N/A	Mycolicibacterium cosmeticum strain AFS097256 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2359370950|gb|OP899905.1|	100.000	253	0	0	1	253	453	705	6.66e-128	468	253	344984	N/A	Mycobacterium jacuzzii strain 62 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2359370948|gb|OP899903.1|	100.000	253	0	0	1	253	446	698	6.66e-128	468	253	228230	N/A	Mycolicibacterium canariasense strain 60 16S ribosomal RNA gene, partial sequence
+ASV_2047	gi|2359370947|gb|OP899902.1|	100.000	253	0	0	1	253	446	698	6.66e-128	468	253	228230	N/A	Mycolicibacterium canariasense strain 59 16S ribosomal RNA gene, partial sequence
+ASV_2091	gi|2946244314|gb|PV399724.1|	99.602	251	1	0	1	251	177	427	4.01e-125	459	253	1869227	N/A	Bacterium strain ASV_947_(0.1295%) 16S ribosomal RNA gene, partial sequence
+ASV_2171	gi|2872330458|gb|PQ794266.1|	100.000	254	0	0	1	254	153	406	1.86e-128	470	254	77133;1869227	N/A	Uncultured bacterium clone OTU1076 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|1845862608|gb|MT514500.1|	100.000	253	0	0	1	253	508	760	6.66e-128	468	253	2892444	N/A	Massilia agrisoli strain MAHUQ-52 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2363085386|ref|NR_180941.1|	100.000	253	0	0	1	253	502	754	6.66e-128	468	253	2728846	N/A	Massilia polaris strain RP-1-19 16S ribosomal RNA, partial sequence
+ASV_2200	gi|2363084882|ref|NR_180689.1|	100.000	253	0	0	1	253	514	766	6.66e-128	468	253	2728846	N/A	Massilia polaris strain RP-1-19 16S ribosomal RNA, partial sequence
+ASV_2200	gi|2691563383|gb|PP425922.1|	100.000	253	0	0	1	253	468	720	6.66e-128	468	253	1886785	N/A	Massilia agri strain LAB5 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2640698895|gb|PP049715.1|	100.000	253	0	0	1	253	420	672	6.66e-128	468	253	2728846	N/A	Massilia polaris strain N179 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2618371363|gb|OR777952.1|	100.000	253	0	0	1	253	497	749	6.66e-128	468	253	1485217	N/A	Massilia eurypsychrophila strain 3R4 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2618371361|gb|OR777950.1|	100.000	253	0	0	1	253	497	749	6.66e-128	468	253	2792854	N/A	Massilia soli strain 3R28 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2533487649|gb|OR253392.1|	100.000	253	0	0	1	253	471	723	6.66e-128	468	253	544910	N/A	Massilia niabensis strain OCA-31 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2533487645|gb|OR253388.1|	100.000	253	0	0	1	253	471	723	6.66e-128	468	253	1485217	N/A	Massilia eurypsychrophila strain OCA-20 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2533487637|gb|OR253380.1|	100.000	253	0	0	1	253	471	723	6.66e-128	468	253	1603353	N/A	Massilia psychrophila strain OCA-14 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2533487618|gb|OR253361.1|	100.000	253	0	0	1	253	471	723	6.66e-128	468	253	1485217	N/A	Massilia eurypsychrophila strain OAR-33 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2533487616|gb|OR253359.1|	100.000	253	0	0	1	253	445	697	6.66e-128	468	253	1485217	N/A	Massilia eurypsychrophila strain OAR-32 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2428166931|gb|OQ254753.1|	100.000	253	0	0	1	253	467	719	6.66e-128	468	253	2792854	N/A	Massilia soli strain A59-19PF-I03 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2428166930|gb|OQ254752.1|	100.000	253	0	0	1	253	470	722	6.66e-128	468	253	2792854	N/A	Massilia soli strain A59-19SE-F01 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2277723993|gb|OP080877.1|	100.000	253	0	0	1	253	483	735	6.66e-128	468	253	1485217	N/A	Massilia eurypsychrophila strain LL3H9 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2234575931|gb|ON420933.1|	100.000	253	0	0	1	253	452	704	6.66e-128	468	253	1485217	N/A	Massilia eurypsychrophila strain PWB9 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2202533479|gb|OM891704.1|	100.000	253	0	0	1	253	460	712	6.66e-128	468	253	2751477	N/A	Janthinobacterium aquaticum strain A59-19SE-G02 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|2202533465|gb|OM891690.1|	100.000	253	0	0	1	253	460	712	6.66e-128	468	253	648894	N/A	Massilia jejuensis strain A59-19SE-C02 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|1894821672|gb|MT909398.1|	100.000	253	0	0	1	253	451	703	6.66e-128	468	253	1869227	N/A	Bacterium strain GSD10260 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|315002319|emb|FR691428.1|	100.000	253	0	0	1	253	499	751	6.66e-128	468	253	885496	N/A	Beta proteobacterium R-36978 partial 16S rRNA gene, strain R-36978
+ASV_2200	gi|3036258398|gb|PX069774.1|	99.605	253	1	0	1	253	412	664	3.10e-126	462	253	29581	N/A	Janthinobacterium lividum strain MTP4 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|3036057050|gb|PX067389.1|	99.605	253	1	0	1	253	492	744	3.10e-126	462	253	29581	N/A	Janthinobacterium lividum strain CEMTC_7752 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|3004093956|gb|PV820690.1|	99.605	253	1	0	1	253	451	703	3.10e-126	462	253	2590869	N/A	Janthinobacterium tructae strain Ar72 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|3004062013|gb|PV820569.1|	99.605	253	1	0	1	253	353	605	3.10e-126	462	253	2590869	N/A	Janthinobacterium tructae strain Ar26 16S ribosomal RNA gene, partial sequence
+ASV_2200	gi|3030611308|ref|NR_199984.1|	99.605	253	1	0	1	253	524	776	3.10e-126	462	253	2985511	N/A	Janthinobacterium aestuarii strain TB1-E2-13 16S ribosomal RNA, partial sequence
+ASV_2293	gi|3040294253|gb|PX111453.1|	100.000	253	0	0	1	253	470	722	6.66e-128	468	253	1064517	N/A	Noviherbaspirillum aurantiacum strain B3 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|3040294254|gb|PX111454.1|	99.605	253	1	0	1	253	469	721	3.10e-126	462	253	1064518	N/A	Noviherbaspirillum soli strain B4 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|1784083159|gb|MN826490.1|	99.605	253	1	0	1	253	503	755	3.10e-126	462	253	1064517	N/A	Noviherbaspirillum aurantiacum strain SUEM108 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|2428167436|gb|OQ255274.1|	99.605	253	1	0	1	253	488	740	3.10e-126	462	253	1125875	N/A	Noviherbaspirillum psychrotolerans strain S8-3 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|2428167201|gb|OQ255039.1|	99.605	253	1	0	1	253	488	740	3.10e-126	462	253	1125875	N/A	Noviherbaspirillum psychrotolerans strain S3-66 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|840325213|emb|HG800033.1|	99.605	253	1	0	1	253	490	742	3.10e-126	462	253	1450112	N/A	Bacterium BI-13 partial 16S rRNA gene, isolate BI-13
+ASV_2293	gi|345541315|gb|JF418104.1|	99.605	253	1	0	1	253	480	732	3.10e-126	462	253	1079663	N/A	Bacterium EJ10-79 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|345541305|gb|JF418094.1|	99.605	253	1	0	1	253	472	724	3.10e-126	462	253	1079653	N/A	Bacterium EJ10-61 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|345541303|gb|JF418092.1|	99.605	253	1	0	1	253	480	732	3.10e-126	462	253	1079651	N/A	Bacterium EJ10-52 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|345541254|gb|JF418043.1|	99.605	253	1	0	1	253	481	733	3.10e-126	462	253	1079602	N/A	Bacterium EA10-N-76 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|345541228|gb|JF418017.1|	99.605	253	1	0	1	253	471	723	3.10e-126	462	253	1079576	N/A	Bacterium EA10-92 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|345541225|gb|JF418014.1|	99.605	253	1	0	1	253	470	722	3.10e-126	462	253	1079573	N/A	Bacterium EA10-76 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|645320957|ref|NR_118040.1|	99.605	253	1	0	1	253	522	774	3.10e-126	462	253	1064517	N/A	Noviherbaspirillum aurantiacum strain SUEMI08 16S ribosomal RNA, partial sequence
+ASV_2293	gi|308814787|emb|FR682708.1|	99.605	253	1	0	1	253	501	753	3.10e-126	462	253	875301	N/A	Beta proteobacterium R-36369 partial 16S rRNA gene, strain R-36369
+ASV_2293	gi|270282542|gb|GU213404.1|	99.605	253	1	0	1	253	470	722	3.10e-126	462	253	697455	N/A	Beta proteobacterium 224 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|270282529|gb|GU213391.1|	99.605	253	1	0	1	253	412	664	3.10e-126	462	253	697449	N/A	Beta proteobacterium 174 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|270282506|gb|GU213368.1|	99.605	253	1	0	1	253	419	671	3.10e-126	462	253	697475	N/A	Beta proteobacterium 48 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|270282472|gb|GU213334.1|	99.605	253	1	0	1	253	409	661	3.10e-126	462	253	697461	N/A	Beta proteobacterium 4-101 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|270282464|gb|GU213326.1|	99.605	253	1	0	1	253	424	676	3.10e-126	462	253	697470	N/A	Beta proteobacterium 4-81 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|3060999013|gb|PX360613.1|	99.209	253	2	0	1	253	462	714	1.44e-124	457	253	1869227	N/A	Bacterium strain 4e54df3e3a8d75cf53fad081d3c5a2a182af824e 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|2952325447|emb|OZ239427.1|	99.209	253	2	0	1	253	387503	387755	1.44e-124	457	253	1871070	N/A	Oxalobacteraceae bacterium isolate MsE-6 genome assembly, chromosome: MsE-6
+ASV_2293	gi|2578831919|gb|OR564061.1|	99.209	253	2	0	1	253	501	753	1.44e-124	457	253	1125875	N/A	Noviherbaspirillum psychrotolerans strain H165 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|2428167316|gb|OQ255154.1|	99.209	253	2	0	1	253	489	741	1.44e-124	457	253	1125875	N/A	Noviherbaspirillum psychrotolerans strain S5-10 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|2428167200|gb|OQ255038.1|	99.209	253	2	0	1	253	488	740	1.44e-124	457	253	1125875	N/A	Noviherbaspirillum psychrotolerans strain S3-65 16S ribosomal RNA gene, partial sequence
+ASV_2293	gi|2421923800|gb|OQ195195.1|	99.209	253	2	0	1	253	433	685	1.44e-124	457	253	573741	N/A	Oxalicibacterium faecigallinarum strain 108 16S ribosomal RNA gene, partial sequence
+ASV_2410	gi|1869438454|gb|MT756113.1|	99.606	254	1	0	1	254	492	745	8.66e-127	464	254	1869227	N/A	Bacterium strain C186-4 16S ribosomal RNA gene, partial sequence
+ASV_2410	gi|1869438449|gb|MT756109.1|	99.606	254	1	0	1	254	490	743	8.66e-127	464	254	1869227	N/A	Bacterium strain C169 16S ribosomal RNA gene, partial sequence
+ASV_2410	gi|1869438427|gb|MT756093.1|	99.606	254	1	0	1	254	494	747	8.66e-127	464	254	1869227	N/A	Bacterium strain C127 16S ribosomal RNA gene, partial sequence
+ASV_2410	gi|2843846165|gb|PQ551829.1|	99.213	254	2	0	1	254	1	254	4.03e-125	459	254	1869227	N/A	Bacterium strain OTU_950 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1797955542|gb|MN946628.1|	100.000	253	0	0	1	253	462	714	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain JW3-34 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|3023463106|gb|PV936625.1|	100.000	253	0	0	1	253	420	672	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain D-3 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1679468323|gb|MN044787.1|	100.000	253	0	0	1	253	438	690	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain S16 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|2871837834|gb|PQ781406.1|	100.000	253	0	0	1	253	441	693	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain LG512 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|2727102779|gb|PP758269.1|	100.000	253	0	0	1	253	430	682	6.66e-128	468	253	363840	N/A	Inquilinus ginsengisoli strain Gsoil 080 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1206483503|gb|MF101188.1|	100.000	253	0	0	1	253	415	667	6.66e-128	468	253	363840	N/A	Inquilinus ginsengisoli strain GNXG-9 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1206483404|gb|MF101089.1|	100.000	253	0	0	1	253	394	646	6.66e-128	468	253	363840	N/A	Inquilinus ginsengisoli strain HJG-1 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1206483374|gb|MF101059.1|	100.000	253	0	0	1	253	387	639	6.66e-128	468	253	363840	N/A	Inquilinus ginsengisoli strain SJG-14 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1176865087|gb|KY924326.1|	100.000	253	0	0	1	253	439	691	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain I 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1039785265|gb|KX255019.1|	100.000	253	0	0	1	253	447	699	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain Sq23 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1001184216|emb|LN995702.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	171674;349267	N/A	Inquilinus limosus partial 16S rRNA gene, strain R-53747
+ASV_2430	gi|2428167253|gb|OQ255091.1|	100.000	253	0	0	1	253	431	683	6.66e-128	468	253	363840	N/A	Inquilinus ginsengisoli strain S4-24 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|2317215020|gb|OP646801.1|	100.000	253	0	0	1	253	423	675	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain P10 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|698376347|gb|KM248328.1|	100.000	253	0	0	1	253	457	709	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain Angs1 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|2238160775|gb|ON495981.1|	100.000	253	0	0	1	253	398	650	6.66e-128	468	253	363840	N/A	Inquilinus ginsengisoli strain GbII 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|641389319|gb|KJ591012.1|	100.000	253	0	0	1	253	403	655	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain MOSEL-RD1 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|436907055|gb|JX945663.1|	100.000	253	0	0	1	253	429	681	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain B7 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1914019637|gb|MW075267.1|	100.000	253	0	0	1	253	126	378	6.66e-128	468	253	363840	N/A	Inquilinus ginsengisoli strain F20 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|1909394610|gb|MW037715.1|	100.000	253	0	0	1	253	429	681	6.66e-128	468	253	1869227	N/A	Bacterium strain AGE_YL_H48 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|289119534|gb|GU201848.1|	100.000	253	0	0	1	253	437	689	6.66e-128	468	253	363840	N/A	Inquilinus ginsengisoli strain Mq-10 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|74197576|emb|AM062714.1|	100.000	253	0	0	1	253	414	666	6.66e-128	468	253	171674	N/A	Inquilinus limosus 16S rRNA gene, isolate BestL3
+ASV_2430	gi|22073948|gb|AY043373.1|	100.000	253	0	0	1	253	467	719	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain AU430 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|21844517|gb|AY043375.1|	100.000	253	0	0	1	253	468	720	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain AU1979 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|6646883|gb|AF085496.1|	100.000	253	0	0	1	253	399	651	6.66e-128	468	253	171674	N/A	Inquilinus limosus strain 15158 16S ribosomal RNA gene, partial sequence
+ASV_2430	gi|2702916317|gb|PP529736.1|	99.605	253	1	0	1	253	377	629	3.10e-126	462	253	363840	N/A	Inquilinus ginsengisoli strain LC22 16S ribosomal RNA gene, partial sequence
+ASV_2453	gi|1519154207|gb|MK204992.1|	99.209	253	2	0	1	253	511	763	1.44e-124	457	253	2821487	N/A	Niastella soli strain MAH-29 16S ribosomal RNA gene, partial sequence
+ASV_2453	gi|2363084152|ref|NR_180325.1|	99.209	253	2	0	1	253	511	763	1.44e-124	457	253	2821487	N/A	Niastella soli strain MAH-29 16S ribosomal RNA, partial sequence
+ASV_2453	gi|1033657160|ref|NR_137250.1|	99.209	253	2	0	1	253	509	761	1.44e-124	457	253	1542731	N/A	Niastella gongjuensis strain 5GH22-11 16S ribosomal RNA, partial sequence
+ASV_2453	gi|359803612|dbj|AB682409.1|	99.209	253	2	0	1	253	503	755	1.44e-124	457	253	354355	N/A	Niastella yeongjuensis gene for 16S rRNA, partial sequence, strain: NBRC 106393
+ASV_2453	gi|343203463|ref|NR_043672.1|	99.209	253	2	0	1	253	512	764	1.44e-124	457	253	354355	N/A	Niastella yeongjuensis strain GR20-13 16S ribosomal RNA, partial sequence
+ASV_2699	gi|3024165327|gb|PV931919.1|	100.000	253	0	0	1	253	486	738	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain NP-B2 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|3024165326|gb|PV931915.1|	100.000	253	0	0	1	253	481	733	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain SK-B2 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|3022907207|gb|PV933133.1|	100.000	253	0	0	1	253	477	729	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain NP-B4 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|3022664584|gb|PV932074.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain PS-L1 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|3022638325|gb|PV931916.1|	100.000	253	0	0	1	253	459	711	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain NP-B1 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|3021979354|gb|PV926796.1|	100.000	253	0	0	1	253	486	738	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain KB-B4 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|1594451922|dbj|LC133182.1|	100.000	253	0	0	1	253	431	683	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris gene for 16S ribosomal RNA, partial sequence, strain: AH1AT
+ASV_2699	gi|1482844482|gb|MH305348.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus strain BRM043931 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|1482844481|gb|MH305347.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus strain BRM043934 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|1482844480|gb|MH305346.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus strain BRM043930 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|2716983611|gb|PP657598.1|	100.000	253	0	0	1	253	483	735	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus strain RMB-IAUF-1 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|1198314189|gb|MF114299.1|	100.000	253	0	0	1	253	464	716	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain 54-2 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|2641394766|gb|PP053027.1|	100.000	253	0	0	1	253	511	763	6.66e-128	468	253	65605	N/A	Streptomyces thermoalcalitolerans strain APT3 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|985481697|dbj|LC107504.1|	100.000	253	0	0	1	253	460	712	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus gene for 16S ribosomal RNA, partial sequence, strain: UICC B-72
+ASV_2699	gi|985481695|dbj|LC107502.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus gene for 16S ribosomal RNA, partial sequence, strain: UICC B-70
+ASV_2699	gi|985481694|dbj|LC107501.1|	100.000	253	0	0	1	253	468	720	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus gene for 16S ribosomal RNA, partial sequence, strain: UICC B-69
+ASV_2699	gi|985481674|dbj|LC107481.1|	100.000	253	0	0	1	253	461	713	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus gene for 16S ribosomal RNA, partial sequence, strain: UICC B-49
+ASV_2699	gi|2418927401|gb|OQ154253.1|	100.000	253	0	0	1	253	432	684	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain ME 11 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|2199653063|gb|OM838400.1|	100.000	253	0	0	1	253	483	735	6.66e-128	468	253	1883427	N/A	Actinomycetia bacterium strain NT-T1 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|413911395|gb|KC113156.1|	100.000	253	0	0	1	253	476	728	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain KSI 659 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|296841024|dbj|AB562491.1|	100.000	253	0	0	1	253	480	732	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris gene for 16S rRNA, partial sequence, strain: 09924-c8Ka-50-3
+ASV_2699	gi|295002843|gb|GU980958.1|	100.000	253	0	0	1	253	464	716	6.66e-128	468	253	1934	N/A	Streptomyces thermovulgaris strain A-V 16S ribosomal RNA gene, partial sequence
+ASV_2699	gi|292677754|dbj|AB360806.1|	100.000	253	0	0	1	253	502	754	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus gene for 16S rRNA, partial sequence, strain: AHK143
+ASV_2699	gi|292677753|dbj|AB360805.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus gene for 16S rRNA, partial sequence, strain: AHK130
+ASV_2699	gi|292677750|dbj|AB360802.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	75292	N/A	Streptomyces thermogriseus gene for 16S rRNA, partial sequence, strain: AHK111C
+ASV_3103	gi|1297688665|gb|MG648150.1|	99.605	253	1	0	1	253	448	700	3.10e-126	462	253	33954	N/A	Clostridium magnum strain 120ft5 16S ribosomal RNA gene, partial sequence
+ASV_3103	gi|577155675|gb|KF849330.1|	99.605	253	1	0	1	253	494	746	3.10e-126	462	253	33954	N/A	Clostridium magnum strain CN1 16S ribosomal RNA gene, partial sequence
+ASV_3103	gi|268308904|gb|GU129927.1|	99.209	253	2	0	1	253	487	739	1.44e-124	457	253	33954	N/A	Clostridium magnum strain FM5 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|1787507833|dbj|LC514448.1|	100.000	253	0	0	1	253	422	674	6.66e-128	468	253	568844	N/A	Microbispora hainanensis SL3-2-R-18 gene for 16S ribosomal RNA, partial sequence
+ASV_3338	gi|1787507830|dbj|LC514445.1|	100.000	253	0	0	1	253	420	672	6.66e-128	468	253	568844	N/A	Microbispora hainanensis SL3-2-R-12 gene for 16S ribosomal RNA, partial sequence
+ASV_3338	gi|1787507827|dbj|LC514442.1|	100.000	253	0	0	1	253	431	683	6.66e-128	468	253	1460882	N/A	Microbispora bryophytorum SL3-2-R-5 gene for 16S ribosomal RNA, partial sequence
+ASV_3338	gi|1735425407|dbj|LC497887.1|	100.000	253	0	0	1	253	480	732	6.66e-128	468	253	568844	N/A	Microbispora hainanensis 3R010 gene for 16S ribosomal RNA, partial sequence
+ASV_3338	gi|2879622322|gb|PQ849822.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	58117	N/A	Microbispora rosea strain BS2-4 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|2962412287|ref|NR_199481.1|	100.000	253	0	0	1	253	467	719	6.66e-128	468	253	3144104	N/A	Microbispora maris strain ZYX-F-249 16S ribosomal RNA, partial sequence
+ASV_3338	gi|1005009205|gb|KT345236.1|	100.000	253	0	0	1	253	447	699	6.66e-128	468	253	1427754	N/A	Microbispora amethystogenes strain LGMB250 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|1005009195|gb|KT345226.1|	100.000	253	0	0	1	253	447	699	6.66e-128	468	253	58118	N/A	Microbispora rosea subsp. rosea strain JCM8972 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|1230874665|ref|NR_148826.1|	100.000	253	0	0	1	253	489	741	6.66e-128	468	253	1740611	N/A	Sphaerimonospora cavernae strain N74 16S ribosomal RNA, partial sequence
+ASV_3338	gi|2412597116|gb|OP999343.1|	100.000	253	0	0	1	253	485	737	6.66e-128	468	253	1712871	N/A	Microbispora catharanthi strain 21GGS2-PS59 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|2363086344|ref|NR_181424.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	2771537	N/A	Microbispora sitophila strain NEAU-D428 16S ribosomal RNA, partial sequence
+ASV_3338	gi|2363081895|ref|NR_179193.1|	100.000	253	0	0	1	253	484	736	6.66e-128	468	253	1712871	N/A	Microbispora catharanthi strain CR1-09 16S ribosomal RNA, partial sequence
+ASV_3338	gi|2363081491|ref|NR_178992.1|	100.000	253	0	0	1	253	484	736	6.66e-128	468	253	2749148	N/A	Microbispora clausenae strain CLES2 16S ribosomal RNA, partial sequence
+ASV_3338	gi|1939407299|gb|MW326220.1|	100.000	253	0	0	1	253	446	698	6.66e-128	468	253	1883427	N/A	Actinomycetes bacterium strain RS9V-16 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|1939407288|gb|MW326209.1|	100.000	253	0	0	1	253	422	674	6.66e-128	468	253	1883427	N/A	Actinomycetes bacterium strain RS5V-10 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|1939407275|gb|MW326196.1|	100.000	253	0	0	1	253	419	671	6.66e-128	468	253	1883427	N/A	Actinomycetes bacterium strain RS19-2H 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|371909348|emb|FN646674.1|	100.000	253	0	0	1	253	496	748	6.66e-128	468	253	58117	N/A	Microbispora rosea partial 16S rRNA gene, strain DLS-61
+ASV_3338	gi|1904698316|gb|MW001208.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	2771537	N/A	Microbispora sp. NEAU-D428 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|1870083261|gb|MT760396.1|	100.000	253	0	0	1	253	391	643	6.66e-128	468	253	147065	N/A	Microbispora rosea subsp. aerata strain JCM 3076 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|1869046393|gb|KX394342.2|	100.000	253	0	0	1	253	484	736	6.66e-128	468	253	2749148	N/A	Microbispora clausenae strain CLES2 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|334853152|gb|JF805743.1|	100.000	253	0	0	1	253	466	718	6.66e-128	468	253	58118	N/A	Microbispora rosea subsp. rosea strain JK2-3 16S ribosomal RNA gene, partial sequence
+ASV_3338	gi|645320618|ref|NR_117781.1|	100.000	253	0	0	1	253	481	733	6.66e-128	468	253	795644	N/A	Sphaerimonospora thailandensis strain NN276 16S ribosomal RNA, partial sequence
+ASV_3338	gi|190569857|dbj|AB440707.1|	100.000	253	0	0	1	253	457	709	6.66e-128	468	253	58118	N/A	Microbispora rosea subsp. rosea gene for 16S ribosomal RNA, partial sequence
+ASV_3338	gi|133778369|dbj|AB297931.1|	100.000	253	0	0	1	253	490	742	6.66e-128	468	253	431271	N/A	Actinomycete PtL gene for 16S rRNA, partial sequence
+ASV_3338	gi|41400316|gb|AY445647.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	58118	N/A	Microbispora rosea subsp. rosea strain IMSNU 22065 16S ribosomal RNA gene, partial sequence
+ASV_3656	gi|2675948890|gb|PP341817.1|	99.605	253	1	0	1	253	462	714	3.10e-126	462	253	2053541	N/A	Cytophagales bacterium strain SBNm074 16S ribosomal RNA gene, partial sequence
+ASV_3656	gi|2675948889|gb|PP341816.1|	99.605	253	1	0	1	253	467	719	3.10e-126	462	253	2053541	N/A	Cytophagales bacterium strain SBNm073 16S ribosomal RNA gene, partial sequence
+ASV_3741	gi|1397641718|ref|NR_156827.1|	99.605	253	1	0	1	253	493	745	3.10e-126	462	253	1867851	N/A	Terrimonas crocea strain M1-33108 16S ribosomal RNA, partial sequence
+ASV_3741	gi|961555244|ref|NR_134213.1|	99.209	253	2	0	1	253	473	725	1.44e-124	457	253	1507286	N/A	Terrimonas arctica strain R9-86 16S ribosomal RNA, partial sequence
+ASV_3741	gi|9857113|emb|AJ252591.1|	99.209	253	2	0	1	253	524	776	1.44e-124	457	253	102559	N/A	Rhizosphere soil bacterium isolate RSI-24, 16S rRNA gene (partial)
+ASV_3870	gi|3060999036|gb|PX360636.1|	100.000	253	0	0	1	253	435	687	6.66e-128	468	253	1869227	N/A	Bacterium strain 0e1a4982e3b805f090c916fd730353b80ec17135 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2428167293|gb|OQ255131.1|	100.000	253	0	0	1	253	467	719	6.66e-128	468	253	2072017	N/A	Nocardioides allogilvus strain S4-64 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2428167271|gb|OQ255109.1|	100.000	253	0	0	1	253	466	718	6.66e-128	468	253	2072017	N/A	Nocardioides allogilvus strain S4-42 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2428167030|gb|OQ254868.1|	100.000	253	0	0	1	253	466	718	6.66e-128	468	253	2133958	N/A	Nocardioides currus strain S1-55 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2428167022|gb|OQ254860.1|	100.000	253	0	0	1	253	433	685	6.66e-128	468	253	2072017	N/A	Nocardioides allogilvus strain S1-47 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2428167017|gb|OQ254855.1|	100.000	253	0	0	1	253	465	717	6.66e-128	468	253	2072017	N/A	Nocardioides allogilvus strain S1-42 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2161951935|gb|OL773523.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	2072017	N/A	Nocardioides allogilvus strain 21LS6-111 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|165929465|emb|AM932441.1|	100.000	253	0	0	1	253	160	412	6.66e-128	468	253	495776	N/A	Actinobacterium Jbg11 partial 16S rRNA gene, isolate Jbg11
+ASV_3870	gi|165929464|emb|AM932440.1|	100.000	253	0	0	1	253	160	412	6.66e-128	468	253	495775	N/A	Actinobacterium Jbg10 partial 16S rRNA gene, isolate Jbg10
+ASV_3870	gi|2738947483|gb|PP863187.1|	99.605	253	1	0	1	253	414	666	3.10e-126	462	253	1706825	N/A	Nocardioides suum strain WW-47 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2533487647|gb|OR253390.1|	99.605	253	1	0	1	253	452	704	3.10e-126	462	253	2072017	N/A	Nocardioides allogilvus strain OCA-22 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2533487634|gb|OR253377.1|	99.605	253	1	0	1	253	435	687	3.10e-126	462	253	2072017	N/A	Nocardioides allogilvus strain OCA-124 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2533487631|gb|OR253374.1|	99.605	253	1	0	1	253	452	704	3.10e-126	462	253	2072017	N/A	Nocardioides allogilvus strain OCA-121 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2533487626|gb|OR253369.1|	99.605	253	1	0	1	253	452	704	3.10e-126	462	253	2072017	N/A	Nocardioides allogilvus strain OCA-116 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2373358142|gb|OP935865.1|	99.605	253	1	0	1	253	489	741	3.10e-126	462	253	2072017	N/A	Nocardioides allogilvus strain C1L10 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|1811131504|ref|NR_165686.1|	99.605	253	1	0	1	253	483	735	3.10e-126	462	253	1706825	N/A	Nocardioides suum strain PBT33-2 16S ribosomal RNA, partial sequence
+ASV_3870	gi|2428167392|gb|OQ255230.1|	99.605	253	1	0	1	253	430	682	3.10e-126	462	253	2072017	N/A	Nocardioides allogilvus strain S6-12 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2260114866|gb|ON860713.1|	99.605	253	1	0	1	253	432	684	3.10e-126	462	253	2072017	N/A	Nocardioides allogilvus strain 2.0410 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|9857114|emb|AJ252592.1|	99.605	253	1	0	1	253	499	751	3.10e-126	462	253	102560	N/A	Rhizosphere soil bacterium isolate RSI-25, 16S rRNA gene (partial)
+ASV_3870	gi|1835951067|gb|MT415097.1|	99.209	253	2	0	1	253	452	704	1.44e-124	457	253	2072017	N/A	Nocardioides allogilvus strain CsDWF-252 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|1330209485|gb|MG800321.1|	99.209	253	2	0	1	253	505	757	1.44e-124	457	253	2072017	N/A	Nocardioides allogilvus 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|1215531065|emb|LT853784.1|	99.209	253	2	0	1	253	431	683	1.44e-124	457	253	424797	N/A	Nocardioides terrigena partial 16S rRNA gene, strain TSDHB10-85J
+ASV_3870	gi|2640698173|gb|PP049586.1|	99.209	253	2	0	1	253	480	732	1.44e-124	457	253	2072017	N/A	Nocardioides allogilvus strain N49 16S ribosomal RNA gene, partial sequence
+ASV_3870	gi|2363083365|ref|NR_179931.1|	99.209	253	2	0	1	253	505	757	1.44e-124	457	253	2072017	N/A	Nocardioides allogilvus strain CFH 30205 16S ribosomal RNA, partial sequence
+ASV_3915	gi|1040567039|ref|NR_137388.1|	100.000	253	0	0	1	253	503	755	6.66e-128	468	253	1605892	N/A	Dysgonomonas alginatilytica strain HUA-2 16S ribosomal RNA, partial sequence
+ASV_3915	gi|2896021528|gb|PV031688.1|	99.605	253	1	0	1	253	503	755	3.10e-126	462	253	1605892	N/A	Dysgonomonas alginatilytica strain ADSV4 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|1787555474|gb|MN865870.1|	100.000	253	0	0	1	253	473	725	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus strain GPBW6 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2989133069|gb|PV715745.1|	100.000	253	0	0	1	253	473	725	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus strain YMDS8 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2989133068|gb|PV715744.1|	100.000	253	0	0	1	253	474	726	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus strain YMDS7 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2989133067|gb|PV715743.1|	100.000	253	0	0	1	253	469	721	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus strain YMD6 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|1530708009|gb|MK256320.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus strain OH13 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|1489782655|gb|MK044898.1|	100.000	253	0	0	1	253	420	672	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain LE16 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2836063531|gb|CP117873.1|	100.000	253	0	0	1	253	5092906	5092654	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain Lj46 chromosome, complete genome
+ASV_3916	gi|2805779848|gb|PQ344173.1|	100.000	253	0	0	1	253	497	749	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus strain SM_539 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|1498509331|gb|MK106320.1|	100.000	253	0	0	1	253	469	721	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain K12CqR2AP005 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|1389181982|gb|MH337922.1|	100.000	253	0	0	1	253	486	738	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus strain zw16 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|1379639411|gb|MH238352.1|	100.000	253	0	0	1	253	482	734	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain 1-T-1-4 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2752021978|gb|PP967749.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	262324	N/A	Lysobacter gummosus strain RTF26 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2618523430|gb|OR781337.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain Ca-59 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2618523423|gb|OR781330.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain Ca-50 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2618523404|gb|OR781311.1|	100.000	253	0	0	1	253	440	692	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain Ca-14 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2675948896|gb|PP341823.1|	100.000	253	0	0	1	253	469	721	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus strain SBNm095 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2591156584|gb|OR649153.1|	100.000	253	0	0	1	253	494	746	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain LJ6-4 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2581542643|gb|OR594223.1|	100.000	253	0	0	1	253	496	748	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain SR50 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2440652786|gb|OQ383329.1|	100.000	253	0	0	1	253	527	779	6.66e-128	468	253	69	N/A	Lysobacter enzymogenes strain SR01 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2411505560|gb|OP986202.1|	100.000	253	0	0	1	253	521	773	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus strain AFS091051 16S ribosomal RNA gene, partial sequence
+ASV_3916	gi|2211074408|gb|CP093547.1|	100.000	253	0	0	1	253	512420	512672	6.66e-128	468	253	262324	N/A	Lysobacter gummosus strain 10.1.1 chromosome, complete genome
+ASV_3916	gi|2183376528|gb|CP091194.1|	100.000	253	0	0	1	253	4755566	4755818	6.66e-128	468	253	262324	N/A	Lysobacter gummosus strain K-Be-H3 chromosome
+ASV_3916	gi|2179704138|gb|CP090945.1|	100.000	253	0	0	1	253	4342739	4342487	6.66e-128	468	253	435897	N/A	Lysobacter capsici strain K-Hf-H2 chromosome
+ASV_3916	gi|1877246804|emb|LS991150.1|	100.000	253	0	0	1	253	473	725	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus partial 16S rRNA gene, isolate A-8SB49
+ASV_3916	gi|1877246789|emb|LS991135.1|	100.000	253	0	0	1	253	474	726	6.66e-128	468	253	84531	N/A	Lysobacter antibioticus partial 16S rRNA gene, isolate A-8SB26
+ASV_3978	gi|566085594|ref|NR_109674.1|	100.000	253	0	0	1	253	457	709	6.66e-128	468	253	1230389	N/A	Reyranella soli strain KIS14-15 16S ribosomal RNA, partial sequence
+ASV_3978	gi|2700707227|gb|PP504460.1|	99.605	253	1	0	1	253	423	675	3.10e-126	462	253	1230389	N/A	Reyranella soli strain SP49 16S ribosomal RNA gene, partial sequence
+ASV_3978	gi|2700707226|gb|PP504459.1|	99.605	253	1	0	1	253	417	669	3.10e-126	462	253	2035356	N/A	Reyranella aquatilis strain PS24 16S ribosomal RNA gene, partial sequence
+ASV_3978	gi|3060999062|gb|PX360662.1|	99.209	253	2	0	1	253	409	661	1.44e-124	457	253	1869227	N/A	Bacterium strain 292faa87f669e1fd978908b47f25277d0bf46ac5 16S ribosomal RNA gene, partial sequence
+ASV_3978	gi|1782942178|dbj|AB835514.1|	99.209	253	2	0	1	253	134	386	1.44e-124	457	253	1360394	N/A	Alpha proteobacterium Se3Pw_3638 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782942136|dbj|AB835472.1|	99.209	253	2	0	1	253	112	364	1.44e-124	457	253	1360391	N/A	Alpha proteobacterium Se3Pw_3529 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782942120|dbj|AB835456.1|	99.209	253	2	0	1	253	126	378	1.44e-124	457	253	1360389	N/A	Alpha proteobacterium Se3Pw_3508 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782942114|dbj|AB835450.1|	99.209	253	2	0	1	253	115	367	1.44e-124	457	253	1360388	N/A	Alpha proteobacterium Se3Pw_3501 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782942095|dbj|AB835431.1|	99.209	253	2	0	1	253	112	364	1.44e-124	457	253	1360386	N/A	Alpha proteobacterium Se3Pw_3479 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782942079|dbj|AB835415.1|	99.209	253	2	0	1	253	114	366	1.44e-124	457	253	1360383	N/A	Alpha proteobacterium Se3Pw_3459 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782942077|dbj|AB835413.1|	99.209	253	2	0	1	253	112	364	1.44e-124	457	253	1360382	N/A	Alpha proteobacterium Se3Pw_3457 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782942063|dbj|AB835399.1|	99.209	253	2	0	1	253	112	364	1.44e-124	457	253	1360381	N/A	Alpha proteobacterium Se3Pw_3435 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782942021|dbj|AB835357.1|	99.209	253	2	0	1	253	112	364	1.44e-124	457	253	1360379	N/A	Alpha proteobacterium Se3Pw_3388 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941997|dbj|AB835333.1|	99.209	253	2	0	1	253	112	364	1.44e-124	457	253	1360376	N/A	Alpha proteobacterium Se3Pw_3363 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941621|dbj|AB834959.1|	99.209	253	2	0	1	253	125	377	1.44e-124	457	253	1360368	N/A	Alpha proteobacterium Se2Pw_3311 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941617|dbj|AB834955.1|	99.209	253	2	0	1	253	127	379	1.44e-124	457	253	1360367	N/A	Alpha proteobacterium Se2Pw_3307 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941616|dbj|AB834954.1|	99.209	253	2	0	1	253	127	379	1.44e-124	457	253	1360366	N/A	Alpha proteobacterium Se2Pw_3306 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941147|dbj|AB834485.1|	99.209	253	2	0	1	253	116	368	1.44e-124	457	253	1360363	N/A	Alpha proteobacterium Se1Pw_3164 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941128|dbj|AB834466.1|	99.209	253	2	0	1	253	127	379	1.44e-124	457	253	1360361	N/A	Alpha proteobacterium Se1Pw_3143 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941122|dbj|AB834460.1|	99.209	253	2	0	1	253	116	368	1.44e-124	457	253	1360359	N/A	Alpha proteobacterium Se1Pw_3137 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941115|dbj|AB834453.1|	99.209	253	2	0	1	253	116	368	1.44e-124	457	253	1360357	N/A	Alpha proteobacterium Se1Pw_3127 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941114|dbj|AB834452.1|	99.209	253	2	0	1	253	127	379	1.44e-124	457	253	1360356	N/A	Alpha proteobacterium Se1Pw_3126 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941087|dbj|AB834425.1|	99.209	253	2	0	1	253	128	380	1.44e-124	457	253	1360354	N/A	Alpha proteobacterium Se1Pw_3093 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941084|dbj|AB834422.1|	99.209	253	2	0	1	253	116	368	1.44e-124	457	253	1360353	N/A	Alpha proteobacterium Se1Pw_3089 gene for 16S rRNA, partial sequence
+ASV_3978	gi|1782941061|dbj|AB834399.1|	99.209	253	2	0	1	253	116	368	1.44e-124	457	253	1360350	N/A	Alpha proteobacterium Se1Pw_3062 gene for 16S rRNA, partial sequence
+ASV_3984	gi|1835951185|gb|MT415215.1|	100.000	253	0	0	1	253	421	673	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain CsML-302 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|1777217814|gb|MN715364.1|	100.000	253	0	0	1	253	366	618	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain AJK-8 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|1774728412|gb|MN684283.1|	100.000	253	0	0	1	253	419	671	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain MT_SG_E_26_P3_2_27F.27F 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2973175009|gb|PV628078.1|	100.000	253	0	0	1	253	415	667	6.66e-128	468	253	1869227	N/A	Bacterium strain G4 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2941027251|gb|PV369188.1|	100.000	253	0	0	1	253	400	652	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain QTB4 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2785022657|gb|PQ160419.1|	100.000	253	0	0	1	253	412	664	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain AMSKM3026 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2731086512|gb|PP783503.1|	100.000	253	0	0	1	253	433	685	6.66e-128	468	253	501024	N/A	Rhizobium tibeticum strain XBXD2 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2689334502|gb|PP411531.1|	100.000	253	0	0	1	253	377	629	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain IRAMC:0156 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2540499147|gb|OR262527.1|	100.000	253	0	0	1	253	428	680	6.66e-128	468	253	417745	N/A	Shinella kummerowiae strain JP1R-74 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2663688618|gb|PP218424.1|	100.000	253	0	0	1	253	409	661	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain RhPNDR2 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2631369401|gb|OR921893.1|	100.000	253	0	0	1	253	450	702	6.66e-128	468	253	508661	N/A	Rhizobium herbae strain HA11 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2592500992|gb|OR673297.1|	100.000	253	0	0	1	253	429	681	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain 20/1-1 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2577269151|gb|OR553929.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain KR1-122_contig_1 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2466623470|gb|OQ690727.1|	100.000	253	0	0	1	253	437	689	6.66e-128	468	253	508661	N/A	Rhizobium herbae strain FH-5 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2466623469|gb|OQ690726.1|	100.000	253	0	0	1	253	436	688	6.66e-128	468	253	508661	N/A	Rhizobium herbae strain FH-4 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2279682056|gb|OP108772.1|	100.000	253	0	0	1	253	414	666	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain 4-6-14 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2279682049|gb|OP108765.1|	100.000	253	0	0	1	253	420	672	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain 4-2-1 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2279682046|gb|OP108762.1|	100.000	253	0	0	1	253	414	666	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain 4-1-3r 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2294996589|gb|OP364639.1|	100.000	253	0	0	1	253	439	691	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain MRHB1-131 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2232479270|gb|ON384548.1|	100.000	253	0	0	1	253	390	642	6.66e-128	468	253	508661	N/A	Rhizobium herbae strain N-196 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|1976373782|gb|MW578403.1|	100.000	253	0	0	1	253	424	676	6.66e-128	468	253	508661	N/A	Rhizobium herbae strain CCBAU 83011 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2101660114|gb|OK298807.1|	100.000	253	0	0	1	253	408	660	6.66e-128	468	253	1913961	N/A	Rhizobiaceae bacterium strain F4-206a 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2101660105|gb|OK298800.1|	100.000	253	0	0	1	253	419	671	6.66e-128	468	253	1913961	N/A	Rhizobiaceae bacterium strain F4-169ng 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|1829742481|gb|MT320482.1|	100.000	253	0	0	1	253	390	642	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain D122-0908-b2-1-4 16S ribosomal RNA gene, partial sequence
+ASV_3984	gi|2006398172|gb|MW750331.1|	100.000	253	0	0	1	253	418	670	6.66e-128	468	253	56731	N/A	Rhizobium giardinii strain AC16 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3062913737|gb|PX394689.1|	100.000	253	0	0	1	253	247	499	6.66e-128	468	253	2964669	N/A	Streptomyces changanensis strain S12 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3044538275|gb|PX128939.1|	100.000	253	0	0	1	253	436	688	6.66e-128	468	253	68285	N/A	Streptomyces xantholiticus strain NMS10 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3044538274|gb|PX128938.1|	100.000	253	0	0	1	253	427	679	6.66e-128	468	253	67312	N/A	Streptomyces kurssanovii strain NMS5 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3044538243|gb|PX128907.1|	100.000	253	0	0	1	253	467	719	6.66e-128	468	253	67312	N/A	Streptomyces kurssanovii strain SCS16 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3040294368|gb|PX111568.1|	100.000	253	0	0	1	253	460	712	6.66e-128	468	253	1950	N/A	Streptomyces peucetius strain B119 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3040294356|gb|PX111556.1|	100.000	253	0	0	1	253	445	697	6.66e-128	468	253	1535768	N/A	Streptomyces lunaelactis strain B107 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3040294351|gb|PX111551.1|	100.000	253	0	0	1	253	444	696	6.66e-128	468	253	68212	N/A	Streptomyces graminofaciens strain B102 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3033062167|gb|PX022944.1|	100.000	253	0	0	1	253	140	392	6.66e-128	468	253	1775900	N/A	Streptomyces luozhongensis strain S21 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3033062161|gb|PX022938.1|	100.000	253	0	0	1	253	152	404	6.66e-128	468	253	1775900	N/A	Streptomyces luozhongensis strain S14 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3033062156|gb|PX022933.1|	100.000	253	0	0	1	253	137	389	6.66e-128	468	253	1775900	N/A	Streptomyces luozhongensis strain S9 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3030773661|gb|PV988488.1|	100.000	253	0	0	1	253	447	699	6.66e-128	468	253	1919	N/A	Streptomyces microflavus strain S10_29 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3030773646|gb|PV988473.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	1535768	N/A	Streptomyces lunaelactis strain S10_9 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2993364175|gb|PV763167.1|	100.000	253	0	0	1	253	488	740	6.66e-128	468	253	1169025;1266770	N/A	Streptomyces pratensis strain INA 01564 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2976957569|gb|PV642508.1|	100.000	253	0	0	1	253	453	705	6.66e-128	468	253	1950	N/A	Streptomyces peucetius strain CSR27 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2947725296|gb|PV428783.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	66881	N/A	Streptomyces cremeus strain 16S-CR1.22824070 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2947725096|gb|PV428583.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	66881	N/A	Streptomyces cremeus strain 0005_32823042100268_(15) 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2797676482|gb|PQ282573.1|	100.000	253	0	0	1	253	139	391	6.66e-128	468	253	68186	N/A	Streptomyces chryseus strain 26Des 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|3030611346|ref|NR_200022.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	3139917	N/A	Streptomyces pratisoli strain MS1.AVA.4 16S ribosomal RNA, partial sequence
+ASV_4154	gi|2805779826|gb|PQ344151.1|	100.000	253	0	0	1	253	467	719	6.66e-128	468	253	1459942	N/A	Streptomyces maoxianensis strain SM_480 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2753773511|gb|PP982892.1|	100.000	253	0	0	1	253	489	741	6.66e-128	468	253	67320	N/A	Streptomyces luridus strain TQTCORM1 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2745650952|gb|PP935561.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	285536	N/A	Streptomyces sannanensis strain A43 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2745650948|gb|PP935557.1|	100.000	253	0	0	1	253	448	700	6.66e-128	468	253	68258	N/A	Streptomyces pulveraceus strain A18 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2736090115|gb|PP837265.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	68186	N/A	Streptomyces chryseus strain QTP244190 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2736090080|gb|PP837230.1|	100.000	253	0	0	1	253	470	722	6.66e-128	468	253	68186	N/A	Streptomyces chryseus strain QTP245141 16S ribosomal RNA gene, partial sequence
+ASV_4154	gi|2736089988|gb|PP837138.1|	100.000	253	0	0	1	253	470	722	6.66e-128	468	253	68186	N/A	Streptomyces chryseus strain QTP244083 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|1394370449|gb|MF541533.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	363867	N/A	Aeromicrobium ginsengisoli strain A-72 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2552128055|gb|OR346147.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	2233852	N/A	Aeromicrobium lacus strain KR3UV-104 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2550031741|gb|ON974398.2|	100.000	253	0	0	1	253	501	753	6.66e-128	468	253	2969247	N/A	Aeromicrobium wangtongii strain zg-Y869 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2428167206|gb|OQ255044.1|	100.000	253	0	0	1	253	469	721	6.66e-128	468	253	363867	N/A	Aeromicrobium ginsengisoli strain S3-71 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2283193646|gb|CP102173.1|	100.000	253	0	0	1	253	2579066	2578814	6.66e-128	468	253	2969247	N/A	Aeromicrobium wangtongii strain zg-Y1379 chromosome, complete genome
+ASV_4155	gi|2906268298|gb|PV088624.1|	99.605	253	1	0	1	253	462	714	3.10e-126	462	253	1869227	N/A	Bacterium strain HXC7-1 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2866740602|gb|PQ725714.1|	99.605	253	1	0	1	253	455	707	3.10e-126	462	253	2233852	N/A	Aeromicrobium lacus strain DR19-D 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2836054866|gb|PQ483160.1|	99.605	253	1	0	1	253	407	659	3.10e-126	462	253	460257	N/A	Aeromicrobium ponti strain S7 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2805779793|gb|PQ344118.1|	99.605	253	1	0	1	253	463	715	3.10e-126	462	253	363867	N/A	Aeromicrobium ginsengisoli strain SCK_641 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2744506617|gb|PP928330.1|	99.605	253	1	0	1	253	458	710	3.10e-126	462	253	363867	N/A	Aeromicrobium ginsengisoli strain 9/5-3 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2691248094|gb|PP423864.1|	99.605	253	1	0	1	253	452	704	3.10e-126	462	253	3107983	N/A	Marine bacterium strain ST1123 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2663322476|gb|PP218268.1|	99.605	253	1	0	1	253	450	702	3.10e-126	462	253	2041	N/A	Aeromicrobium erythreum strain MBT P4 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2640697906|gb|PP049540.1|	99.605	253	1	0	1	253	481	733	3.10e-126	462	253	363867	N/A	Aeromicrobium ginsengisoli strain N3 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2640697897|gb|PP049538.1|	99.605	253	1	0	1	253	410	662	3.10e-126	462	253	363867	N/A	Aeromicrobium ginsengisoli strain N1 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2623980872|gb|OR855946.1|	99.605	253	1	0	1	253	488	740	3.10e-126	462	253	2233852	N/A	Aeromicrobium lacus strain R3 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2620321554|gb|OR801603.1|	99.605	253	1	0	1	253	419	671	3.10e-126	462	253	363867	N/A	Aeromicrobium ginsengisoli strain RF120 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2451340749|gb|OQ569331.1|	99.605	253	1	0	1	253	385	637	3.10e-126	462	253	1883427	N/A	Actinomycetia bacterium strain D816_2 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2428167221|gb|OQ255059.1|	99.605	253	1	0	1	253	468	720	3.10e-126	462	253	363867	N/A	Aeromicrobium ginsengisoli strain S3-86 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2363086023|ref|NR_181264.1|	99.605	253	1	0	1	253	464	716	3.10e-126	462	253	2738988	N/A	Aeromicrobium stalagmiti strain YC3-14 16S ribosomal RNA, partial sequence
+ASV_4155	gi|2293333105|gb|OP344330.1|	99.605	253	1	0	1	253	432	684	3.10e-126	462	253	302168	N/A	Aeromicrobium alkaliterrae strain W393 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2293333034|gb|OP344264.1|	99.605	253	1	0	1	253	433	685	3.10e-126	462	253	302168	N/A	Aeromicrobium alkaliterrae strain W314 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2293333033|gb|OP344263.1|	99.605	253	1	0	1	253	433	685	3.10e-126	462	253	302168	N/A	Aeromicrobium alkaliterrae strain W313 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2293332991|gb|OP344231.1|	99.605	253	1	0	1	253	433	685	3.10e-126	462	253	302168	N/A	Aeromicrobium alkaliterrae strain W273 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2293330816|gb|OP343195.1|	99.605	253	1	0	1	253	433	685	3.10e-126	462	253	302168	N/A	Aeromicrobium alkaliterrae strain F398 16S ribosomal RNA gene, partial sequence
+ASV_4155	gi|2293330814|gb|OP343193.1|	99.605	253	1	0	1	253	433	685	3.10e-126	462	253	302168	N/A	Aeromicrobium alkaliterrae strain F396 16S ribosomal RNA gene, partial sequence
+ASV_4352	gi|2843845772|gb|PQ551436.1|	99.605	253	1	0	1	253	1	253	3.10e-126	462	253	77133;1869227	N/A	Uncultured bacterium clone 611144_AL227_167789 16S ribosomal RNA gene, partial sequence
+ASV_4367	gi|270610437|gb|GU187033.1|	99.605	253	1	0	1	253	499	751	3.10e-126	462	253	755189	N/A	Acidobacteria bacterium IGE-005 16S ribosomal RNA gene, partial sequence
+ASV_4367	gi|270610433|gb|GU187029.1|	99.209	253	2	0	1	253	480	732	1.44e-124	457	253	755185	N/A	Acidobacteria bacterium IGE-004 16S ribosomal RNA gene, partial sequence
+ASV_4437	gi|1612062188|gb|MK779948.1|	99.209	253	2	0	1	253	492	744	1.44e-124	457	253	2026763	N/A	Myxococcales bacterium strain SDWB-DG10 16S ribosomal RNA gene, partial sequence
+ASV_4437	gi|1493551528|dbj|LC378748.1|	99.209	253	2	0	1	253	512	764	1.44e-124	457	253	2026735	N/A	Deltaproteobacteria bacterium LA-DMC-1W15 gene for 16S ribosomal RNA, partial sequence
+ASV_5770	gi|2872331197|gb|PQ795005.1|	100.000	253	0	0	1	253	172	424	6.66e-128	468	253	1869227	N/A	Bacterium strain ASV16402 16S ribosomal RNA gene, partial sequence
+ASV_5770	gi|343205806|ref|NR_044235.1|	100.000	253	0	0	1	253	515	767	6.66e-128	468	253	433663	N/A	Nocardioides islandensis strain MSL 26 16S ribosomal RNA, partial sequence
+ASV_5937	gi|2028694787|gb|MW989982.1|	99.209	253	2	0	1	253	460	712	1.44e-124	457	253	2829994	N/A	Polyangium jinanense strain SDU13 16S ribosomal RNA gene, partial sequence
+ASV_5937	gi|1558439488|ref|NR_160536.1|	99.209	253	2	0	1	253	549	801	1.44e-124	457	253	889274	N/A	Polyangium sorediatum strain Pl s12 16S ribosomal RNA, partial sequence
+ASV_5943	gi|2731876105|gb|PP784552.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	512349	N/A	Actinoplanes sichuanensis strain 23ND70W-92 16S ribosomal RNA gene, partial sequence
+ASV_5943	gi|1085864662|emb|LT629758.1|	100.000	253	0	0	1	253	4292150	4291898	6.66e-128	468	253	113562	N/A	Actinoplanes derwentensis strain DSM 43941 genome assembly, chromosome: I
+ASV_5943	gi|2549229438|dbj|AP028461.1|	100.000	253	0	0	1	253	6359211	6358959	6.66e-128	468	253	512349	N/A	Actinoplanes sichuanensis 03-723 DNA, complete genome
+ASV_5943	gi|752324376|gb|KP013620.1|	100.000	253	0	0	1	253	396	648	6.66e-128	468	253	512350	N/A	Actinoplanes xinjiangensis strain YT12021 16S ribosomal RNA gene, partial sequence
+ASV_5943	gi|1934610184|gb|MW272536.1|	100.000	253	0	0	1	253	498	750	6.66e-128	468	253	2792083	N/A	Actinoplanes aureus strain NEAU-A11 16S ribosomal RNA gene, partial sequence
+ASV_5943	gi|1870082990|gb|MT760148.1|	100.000	253	0	0	1	253	426	678	6.66e-128	468	253	512350	N/A	Actinoplanes xinjiangensis strain CCM 7527 16S ribosomal RNA gene, partial sequence
+ASV_5943	gi|194359860|gb|EU841592.1|	100.000	253	0	0	1	253	451	703	6.66e-128	468	253	135945	N/A	Actinoplanes arizonaensis strain HBUM173475 16S ribosomal RNA gene, partial sequence
+ASV_5943	gi|636560288|ref|NR_116348.1|	100.000	253	0	0	1	253	466	718	6.66e-128	468	253	512349	N/A	Actinoplanes sichuanensis strain 03-723 16S ribosomal RNA, partial sequence
+ASV_5943	gi|636560287|ref|NR_116347.1|	100.000	253	0	0	1	253	466	718	6.66e-128	468	253	512350	N/A	Actinoplanes xinjiangensis strain 03-8772 16S ribosomal RNA, partial sequence
+ASV_5943	gi|56266621|emb|AJ865473.1|	100.000	253	0	0	1	253	480	732	6.66e-128	468	253	69485	N/A	Actinoplanes garbadinensis 16S rRNA gene, strain DSM 44321
+ASV_5943	gi|219857119|ref|NR_024747.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	113571	N/A	Actinoplanes rectilineatus strain IFO 13941 16S ribosomal RNA, partial sequence
+ASV_5943	gi|219857117|ref|NR_024745.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	113568	N/A	Actinoplanes lobatus strain IFO 12513 16S ribosomal RNA, partial sequence
+ASV_5943	gi|219857113|ref|NR_024741.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	113562	N/A	Actinoplanes derwentensis strain IFO 14935 16S ribosomal RNA, partial sequence
+ASV_5943	gi|12964621|dbj|AB047497.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	69484	N/A	Actinoplanes liguriensis gene for 16S rRNA, partial sequence
+ASV_5943	gi|12964613|dbj|AB047489.1|	100.000	253	0	0	1	253	479	731	6.66e-128	468	253	135945	N/A	Actinoplanes arizonaensis gene for 16S rRNA, partial sequence
+ASV_5943	gi|631250941|ref|NR_112138.1|	100.000	253	0	0	1	253	478	730	6.66e-128	468	253	113562	N/A	Actinoplanes derwentensis strain JCM 7556 16S ribosomal RNA, partial sequence
+ASV_5943	gi|636558688|ref|NR_114745.1|	100.000	253	0	0	1	253	475	727	6.66e-128	468	253	69484	N/A	Actinoplanes liguriensis strain IMSNU 22127 16S ribosomal RNA, partial sequence
+ASV_5943	gi|219846428|ref|NR_026019.1|	100.000	253	0	0	1	253	450	702	6.66e-128	468	253	47988	N/A	Actinoplanes auranticolor strain 253 16S ribosomal RNA, partial sequence
+ASV_5943	gi|1870083260|gb|MT760395.1|	99.606	254	0	1	1	253	405	658	3.10e-126	462	253	113568	N/A	Actinoplanes lobatus strain JCM 3061 16S ribosomal RNA gene, partial sequence
+ASV_5943	gi|1191451028|gb|KY244006.1|	99.209	253	2	0	1	253	454	706	1.44e-124	457	253	403638	N/A	Actinoplanes couchii strain UMBR 0209 16S ribosomal RNA gene, partial sequence
+ASV_5943	gi|146147355|gb|EF541028.1|	99.209	253	2	0	1	253	138	390	1.44e-124	457	253	113567	N/A	Actinoplanes italicus strain CC-FR2-8 16S ribosomal RNA gene, partial sequence
+ASV_5943	gi|343202279|ref|NR_042565.1|	99.209	253	2	0	1	253	454	706	1.44e-124	457	253	403638	N/A	Actinoplanes couchii strain GW8-1761 16S ribosomal RNA, partial sequence
+ASV_5943	gi|9716857|emb|AJ277580.1|	99.209	253	2	0	1	253	474	726	1.44e-124	457	253	122360	N/A	Actinoplanes penicillatus partial 16S rRNA gene, strain IMSNU 22129
+ASV_6591	gi|2963143102|gb|CP178916.1|	99.209	253	2	0	1	253	2330752	2330500	1.44e-124	457	253	386874	N/A	Sphingomonas sediminicola strain DSM 18106 chromosome, complete genome
+ASV_6591	gi|2640698797|gb|PP049697.1|	99.209	253	2	0	1	253	450	702	1.44e-124	457	253	386874	N/A	Sphingomonas sediminicola strain N161 16S ribosomal RNA gene, partial sequence
+ASV_6591	gi|2843846397|gb|PQ552061.1|	99.209	253	2	0	1	253	1	253	1.44e-124	457	253	77133;1869227	N/A	Uncultured bacterium clone 989109_AL200_106403 16S ribosomal RNA gene, partial sequence
+ASV_6591	gi|1894821443|gb|MT909169.1|	99.209	253	2	0	1	253	406	658	1.44e-124	457	253	1869227	N/A	Bacterium strain GSD10027 16S ribosomal RNA gene, partial sequence
+ASV_6591	gi|1894821439|gb|MT909165.1|	99.209	253	2	0	1	253	408	660	1.44e-124	457	253	1869227	N/A	Bacterium strain GSD10023 16S ribosomal RNA gene, partial sequence
+ASV_6591	gi|1893872190|gb|MT900955.1|	99.209	253	2	0	1	253	439	691	1.44e-124	457	253	1978525	N/A	Sphingomonadales bacterium strain 197 16S ribosomal RNA gene, partial sequence
+ASV_6591	gi|901703599|ref|NR_132332.1|	99.209	253	2	0	1	253	459	711	1.44e-124	457	253	386874	N/A	Sphingomonas sediminicola strain Dae 20 16S ribosomal RNA, partial sequence
+ASV_6592	gi|2556906889|gb|CP129483.1|	99.209	253	2	0	1	253	2032717	2032465	1.44e-124	457	253	2073117	N/A	MAG: Anaerolineales bacterium isolate cMAG.13 chromosome, complete genome
+ASV_6592	gi|2556903179|gb|CP129482.1|	99.209	253	2	0	1	253	3068816	3068564	1.44e-124	457	253	2073117	N/A	MAG: Anaerolineales bacterium isolate cMAG.14 chromosome, complete genome
+ASV_6788	gi|1776837001|gb|MN704456.1|	100.000	253	0	0	1	253	508	760	6.66e-128	468	253	421767	N/A	Bacillus butanolivorans strain EGI180 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|1776837000|gb|MN704455.1|	100.000	253	0	0	1	253	504	756	6.66e-128	468	253	421767	N/A	Bacillus butanolivorans strain EGI179 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|1776836999|gb|MN704454.1|	100.000	253	0	0	1	253	510	762	6.66e-128	468	253	421767	N/A	Bacillus butanolivorans strain EGI178 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|1776836997|gb|MN704452.1|	100.000	253	0	0	1	253	506	758	6.66e-128	468	253	421767	N/A	Bacillus butanolivorans strain EGI176 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|1368095509|gb|MF143451.1|	100.000	253	0	0	1	253	482	734	6.66e-128	468	253	1478;1869227	N/A	Bacterium strain ADR2A-4 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|1344721512|gb|MG966118.1|	100.000	253	0	0	1	253	429	681	6.66e-128	468	253	1869227	N/A	Bacterium strain A2-4-27F.seq 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|1344721412|gb|MG966018.1|	100.000	253	0	0	1	253	429	681	6.66e-128	468	253	1869227	N/A	Bacterium strain D2-8-27F.seq 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|1344721352|gb|MG965958.1|	100.000	253	0	0	1	253	429	681	6.66e-128	468	253	1869227	N/A	Bacterium strain F2-9-27F.seq 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|2529059940|gb|OR220543.1|	100.000	253	0	0	1	253	491	743	6.66e-128	468	253	421767	N/A	Peribacillus butanolivorans strain P2_3_13 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|2529059776|gb|OR220434.1|	100.000	253	0	0	1	253	486	738	6.66e-128	468	253	1478	N/A	Peribacillus simplex strain P1_3_15 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|2667987844|gb|PP266713.1|	100.000	253	0	0	1	253	485	737	6.66e-128	468	253	1478	N/A	Peribacillus simplex strain V2641 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|2634024117|gb|OR946075.1|	100.000	253	0	0	1	253	489	741	6.66e-128	468	253	1478	N/A	Peribacillus simplex strain V2641 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|2609252630|gb|OR751788.1|	100.000	253	0	0	1	253	483	735	6.66e-128	468	253	1478	N/A	Peribacillus simplex strain V2640 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|2270234862|gb|ON974284.1|	100.000	253	0	0	1	253	464	716	6.66e-128	468	253	421767	N/A	Peribacillus butanolivorans strain 1.1003-1 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|1913876936|gb|MW073531.1|	100.000	253	0	0	1	253	482	734	6.66e-128	468	253	1478	N/A	Peribacillus simplex strain BQ1 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|190710837|emb|FM173962.1|	99.605	253	1	0	1	253	533	785	8.62e-127	464	253	541376	N/A	Bacillaceae bacterium CL5.126 partial 16S rRNA gene, isolate CL5.126
+ASV_6788	gi|1079751|gb|U39933.1|BSU39933	99.605	253	1	0	1	253	254	506	8.62e-127	464	253	1478	N/A	Bacillus simplex 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|3057885394|gb|PX285902.1|	99.605	253	1	0	1	253	490	742	3.10e-126	462	253	450367	N/A	Peribacillus frigoritolerans strain B1 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|3057399068|gb|PX283411.1|	99.605	253	1	0	1	253	496	748	3.10e-126	462	253	450367	N/A	Peribacillus frigoritolerans strain 572 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|3056960437|gb|PX272182.1|	99.605	253	1	0	1	253	504	756	3.10e-126	462	253	1478	N/A	Peribacillus simplex strain Sequence_ID30627F 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|3056958080|gb|PX271174.1|	99.605	253	1	0	1	253	72	324	3.10e-126	462	253	450367	N/A	Peribacillus frigoritolerans strain 24MA6B-19 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|3055440437|gb|PX249691.1|	99.605	253	1	0	1	253	487	739	3.10e-126	462	253	450367	N/A	Peribacillus frigoritolerans strain C_Maria_GCWU 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|3041753301|gb|PX113746.1|	99.605	253	1	0	1	253	492	744	3.10e-126	462	253	1478	N/A	Peribacillus simplex strain B58 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|3041753293|gb|PX113742.1|	99.605	253	1	0	1	253	495	747	3.10e-126	462	253	1478	N/A	Peribacillus simplex strain B54 16S ribosomal RNA gene, partial sequence
+ASV_6788	gi|3041753291|gb|PX113741.1|	99.605	253	1	0	1	253	499	751	3.10e-126	462	253	450367	N/A	Peribacillus frigoritolerans strain B53 16S ribosomal RNA gene, partial sequence
+ASV_7194	gi|2872331246|gb|PQ795054.1|	99.605	253	1	0	1	253	177	429	3.10e-126	462	253	77133;1869227	N/A	Uncultured bacterium clone OTU43 16S ribosomal RNA gene, partial sequence
+ASV_7819	gi|2843846235|gb|PQ551899.1|	99.209	253	2	0	1	253	1	253	1.44e-124	457	253	1869227	N/A	Bacterium strain OTU_1056 16S ribosomal RNA gene, partial sequence
+ASV_8345	gi|2843846298|gb|PQ551962.1|	99.605	253	1	0	1	253	1	253	3.10e-126	462	253	77133;1869227	N/A	Uncultured bacterium clone OTU_969 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2783347619|gb|PQ135891.1|	99.605	253	1	0	1	253	485	737	3.10e-126	462	253	2567941	N/A	Metabacillus sediminilitoris strain PRZB14 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|3030773655|gb|PV988482.1|	99.605	253	1	0	1	253	484	736	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain S10_19 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2980240701|gb|PV660067.1|	99.605	253	1	0	1	253	346	598	3.10e-126	462	253	2567941	N/A	Metabacillus sediminilitoris strain 23a 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2961957185|gb|PV570201.1|	99.605	253	1	0	1	253	313	565	3.10e-126	462	253	2875709	N/A	Metabacillus rhizolycopersici strain BM226 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2916035735|gb|PV156054.1|	99.605	253	1	0	1	253	513	765	3.10e-126	462	253	2567941	N/A	Metabacillus sediminilitoris strain SBCC-1704 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2895357400|gb|PV030049.1|	99.605	253	1	0	1	253	513	765	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain MIT2.16 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2890710933|gb|PQ897612.1|	99.605	253	1	0	1	253	487	739	3.10e-126	462	253	2567941	N/A	Metabacillus sediminilitoris strain 114_mar_22 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2890710932|gb|PQ897611.1|	99.605	253	1	0	1	253	491	743	3.10e-126	462	253	2567941	N/A	Metabacillus sediminilitoris strain 10_2019_184_sitio6_soil_dir 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2890710930|gb|PQ897609.1|	99.605	253	1	0	1	253	490	742	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain 117_mar_22 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2890710926|gb|PQ897605.1|	99.605	253	1	0	1	253	486	738	3.10e-126	462	253	929098	N/A	Metabacillus crassostreae strain 115_mar_22 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2738980104|gb|PP863325.1|	99.605	253	1	0	1	253	454	706	3.10e-126	462	253	549687	N/A	Cytobacillus horneckiae strain B24 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2571045020|gb|OR491312.1|	99.605	253	1	0	1	253	150	402	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain 38 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2648560108|gb|PP129671.1|	99.605	253	1	0	1	253	163	415	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain M1L4 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2623421211|gb|OR835768.1|	99.605	253	1	0	1	253	467	719	3.10e-126	462	253	1547283	N/A	Bacillus weihaiensis strain JW-15 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2562457866|gb|OR431263.1|	99.605	253	1	0	1	253	483	735	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain 22281 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2562372864|gb|OR428587.1|	99.605	253	1	0	1	253	485	737	3.10e-126	462	253	2567941	N/A	Metabacillus sediminilitoris strain 21819 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2509403959|gb|OR037529.1|	99.605	253	1	0	1	253	484	736	3.10e-126	462	253	2567941	N/A	Metabacillus sediminilitoris strain R4-8 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2451035810|gb|OQ566836.1|	99.605	253	1	0	1	253	450	702	3.10e-126	462	253	1547283	N/A	Bacillus weihaiensis strain SAB14 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2303792023|gb|OP445247.1|	99.605	253	1	0	1	253	504	756	3.10e-126	462	253	929098	N/A	Metabacillus crassostreae strain MMS22-M6-3-14 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2293332960|gb|OP344202.1|	99.605	253	1	0	1	253	465	717	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain W239 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2293332489|gb|OP343965.1|	99.605	253	1	0	1	253	466	718	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain S418 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2293332262|gb|OP343880.1|	99.605	253	1	0	1	253	457	709	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain S331 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2293332253|gb|OP343874.1|	99.605	253	1	0	1	253	470	722	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain S325 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2293332224|gb|OP343854.1|	99.605	253	1	0	1	253	469	721	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain S304 16S ribosomal RNA gene, partial sequence
+ASV_8459	gi|2293332109|gb|OP343810.1|	99.605	253	1	0	1	253	468	720	3.10e-126	462	253	152268	N/A	Metabacillus litoralis strain S259 16S ribosomal RNA gene, partial sequence
+ASV_8521	gi|39652430|dbj|AB127762.1|	99.203	251	2	0	1	251	255	505	1.86e-123	453	252	257106	N/A	Bacterium PE03-7A13 gene for 16S rRNA, partial sequence
+ASV_8891	gi|24021213|gb|AF498714.1|	100.000	253	0	0	1	253	452	704	6.66e-128	468	253	204676	N/A	Bacterium Ellin332 16S ribosomal RNA gene, partial sequence
+ASV_8891	gi|24021210|gb|AF498711.1|	100.000	253	0	0	1	253	452	704	6.66e-128	468	253	204674	N/A	Bacterium Ellin329 16S ribosomal RNA gene, partial sequence
+ASV_9859	gi|2215065389|gb|ON137134.1|	100.000	253	0	0	1	253	1	253	6.66e-128	468	253	28202;77133	N/A	Uncultured bacterium clone 2323 16S ribosomal RNA gene, partial sequence
+ASV_10579	gi|2618371384|gb|OR777973.1|	100.000	253	0	0	1	253	502	754	6.66e-128	468	253	1803913	N/A	Steroidobacter cummioxidans strain 3D54 16S ribosomal RNA gene, partial sequence
+ASV_11281	gi|38564759|gb|AY234741.1|	99.605	253	0	1	1	252	460	712	1.11e-125	460	252	234677	N/A	Bacterium Ellin6089 16S ribosomal RNA gene, partial sequence
+ASV_11281	gi|2112802723|gb|OK493206.1|	99.119	227	0	2	1	226	412	637	1.47e-109	407	252	518767	N/A	Deserticella xinjiangensis strain cellL-12 16S ribosomal RNA gene, partial sequence
+ASV_11281	gi|3062824317|gb|PX393739.1|	99.115	226	1	1	1	225	460	685	5.27e-109	405	252	3069224	N/A	Dongiaceae bacterium strain 1_2b_35 16S ribosomal RNA gene, partial sequence
+ASV_11281	gi|2125201918|gb|OK643561.1|	99.099	222	0	2	1	221	367	587	8.82e-107	398	252	518767	N/A	Deserticella xinjiangensis strain cellL-12 16S ribosomal RNA gene, partial sequence
+ASV_11384	gi|2946244173|gb|PV399583.1|	99.602	251	1	0	1	251	152	402	4.01e-125	459	253	77133;1869227	N/A	Uncultured bacterium clone ASV_237_(0.201%) 16S ribosomal RNA gene, partial sequence
+ASV_12146	gi|1776322098|gb|MN700653.1|	99.605	253	1	0	1	253	450	702	3.10e-126	462	253	1054297	N/A	Clostridium punense strain OFOb 16S ribosomal RNA gene, partial sequence
+ASV_12146	gi|1772798931|gb|MN646974.1|	99.605	253	1	0	1	253	477	729	3.10e-126	462	253	1335065	N/A	Clostridium huakuii strain CBA7510 16S ribosomal RNA gene, partial sequence
+ASV_12146	gi|2713917245|gb|PP597160.1|	99.605	253	1	0	1	253	405	657	3.10e-126	462	253	219748	N/A	Clostridium tunisiense strain PAARW048 16S ribosomal RNA gene, partial sequence
+ASV_12146	gi|2642192492|gb|PP059610.1|	99.605	253	1	0	1	253	420	672	3.10e-126	462	253	219748	N/A	Clostridium tunisiense strain SB(TK)-2 16S ribosomal RNA gene, partial sequence
+ASV_12146	gi|1146059171|ref|NR_145903.1|	99.605	253	1	0	1	253	496	748	3.10e-126	462	253	1054297	N/A	Clostridium punense strain BLPYG-8 16S ribosomal RNA, partial sequence
+ASV_12146	gi|961555039|ref|NR_134006.1|	99.605	253	1	0	1	253	460	712	3.10e-126	462	253	1335065	N/A	Clostridium huakuii strain LAM1030 16S ribosomal RNA, partial sequence
+ASV_12146	gi|332887159|dbj|AB600546.1|	99.605	253	1	0	1	253	496	748	3.10e-126	462	253	219748	N/A	Clostridium tunisiense gene for 16S rRNA, partial sequence, strain: N71
+ASV_12146	gi|636559104|ref|NR_115161.1|	99.605	253	1	0	1	253	497	749	3.10e-126	462	253	219748;1233099	N/A	Clostridium tunisiense strain TJ 16S ribosomal RNA, partial sequence
+ASV_14645	gi|2754858634|gb|PP994684.1|	99.605	253	1	0	1	253	480	732	3.10e-126	462	253	1913988	N/A	Alphaproteobacteria bacterium strain SYSU 3D8 16S ribosomal RNA gene, partial sequence
+ASV_14645	gi|1148361426|gb|KX622729.1|	99.605	253	1	0	1	253	460	712	3.10e-126	462	253	1913988	N/A	Alphaproteobacteria bacterium strain IMCC25906 16S ribosomal RNA gene, partial sequence
+ASV_14645	gi|2843846530|gb|PQ552194.1|	99.605	253	1	0	1	253	1	253	3.10e-126	462	253	77133;1869227	N/A	Uncultured bacterium clone OTU_2620 16S ribosomal RNA gene, partial sequence
+ASV_16082	gi|1406170064|gb|MH497064.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	2231609	N/A	Pseudoaliinostoc tiwarii LI_PS 16S ribosomal RNA gene and 16S-23S ribosomal RNA intergenic spacer, partial sequence
+ASV_16082	gi|1050776157|gb|KX670253.1|	100.000	253	0	0	1	253	342	594	6.66e-128	468	253	1887360	N/A	Desmonostoc muscorum AUS-JR/MT/NT-088 16S ribosomal RNA gene, partial sequence
+ASV_16082	gi|896688115|gb|AY218828.2|	100.000	253	0	0	1	253	451	703	6.66e-128	468	253	224015	N/A	Nostoc muscorum CENA61 16S ribosomal RNA gene, partial sequence; 16S-23S ribosomal RNA intergenic spacer, complete sequence; and 23S ribosomal RNA gene, partial sequence
+ASV_16082	gi|2296162957|ref|NR_177906.1|	100.000	253	0	0	1	253	492	744	6.66e-128	468	253	2668108	N/A	Pseudoaliinostoc tiwarii 16S ribosomal RNA, partial sequence
+ASV_16082	gi|1050776181|gb|KX670277.1|	99.605	253	1	0	1	253	354	606	3.10e-126	462	253	1887369	N/A	Nostoc calcicola AUS-JR/MT/NT-114 16S ribosomal RNA gene, partial sequence
+ASV_16082	gi|2126578057|gb|OL310646.1|	99.605	253	1	0	1	253	469	721	3.10e-126	462	253	2886178	N/A	Nostoc calcicola TAU-MAC 2918 16S ribosomal RNA gene, partial sequence
+ASV_16082	gi|183673444|gb|EU599122.1|	99.605	253	1	0	1	253	248	500	3.10e-126	462	253	518119	N/A	Anabaena spiroides RPAN58 16S ribosomal RNA gene, partial sequence
+ASV_16082	gi|1546654155|gb|MK354278.1|	99.209	253	2	0	1	253	475	727	1.44e-124	457	253	2499874	N/A	Pseudoaliinostoc constrictum SA30 16S ribosomal RNA gene and 16S-23S ribosomal RNA intergenic spacer, partial sequence
+ASV_16082	gi|2072649868|gb|MZ621161.1|	99.209	253	2	0	1	253	60	312	1.44e-124	457	253	2862631	N/A	Nostocaceae cyanobacterium 0TAC 5 16S ribosomal RNA gene and 16S-23S ribosomal RNA intergenic spacer, partial sequence
+ASV_16082	gi|2072685468|ref|NR_172583.1|	99.209	253	2	0	1	253	475	727	1.44e-124	457	253	2802094	N/A	Pseudoaliinostoc constrictum strain SA30 16S ribosomal RNA, partial sequence
+ASV_16082	gi|2052623829|gb|MK503793.2|	99.209	253	2	0	1	253	475	727	1.44e-124	457	253	2499874	N/A	Pseudoaliinostoc constrictum SA30 16S ribosomal RNA gene and 16S-23S ribosomal RNA intergenic spacer, partial sequence
+ASV_16161	gi|2322424368|emb|OW818658.1|	99.209	253	2	0	1	253	1390	1642	1.44e-124	457	253	3120109	N/A	MAG: Candidatus Hydrogenedentales bacterium isolate ENR-C_bin.554 genome assembly, chromosome: 1
