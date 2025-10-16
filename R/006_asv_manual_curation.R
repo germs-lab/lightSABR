@@ -7,6 +7,31 @@
 # Filters out uninformative hits, enforces coverage/identity thresholds,
 # resolves multiple hits via a tie window, and assigns the lowest
 # reliable rank (species/genus/higher).
+#
+# Last Common Ancestor-like decision
+# Purpose: When multiple top hits are essentially tied,
+# assign the most specific taxonomic rank that all those hits consistently support.
+#
+# When it runs: After prefiltering, deduping, and defining the “tie set”
+# of equally good hits (within a small bitscore/identity/coverage window).
+#
+# Decision logic:
+#
+# Species: If all tied hits agree on the same, fully named species
+# (not “Genus sp.”) and the chosen hit meets stricter species thresholds
+# (≈≥99% identity and ≥95% coverage), assign species.
+#
+# Genus: If species disagree but all genera agree, assign genus (species left blank).
+#
+# Higher: If tied hits span multiple genera (or evidence is insufficient), assign
+# a higher/ambiguous rank.
+#
+# What’s reported: The script still picks a single “chosen” hit
+# (for accession/title details), but assignment_rank and taxon_name come
+# from the LCA consensus across the tie set. It also emits n_hits_tie and a
+# decision_reason indicating which branch was taken.
+
+# Scope/limits: This is a name-based consensus (from ssciname), not a full taxonomy-tree LCA using staxids; it doesn’t resolve synonyms or lineage conflicts beyond genus.
 
 # Author: Bolívar Aponte Rolón
 # Date: 2025-10-16
@@ -46,7 +71,7 @@ TIE_PIDENT <- as.numeric(0.2) # percent points
 TIE_QCOV <- as.numeric(0.05) # fraction (5%)
 
 # Title/record exclusion patterns (case-insensitive)
-EXCLUDE_REGEX <- "uncultured|environmental|metagenom|clone|unidentified|
+EXCLUDE_REGEX <- "uncultured|Uncultured|environmental|metagenom|clone|unidentified|
   mixed culture|synthetic construct|vector|plasmid|chloroplast|mitochondr|
   plastid|soil|Soil|marine|Marine|bacterium|Bacterium"
 
@@ -240,6 +265,8 @@ final_asv <- chosen_asv %>%
     decision_reason
   ) %>%
   arrange(qseqid)
+
+#
 
 # Write output --------------------
 
