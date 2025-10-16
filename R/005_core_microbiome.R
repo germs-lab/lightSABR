@@ -400,8 +400,12 @@ purrr::iwalk(
     print(knitr::kable(.x %>% select(-prevalence_level)))
   }
 )
-
-# Pretty tables with gt
+#----------------------------------------------------------
+# Selection of significantly correlated ASV with CORN
+# (mostly, positive)
+#----------------------------------------------------------
+# Of those top ASVs which are significantly correlated with
+# ghna in CORN?
 
 # Correlation direction per prevalence × ASV × location
 corn_corr_stats <- corn_combined_rel_abund %>%
@@ -593,7 +597,7 @@ gtsave(
 )
 
 #-------------------------------------------------------------
-# Select significantly correlated AVS for downtream BLASTing
+# Select significantly correlated AVS for downstream BLASTing
 #-------------------------------------------------------------
 
 duplicates <- corn_tax_with_corr |>
@@ -634,6 +638,10 @@ corn_signif_asvs_fasta <- physeq2fasta(
   seq_col = "sequence"
 )
 
+save(
+  corn_signif_physeq_fcm,
+  file = "data/output/processed/rdata/phyloseq/corn_signif_physeq_fcm.rda"
+)
 
 write(
   corn_signif_asvs_fasta$asv_fasta,
@@ -642,43 +650,4 @@ write(
   )
 )
 
-################################################################
-# Scraps
-# 4. Format prevalence labels for nicer facet strip titles
-# fmt_prev <- function(x) {
-#   # e.g. prevalent_90 -> "Prevalent ≥90%"
-#   str_replace(x, "^prevalent_?(\\d+)$", "Prevalent ≥\\1%") %>%
-#     str_replace("^prevalent_?(\\d+)", "Prevalent ≥\\1%")
-# }
-# combined_top <- combined_top %>%
-#   mutate(prevalence_level_fmt = fmt_prev(prevalence_level))
-
-# Siginificance
-# alpha_level <- 0.05
-
-# 1. Compute stats per facet (example: prevalence_level_fmt + asv)
-# facet_stats <- corn_combined_top_asv %>%
-#   group_by(prevalence_level, sampling_location, asv) %>%
-#   summarise(
-#     p_value = {
-#       fit <- lm(rel_abundance ~ gnha, data = .)
-#       anova(fit)[["Pr(>F)"]][1]
-#     },
-#     slope = {
-#       fit <- lm(rel_abundance ~ gnha, data = .)
-#       coef(fit)[["gnha"]]
-#     },
-#     n = n(),
-#     .groups = "drop"
-#   ) %>%
-#   mutate(significant = p_value < alpha_level) %>%
-#   group_by(prevalence_level, sampling_location) %>%
-#   mutate(
-#     p_adj_bh = p.adjust(p_value, method = "BH"),
-#     sig_bh = p_adj_bh < 0.05
-#   ) %>%
-#   ungroup()
-
-# Order levels so they match 'asv' facet order
-# asv_levels <- sort(unique(corn_combined_top_asv$asv))
-# strip_colors <- ifelse(asv_levels %in% facet_stats, "#d7601bff", "#f0f0f0")
+# This last file is used for further BLAST against NCBI nt

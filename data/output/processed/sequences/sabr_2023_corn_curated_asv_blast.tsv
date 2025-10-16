@@ -1,0 +1,58 @@
+qseqid	chosen_sacc	chosen_sseqid	chosen_staxids	chosen_ssciname	chosen_stitle	pident	qcov	bitscore	n_hits_considered	n_hits_tie	assignment_rank	taxon_name	decision_reason
+ASV_1016	CP196740.1	gi|3039652638|gb|CP196740.1|	515393	N/A	Pseudomonas yamanorum strain BA90-3 chromosome, complete genome	100	1	468	25	25	genus	Pseudomonas	tie_LCA_genus
+ASV_10579	OR777973.1	gi|2618371384|gb|OR777973.1|	1803913	N/A	Steroidobacter cummioxidans strain 3D54 16S ribosomal RNA gene, partial sequence	100	1	468	1	1	genus	Steroidobacter	tie_LCA_genus
+ASV_11281	OK493206.1	gi|2112802723|gb|OK493206.1|	518767	N/A	Deserticella xinjiangensis strain cellL-12 16S ribosomal RNA gene, partial sequence	99.119	0.9007936507936508	407	1	1	genus	Deserticella	tie_LCA_genus
+ASV_1155	CP170157.1	gi|2811237669|gb|CP170157.1|	555315	N/A	Ensifer canadensis strain T4 chromosome 1, complete sequence	100	1	468	18	18	genus	Ensifer	tie_LCA_genus
+ASV_12146	NR_115161.1	gi|636559104|ref|NR_115161.1|	219748;1233099	N/A	Clostridium tunisiense strain TJ 16S ribosomal RNA, partial sequence	99.605	1	462	8	8	genus	Clostridium	tie_LCA_genus
+ASV_1369	NR_116955.1	gi|645319552|ref|NR_116955.1|	633403	N/A	Sporosarcina contaminans strain CCUG 53915 16S ribosomal RNA, partial sequence	100	1	468	24	15	genus	Sporosarcina	tie_LCA_genus
+ASV_1377	NR_179718.1	gi|2363082940|ref|NR_179718.1|	2315689	N/A	Sphingomonas edaphi strain DAC4 16S ribosomal RNA, partial sequence	99.605	1	462	6	2	genus	Sphingomonas	tie_LCA_genus
+ASV_1417	NR_044487.1	gi|343205969|ref|NR_044487.1|	512399	N/A	Paenibacillus pectinilyticus strain RCB-08 16S ribosomal RNA, partial sequence	100	1	466	18	12	genus	Paenibacillus	tie_LCA_genus
+ASV_1437	NR_109674.1	gi|566085594|ref|NR_109674.1|	1230389	N/A	Reyranella soli strain KIS14-15 16S ribosomal RNA, partial sequence	99.209	1	457	1	1	genus	Reyranella	tie_LCA_genus
+ASV_1450	NR_180039.1	gi|2363083583|ref|NR_180039.1|	2487129	N/A	Frigidibacter oleivorans strain XJ4 16S ribosomal RNA, partial sequence	99.605	1	462	6	3	higher	NA	tie_LCA_higher_or_conflict
+ASV_16082	NR_177906.1	gi|2296162957|ref|NR_177906.1|	2668108	N/A	Pseudoaliinostoc tiwarii 16S ribosomal RNA, partial sequence	100	1	468	10	4	higher	NA	tie_LCA_higher_or_conflict
+ASV_182	NR_109453.1	gi|566085411|ref|NR_109453.1|	1069963	N/A	Janibacter alkaliphilus strain SCSIO 10480 16S ribosomal RNA, partial sequence	100	1	468	14	4	genus	Janibacter	tie_LCA_genus
+ASV_1843	EU221378.1	gi|161172571|gb|EU221378.1|	248902	N/A	Agromyces ulmi strain Y2S10 16S ribosomal RNA gene, partial sequence	100	1	468	18	13	genus	Agromyces	tie_LCA_genus
+ASV_1868	OP108799.1	gi|2279682083|gb|OP108799.1|	492774	N/A	Rhizobium alamii strain 6-6-820-16r 16S ribosomal RNA gene, partial sequence	100	1	468	23	23	genus	Rhizobium	tie_LCA_genus
+ASV_210	NR_044551.1	gi|343206003|ref|NR_044551.1|	529703	N/A	Adhaeribacter terreus strain DNG6 16S ribosomal RNA, partial sequence	99.209	1	457	3	3	genus	Adhaeribacter	tie_LCA_genus
+ASV_212	NR_180991.1	gi|2363085484|ref|NR_180991.1|	2682097	N/A	Lysobacter gilvus strain HX-5-24 16S ribosomal RNA, partial sequence	100	1	468	6	5	higher	NA	tie_LCA_higher_or_conflict
+ASV_2200	NR_180689.1	gi|2363084882|ref|NR_180689.1|	2728846	N/A	Massilia polaris strain RP-1-19 16S ribosomal RNA, partial sequence	100	1	468	17	17	genus	Massilia	tie_LCA_genus
+ASV_2293	PX111453.1	gi|3040294253|gb|PX111453.1|	1064517	N/A	Noviherbaspirillum aurantiacum strain B3 16S ribosomal RNA gene, partial sequence	100	1	468	9	1	genus	Noviherbaspirillum	tie_LCA_genus
+ASV_2430	AF085496.1	gi|6646883|gb|AF085496.1|	171674	N/A	Inquilinus limosus strain 15158 16S ribosomal RNA gene, partial sequence	100	1	468	23	22	genus	Inquilinus	tie_LCA_genus
+ASV_2453	NR_043672.1	gi|343203463|ref|NR_043672.1|	354355	N/A	Niastella yeongjuensis strain GR20-13 16S ribosomal RNA, partial sequence	99.209	1	457	5	5	genus	Niastella	tie_LCA_genus
+ASV_2699	AB360802.1	gi|292677750|dbj|AB360802.1|	75292	N/A	Streptomyces thermogriseus gene for 16S rRNA, partial sequence, strain: AHK111C	100	1	468	24	24	genus	Streptomyces	tie_LCA_genus
+ASV_3	PV802588.1	gi|3002442253|gb|PV802588.1|	121292	N/A	Pseudarthrobacter sulfonivorans strain CAS47 16S ribosomal RNA gene, partial sequence	100	1	468	16	16	higher	NA	tie_LCA_higher_or_conflict
+ASV_30	NR_108192.1	gi|566084828|ref|NR_108192.1|	77133;211446;490573	N/A	Solirubrobacter ginsenosidimutans strain BXN5-15 16S ribosomal RNA, partial sequence	100	1	468	7	2	genus	Solirubrobacter	tie_LCA_genus
+ASV_304	NR_036937.1	gi|310975073|ref|NR_036937.1|	269420	N/A	Agromyces neolithicus strain 23-23 16S ribosomal RNA, partial sequence	100	1	468	21	15	genus	Agromyces	tie_LCA_genus
+ASV_3103	KF849330.1	gi|577155675|gb|KF849330.1|	33954	N/A	Clostridium magnum strain CN1 16S ribosomal RNA gene, partial sequence	99.605	1	462	3	2	genus	Clostridium	tie_LCA_genus
+ASV_313	NR_180916.1	gi|2363085336|ref|NR_180916.1|	2665159	N/A	Hyphomicrobium album strain XQ2 16S ribosomal RNA, partial sequence	99.605	1	462	2	2	genus	Hyphomicrobium	tie_LCA_genus
+ASV_3338	NR_117781.1	gi|645320618|ref|NR_117781.1|	795644	N/A	Sphaerimonospora thailandensis strain NN276 16S ribosomal RNA, partial sequence	100	1	468	22	22	higher	NA	tie_LCA_higher_or_conflict
+ASV_352	NR_145553.1	gi|1137647771|ref|NR_145553.1|	1608613	N/A	Modestobacter lapidis strain MON3.1 16S ribosomal RNA, partial sequence	99.209	1	457	1	1	genus	Modestobacter	tie_LCA_genus
+ASV_359	NR_116027.1	gi|636559967|ref|NR_116027.1|	433659	N/A	Nocardioides mesophilus strain MSL-22 16S ribosomal RNA, partial sequence	100	1	468	25	5	genus	Nocardioides	tie_LCA_genus
+ASV_3741	NR_156827.1	gi|1397641718|ref|NR_156827.1|	1867851	N/A	Terrimonas crocea strain M1-33108 16S ribosomal RNA, partial sequence	99.605	1	462	2	1	genus	Terrimonas	tie_LCA_genus
+ASV_3870	OL773523.1	gi|2161951935|gb|OL773523.1|	2072017	N/A	Nocardioides allogilvus strain 21LS6-111 16S ribosomal RNA gene, partial sequence	100	1	468	20	6	genus	Nocardioides	tie_LCA_genus
+ASV_3915	NR_137388.1	gi|1040567039|ref|NR_137388.1|	1605892	N/A	Dysgonomonas alginatilytica strain HUA-2 16S ribosomal RNA, partial sequence	100	1	468	2	1	genus	Dysgonomonas	tie_LCA_genus
+ASV_3916	CP090945.1	gi|2179704138|gb|CP090945.1|	435897	N/A	Lysobacter capsici strain K-Hf-H2 chromosome	100	1	468	25	25	genus	Lysobacter	tie_LCA_genus
+ASV_3978	NR_109674.1	gi|566085594|ref|NR_109674.1|	1230389	N/A	Reyranella soli strain KIS14-15 16S ribosomal RNA, partial sequence	100	1	468	3	1	genus	Reyranella	tie_LCA_genus
+ASV_3984	MN684283.1	gi|1774728412|gb|MN684283.1|	56731	N/A	Rhizobium giardinii strain MT_SG_E_26_P3_2_27F.27F 16S ribosomal RNA gene, partial sequence	100	1	468	22	22	higher	NA	tie_LCA_higher_or_conflict
+ASV_402	NR_178391.1	gi|2363080329|ref|NR_178391.1|	665083	N/A	Allostreptomyces indica strain YIM 75704 16S ribosomal RNA, partial sequence	100	1	468	18	18	higher	NA	tie_LCA_higher_or_conflict
+ASV_4154	NR_200022.1	gi|3030611346|ref|NR_200022.1|	3139917	N/A	Streptomyces pratisoli strain MS1.AVA.4 16S ribosomal RNA, partial sequence	100	1	468	25	25	genus	Streptomyces	tie_LCA_genus
+ASV_4155	CP102173.1	gi|2283193646|gb|CP102173.1|	2969247	N/A	Aeromicrobium wangtongii strain zg-Y1379 chromosome, complete genome	100	1	468	22	5	genus	Aeromicrobium	tie_LCA_genus
+ASV_448	PX257813.1	gi|3055968580|gb|PX257813.1|	1396	N/A	Bacillus cereus strain BOTRUEML156 16S ribosomal RNA gene, partial sequence	100	1	468	25	25	genus	Bacillus	tie_LCA_genus
+ASV_494	CP101418.1	gi|3006035059|gb|CP101418.1|	1138190	N/A	Rhizobium binae strain YTUBH007 chromosome, complete genome	100	1	468	25	25	genus	Rhizobium	tie_LCA_genus
+ASV_507	NR_175411.1	gi|2221405162|ref|NR_175411.1|	2495887	N/A	Nonomuraea basaltis strain 160415 16S ribosomal RNA, partial sequence	100	1	468	24	24	higher	NA	tie_LCA_higher_or_conflict
+ASV_528	NR_044568.1	gi|343206016|ref|NR_044568.1|	543615	N/A	Solitalea koreensis strain R2A36-4 16S ribosomal RNA, partial sequence	99.606	1.0039525691699605	462	1	1	genus	Solitalea	tie_LCA_genus
+ASV_545	PV110961.1	gi|2911994182|gb|PV110961.1|	146819	N/A	Streptomyces europaeiscabiei strain LYZ1138 16S ribosomal RNA gene, partial sequence	100	1	468	22	22	genus	Streptomyces	tie_LCA_genus
+ASV_573	NR_133836.1	gi|959494981|ref|NR_133836.1|	502333	N/A	Ramlibacter ginsenosidimutans strain BXN5-27 16S ribosomal RNA, partial sequence	100	1	468	23	6	genus	Ramlibacter	tie_LCA_genus
+ASV_5770	NR_044235.1	gi|343205806|ref|NR_044235.1|	433663	N/A	Nocardioides islandensis strain MSL 26 16S ribosomal RNA, partial sequence	100	1	468	1	1	genus	Nocardioides	tie_LCA_genus
+ASV_5937	NR_160536.1	gi|1558439488|ref|NR_160536.1|	889274	N/A	Polyangium sorediatum strain Pl s12 16S ribosomal RNA, partial sequence	99.209	1	457	2	2	genus	Polyangium	tie_LCA_genus
+ASV_5943	NR_024741.1	gi|219857113|ref|NR_024741.1|	113562	N/A	Actinoplanes derwentensis strain IFO 14935 16S ribosomal RNA, partial sequence	100	1	468	23	18	genus	Actinoplanes	tie_LCA_genus
+ASV_6591	NR_132332.1	gi|901703599|ref|NR_132332.1|	386874	N/A	Sphingomonas sediminicola strain Dae 20 16S ribosomal RNA, partial sequence	99.209	1	457	3	3	genus	Sphingomonas	tie_LCA_genus
+ASV_668	NR_134126.1	gi|961555157|ref|NR_134126.1|	1303477	N/A	Daejeonella huanghensis strain M1-27 16S ribosomal RNA, partial sequence	99.209	1	457	2	2	genus	Daejeonella	tie_LCA_genus
+ASV_6788	MN704452.1	gi|1776836997|gb|MN704452.1|	421767	N/A	Bacillus butanolivorans strain EGI176 16S ribosomal RNA gene, partial sequence	100	1	468	20	11	higher	NA	tie_LCA_higher_or_conflict
+ASV_759	NR_041250.1	gi|343200563|ref|NR_041250.1|	296052	N/A	Terrimonas lutea strain DY 16S ribosomal RNA, partial sequence	100	1	468	3	1	genus	Terrimonas	tie_LCA_genus
+ASV_781	NR_179316.1	gi|2363082139|ref|NR_179316.1|	2740184	N/A	Geomonas silvestris strain Red330 16S ribosomal RNA, partial sequence	100	1	468	25	25	higher	NA	tie_LCA_higher_or_conflict
+ASV_8459	OP343810.1	gi|2293332109|gb|OP343810.1|	152268	N/A	Metabacillus litoralis strain S259 16S ribosomal RNA gene, partial sequence	99.605	1	462	24	24	higher	NA	tie_LCA_higher_or_conflict
+ASV_91	NR_156049.1	gi|1384992300|ref|NR_156049.1|	1882682	N/A	Microvirga ossetica strain V5/3M 16S ribosomal RNA, partial sequence	100	1	468	19	13	higher	NA	tie_LCA_higher_or_conflict
+ASV_971	NR_043090.1	gi|343198624|ref|NR_043090.1|	303380	N/A	Herminiimonas fonticola strain S-94 16S ribosomal RNA, partial sequence	100	1	468	13	7	higher	NA	tie_LCA_higher_or_conflict
+ASV_974	ON136506.1	gi|2215064761|gb|ON136506.1|	670288	N/A	Adhaeribacter aerophilus isolate Otu1085 16S ribosomal RNA gene, partial sequence	99.209	1	457	1	1	genus	Adhaeribacter	tie_LCA_genus
+ASV_992	NR_043867.1	gi|343205178|ref|NR_043867.1|	77133;380628	N/A	Agrilutibacter niabensis strain GH34-4 16S ribosomal RNA, partial sequence	100	1	468	16	15	higher	NA	tie_LCA_higher_or_conflict

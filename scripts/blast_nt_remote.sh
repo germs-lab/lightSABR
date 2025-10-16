@@ -10,7 +10,7 @@ set -Eeuo pipefail
 
 FASTA="$1"
 OUT="$2"
-THREADS="${3:-2}"
+#THREADS="${3:-2}"
 FIELDS="qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen staxids ssciname stitle"
 
 
@@ -19,7 +19,9 @@ if [[ -z "$FASTA" || -z "$OUT" ]]; then
   exit 1
 fi
 
-ENTREZ_QUERY='"Bacteria"[Organism] NOT (uncultured[Title] OR environmental[Title] OR metagenome[Title] OR clone[Title] OR unidentified[Title] OR "sp." [Title])'
+ENTREZ_QUERY='"Bacteria"[Organism] NOT (uncultured[All Fields] OR environmental[All Fields] OR metagenom*[All Fields] OR clone[All Fields] OR unidentified[All Fields])'
+# ENTREZ_QUERY='"Bacteria"[Organism] NOT (uncultured[All Fields] OR environmental[All Fields] OR unidentified[All Fields] OR "sp." [All Fields])'
+
 
 blastn \
   -task megablast \
