@@ -219,7 +219,7 @@ asv_matrices_list <- list(
 )
 
 hellinger_matrices_list <- purrr::map(asv_matrices_list, function(asv_matrix) {
-  hell_matrix <- decostand(asv_matrix, MARGIN = 1, method = "hellinger") #Rows are taxa
+  hell_matrix <- decostand(asv_matrix, MARGIN = 2, method = "hellinger") #Rows are taxa: MARGIN = 1, Samples are columns: MARGIN = 2
 
   hell_matrix_clean <- hell_matrix %>%
     as.data.frame() %>%
