@@ -474,7 +474,7 @@ tax_base <- corn_combined_rel_abund %>%
 # Join taxonomy table and correlation table
 corn_tax_with_corr <- corn_corr_significant %>%
   dplyr::left_join(tax_base, by = c("prevalence_level", "asv")) %>%
-  relocate(n:arrow, .after = species, ) %>%
+  relocate(n:arrow, .after = species) %>%
   #select(-prevalence_level) %>%
   arrange(sampling_location, fct_reorder(asv, parse_number(asv), .fun = min), r)
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --nodes=1   # Number of nodes to use
-#SBATCH --ntasks-per-node=32   # Use 32 processor cores per node 
+#SBATCH --ntasks-per-node=1   # Use 1 processor core (single task, since BLAST is not parallelized)
 #SBATCH --time=2-0:0:0   # Walltime limit (DD-HH:MM:SS)
 #SBATCH --mem=32G   # Maximum memory per node
 #SBATCH --job-name="lightSABR_BLAST_corn"   # Job name to display in squeue

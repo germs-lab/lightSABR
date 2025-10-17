@@ -1,16 +1,15 @@
--
-  #####################################################################
-  # Beta Diversity Analyses
-  #
-  # This script explores general community diversity patterns in SABR data set.
-  # We explore, richness, alpha and beta diversity using NMDS, PCoA, PERMANOVAS , etc.
+#####################################################################
+# Beta Diversity Analyses
+#
+# This script explores general community diversity patterns in SABR data set.
+# We explore, richness, alpha and beta diversity using NMDS, PCoA, PERMANOVAS , etc.
 
-  # Author: Bolívar Aponte Rolón
-  # Last modified: 2025-09-19
-  #####################################################################
+# Author: Bolívar Aponte Rolón
+# Last modified: 2025-09-19
+#####################################################################
 
-  # Load required libraries
-  source("R/utils/000_setup.R")
+# Load required libraries
+source("R/utils/000_setup.R")
 
 #--------------------------------------------------------
 # Section 1: Calculate Bray-Curtis distance and perform NMDS analysis

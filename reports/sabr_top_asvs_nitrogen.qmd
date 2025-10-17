@@ -60,7 +60,7 @@ This ensured the top 20 ASVs per prevalence group, even if *row* and *interrow* 
 
 - **Magnitude:** Many ASVs show steeper slopes, indicating stronger responses to $[g, N(N2O)ha−1]$, even when not statistically significant.
 
-The ASVs that show inverse relationships across locations maybe consistent with microenvironment- or management-specific responses. 
+The ASVs that show inverse relationships across locations may be consistent with microenvironment- or management-specific responses. 
 
 ::: callout-note
 Render from the repository root:

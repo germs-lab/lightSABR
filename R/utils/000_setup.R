@@ -22,7 +22,9 @@ invisible(
       "microbiome",
       "metagMisc",
       "ggtext",
-      "gt"
+      "gt",
+      "stringr",
+      "readr"
     ),
     library,
     character.only = TRUE

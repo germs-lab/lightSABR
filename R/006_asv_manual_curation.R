@@ -95,6 +95,16 @@ EXPECTED_FIELDS <- c(
   "stitle"
 )
 
+# Field validation
+if (!all(EXPECTED_FIELDS %in% names(blast_results))) {
+  if (ncol(blast_results) == length(EXPECTED_FIELDS)) {
+    names(blast_results) <- EXPECTED_FIELDS
+  } else {
+    stop(
+      "Input does not have expected headers and column count doesn't match expected fields."
+    )
+  }
+}
 
 # Pipeline --------------------
 
