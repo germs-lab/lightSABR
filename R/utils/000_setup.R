@@ -21,7 +21,10 @@ invisible(
       "mia",
       "microbiome",
       "metagMisc",
-      "BRCore"
+      "ggtext",
+      "gt",
+      "stringr",
+      "readr"
     ),
     library,
     character.only = TRUE
@@ -49,6 +52,7 @@ conflict_prefer("select", "dplyr")
 conflict_prefer("filter", "dplyr")
 conflict_prefer("rename", "dplyr")
 conflict_prefer("mutate", "dplyr")
+conflict_prefer("right_join", "dplyr")
 conflict_prefer("intersect", "base")
 conflict_prefer("survival", "cluster")
 conflict_prefer("setdiff", "Biostrings")

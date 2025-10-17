@@ -1,16 +1,19 @@
 ---
-title: "SABR: Exploratory and Community Diversity Report"
+title: "SABR: EDA and Community Diversity Report"
 author:
   - "Bolívar Aponte Rolón"
 date: last-modified
 format:
-  html:
-    theme: cosmo
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    code-fold: true
-    df-print: paged
+#  html:
+#    theme: cosmo
+#    toc: true
+#    toc-depth: 3
+#    number-sections: true
+#    code-fold: true
+#    df-print: paged
+  pdf:
+    documentclass: scrartcl
+    papersize: letter
 
 execute:
   echo: true

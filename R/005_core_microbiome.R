@@ -1,622 +1,653 @@
 #####################################################################
-# Core Microbiome Analysis
+# Corn Interrow/Row Analysis
 #
 # This script analyzes the core microbiome across different corn plots
 # and locations, identifying ASVs that are consistently present across
 # different combinations of samples.
 #
-# Author: Jaejin Lee
-# Modified by: Bolívar Aponte Rolón
+# Author: Bolívar Aponte Rolón & Jaejin Lee
 # Date: 2025-05-05
+# Last modified: 2025-10-14
 #####################################################################
 
 # Load required libraries
-library(phyloseq)
-library(ggplot2)
+source("R/utils/000_setup.R")
 
-# Ensure ps_rel (phyloseq object with relative abundances) is loaded
 
 #--------------------------------------------------------
 # Subset data by corn plant, plots, and locations
 #--------------------------------------------------------
 
 # Subset to include only Corn samples
-ps_corn <- subset_samples(ps_rel, Plant == "Corn")
-ps_corn
-sample_data(ps_corn)
-otu_table(ps_corn)
-tax_table(ps_corn)
+corn_physeq <- subset_samples(sabr_2023_physeq, plant == "Corn")
 
-#--------------------------------------------------------
-# Create phyloseq objects for each Corn plot
-#--------------------------------------------------------
-
-# Subset by plot
-ps_corn_P01 <- subset_samples(ps_corn, Plot == "P01")
-ps_corn_P08 <- subset_samples(ps_corn, Plot == "P08")
-ps_corn_P11 <- subset_samples(ps_corn, Plot == "P11")
-ps_corn_P14 <- subset_samples(ps_corn, Plot == "P14")
-
-#--------------------------------------------------------
-# Further subset by location (Interrow)
-#--------------------------------------------------------
-
-# Subset for Interrow locations
-ps_corn_P01_I <- subset_samples(ps_corn_P01, Location == "Interrow")
-ps_corn_P08_I <- subset_samples(ps_corn_P08, Location == "Interrow")
-ps_corn_P11_I <- subset_samples(ps_corn_P11, Location == "Interrow")
-ps_corn_P14_I <- subset_samples(ps_corn_P14, Location == "Interrow")
-
-#--------------------------------------------------------
-# Further subset by location (Row)
-#--------------------------------------------------------
-
-# Subset for Row locations
-ps_corn_P01_R <- subset_samples(ps_corn_P01, Location == "Row")
-ps_corn_P08_R <- subset_samples(ps_corn_P08, Location == "Row")
-ps_corn_P11_R <- subset_samples(ps_corn_P11, Location == "Row")
-ps_corn_P14_R <- subset_samples(ps_corn_P14, Location == "Row")
-
-# Verify created objects
-ps_corn_P01_I
-ps_corn_P08_I
-ps_corn_P11_I
-ps_corn_P14_I
-ps_corn_P01_R
-ps_corn_P08_R
-ps_corn_P11_R
-ps_corn_P14_R
-
-#--------------------------------------------------------
-# Core microbiome analysis for P01 (Interrow)
-#--------------------------------------------------------
-
-# Extract ASV table for P01_I
-asv_table_data_P01_I <- as.data.frame(otu_table(ps_corn_P01_I))
-dim(asv_table_data_P01_I)
-
-# Count number of samples in P01_I
-total_samples_P01_I <- nrow(asv_table_data_P01_I)
-
-# Count number of samples each ASV is present in
-asv_sample_counts_P01_I <- colSums(asv_table_data_P01_I > 0)
-
-# Identify ASVs present in >80% of P01_I samples
-threshold_80_P01_I <- total_samples_P01_I * 0.8
-core_asvs_P01_I <- names(asv_sample_counts_P01_I[
-  asv_sample_counts_P01_I >= threshold_80_P01_I
-])
-
-cat("ASVs found in >80% P01_I samples:", length(core_asvs_P01_I), "\n")
-head(asv_table_data_P01_I[, core_asvs_P01_I])
-
-#--------------------------------------------------------
-# Core microbiome analysis for P01 + P08 (Interrow)
-#--------------------------------------------------------
-
-# Merge P01_I and P08_I
-ps_corn_P01_P08_I <- merge_phyloseq(ps_corn_P01_I, ps_corn_P08_I)
-
-# Extract ASV table
-asv_table_data_P01_P08_I <- as.data.frame(otu_table(ps_corn_P01_P08_I))
-
-# Count total samples
-total_samples_P01_P08_I <- nrow(asv_table_data_P01_P08_I)
-
-# Count samples per ASV
-asv_sample_counts_P01_P08_I <- colSums(asv_table_data_P01_P08_I > 0)
-
-# Identify core ASVs (>80%)
-threshold_80_P01_P08_I <- total_samples_P01_P08_I * 0.8
-core_asvs_P01_P08_I <- names(asv_sample_counts_P01_P08_I[
-  asv_sample_counts_P01_P08_I >= threshold_80_P01_P08_I
-])
-
-cat(
-  "ASVs found in >80% P01_I + P08_I samples:",
-  length(core_asvs_P01_P08_I),
-  "\n"
+corn_physeq_list <- get_prevalent_rare(
+  corn_physeq,
+  thresholds = c(90, 80, 70, 60, 30),
+  detection = 0 / 100,
+  include.lowest = FALSE
 )
 
-# NMDS analysis for P01_I + P08_I
-nmds_P01_P08_I <- ordinate(
-  ps_corn_P01_P08_I,
-  method = "NMDS",
-  distance = "bray",
-  trymax = 100
+corn_prevalence_list <- list(
+  full_community = sabr_2023_physeq,
+  prevalent_90 = corn_physeq_list$prevalent_90,
+  prevalent_80 = corn_physeq_list$prevalent_80,
+  prevalent_70 = corn_physeq_list$prevalent_70,
+  prevalent_60 = corn_physeq_list$prevalent_60,
+  prevalent_30 = corn_physeq_list$prevalent_30
 )
 
-# Create NMDS plot
-nmds_plot_P01_P08_I <- plot_ordination(
-  ps_corn_P01_P08_I,
-  nmds_P01_P08_I,
-  color = "Plot",
-  shape = "Date"
-) +
-  geom_point(size = 3, alpha = 0.8) +
-  labs(
-    title = "NMDS (P01-IR + P08-IR, 13 samples)",
-    x = "NMDS1",
-    y = "NMDS2"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5, face = "bold")
+# ------------------------------------------------------------
+# Plot relative abundance of ASVs vs gnha across prevalence levels
+# ------------------------------------------------------------
+
+# Build combined long data frame
+corn_combined_rel_abund <- imap_dfr(
+  corn_prevalence_list,
+  ~ relab_prevalence_long(.x, prevalence_label = .y)
+)
+
+# Select top ASVs per location within each prevalence threshold
+# Top 20 per location within each prevalence
+per_location_top <- corn_combined_rel_abund %>%
+  group_by(prevalence_level, sampling_location, asv) %>%
+  summarise(
+    mean_rel = mean(rel_abundance, na.rm = TRUE),
+    .groups = "drop_last"
+  ) %>%
+  slice_max(order_by = mean_rel, n = 20, with_ties = FALSE) %>%
+  ungroup()
+
+# Collapse to per-prevalence unique ASVs, rank by overall mean and cap at 20
+corn_top20_pairs_union <- per_location_top %>%
+  group_by(prevalence_level, asv) %>%
+  summarise(
+    mean_rel_overall = mean(mean_rel, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  group_by(prevalence_level) %>%
+  slice_max(order_by = mean_rel_overall, n = 20, with_ties = FALSE) %>%
+  ungroup() %>%
+  select(prevalence_level, asv)
+
+corn_combined_top_asv <- corn_combined_rel_abund %>%
+  dplyr::inner_join(
+    corn_top20_pairs_union,
+    by = c("prevalence_level", "asv")
+  ) %>%
+  mutate(
+    prevalence_level = factor(
+      prevalence_level,
+      levels = c(
+        "full_community",
+        "prevalent_30",
+        "prevalent_60",
+        "prevalent_70",
+        "prevalent_80",
+        "prevalent_90"
+      )
+    )
   )
 
-print(nmds_plot_P01_P08_I)
+# Data ready for plotting
+nested_names <- corn_combined_top_asv %>%
+  group_by(prevalence_level) %>%
+  arrange(prevalence_level) %>%
+  tidyr::nest()
+
+dfs_by_prev <- corn_combined_top_asv %>%
+  group_by(prevalence_level) %>%
+  arrange(prevalence_level) %>%
+  group_split(.keep = TRUE) %>%
+  setNames(., nested_names$prevalence_level)
+
+# Prepping df for binned plots
+n_bins <- 8
+global_breaks <- quantile(
+  corn_combined_top_asv$gnha,
+  probs = seq(0, 1, 0.25),
+  na.rm = TRUE
+) %>%
+  unique()
+
+dfs_by_prev_binned <- corn_combined_top_asv %>%
+  mutate(
+    gnha_bin = cut(
+      gnha,
+      breaks = global_breaks,
+      include.lowest = TRUE,
+      dig.lab = 6
+    )
+  ) %>%
+  filter(!is.na(gnha_bin)) %>%
+  group_by(prevalence_level, asv, gnha_bin) %>%
+  summarise(
+    mean_rel = mean(rel_abundance, na.rm = TRUE),
+    .groups = "drop_last"
+  ) %>%
+  group_by(prevalence_level) %>%
+  arrange(prevalence_level) %>%
+  group_split(.keep = TRUE) %>%
+  setNames(., nested_names$prevalence_level)
+
+# Theming
+axes_themes <- theme(
+  plot.title = element_text(face = "bold"),
+  strip.text = element_text(size = 5),
+  axis.title = element_markdown(face = "bold"),
+  axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+  panel.grid.minor = element_blank()
+)
+#---------------------
+# Scatter plot
+#---------------------
+# Scatter + smooth (lm) faceted by prevalence level (rows) and ASV (cols)
+# p_scatter <- ggplot(
+#   corn_combined_top_asv %>%
+#     filter(!is.na(gnha)),
+#   aes(x = gnha, y = rel_abundance, color = sampling_location)
+# ) +
+#   geom_point(alpha = 0.35, size = 0.9, ) +
+#   geom_smooth(
+#     aes(color = sampling_location),
+#     method = "lm",
+#     formula = y ~ x,
+#     se = FALSE,
+#     #color = "#d7301f",
+#     linewidth = 0.5
+#   ) +
+#   ggpmisc::stat_poly_eq(
+#     ggpmisc::use_label(c(
+#       "adj.R2",
+#       # "f",
+#       "p"
+#       # "n"
+#     )),
+#     #label.y = "top",
+#     label.x = 0.02,
+#     label.y = seq(0.95, by = -0.1, length.out = 2),
+#     size = 1
+#   ) +
+#   facet_grid(
+#     prevalence_level ~ fct_reorder(asv, parse_number(asv), .fun = min),
+#     scales = "free_y"
+#   ) +
+#   scale_y_continuous(labels = scales::percent_format(accuracy = 0.1)) +
+#   scale_x_log10() +
+#   labs(
+#     title = "CORN: ASV Relative Abundance vs gnha Across Prevalence Thresholds",
+#     x = "log10(gnha)",
+#     y = "Relative Abundance",
+#     subtitle = sprintf(
+#       "Top %d ASVs per location within each prevalence threshold selected by mean relative abundance",
+#       20
+#     )
+#   ) +
+#   theme_bw(base_size = 10) +
+#   theme(
+#     strip.text = element_text(size = 4),
+#     axis.text.x = element_text(angle = 45, hjust = 1),
+#     panel.grid.minor = element_blank()
+#   )
+
+# p_scatter
+
+# Make one plot per prevalence with facet_grid/wrap over ASV
+scatter_plots_by_prev <- dfs_by_prev %>%
+  imap(function(df_prev, prev_label) {
+    # Percentages
+    pct <- stringr::str_extract(prev_label, "\\d+")
+
+    ggplot(
+      df_prev,
+      aes(x = gnha, y = rel_abundance, color = sampling_location)
+    ) +
+      geom_point(alpha = 0.35, size = 0.9) +
+      geom_smooth(method = "lm", se = FALSE, linewidth = 0.5) +
+      ggpmisc::stat_poly_eq(
+        ggpmisc::use_label(c("adj.R2", "p")),
+        label.x = 0.02,
+        label.y = c(0.95, 0.85),
+        size = 2
+      ) +
+      facet_wrap(
+        ~ fct_reorder(asv, parse_number(asv), .fun = min),
+        scales = "free_y"
+      ) +
+      scale_y_continuous(labels = scales::percent_format(accuracy = 0.1)) +
+      scale_x_log10(
+        breaks = c(0.1, 1, 10, 100, 1000),
+        limits = c(0.1, 1000),
+        labels = scales::label_number()
+      ) +
+      labs(
+        title = sprintf(
+          "CORN: ASV Relative Abundance at %s%% prevalence threshold",
+          pct
+        ),
+        x = "log<sub>10</sub>[g N (N<sub>2</sub>O) ha<sup>-1</sup>]", # "g N (N₂O) ha⁻¹"
+        y = "Relative Abundance",
+        subtitle = sprintf(
+          "Top %d ASVs per location within each prevalence threshold selected by mean relative abundance",
+          20
+        )
+      ) +
+      theme_bw(base_size = 8) +
+      axes_themes +
+      theme(legend.position = "bottom")
+  })
+
+
+scatter_plots_by_prev$full_community
+
+#------------------
+# Binned plots
+#------------------
+
+# Aggregate view: Mean relative abundance per gnha bin (global)
+
+binned_plots_by_prev <- dfs_by_prev_binned %>%
+  imap(function(df_prev, prev_label) {
+    # Percentages
+    pct <- stringr::str_extract(prev_label, "\\d+")
+
+    ggplot(
+      df_prev,
+      aes(x = gnha_bin, y = mean_rel, group = asv, color = asv)
+    ) +
+      geom_line(linewidth = 0.4, alpha = 0.85) +
+      geom_point(size = 1) +
+      # facet_grid(
+      #   prevalence_level ~ fct_reorder(asv, parse_number(asv), .fun = min),
+      #   scales = "free_y"
+      # ) +
+      scale_y_continuous(labels = scales::percent_format(accuracy = 0.1)) +
+      labs(
+        title = sprintf(
+          "CORN: ASV  Mean Relative Abundance at %s%% prevalence threshold",
+          pct
+        ),
+        x = "log<sub>10</sub>[g N (N<sub>2</sub>O) ha<sup>-1</sup>]", # "g N (N₂O) ha⁻¹"
+        y = "Mean Relative Abundance",
+        subtitle = sprintf(
+          "Top %d ASVs per location within each prevalence threshold selected by mean relative abundance",
+          20
+        ),
+        caption = "Global Quantiles Binned"
+      ) +
+      theme_bw() +
+      axes_themes +
+      guides(
+        color = guide_legend(ncol = 2),
+        fill = guide_legend(ncol = 2),
+        shape = guide_legend(ncol = 2),
+        linetype = guide_legend(ncol = 2)
+      )
+  })
+binned_plots_by_prev
+# -----------------------
+# #List and save
+# #------------------------
+# corn_top_asv_n2o_plots <- list(
+#   scatter_facet = scatter_plots_by_prev,
+#   binned_lines = binned_plots_by_prev
+# )
+
+# safe_name <- function(x) str_replace_all(x, "[^A-Za-z0-9._-]+", "_")
+
+# # recursive saver: handles ggplot/grob/gtable OR nested lists of them
+# save_plot_or_list <- function(obj, base) {
+#   if (inherits(obj, c("ggplot", "gg", "grob", "gtable"))) {
+#     ggsave(
+#       paste0(base, ".png"),
+#       obj,
+#       width = 14,
+#       height = 8,
+#       dpi = 600,
+#       units = "in",
+#       create.dir = TRUE
+#     )
+#     ggsave(
+#       paste0(base, ".pdf"),
+#       obj,
+#       width = 14,
+#       height = 8,
+#       units = "in",
+#       create.dir = TRUE
+#     )
+#   } else if (is.list(obj)) {
+#     iwalk(
+#       obj,
+#       function(child, child_name) {
+#         child_base <- file.path(
+#           dirname(base),
+#           paste0(basename(base), "_", safe_name(child_name))
+#         )
+#         save_plot_or_list(child, child_base)
+#       }
+#     )
+#   } else {
+#     warning(
+#       "Skipping unsupported object type: ",
+#       paste(class(obj), collapse = ", ")
+#     )
+#   }
+# }
+
+# purrr::iwalk(
+#   corn_top_asv_n2o_plots,
+#   ~ {
+#     base <- file.path("data/output/plots", paste0(safe_name(.y)))
+#     save_plot_or_list(.x, base)
+#   }
+# )
 
 #--------------------------------------------------------
-# Core microbiome analysis for P01 + P08 + P11 (Interrow)
+# Taxonomy tables
 #--------------------------------------------------------
 
-# Merge P01_I, P08_I, and P11_I
-ps_corn_P01_P08_P11_I <- merge_phyloseq(
-  ps_corn_P01_I,
-  ps_corn_P08_I,
-  ps_corn_P11_I
+tables_by_prev <- corn_combined_top_asv %>%
+  distinct(
+    prevalence_level,
+    asv,
+    kingdom,
+    phylum,
+    class,
+    # order,
+    # family,
+    genus,
+    species
+  ) %>%
+  mutate(
+    asv_num = readr::parse_number(asv),
+    prevalence_level = factor(
+      prevalence_level,
+      levels = c(
+        "full_community",
+        "prevalent_30",
+        "prevalent_60",
+        "prevalent_70",
+        "prevalent_80",
+        "prevalent_90"
+      )
+    )
+  ) %>%
+  arrange(
+    prevalence_level,
+    asv_num,
+    asv
+  ) %>%
+  select(-asv_num) %>%
+  group_split(prevalence_level, .keep = TRUE) %>%
+  setNames(., nested_names$prevalence_level)
+
+# tables_by_prev %>%
+# group_by(prevalence_level) %>%
+#   group_map(
+#     ~ gt(.x %>% select(-prevalence_level)) %>%
+#       tab_header(title = paste0("Prevalence: ", .y$prevalence_level)),
+#     .keep = TRUE
+#   ) -> gt_tables
+
+# # Print all gt tables
+# lapply(gt_tables, print)
+
+purrr::iwalk(
+  tables_by_prev,
+  ~ {
+    cat("\n\n")
+    cat(sprintf("Prevalence: %s\n\n", .y))
+    print(knitr::kable(.x %>% select(-prevalence_level)))
+  }
 )
+#----------------------------------------------------------
+# Selection of significantly correlated ASV with CORN
+# (mostly, positive)
+#----------------------------------------------------------
+# Of those top ASVs which are significantly correlated with
+# ghna in CORN?
 
-# Extract ASV table
-asv_table_data_P01_P08_P11_I <- as.data.frame(otu_table(ps_corn_P01_P08_P11_I))
-
-# Count total samples
-total_samples_P01_P08_P11_I <- nrow(asv_table_data_P01_P08_P11_I)
-
-# Count samples per ASV
-asv_sample_counts_P01_P08_P11_I <- colSums(asv_table_data_P01_P08_P11_I > 0)
-
-# Identify core ASVs (>80%)
-threshold_80_P01_P08_P11_I <- total_samples_P01_P08_P11_I * 0.8
-core_asvs_P01_P08_P11_I <- names(asv_sample_counts_P01_P08_P11_I[
-  asv_sample_counts_P01_P08_P11_I >= threshold_80_P01_P08_P11_I
-])
-
-cat(
-  "ASVs found in >80% P01_I + P08_I + P11_I samples:",
-  length(core_asvs_P01_P08_P11_I),
-  "\n"
-)
-
-# NMDS analysis for P01_I + P08_I + P11_I
-nmds_P01_P08_P11_I <- ordinate(
-  ps_corn_P01_P08_P11_I,
-  method = "NMDS",
-  distance = "bray",
-  trymax = 100
-)
-
-# Create NMDS plot
-nmds_plot_P01_P08_P11_I <- plot_ordination(
-  ps_corn_P01_P08_P11_I,
-  nmds_P01_P08_P11_I,
-  color = "Plot",
-  shape = "Date"
-) +
-  geom_point(size = 3, alpha = 0.8) +
-  labs(
-    title = "NMDS (P01-IR + P08-IR + P11-IR, 20 samples)",
-    x = "NMDS1",
-    y = "NMDS2"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5, face = "bold")
+# Correlation direction per prevalence × ASV × location
+corn_corr_stats <- corn_combined_rel_abund %>%
+  filter(prevalence_level == "full_community") %>% # Filter prevalence levels to obtain the community you want
+  group_by(prevalence_level, asv, sampling_location) %>%
+  summarise(
+    n = sum(is.finite(gnha) & is.finite(rel_abundance)),
+    r = {
+      mask <- is.finite(gnha) & is.finite(rel_abundance)
+      x <- gnha[mask]
+      y <- rel_abundance[mask]
+      if (length(x) >= 3 && stats::var(x) > 0 && stats::var(y) > 0) {
+        stats::cor(x, y)
+      } else {
+        NA_real_
+      }
+    },
+    r2 = r^2,
+    r2_adj = ifelse(
+      n - 1L - 1 > 0,
+      1 - (1 - r2) * (n - 1) / (n - 1L - 1),
+      NA_real_
+    ), # p=1 or 1L for simple regression/correlation
+    p_value = {
+      mask <- is.finite(gnha) & is.finite(rel_abundance)
+      x <- gnha[mask]
+      y <- rel_abundance[mask]
+      if (length(x) >= 3 && stats::var(x) > 0 && stats::var(y) > 0) {
+        stats::cor.test(
+          x,
+          y,
+          alternative = "two.sided",
+          method = "pearson"
+        )$p.value
+      } else {
+        NA_real_
+      }
+    },
+    arrow = dplyr::case_when(
+      is.na(r) ~ "–",
+      r > 0 ~ "▲",
+      r < 0 ~ "▼",
+      TRUE ~ "–"
+    ),
+    .groups = "drop"
   )
 
-print(nmds_plot_P01_P08_P11_I)
+# Select significantly correlated ASV (mostly, positive)
+corn_corr_significant <- corn_corr_stats %>%
+  filter(p_value < 0.05)
 
-#--------------------------------------------------------
-# Core microbiome analysis for all plots (Interrow)
-#--------------------------------------------------------
-
-# Merge all interrow samples
-ps_corn_P01_P08_P11_P14_I <- merge_phyloseq(
-  ps_corn_P01_I,
-  ps_corn_P08_I,
-  ps_corn_P11_I,
-  ps_corn_P14_I
-)
-
-# Extract ASV table
-asv_table_data_P01_P08_P11_P14_I <- as.data.frame(otu_table(
-  ps_corn_P01_P08_P11_P14_I
-))
-
-# Count total samples
-total_samples_P01_P08_P11_P14_I <- nrow(asv_table_data_P01_P08_P11_P14_I)
-
-# Count samples per ASV
-asv_sample_counts_P01_P08_P11_P14_I <- colSums(
-  asv_table_data_P01_P08_P11_P14_I > 0
-)
-
-# Identify core ASVs (>80%)
-threshold_80_P01_P08_P11_P14_I <- total_samples_P01_P08_P11_P14_I * 0.8
-core_asvs_P01_P08_P11_P14_I <- names(asv_sample_counts_P01_P08_P11_P14_I[
-  asv_sample_counts_P01_P08_P11_P14_I >= threshold_80_P01_P08_P11_P14_I
-])
-
-cat(
-  "ASVs found in >80% P01_I + P08_I + P11_I + P14_I samples:",
-  length(core_asvs_P01_P08_P11_P14_I),
-  "\n"
-)
-
-# NMDS analysis for all interrow samples
-nmds_P01_P08_P11_P14_I <- ordinate(
-  ps_corn_P01_P08_P11_P14_I,
-  method = "NMDS",
-  distance = "bray",
-  trymax = 100
-)
-
-# Create NMDS plot
-nmds_plot_P01_P08_P11_P14_I <- plot_ordination(
-  ps_corn_P01_P08_P11_P14_I,
-  nmds_P01_P08_P11_P14_I,
-  color = "Plot",
-  shape = "Date"
-) +
-  geom_point(size = 3, alpha = 0.8) +
-  labs(
-    title = "NMDS (P01-IR + P08-IR + P11-IR + P14-IR, 27 samples)",
-    x = "NMDS1",
-    y = "NMDS2"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5, face = "bold")
+# Base taxonomy table (distinct ASV taxonomy per prevalence)
+tax_base <- corn_combined_rel_abund %>%
+  filter(prevalence_level == "full_community") %>%
+  distinct(
+    prevalence_level,
+    asv,
+    kingdom,
+    phylum,
+    class,
+    family,
+    genus,
+    species
   )
 
-print(nmds_plot_P01_P08_P11_P14_I)
+# Join taxonomy table and correlation table
+corn_tax_with_corr <- corn_corr_significant %>%
+  dplyr::left_join(tax_base, by = c("prevalence_level", "asv")) %>%
+  relocate(n:arrow, .after = species) %>%
+  #select(-prevalence_level) %>%
+  arrange(sampling_location, fct_reorder(asv, parse_number(asv), .fun = min), r)
 
-#--------------------------------------------------------
-# Core microbiome with Interrow + P01 Row
-#--------------------------------------------------------
+# Split into one data frame per prevalence; name from the data (avoids mismatches)
+corn_tables_by_prev <- corn_tax_with_corr %>%
+  group_split(prevalence_level, .keep = TRUE)
 
-# Merge all interrow samples and P01 row samples
-ps_corn_I_P01_R <- merge_phyloseq(
-  ps_corn_P01_I,
-  ps_corn_P08_I,
-  ps_corn_P11_I,
-  ps_corn_P14_I,
-  ps_corn_P01_R
+names(corn_tables_by_prev) <- corn_tax_with_corr %>%
+  distinct(prevalence_level) %>%
+  pull(prevalence_level) %>%
+  as.character()
+
+# Build nicely formatted gt tables with colored arrows
+pos_arrow <- "#38d005ff"
+neg_arrow <- "#ff0000"
+
+
+gt_tables_by_prev <- imap(
+  corn_tables_by_prev,
+  function(df_prev, prev_label) {
+    # Ensure arrow columns exist even if one location is absent
+    df_prev %>%
+      select(
+        -prevalence_level,
+        r
+      ) %>%
+      gt::gt(
+        groupname_col = "sampling_location",
+        row_group_as_column = TRUE
+      ) %>%
+      cols_label(
+        asv = "ASV",
+        sampling_location = "Sampling location",
+        kingdom = "Kingdom",
+        phylum = "Phylum",
+        class = "Class",
+        family = "Family",
+        genus = "Genus",
+        species = "Species",
+        n = md("*n*"),
+        r2 = "R\u00B2",
+        r2_adj = "Adj. R\u00B2",
+        p_value = "p-value",
+        arrow = "Correlation with g N (N\u2082O) ha\u207B\u00B9"
+      ) %>%
+      fmt_number(columns = c(r2, r2_adj), decimals = 3) %>%
+      fmt(
+        columns = p_value,
+        fns = function(x) {
+          ifelse(
+            is.na(x),
+            NA_character_,
+            ifelse(x < 0.001, "<0.001", formatC(x, format = "f", digits = 3))
+          )
+        }
+      ) %>%
+      tab_header(
+        title = paste0("ASV Taxonomy and Correlation Direction — ", prev_label),
+        subtitle = md("sample *n* = 994; ASV *n* = 988")
+      ) %>%
+      tab_style(
+        style = cell_text(weight = "bolder"),
+        locations = cells_title(groups = c("title", "subtitle"))
+      ) %>%
+      tab_stubhead(label = "Sampling Location") %>%
+      tab_style(
+        style = cell_text(weight = "bold"),
+        locations = list(
+          cells_column_labels(columns = everything()),
+          cells_stubhead()
+        )
+      ) %>%
+      # Stub formatting
+      tab_style(
+        style = cell_text(color = "black", weight = "bolder"),
+        locations = cells_row_groups()
+      ) %>%
+      tab_style(
+        style = list(
+          cell_fill(color = "#f78f8fff"),
+          cell_text(color = "black")
+        ),
+        locations = cells_row_groups(matches("Interrow"))
+      ) %>%
+      tab_style(
+        style = list(
+          cell_fill(color = "#31878fff"),
+          cell_text(color = "black", )
+        ),
+        locations = cells_row_groups(starts_with("Row"))
+      ) %>%
+
+      # Color the arrow columns
+      tab_style(
+        style = cell_text(size = px(26), weight = "bold"),
+        locations = cells_body(columns = "arrow")
+      ) %>%
+      tab_style(
+        style = cell_text(color = pos_arrow),
+        locations = cells_body(columns = "arrow", rows = arrow == "▲")
+      ) %>%
+      tab_style(
+        style = cell_text(color = neg_arrow),
+        locations = cells_body(columns = "arrow", rows = arrow == "▼")
+      ) %>%
+      # Optional: center the arrow columns
+      cols_align(align = "center", columns = c(arrow)) %>%
+      # Optional: compact look
+      opt_table_lines("none")
+  }
 )
 
-# Extract ASV table
-asv_table_data_corn_I_P01_R <- as.data.frame(otu_table(ps_corn_I_P01_R))
+# Print all tables
+invisible(lapply(gt_tables_by_prev, print))
 
-# Count total samples
-total_samples_corn_I_P01_R <- nrow(asv_table_data_corn_I_P01_R)
 
-# Count samples per ASV
-asv_sample_counts_corn_I_P01_R <- colSums(asv_table_data_corn_I_P01_R > 0)
-
-# Identify core ASVs (>80%)
-threshold_80_corn_I_P01_R <- total_samples_corn_I_P01_R * 0.8
-core_asvs_corn_I_P01_R <- names(asv_sample_counts_corn_I_P01_R[
-  asv_sample_counts_corn_I_P01_R >= threshold_80_corn_I_P01_R
-])
-
-cat("ASVs found in >80% corn_I+P01_RI", length(core_asvs_corn_I_P01_R), "\n")
-
-# NMDS analysis
-nmds_corn_I_P01_R <- ordinate(
-  ps_corn_I_P01_R,
-  method = "NMDS",
-  distance = "bray",
-  trymax = 100
+gtsave(
+  gt_tables_by_prev$full_community,
+  filename = "data/output/significant_asvs.html"
 )
 
-# Create NMDS plot
-nmds_plot_corn_I_P01_R <- plot_ordination(
-  ps_corn_I_P01_R,
-  nmds_corn_I_P01_R,
-  color = "Plot",
-  shape = "Date"
-) +
-  geom_point(size = 3, alpha = 0.8) +
-  labs(
-    title = "NMDS (Corn Interrow + P01-R, 33 samples)",
-    x = "NMDS1",
-    y = "NMDS2"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5, face = "bold")
+#-------------------------------------------------------------
+# Select significantly correlated AVS for downstream BLASTing
+#-------------------------------------------------------------
+
+duplicates <- corn_tax_with_corr |>
+  group_by(asv) |>
+  filter(n() > 1) |>
+  ungroup()
+
+corn_signif_asvs_strings <- corn_tax_with_corr |>
+  distinct(asv) |>
+  pull(asv)
+
+# Subset to phyloseq to FASTA file
+
+corn_signif_physeq_fcm <- corn_prevalence_list$full_community %>%
+  prune_taxa(taxa_names(.) %in% corn_signif_asvs_strings, .)
+
+
+physeq2fasta <- function(physeq, seq_col) {
+  physeq_df <- physeq %>%
+    phyloseq::tax_table(.) %>%
+    phyloseq::as.data.frame(.)
+
+  asv_headers <- paste0(">", rownames(physeq_df)) # ASV names must be rownames
+
+  asv_seqs <- physeq_df[[seq_col]]
+
+  asv_fasta <- c(rbind(asv_headers, asv_seqs))
+
+  return(list(
+    asv_fasta = asv_fasta,
+    asv_headers = asv_headers
+  ))
+}
+
+
+corn_signif_asvs_fasta <- physeq2fasta(
+  corn_signif_physeq_fcm,
+  seq_col = "sequence"
+)
+
+save(
+  corn_signif_physeq_fcm,
+  file = "data/output/processed/rdata/phyloseq/corn_signif_physeq_fcm.rda"
+)
+
+write(
+  corn_signif_asvs_fasta$asv_fasta,
+  file.path(
+    "data/output/processed/sequences/sabr_2023_corn_signif_asv_fcm.fa"
   )
-
-print(nmds_plot_corn_I_P01_R)
-
-#--------------------------------------------------------
-# Expanding to include P08 Row samples
-#--------------------------------------------------------
-
-# Merge all interrow samples and P01, P08 row samples
-ps_corn_I_P01_P08_R <- merge_phyloseq(
-  ps_corn_P01_I,
-  ps_corn_P08_I,
-  ps_corn_P11_I,
-  ps_corn_P14_I,
-  ps_corn_P01_R,
-  ps_corn_P08_R
 )
 
-# Extract ASV table
-asv_table_data_corn_I_P01_P08_R <- as.data.frame(otu_table(ps_corn_I_P01_P08_R))
-
-# Count total samples
-total_samples_corn_I_P01_P08_R <- nrow(asv_table_data_corn_I_P01_P08_R)
-
-# Count samples per ASV
-asv_sample_counts_corn_I_P01_P08_R <- colSums(
-  asv_table_data_corn_I_P01_P08_R > 0
-)
-
-# Identify core ASVs (>80%)
-threshold_80_corn_I_P01_P08_R <- total_samples_corn_I_P01_P08_R * 0.8
-core_asvs_corn_I_P01_P08_R <- names(asv_sample_counts_corn_I_P01_P08_R[
-  asv_sample_counts_corn_I_P01_P08_R >= threshold_80_corn_I_P01_P08_R
-])
-
-cat(
-  "ASVs found in >80% corn_Interrow + P01_R + P08_R samples:",
-  length(core_asvs_corn_I_P01_P08_R),
-  "\n"
-)
-
-# NMDS analysis
-nmds_corn_I_P01_R_P08_R <- ordinate(
-  ps_corn_I_P01_P08_R,
-  method = "NMDS",
-  distance = "bray",
-  trymax = 100
-)
-
-# Create NMDS plot
-nmds_plot_corn_I_P01_R_P08_R <- plot_ordination(
-  ps_corn_I_P01_P08_R,
-  nmds_corn_I_P01_R_P08_R,
-  color = "Plot",
-  shape = "Date"
-) +
-  geom_point(size = 3, alpha = 0.8) +
-  labs(
-    title = "NMDS (Corn Interrow + P01-R + P08-R, 40 samples)",
-    x = "NMDS1",
-    y = "NMDS2"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5, face = "bold")
-  )
-
-print(nmds_plot_corn_I_P01_R_P08_R)
-
-#--------------------------------------------------------
-# Expanding to include P11 Row samples
-#--------------------------------------------------------
-
-# Merge all interrow samples and P01, P08, P11 row samples
-ps_corn_I_P01_P08_P11_R <- merge_phyloseq(
-  ps_corn_P01_I,
-  ps_corn_P08_I,
-  ps_corn_P11_I,
-  ps_corn_P14_I,
-  ps_corn_P01_R,
-  ps_corn_P08_R,
-  ps_corn_P11_R
-)
-
-# Extract ASV table
-asv_table_data_corn_I_P01_P08_P11_R <- as.data.frame(otu_table(
-  ps_corn_I_P01_P08_P11_R
-))
-
-# Count total samples
-total_samples_corn_I_P01_P08_P11_R <- nrow(asv_table_data_corn_I_P01_P08_P11_R)
-
-# Count samples per ASV
-asv_sample_counts_corn_I_P01_P08_P11_R <- colSums(
-  asv_table_data_corn_I_P01_P08_P11_R > 0
-)
-
-# Identify core ASVs (>80%)
-threshold_80_corn_I_P01_P08_P11_R <- total_samples_corn_I_P01_P08_P11_R * 0.8
-core_asvs_corn_I_P01_P08_P11_R <- names(asv_sample_counts_corn_I_P01_P08_P11_R[
-  asv_sample_counts_corn_I_P01_P08_P11_R >= threshold_80_corn_I_P01_P08_P11_R
-])
-
-cat(
-  "ASVs found in >80% corn_I+P01_P08_P11_R samples:",
-  length(core_asvs_corn_I_P01_P08_P11_R),
-  "\n"
-)
-
-# NMDS analysis
-nmds_corn_I_P01_R_P08_R_P11_R <- ordinate(
-  ps_corn_I_P01_P08_P11_R,
-  method = "NMDS",
-  distance = "bray",
-  trymax = 100
-)
-
-# Create NMDS plot
-nmds_plot_corn_I_P01_R_P08_R_P11_R <- plot_ordination(
-  ps_corn_I_P01_P08_P11_R,
-  nmds_corn_I_P01_R_P08_R_P11_R,
-  color = "Plot",
-  shape = "Date"
-) +
-  geom_point(size = 3, alpha = 0.8) +
-  labs(
-    title = "NMDS (Corn Interrow + P01-R + P08-R + P11-R, 47 samples)",
-    x = "NMDS1",
-    y = "NMDS2"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5, face = "bold")
-  )
-
-print(nmds_plot_corn_I_P01_R_P08_R_P11_R)
-
-#--------------------------------------------------------
-# Including all corn samples (all interrow + all row)
-#--------------------------------------------------------
-
-# Merge all interrow and row samples
-ps_corn_I_P01_P08_P11_P14_R <- merge_phyloseq(
-  ps_corn_P01_I,
-  ps_corn_P08_I,
-  ps_corn_P11_I,
-  ps_corn_P14_I,
-  ps_corn_P01_R,
-  ps_corn_P08_R,
-  ps_corn_P11_R,
-  ps_corn_P14_R
-)
-
-# Extract ASV table
-asv_table_data_corn_I_P01_P08_P11_P14_R <- as.data.frame(otu_table(
-  ps_corn_I_P01_P08_P11_P14_R
-))
-
-# Count total samples
-total_samples_corn_I_P01_P08_P11_P14_R <- nrow(
-  asv_table_data_corn_I_P01_P08_P11_P14_R
-)
-
-# Count samples per ASV
-asv_sample_counts_corn_I_P01_P08_P11_P14_R <- colSums(
-  asv_table_data_corn_I_P01_P08_P11_P14_R > 0
-)
-
-# Identify core ASVs (>80%)
-threshold_80_corn_I_P01_P08_P11_P14_R <- total_samples_corn_I_P01_P08_P11_P14_R *
-  0.8
-core_asvs_corn_I_P01_P08_P11_P14_R <- names(asv_sample_counts_corn_I_P01_P08_P11_P14_R[
-  asv_sample_counts_corn_I_P01_P08_P11_P14_R >=
-    threshold_80_corn_I_P01_P08_P11_P14_R
-])
-
-cat(
-  "ASVs found in >80% corn_I+R:",
-  length(core_asvs_corn_I_P01_P08_P11_P14_R),
-  "\n"
-)
-
-# NMDS analysis
-nmds_corn_I_R <- ordinate(
-  ps_corn_I_P01_P08_P11_P14_R,
-  method = "NMDS",
-  distance = "bray",
-  trymax = 100
-)
-
-# Create NMDS plot
-nmds_plot_corn_I_R <- plot_ordination(
-  ps_corn_I_P01_P08_P11_P14_R,
-  nmds_corn_I_R,
-  color = "Plot",
-  shape = "Date"
-) +
-  geom_point(size = 3, alpha = 0.8) +
-  labs(
-    title = "NMDS (Corn Interrow + Row, 53 samples)",
-    x = "NMDS1",
-    y = "NMDS2"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "right",
-    plot.title = element_text(hjust = 0.5, face = "bold")
-  )
-
-print(nmds_plot_corn_I_R)
-
-#--------------------------------------------------------
-# Compare core ASVs with different thresholds (70%)
-#--------------------------------------------------------
-
-# Re-define thresholds to 70% for comparison
-threshold_80_P01_I <- total_samples_P01_I * 0.7
-core_asvs_P01_I <- names(asv_sample_counts_P01_I[
-  asv_sample_counts_P01_I >= threshold_80_P01_I
-])
-cat("ASVs found in >70% P01_I samples:", length(core_asvs_P01_I), "\n")
-
-threshold_80_P01_P08_I <- total_samples_P01_P08_I * 0.7
-core_asvs_P01_P08_I <- names(asv_sample_counts_P01_P08_I[
-  asv_sample_counts_P01_P08_I >= threshold_80_P01_P08_I
-])
-cat(
-  "ASVs found in >70% P01_I + P08_I samples:",
-  length(core_asvs_P01_P08_I),
-  "\n"
-)
-
-threshold_80_P01_P08_P11_I <- total_samples_P01_P08_P11_I * 0.7
-core_asvs_P01_P08_P11_I <- names(asv_sample_counts_P01_P08_P11_I[
-  asv_sample_counts_P01_P08_P11_I >= threshold_80_P01_P08_P11_I
-])
-cat(
-  "ASVs found in >70% P01_I + P08_I + P11_I samples:",
-  length(core_asvs_P01_P08_P11_I),
-  "\n"
-)
-
-threshold_80_P01_P08_P11_P14_I <- total_samples_P01_P08_P11_P14_I * 0.7
-core_asvs_P01_P08_P11_P14_I <- names(asv_sample_counts_P01_P08_P11_P14_I[
-  asv_sample_counts_P01_P08_P11_P14_I >= threshold_80_P01_P08_P11_P14_I
-])
-cat(
-  "ASVs found in >70% P01_I + P08_I + P11_I + P14_I samples:",
-  length(core_asvs_P01_P08_P11_P14_I),
-  "\n"
-)
-
-threshold_80_corn_I_P01_R <- total_samples_corn_I_P01_R * 0.7
-core_asvs_corn_I_P01_R <- names(asv_sample_counts_corn_I_P01_R[
-  asv_sample_counts_corn_I_P01_R >= threshold_80_corn_I_P01_R
-])
-cat("ASVs found in >70% corn_I+P01_R", length(core_asvs_corn_I_P01_R), "\n")
-
-threshold_80_corn_I_P01_P08_R <- total_samples_corn_I_P01_P08_R * 0.7
-core_asvs_corn_I_P01_P08_R <- names(asv_sample_counts_corn_I_P01_P08_R[
-  asv_sample_counts_corn_I_P01_P08_R >= threshold_80_corn_I_P01_P08_R
-])
-cat(
-  "ASVs found in >70% corn_Interrow + P01_R + P08_R samples:",
-  length(core_asvs_corn_I_P01_P08_R),
-  "\n"
-)
-
-threshold_80_corn_I_P01_P08_P11_R <- total_samples_corn_I_P01_P08_P11_R * 0.7
-core_asvs_corn_I_P01_P08_P11_R <- names(asv_sample_counts_corn_I_P01_P08_P11_R[
-  asv_sample_counts_corn_I_P01_P08_P11_R >= threshold_80_corn_I_P01_P08_P11_R
-])
-cat(
-  "ASVs found in >70% corn_I+P01_P08_P11_R samples:",
-  length(core_asvs_corn_I_P01_P08_P11_R),
-  "\n"
-)
-
-threshold_80_corn_I_P01_P08_P11_P14_R <- total_samples_corn_I_P01_P08_P11_P14_R *
-  0.7
-core_asvs_corn_I_P01_P08_P11_P14_R <- names(asv_sample_counts_corn_I_P01_P08_P11_P14_R[
-  asv_sample_counts_corn_I_P01_P08_P11_P14_R >=
-    threshold_80_corn_I_P01_P08_P11_P14_R
-])
-cat(
-  "ASVs found in >70% corn_I+R:",
-  length(core_asvs_corn_I_P01_P08_P11_P14_R),
-  "\n"
-)
+# This last file is used for further BLAST against NCBI nt
